@@ -1,0 +1,4 @@
+TipoJornada_ID,Codigo,Descripcion,EsAgregado,OrdenVisualizacion
+Ambas jornadas,AMBAS_JORNADAS,Ambas jornadas,TRUE,1
+Jornada completa,JORNADA_COMPLETA,Jornada completa,FALSE,2
+Jornada parcial,JORNADA_PARCIAL,Jornada parcial,FALSE,3

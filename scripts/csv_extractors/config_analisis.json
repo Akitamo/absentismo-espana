@@ -1,0 +1,163 @@
+{
+  "analisis_configuracion": {
+    "version": "1.0",
+    "descripcion": "Configuración para análisis de factibilidad de absentismo",
+    "fecha_creacion": "2025-05-30",
+    "autor": "Sistema Absentismo España"
+  },
+  "directorios": {
+    "datos_csv": "../../data/raw/csv/",
+    "informes_salida": "../../informes/",
+    "logs": "../../logs/",
+    "graficos": "../../informes/graficos/"
+  },
+  "analisis_estructura": {
+    "muestra_maxima_filas": 10000,
+    "detectar_fechas_automatico": true,
+    "extraer_estadisticas_numericas": true,
+    "generar_muestras_datos": true,
+    "validar_completitud": true,
+    "calcular_score_calidad": true
+  },
+  "deteccion_absentismo": {
+    "palabras_clave": {
+      "horas_trabajo": [
+        "horas.*trabajo", 
+        "horas.*efectiva", 
+        "horas.*pactada", 
+        "tiempo.*trabajo", 
+        "jornada.*efectiva"
+      ],
+      "ausencias": [
+        "horas.*no.*trabajada", 
+        "ausencia", 
+        "baja", 
+        "incapacidad.*temporal",
+        "IT", 
+        "permiso", 
+        "licencia", 
+        "maternidad", 
+        "paternidad"
+      ],
+      "absentismo_directo": [
+        "absentismo", 
+        "absenteeism", 
+        "ausentismo"
+      ],
+      "causas_ausencia": [
+        "enfermedad", 
+        "accidente", 
+        "conflicto", 
+        "huelga", 
+        "vacaciones",
+        "festivo", 
+        "ERTE", 
+        "suspension"
+      ],
+      "temporal": [
+        "año", 
+        "mes", 
+        "trimestre", 
+        "periodo", 
+        "fecha"
+      ],
+      "geografica": [
+        "ccaa", 
+        "comunidad", 
+        "provincia", 
+        "region"
+      ],
+      "sectorial": [
+        "sector", 
+        "actividad", 
+        "cnae", 
+        "industria", 
+        "servicio"
+      ]
+    },
+    "tablas_prioritarias": {
+      "tiempo_trabajo_principal": ["6042", "6043", "6044", "6045", "6046", "6063"],
+      "costes_con_ausencias": ["6038", "6039", "6040", "6041", "6056"],
+      "series_temporales": ["59391", "59392"],
+      "costes_detallados": ["6030", "6031", "6032", "6033", "6034", "6035", "6036", "6037"]
+    },
+    "scores": {
+      "palabra_clave_tiempo": 3,
+      "palabra_clave_ausencia": 5,
+      "palabra_clave_coste": 2,
+      "tabla_muy_relevante": 10,
+      "tabla_relevante": 5,
+      "columna_clave_especifica": 8,
+      "dimension_temporal": 2,
+      "dimension_geografica": 2,
+      "dimension_sectorial": 2
+    },
+    "umbrales_utilidad": {
+      "muy_alta": 15,
+      "alta": 10,
+      "media": 5,
+      "baja": 0
+    }
+  },
+  "generacion_informe": {
+    "incluir_graficos": true,
+    "generar_tablas_detalle": true,
+    "incluir_casos_uso": true,
+    "incluir_plan_implementacion": true,
+    "tema_visual": "moderno",
+    "idioma": "es",
+    "formato_fechas": "dd/mm/yyyy",
+    "decimales_metricas": 1
+  },
+  "logging": {
+    "nivel": "INFO",
+    "formato": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "archivo_log": "../../logs/analisis_factibilidad.log",
+    "rotar_logs": true,
+    "max_tamaño_mb": 10
+  },
+  "validaciones": {
+    "minimo_archivos_csv": 10,
+    "minimo_registros_por_tabla": 100,
+    "maximo_tiempo_ejecucion_minutos": 30,
+    "verificar_encoding_utf8": true,
+    "validar_estructura_csv": true
+  },
+  "salidas": {
+    "archivos_esperados": [
+      "analisis_estructura_35_tablas.json",
+      "deteccion_absentismo_detallada.json", 
+      "factibilidad_absentismo.html"
+    ],
+    "generar_resumen_ejecutivo": true,
+    "incluir_timestamps": true,
+    "comprimir_archivos_grandes": false
+  },
+  "metricas_objetivo": {
+    "tasa_absentismo_total": {
+      "descripcion": "Porcentaje total de horas no trabajadas respecto a horas pactadas",
+      "formula": "(Horas no trabajadas / Horas pactadas efectivas) * 100",
+      "dimensiones": ["temporal", "geografica", "sectorial"]
+    },
+    "absentismo_por_IT": {
+      "descripcion": "Absentismo específico por Incapacidad Temporal",
+      "formula": "(Horas no trabajadas por IT / Horas pactadas efectivas) * 100",
+      "dimensiones": ["temporal", "geografica", "sectorial"]
+    },
+    "comparativa_sectorial": {
+      "descripcion": "Comparación de absentismo entre sectores económicos",
+      "requiere": ["dimension_sectorial", "datos_absentismo"],
+      "visualizacion": "barras_comparativas"
+    },
+    "tendencias_temporales": {
+      "descripcion": "Evolución del absentismo a lo largo del tiempo",
+      "requiere": ["dimension_temporal", "datos_absentismo"],
+      "visualizacion": "lineas_temporales"
+    },
+    "analisis_geografico": {
+      "descripcion": "Distribución geográfica del absentismo por CCAA",
+      "requiere": ["dimension_geografica", "datos_absentismo"],
+      "visualizacion": "mapa_coropletas"
+    }
+  }
+}

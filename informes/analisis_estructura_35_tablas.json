@@ -1,0 +1,1373 @@
+{
+  "metadatos_generales": {
+    "directorio_analizado": "..\\..\\data\\raw\\csv",
+    "fecha_analisis": "2025-05-30T13:17:19.959929",
+    "version_pandas": "2.2.3",
+    "total_archivos_procesados": 35,
+    "archivos_con_errores": 23,
+    "columnas_mas_comunes": [
+      {
+        "nombre": "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total",
+        "frecuencia": 2,
+        "tablas": [
+          "11221",
+          "11222"
+        ]
+      },
+      {
+        "nombre": "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total",
+        "frecuencia": 2,
+        "tablas": [
+          "6031",
+          "6035"
+        ]
+      },
+      {
+        "nombre": "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total",
+        "frecuencia": 2,
+        "tablas": [
+          "6038",
+          "6040"
+        ]
+      },
+      {
+        "nombre": "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total",
+        "frecuencia": 1,
+        "tablas": [
+          "59391"
+        ]
+      },
+      {
+        "nombre": "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total",
+        "frecuencia": 1,
+        "tablas": [
+          "6034"
+        ]
+      },
+      {
+        "nombre": "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total",
+        "frecuencia": 1,
+        "tablas": [
+          "6042"
+        ]
+      },
+      {
+        "nombre": "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total",
+        "frecuencia": 1,
+        "tablas": [
+          "6044"
+        ]
+      },
+      {
+        "nombre": "Sector de actividad;Periodo;Total",
+        "frecuencia": 1,
+        "tablas": [
+          "6047"
+        ]
+      },
+      {
+        "nombre": "Tamaño del establecimiento;Periodo;Total",
+        "frecuencia": 1,
+        "tablas": [
+          "6049"
+        ]
+      }
+    ],
+    "estadisticas_tamaños": {
+      "tamaño_minimo_mb": 0.0,
+      "tamaño_maximo_mb": 8.17,
+      "tamaño_promedio_mb": 1.06,
+      "tamaño_mediana_mb": 0.41
+    }
+  },
+  "analisis_por_tabla": {
+    "11221": {
+      "id_tabla": "11221",
+      "nombre_archivo": "11221_Costes_laborales_por_trabajador.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\11221_Costes_laborales_por_trabajador.csv",
+      "tamaño_bytes": 184092,
+      "tamaño_mb": 0.18,
+      "fecha_modificacion": "2025-05-30T11:13:43.912563",
+      "estructura": {
+        "total_filas": 1800,
+        "total_columnas": 1,
+        "columnas": [
+          "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": "float64"
+        },
+        "memoria_usage_mb": 0.28
+      },
+      "contenido": {
+        "filas_unicas": 91,
+        "columnas_numericas": [
+          "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total"
+        ],
+        "columnas_texto": [],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": 90
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": 14.0
+          },
+          {
+            "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": 71.0
+          },
+          {
+            "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": 6.0
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 1800,
+          "valores_faltantes": 146,
+          "porcentaje_completo": 91.89,
+          "faltantes_por_columna": {
+            "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": 146
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 1709,
+        "score_calidad": 81.9
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 2,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [
+          "coste"
+        ],
+        "tipo_datos_absentismo": "ninguno",
+        "utilidad_estimada": "baja"
+      },
+      "errores": []
+    },
+    "11222": {
+      "id_tabla": "11222",
+      "nombre_archivo": "11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv",
+      "tamaño_bytes": 175707,
+      "tamaño_mb": 0.17,
+      "fecha_modificacion": "2025-05-30T11:13:44.996498",
+      "estructura": {
+        "total_filas": 1800,
+        "total_columnas": 1,
+        "columnas": [
+          "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": "float64"
+        },
+        "memoria_usage_mb": 0.27
+      },
+      "contenido": {
+        "filas_unicas": 91,
+        "columnas_numericas": [
+          "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total"
+        ],
+        "columnas_texto": [],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": 90
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": 63.0
+          },
+          {
+            "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": 8.0
+          },
+          {
+            "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": 68.0
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 1800,
+          "valores_faltantes": 122,
+          "porcentaje_completo": 93.22,
+          "faltantes_por_columna": {
+            "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": 122
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 1709,
+        "score_calidad": 83.2
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 2,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [
+          "coste"
+        ],
+        "tipo_datos_absentismo": "ninguno",
+        "utilidad_estimada": "baja"
+      },
+      "errores": []
+    },
+    "59391": {
+      "id_tabla": "59391",
+      "nombre_archivo": "59391_Series_por_sectores_de_actividad_y_componentes_del_coste.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\59391_Series_por_sectores_de_actividad_y_componentes_del_coste.csv",
+      "tamaño_bytes": 1241483,
+      "tamaño_mb": 1.18,
+      "fecha_modificacion": "2025-05-30T11:13:46.163078",
+      "estructura": {
+        "total_filas": 9600,
+        "total_columnas": 1,
+        "columnas": [
+          "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total": "float64"
+        },
+        "memoria_usage_mb": 2.61
+      },
+      "contenido": {
+        "filas_unicas": 91,
+        "columnas_numericas": [
+          "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total"
+        ],
+        "columnas_texto": [],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total": 90
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total": 14.0
+          },
+          {
+            "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total": 71.0
+          },
+          {
+            "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total": 6.0
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 9600,
+          "valores_faltantes": 7430,
+          "porcentaje_completo": 22.6,
+          "faltantes_por_columna": {
+            "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total": 7430
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 9509,
+        "score_calidad": 12.6
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 2,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [
+          "coste"
+        ],
+        "tipo_datos_absentismo": "ninguno",
+        "utilidad_estimada": "baja"
+      },
+      "errores": []
+    },
+    "59392": {
+      "id_tabla": "59392",
+      "nombre_archivo": "59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv",
+      "tamaño_bytes": 2360757,
+      "tamaño_mb": 2.25,
+      "fecha_modificacion": "2025-05-30T11:13:47.378242",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv: Error tokenizing data. C error: Expected 2 fields in line 5402, saw 3\n"
+      ]
+    },
+    "6030": {
+      "id_tabla": "6030",
+      "nombre_archivo": "6030_Coste_laboral_por_trabajador_por_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6030_Coste_laboral_por_trabajador_por_sectores.csv",
+      "tamaño_bytes": 425011,
+      "tamaño_mb": 0.41,
+      "fecha_modificacion": "2025-05-30T11:33:23.635489",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6030_Coste_laboral_por_trabajador_por_sectores.csv: Error tokenizing data. C error: Expected 3 fields in line 886, saw 4\n"
+      ]
+    },
+    "6031": {
+      "id_tabla": "6031",
+      "nombre_archivo": "6031_Coste_laboral_por_trabajador_por_tamaño_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6031_Coste_laboral_por_trabajador_por_tamaño_sectores.csv",
+      "tamaño_bytes": 757237,
+      "tamaño_mb": 0.72,
+      "fecha_modificacion": "2025-05-30T11:33:24.820149",
+      "estructura": {
+        "total_filas": 7616,
+        "total_columnas": 1,
+        "columnas": [
+          "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": "float64"
+        },
+        "memoria_usage_mb": 1.51
+      },
+      "contenido": {
+        "filas_unicas": 91,
+        "columnas_numericas": [
+          "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+        ],
+        "columnas_texto": [],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 90
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 14.0
+          },
+          {
+            "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 71.0
+          },
+          {
+            "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 6.0
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 7616,
+          "valores_faltantes": 5733,
+          "porcentaje_completo": 24.72,
+          "faltantes_por_columna": {
+            "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 5733
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 7525,
+        "score_calidad": 14.7
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 2,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [
+          "coste"
+        ],
+        "tipo_datos_absentismo": "ninguno",
+        "utilidad_estimada": "baja"
+      },
+      "errores": []
+    },
+    "6032": {
+      "id_tabla": "6032",
+      "nombre_archivo": "6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv",
+      "tamaño_bytes": 1456561,
+      "tamaño_mb": 1.39,
+      "fecha_modificacion": "2025-05-30T11:33:26.262779",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv: Error tokenizing data. C error: Expected 3 fields in line 546, saw 4\n"
+      ]
+    },
+    "6033": {
+      "id_tabla": "6033",
+      "nombre_archivo": "6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv",
+      "tamaño_bytes": 3589581,
+      "tamaño_mb": 3.42,
+      "fecha_modificacion": "2025-05-30T11:33:28.002346",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv: Error tokenizing data. C error: Expected 3 fields in line 3810, saw 4\n"
+      ]
+    },
+    "6034": {
+      "id_tabla": "6034",
+      "nombre_archivo": "6034_Coste_laboral_por_hora_efectiva_por_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6034_Coste_laboral_por_hora_efectiva_por_sectores.csv",
+      "tamaño_bytes": 95399,
+      "tamaño_mb": 0.09,
+      "fecha_modificacion": "2025-05-30T11:33:29.145527",
+      "estructura": {
+        "total_filas": 1088,
+        "total_columnas": 1,
+        "columnas": [
+          "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": "float64"
+        },
+        "memoria_usage_mb": 0.21
+      },
+      "contenido": {
+        "filas_unicas": 84,
+        "columnas_numericas": [
+          "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+        ],
+        "columnas_texto": [],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 83
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 63.0
+          },
+          {
+            "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 8.0
+          },
+          {
+            "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 68.0
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 1088,
+          "valores_faltantes": 819,
+          "porcentaje_completo": 24.72,
+          "faltantes_por_columna": {
+            "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 819
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 1004,
+        "score_calidad": 14.7
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 2,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [
+          "coste"
+        ],
+        "tipo_datos_absentismo": "ninguno",
+        "utilidad_estimada": "baja"
+      },
+      "errores": []
+    },
+    "6035": {
+      "id_tabla": "6035",
+      "nombre_archivo": "6035_Coste_laboral_por_hora_efectiva_por_tamaño_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6035_Coste_laboral_por_hora_efectiva_por_tamaño_sectores.csv",
+      "tamaño_bytes": 427073,
+      "tamaño_mb": 0.41,
+      "fecha_modificacion": "2025-05-30T11:33:30.801140",
+      "estructura": {
+        "total_filas": 4352,
+        "total_columnas": 1,
+        "columnas": [
+          "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": "float64"
+        },
+        "memoria_usage_mb": 0.88
+      },
+      "contenido": {
+        "filas_unicas": 91,
+        "columnas_numericas": [
+          "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+        ],
+        "columnas_texto": [],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 90
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 63.0
+          },
+          {
+            "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 8.0
+          },
+          {
+            "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 68.0
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 4352,
+          "valores_faltantes": 3273,
+          "porcentaje_completo": 24.79,
+          "faltantes_por_columna": {
+            "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 3273
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 4261,
+        "score_calidad": 14.8
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 2,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [
+          "coste"
+        ],
+        "tipo_datos_absentismo": "ninguno",
+        "utilidad_estimada": "baja"
+      },
+      "errores": []
+    },
+    "6036": {
+      "id_tabla": "6036",
+      "nombre_archivo": "6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv",
+      "tamaño_bytes": 469388,
+      "tamaño_mb": 0.45,
+      "fecha_modificacion": "2025-05-30T11:33:32.240088",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv: Error tokenizing data. C error: Expected 3 fields in line 818, saw 4\n"
+      ]
+    },
+    "6037": {
+      "id_tabla": "6037",
+      "nombre_archivo": "6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv",
+      "tamaño_bytes": 2022987,
+      "tamaño_mb": 1.93,
+      "fecha_modificacion": "2025-05-30T11:33:33.510725",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv: Error tokenizing data. C error: Expected 3 fields in line 2178, saw 4\n"
+      ]
+    },
+    "6038": {
+      "id_tabla": "6038",
+      "nombre_archivo": "6038_Coste_salarial_por_trabajador_tipo_jornada_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6038_Coste_salarial_por_trabajador_tipo_jornada_sectores.csv",
+      "tamaño_bytes": 362334,
+      "tamaño_mb": 0.35,
+      "fecha_modificacion": "2025-05-30T11:33:34.665087",
+      "estructura": {
+        "total_filas": 3264,
+        "total_columnas": 1,
+        "columnas": [
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": "float64"
+        },
+        "memoria_usage_mb": 0.67
+      },
+      "contenido": {
+        "filas_unicas": 91,
+        "columnas_numericas": [
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+        ],
+        "columnas_texto": [],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 90
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 32.0
+          },
+          {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 43.0
+          },
+          {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 59.0
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 3264,
+          "valores_faltantes": 2459,
+          "porcentaje_completo": 24.66,
+          "faltantes_por_columna": {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 2459
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 3173,
+        "score_calidad": 14.7
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 10,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [
+          "jornada",
+          "coste"
+        ],
+        "tipo_datos_absentismo": "costes_relacionados",
+        "utilidad_estimada": "alta"
+      },
+      "errores": []
+    },
+    "6039": {
+      "id_tabla": "6039",
+      "nombre_archivo": "6039_Coste_salarial_por_trabajador_tipo_jornada_secciones_CNAE.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6039_Coste_salarial_por_trabajador_tipo_jornada_secciones_CNAE.csv",
+      "tamaño_bytes": 1770863,
+      "tamaño_mb": 1.69,
+      "fecha_modificacion": "2025-05-30T11:33:36.381283",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6039_Coste_salarial_por_trabajador_tipo_jornada_secciones_CNAE.csv: Error tokenizing data. C error: Expected 3 fields in line 818, saw 4\n"
+      ]
+    },
+    "6040": {
+      "id_tabla": "6040",
+      "nombre_archivo": "6040_Coste_salarial_por_hora_efectiva_tipo_jornada_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6040_Coste_salarial_por_hora_efectiva_tipo_jornada_sectores.csv",
+      "tamaño_bytes": 184507,
+      "tamaño_mb": 0.18,
+      "fecha_modificacion": "2025-05-30T11:33:37.505684",
+      "estructura": {
+        "total_filas": 1632,
+        "total_columnas": 1,
+        "columnas": [
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": "float64"
+        },
+        "memoria_usage_mb": 0.33
+      },
+      "contenido": {
+        "filas_unicas": 89,
+        "columnas_numericas": [
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+        ],
+        "columnas_texto": [],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 88
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 21.0
+          },
+          {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 31.0
+          },
+          {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 63.0
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 1632,
+          "valores_faltantes": 1227,
+          "porcentaje_completo": 24.82,
+          "faltantes_por_columna": {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": 1227
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 1543,
+        "score_calidad": 14.8
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 10,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [
+          "jornada",
+          "coste"
+        ],
+        "tipo_datos_absentismo": "costes_relacionados",
+        "utilidad_estimada": "alta"
+      },
+      "errores": []
+    },
+    "6041": {
+      "id_tabla": "6041",
+      "nombre_archivo": "6041_Coste_salarial_por_hora_efectiva_tipo_jornada_secciones_CNAE.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6041_Coste_salarial_por_hora_efectiva_tipo_jornada_secciones_CNAE.csv",
+      "tamaño_bytes": 900798,
+      "tamaño_mb": 0.86,
+      "fecha_modificacion": "2025-05-30T11:33:39.560041",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6041_Coste_salarial_por_hora_efectiva_tipo_jornada_secciones_CNAE.csv: Error tokenizing data. C error: Expected 3 fields in line 410, saw 4\n"
+      ]
+    },
+    "6042": {
+      "id_tabla": "6042",
+      "nombre_archivo": "6042_Tiempo_trabajo_por_trabajador-mes_tipo_jornada_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6042_Tiempo_trabajo_por_trabajador-mes_tipo_jornada_sectores.csv",
+      "tamaño_bytes": 592396,
+      "tamaño_mb": 0.56,
+      "fecha_modificacion": "2025-05-30T11:13:36.179842",
+      "estructura": {
+        "total_filas": 5712,
+        "total_columnas": 1,
+        "columnas": [
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": "float64"
+        },
+        "memoria_usage_mb": 1.09
+      },
+      "contenido": {
+        "filas_unicas": 10,
+        "columnas_numericas": [
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total"
+        ],
+        "columnas_texto": [],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": 9
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": 4.0
+          },
+          {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": 3.0
+          },
+          {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": 4.0
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 5712,
+          "valores_faltantes": 4402,
+          "porcentaje_completo": 22.93,
+          "faltantes_por_columna": {
+            "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": 4402
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 5702,
+        "score_calidad": 12.9
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 19,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [
+          "tiempo",
+          "trabajo",
+          "jornada"
+        ],
+        "tipo_datos_absentismo": "tiempo_trabajo",
+        "utilidad_estimada": "muy_alta"
+      },
+      "errores": []
+    },
+    "6043": {
+      "id_tabla": "6043",
+      "nombre_archivo": "6043_Tiempo_trabajo_por_trabajador-mes_tipo_jornada_secciones_CNAE.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6043_Tiempo_trabajo_por_trabajador-mes_tipo_jornada_secciones_CNAE.csv",
+      "tamaño_bytes": 2900420,
+      "tamaño_mb": 2.77,
+      "fecha_modificacion": "2025-05-30T11:13:37.463022",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6043_Tiempo_trabajo_por_trabajador-mes_tipo_jornada_secciones_CNAE.csv: Error tokenizing data. C error: Expected 3 fields in line 1430, saw 4\n"
+      ]
+    },
+    "6044": {
+      "id_tabla": "6044",
+      "nombre_archivo": "6044_Tiempo_trabajo_por_trabajador-mes_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6044_Tiempo_trabajo_por_trabajador-mes_sectores.csv",
+      "tamaño_bytes": 443914,
+      "tamaño_mb": 0.42,
+      "fecha_modificacion": "2025-05-30T11:13:38.695892",
+      "estructura": {
+        "total_filas": 4896,
+        "total_columnas": 1,
+        "columnas": [
+          "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": "float64"
+        },
+        "memoria_usage_mb": 0.96
+      },
+      "contenido": {
+        "filas_unicas": 10,
+        "columnas_numericas": [
+          "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total"
+        ],
+        "columnas_texto": [],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": 9
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": 4.0
+          },
+          {
+            "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": 3.0
+          },
+          {
+            "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": 4.0
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 4896,
+          "valores_faltantes": 3936,
+          "porcentaje_completo": 19.61,
+          "faltantes_por_columna": {
+            "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total": 3936
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 4886,
+        "score_calidad": 9.6
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 16,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [
+          "tiempo",
+          "trabajo"
+        ],
+        "tipo_datos_absentismo": "tiempo_trabajo",
+        "utilidad_estimada": "muy_alta"
+      },
+      "errores": []
+    },
+    "6045": {
+      "id_tabla": "6045",
+      "nombre_archivo": "6045_Tiempo_trabajo_por_trabajador-mes_secciones_CNAE.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6045_Tiempo_trabajo_por_trabajador-mes_secciones_CNAE.csv",
+      "tamaño_bytes": 769583,
+      "tamaño_mb": 0.73,
+      "fecha_modificacion": "2025-05-30T11:13:39.828488",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6045_Tiempo_trabajo_por_trabajador-mes_secciones_CNAE.csv: Error tokenizing data. C error: Expected 3 fields in line 1430, saw 4\n"
+      ]
+    },
+    "6046": {
+      "id_tabla": "6046",
+      "nombre_archivo": "6046_Tiempo_trabajo_por_trabajador-mes_divisiones_CNAE.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6046_Tiempo_trabajo_por_trabajador-mes_divisiones_CNAE.csv",
+      "tamaño_bytes": 2245801,
+      "tamaño_mb": 2.14,
+      "fecha_modificacion": "2025-05-30T11:13:41.079720",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6046_Tiempo_trabajo_por_trabajador-mes_divisiones_CNAE.csv: Error tokenizing data. C error: Expected 3 fields in line 2722, saw 4\n"
+      ]
+    },
+    "6047": {
+      "id_tabla": "6047",
+      "nombre_archivo": "6047_Número_de_vacantes_por_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6047_Número_de_vacantes_por_sectores.csv",
+      "tamaño_bytes": 11067,
+      "tamaño_mb": 0.01,
+      "fecha_modificacion": "2025-05-30T11:33:40.797288",
+      "estructura": {
+        "total_filas": 184,
+        "total_columnas": 1,
+        "columnas": [
+          "Sector de actividad;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Sector de actividad;Periodo;Total": "object"
+        },
+        "memoria_usage_mb": 0.03
+      },
+      "contenido": {
+        "filas_unicas": 47,
+        "columnas_numericas": [],
+        "columnas_texto": [
+          "Sector de actividad;Periodo;Total"
+        ],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Sector de actividad;Periodo;Total": 46
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Sector de actividad;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Sector de actividad;Periodo;Total": " construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales);2024T4;148.018"
+          },
+          {
+            "Sector de actividad;Periodo;Total": " construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales);2024T3;150.541"
+          },
+          {
+            "Sector de actividad;Periodo;Total": " construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales);2024T2;151.379"
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 184,
+          "valores_faltantes": 138,
+          "porcentaje_completo": 25.0,
+          "faltantes_por_columna": {
+            "Sector de actividad;Periodo;Total": 138
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 137,
+        "score_calidad": 15.0
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 0,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [],
+        "tipo_datos_absentismo": "ninguno",
+        "utilidad_estimada": "baja"
+      },
+      "errores": []
+    },
+    "6048": {
+      "id_tabla": "6048",
+      "nombre_archivo": "6048_Número_de_vacantes_por_secciones.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6048_Número_de_vacantes_por_secciones.csv",
+      "tamaño_bytes": 54268,
+      "tamaño_mb": 0.05,
+      "fecha_modificacion": "2025-05-30T11:33:42.320345",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6048_Número_de_vacantes_por_secciones.csv: Error tokenizing data. C error: Expected 2 fields in line 140, saw 3\n"
+      ]
+    },
+    "6049": {
+      "id_tabla": "6049",
+      "nombre_archivo": "6049_Número_de_vacantes_por_tamaño_establecimiento.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6049_Número_de_vacantes_por_tamaño_establecimiento.csv",
+      "tamaño_bytes": 4756,
+      "tamaño_mb": 0.0,
+      "fecha_modificacion": "2025-05-30T11:33:43.510288",
+      "estructura": {
+        "total_filas": 184,
+        "total_columnas": 1,
+        "columnas": [
+          "Tamaño del establecimiento;Periodo;Total"
+        ],
+        "tipos_datos": {
+          "Tamaño del establecimiento;Periodo;Total": "object"
+        },
+        "memoria_usage_mb": 0.01
+      },
+      "contenido": {
+        "filas_unicas": 184,
+        "columnas_numericas": [],
+        "columnas_texto": [
+          "Tamaño del establecimiento;Periodo;Total"
+        ],
+        "columnas_fecha": [],
+        "valores_unicos_por_columna": {
+          "Tamaño del establecimiento;Periodo;Total": 184
+        },
+        "rango_temporal": {
+          "tiene_datos_temporales": true,
+          "columnas_temporales": [
+            "Tamaño del establecimiento;Periodo;Total"
+          ],
+          "periodo_inicio": null,
+          "periodo_fin": null,
+          "años_cobertura": []
+        },
+        "muestras_datos": [
+          {
+            "Tamaño del establecimiento;Periodo;Total": "Total;2024T4;148.018"
+          },
+          {
+            "Tamaño del establecimiento;Periodo;Total": "Total;2024T3;150.541"
+          },
+          {
+            "Tamaño del establecimiento;Periodo;Total": "Total;2024T2;151.379"
+          }
+        ]
+      },
+      "calidad_datos": {
+        "completitud": {
+          "total_celdas": 184,
+          "valores_faltantes": 0,
+          "porcentaje_completo": 100.0,
+          "faltantes_por_columna": {
+            "Tamaño del establecimiento;Periodo;Total": 0
+          }
+        },
+        "consistencia": {},
+        "valores_atipicos": {},
+        "duplicados": 0,
+        "score_calidad": 100.0
+      },
+      "relevancia_absentismo": {
+        "score_relevancia": 0,
+        "columnas_clave_encontradas": [],
+        "palabras_clave_detectadas": [],
+        "tipo_datos_absentismo": "ninguno",
+        "utilidad_estimada": "baja"
+      },
+      "errores": []
+    },
+    "6053": {
+      "id_tabla": "6053",
+      "nombre_archivo": "6053_Motivos_no_vacantes_por_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6053_Motivos_no_vacantes_por_sectores.csv",
+      "tamaño_bytes": 56470,
+      "tamaño_mb": 0.05,
+      "fecha_modificacion": "2025-05-30T11:33:44.610493",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6053_Motivos_no_vacantes_por_sectores.csv: Error tokenizing data. C error: Expected 2 fields in line 50, saw 3\n"
+      ]
+    },
+    "6054": {
+      "id_tabla": "6054",
+      "nombre_archivo": "6054_Motivos_no_vacantes_por_secciones.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6054_Motivos_no_vacantes_por_secciones.csv",
+      "tamaño_bytes": 279083,
+      "tamaño_mb": 0.27,
+      "fecha_modificacion": "2025-05-30T11:33:45.844612",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6054_Motivos_no_vacantes_por_secciones.csv: Error tokenizing data. C error: Expected 2 fields in line 50, saw 3\n"
+      ]
+    },
+    "6055": {
+      "id_tabla": "6055",
+      "nombre_archivo": "6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv",
+      "tamaño_bytes": 30958,
+      "tamaño_mb": 0.03,
+      "fecha_modificacion": "2025-05-30T11:33:47.009565",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv: Error tokenizing data. C error: Expected 1 fields in line 50, saw 2\n"
+      ]
+    },
+    "6056": {
+      "id_tabla": "6056",
+      "nombre_archivo": "6056_Percepciones_IT_coste_indemnización_por_actividad.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6056_Percepciones_IT_coste_indemnización_por_actividad.csv",
+      "tamaño_bytes": 286943,
+      "tamaño_mb": 0.27,
+      "fecha_modificacion": "2025-05-30T11:33:50.665354",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6056_Percepciones_IT_coste_indemnización_por_actividad.csv: Error tokenizing data. C error: Expected 3 fields in line 818, saw 4\n"
+      ]
+    },
+    "6057": {
+      "id_tabla": "6057",
+      "nombre_archivo": "6057_Coste_por_hora_extraordinaria_actividad_económica.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6057_Coste_por_hora_extraordinaria_actividad_económica.csv",
+      "tamaño_bytes": 424228,
+      "tamaño_mb": 0.4,
+      "fecha_modificacion": "2025-05-30T11:33:51.820606",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6057_Coste_por_hora_extraordinaria_actividad_económica.csv: Error tokenizing data. C error: Expected 3 fields in line 410, saw 4\n"
+      ]
+    },
+    "6058": {
+      "id_tabla": "6058",
+      "nombre_archivo": "6058_Coste_por_hora_extraordinaria_por_CCAA.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6058_Coste_por_hora_extraordinaria_por_CCAA.csv",
+      "tamaño_bytes": 38929,
+      "tamaño_mb": 0.04,
+      "fecha_modificacion": "2025-05-30T11:33:53.065024",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6058_Coste_por_hora_extraordinaria_por_CCAA.csv: Error tokenizing data. C error: Expected 2 fields in line 206, saw 3\n"
+      ]
+    },
+    "6061": {
+      "id_tabla": "6061",
+      "nombre_archivo": "6061_Coste_laboral_por_trabajador_CCAA_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6061_Coste_laboral_por_trabajador_CCAA_sectores.csv",
+      "tamaño_bytes": 3658451,
+      "tamaño_mb": 3.49,
+      "fecha_modificacion": "2025-05-30T11:33:54.434404",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6061_Coste_laboral_por_trabajador_CCAA_sectores.csv: Error tokenizing data. C error: Expected 3 fields in line 5714, saw 4\n"
+      ]
+    },
+    "6062": {
+      "id_tabla": "6062",
+      "nombre_archivo": "6062_Coste_laboral_por_hora_efectiva_CCAA_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6062_Coste_laboral_por_hora_efectiva_CCAA_sectores.csv",
+      "tamaño_bytes": 2066258,
+      "tamaño_mb": 1.97,
+      "fecha_modificacion": "2025-05-30T11:33:55.764065",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6062_Coste_laboral_por_hora_efectiva_CCAA_sectores.csv: Error tokenizing data. C error: Expected 3 fields in line 3266, saw 4\n"
+      ]
+    },
+    "6063": {
+      "id_tabla": "6063",
+      "nombre_archivo": "6063_Tiempo_trabajo_por_trabajador-mes_CCAA_tipo_jornada_sectores.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6063_Tiempo_trabajo_por_trabajador-mes_CCAA_tipo_jornada_sectores.csv",
+      "tamaño_bytes": 8571099,
+      "tamaño_mb": 8.17,
+      "fecha_modificacion": "2025-05-30T11:13:42.778588",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6063_Tiempo_trabajo_por_trabajador-mes_CCAA_tipo_jornada_sectores.csv: Error tokenizing data. C error: Expected 3 fields in line 12243, saw 4\n"
+      ]
+    },
+    "6064": {
+      "id_tabla": "6064",
+      "nombre_archivo": "6064_Número_de_vacantes_por_comunidad_autónoma.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6064_Número_de_vacantes_por_comunidad_autónoma.csv",
+      "tamaño_bytes": 38143,
+      "tamaño_mb": 0.04,
+      "fecha_modificacion": "2025-05-30T11:33:48.254142",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6064_Número_de_vacantes_por_comunidad_autónoma.csv: Error tokenizing data. C error: Expected 1 fields in line 140, saw 2\n"
+      ]
+    },
+    "6066": {
+      "id_tabla": "6066",
+      "nombre_archivo": "6066_Motivos_no_vacantes_por_comunidad_autónoma.csv",
+      "ruta_completa": "..\\..\\data\\raw\\csv\\6066_Motivos_no_vacantes_por_comunidad_autónoma.csv",
+      "tamaño_bytes": 163100,
+      "tamaño_mb": 0.16,
+      "fecha_modificacion": "2025-05-30T11:33:49.400470",
+      "estructura": {},
+      "contenido": {},
+      "calidad_datos": {},
+      "relevancia_absentismo": {},
+      "errores": [
+        "Error analizando 6066_Motivos_no_vacantes_por_comunidad_autónoma.csv: Error tokenizing data. C error: Expected 1 fields in line 50, saw 2\n"
+      ]
+    }
+  },
+  "resumen_ejecutivo": {
+    "total_tablas": 35,
+    "total_registros": 42128,
+    "total_columnas": 12,
+    "tamaño_total_mb": 4.3,
+    "periodo_cobertura": {
+      "inicio": null,
+      "fin": null
+    },
+    "calidad_promedio": 32.4,
+    "tablas_por_relevancia": {
+      "muy_alta": [
+        "6042",
+        "6044"
+      ],
+      "alta": [
+        "6038",
+        "6040"
+      ],
+      "media": [],
+      "baja": [
+        "11221",
+        "11222",
+        "59391",
+        "6031",
+        "6034",
+        "6035",
+        "6047",
+        "6049"
+      ]
+    },
+    "tipos_datos_absentismo": {
+      "ninguno": [
+        "11221",
+        "11222",
+        "59391",
+        "6031",
+        "6034",
+        "6035",
+        "6047",
+        "6049"
+      ],
+      "costes_relacionados": [
+        "6038",
+        "6040"
+      ],
+      "tiempo_trabajo": [
+        "6042",
+        "6044"
+      ]
+    },
+    "estadisticas_globales": {}
+  },
+  "timestamp": "2025-05-30T13:17:19.682641"
+}
