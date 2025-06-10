@@ -10,6 +10,8 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime
 import requests
+import hashlib
+import pandas as pd
 
 from utils_csv import (
     configurar_logging, crear_directorios, crear_sesion_robusta,
@@ -265,6 +267,16 @@ class ExtractorCSV_INE:
         self.logger.info(f"🏁 Descarga completada: {resumen['exitosos']}/{resumen['total_intentos']} "
                         f"exitosos ({resumen['tasa_exito']:.1%})")
         
+        # Generar snapshot automáticamente si hubo descargas exitosas
+        if resumen['exitosos'] > 0:
+            self.logger.info("📸 Generando snapshot de los archivos descargados...")
+            resultado_snapshot = self.generar_snapshot()
+            if resultado_snapshot.get('exito'):
+                self.logger.info(f"✅ Snapshot guardado en: {resultado_snapshot['directorio']}")
+                informe['snapshot'] = resultado_snapshot
+            else:
+                self.logger.warning(f"⚠️ No se pudo generar snapshot: {resultado_snapshot.get('error')}")
+        
         return informe
     
     def listar_tablas_disponibles(self) -> Dict[str, List[Dict[str, str]]]:
@@ -395,6 +407,153 @@ class ExtractorCSV_INE:
             self.logger.error(f"Error en verificación del sistema: {e}")
         
         return verificacion
+    
+    def generar_snapshot(self) -> Dict[str, Any]:
+        """
+        Genera un snapshot de los CSVs descargados con metadatos completos
+        
+        Returns:
+            Diccionario con resultado del proceso
+        """
+        try:
+            # Crear directorio para snapshots si no existe
+            snapshot_base = Path(self.config_path).parent.parent.parent / 'snapshots'
+            snapshot_base.mkdir(exist_ok=True)
+            
+            # Crear directorio con fecha actual
+            fecha_snapshot = datetime.now().strftime("%Y-%m-%d")
+            snapshot_dir = snapshot_base / fecha_snapshot
+            snapshot_dir.mkdir(exist_ok=True)
+            
+            self.logger.info(f"📸 Generando snapshot en {snapshot_dir}")
+            
+            # Obtener lista de CSVs descargados
+            data_dir = Path(self.config['rutas']['datos_raw'])
+            csv_files = list(data_dir.glob("*.csv"))
+            
+            if not csv_files:
+                self.logger.warning("No se encontraron archivos CSV para generar snapshot")
+                return {'exito': False, 'error': 'No hay CSVs descargados'}
+            
+            # Preparar estructuras de datos
+            metadata = {
+                'fecha_descarga': datetime.now().isoformat(),
+                'version_ine': f"{datetime.now().year}_T{(datetime.now().month - 1) // 3 + 1}",
+                'archivos_totales': len(csv_files),
+                'tamaño_total_mb': 0,
+                'estado': 'completo',
+                'errores': []
+            }
+            
+            checksums = {}
+            summary = {}
+            
+            # Procesar cada archivo CSV
+            tamaño_total = 0
+            archivos_procesados = 0
+            
+            for csv_file in csv_files:
+                try:
+                    self.logger.info(f"Procesando {csv_file.name}...")
+                    
+                    # Calcular checksums
+                    md5_hash = hashlib.md5()
+                    sha256_hash = hashlib.sha256()
+                    
+                    with open(csv_file, 'rb') as f:
+                        for chunk in iter(lambda: f.read(4096), b""):
+                            md5_hash.update(chunk)
+                            sha256_hash.update(chunk)
+                    
+                    # Obtener información del archivo
+                    tamaño_bytes = csv_file.stat().st_size
+                    tamaño_total += tamaño_bytes
+                    
+                    # Leer CSV para obtener metadatos
+                    try:
+                        # Intentar diferentes encodings
+                        df = None
+                        for encoding in ['utf-8', 'latin1', 'cp1252']:
+                            try:
+                                df = pd.read_csv(csv_file, encoding=encoding, nrows=5)
+                                break
+                            except:
+                                continue
+                        
+                        if df is not None:
+                            # Contar total de filas (sin cargar todo en memoria)
+                            with open(csv_file, 'r', encoding=encoding) as f:
+                                num_filas = sum(1 for line in f) - 1  # -1 por el header
+                            
+                            checksums[csv_file.name] = {
+                                'md5': md5_hash.hexdigest(),
+                                'sha256': sha256_hash.hexdigest(),
+                                'tamaño_bytes': tamaño_bytes,
+                                'filas': num_filas,
+                                'columnas': len(df.columns)
+                            }
+                            
+                            # Leer primera y última fila para summary
+                            df_tail = pd.read_csv(csv_file, encoding=encoding, skiprows=lambda x: x > 0 and x < num_filas)
+                            
+                            summary[csv_file.name] = {
+                                'headers': df.columns.tolist(),
+                                'tipos_datos': df.dtypes.astype(str).tolist(),
+                                'primera_fila': df.iloc[0].tolist() if len(df) > 0 else [],
+                                'ultima_fila': df_tail.iloc[-1].tolist() if len(df_tail) > 0 else []
+                            }
+                        else:
+                            raise ValueError("No se pudo leer el CSV con ningún encoding")
+                        
+                        archivos_procesados += 1
+                        
+                    except Exception as e:
+                        self.logger.error(f"Error leyendo CSV {csv_file.name}: {e}")
+                        metadata['errores'].append(f"{csv_file.name}: {str(e)}")
+                        
+                        # Agregar información básica aunque no se pueda leer el contenido
+                        checksums[csv_file.name] = {
+                            'md5': md5_hash.hexdigest(),
+                            'sha256': sha256_hash.hexdigest(),
+                            'tamaño_bytes': tamaño_bytes,
+                            'filas': -1,
+                            'columnas': -1,
+                            'error': str(e)
+                        }
+                        
+                except Exception as e:
+                    self.logger.error(f"Error procesando archivo {csv_file.name}: {e}")
+                    metadata['errores'].append(f"{csv_file.name}: {str(e)}")
+            
+            # Actualizar metadata
+            metadata['tamaño_total_mb'] = round(tamaño_total / (1024 * 1024), 2)
+            metadata['archivos_procesados'] = archivos_procesados
+            
+            # Guardar JSONs
+            with open(snapshot_dir / 'metadata.json', 'w', encoding='utf-8') as f:
+                json.dump(metadata, f, indent=2, ensure_ascii=False)
+            
+            with open(snapshot_dir / 'checksums.json', 'w', encoding='utf-8') as f:
+                json.dump(checksums, f, indent=2, ensure_ascii=False)
+            
+            with open(snapshot_dir / 'summary.json', 'w', encoding='utf-8') as f:
+                json.dump(summary, f, indent=2, ensure_ascii=False)
+            
+            self.logger.info(f"✅ Snapshot generado exitosamente en {snapshot_dir}")
+            self.logger.info(f"   - Archivos procesados: {archivos_procesados}/{len(csv_files)}")
+            self.logger.info(f"   - Tamaño total: {metadata['tamaño_total_mb']} MB")
+            
+            return {
+                'exito': True,
+                'directorio': str(snapshot_dir),
+                'archivos_procesados': archivos_procesados,
+                'archivos_totales': len(csv_files),
+                'tamaño_mb': metadata['tamaño_total_mb']
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error generando snapshot: {e}")
+            return {'exito': False, 'error': str(e)}
     
     def _guardar_configuracion(self) -> None:
         """Guarda la configuración actual"""

@@ -24,6 +24,10 @@ backups_historicos/
 *.backup
 *.bak
 
+# Snapshots (estos SÍ van a Git)
+!snapshots/
+!snapshots/**/*.json
+
 # Configuración local
 .env
 config/database.env
