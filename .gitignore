@@ -60,6 +60,16 @@ informes/*.pdf
 *.xlsx
 *.xls
 
+# Scripts temporales de testing
+*_simulado.py
+*_test.py
+analizar_snapshot_existente.py
+copiar_periodos.py
+crear_snapshot_simulado.py
+
+# Archivos de análisis temporales
+analisis_periodos_test.json
+
 # Excepto archivos de configuración
 !config_csv.json
 !urls_etcl_completo.json
