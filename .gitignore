@@ -27,6 +27,8 @@ backups_historicos/
 # Configuración local
 .env
 config/database.env
+config_local.py
+*.local
 
 # IDE
 .vscode/
