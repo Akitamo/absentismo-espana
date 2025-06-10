@@ -2,9 +2,10 @@ import re
 import json
 from docx import Document
 import os
+from pathlib import Path
 
 # Ajusta la ruta al documento Word con las URLs (usa raw string o escapa \)
-docx_path = r"C:\Users\slunagda\AbsentismoEspana\Análisis urls INE ETCL.docx"
+docx_path = r"Path(__file__).resolve().parent\Análisis urls INE ETCL.docx"
 # Salida: fichero JSON con la lista de URLs y metadatos
 output_json = os.path.join(os.path.dirname(__file__), "urls_etcl.json")
 

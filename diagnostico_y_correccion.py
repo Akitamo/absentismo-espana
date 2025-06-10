@@ -2,12 +2,13 @@ import re
 import json
 from docx import Document
 import os
+from pathlib import Path
 
 # Directorio base donde están todos los archivos
-base_dir = r"C:\Users\slunagda\AbsentismoEspana"
+base_dir = r"Path(__file__).resolve().parent"
 
 # Cargar el archivo JSON generado para diagnóstico
-json_file = os.path.join(base_dir, "urls_etcl_completo.json")
+json_file = PROJECT_ROOT / "urls_etcl_completo.json"
 
 print("=== DIAGNÓSTICO DE URLs ===")
 
@@ -116,7 +117,7 @@ resultado_corregido = {
 }
 
 # Guardar archivo corregido
-archivo_corregido = os.path.join(base_dir, "urls_etcl_completo_corregido.json")
+archivo_corregido = PROJECT_ROOT / "urls_etcl_completo_corregido.json"
 with open(archivo_corregido, 'w', encoding='utf-8') as f:
     json.dump(resultado_corregido, f, ensure_ascii=False, indent=2)
 

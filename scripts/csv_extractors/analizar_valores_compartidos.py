@@ -1,3 +1,4 @@
+from pathlib import Path
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -12,8 +13,8 @@ import re
 from difflib import SequenceMatcher
 
 # Configuración
-CSV_DIR = r"C:\Users\slunagda\AbsentismoEspana\data\raw\csv"
-OUTPUT_FILE = r"C:\Users\slunagda\AbsentismoEspana\informes\analisis_valores_compartidos.xlsx"
+CSV_DIR = r"Path(__file__).resolve().parent\data\raw\csv"
+OUTPUT_FILE = r"Path(__file__).resolve().parent\informes\analisis_valores_compartidos.xlsx"
 
 def detectar_tipo_columna(valores_unicos):
     """Detecta el tipo de una columna basado en sus valores"""

@@ -1,3 +1,4 @@
+from pathlib import Path
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -11,9 +12,9 @@ from datetime import datetime
 import re
 
 # Configuración
-CSV_DIR = r"C:\Users\slunagda\AbsentismoEspana\data\raw\csv"
-OUTPUT_DIR = r"C:\Users\slunagda\AbsentismoEspana\data\processed"
-TABLAS_MAESTRAS_FILE = r"C:\Users\slunagda\AbsentismoEspana\informes\tablas_maestras_unificadas.xlsx"
+CSV_DIR = r"Path(__file__).resolve().parent\data\raw\csv"
+OUTPUT_DIR = r"Path(__file__).resolve().parent\data\processed"
+TABLAS_MAESTRAS_FILE = r"Path(__file__).resolve().parent\informes\tablas_maestras_unificadas.xlsx"
 
 def crear_directorio_processed():
     """Crea el directorio processed si no existe"""

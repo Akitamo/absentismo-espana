@@ -158,7 +158,7 @@ numpy>=1.24.0
 def copy_essential_files(project_dir):
     """Copia archivos esenciales del proyecto actual"""
     
-    source_dir = r"C:\Users\slunagda\AbsentismoEspana"
+    source_dir = r"Path(__file__).resolve().parent"
     
     # Archivos a copiar
     files_to_copy = [

@@ -1,4 +1,5 @@
 import pandas as pd
+from pathlib import Path
 
 # Crear el análisis de valores compartidos manualmente
 def crear_analisis():
@@ -58,7 +59,7 @@ def crear_analisis():
 # Crear y guardar
 df_dic, df_sim, df_prop = crear_analisis()
 
-OUTPUT_FILE = r"C:\Users\slunagda\AbsentismoEspana\informes\analisis_valores_compartidos.xlsx"
+OUTPUT_FILE = r"Path(__file__).resolve().parent\informes\analisis_valores_compartidos.xlsx"
 
 with pd.ExcelWriter(OUTPUT_FILE, engine='openpyxl') as writer:
     df_dic.to_excel(writer, sheet_name='Diccionario_Valores', index=False)

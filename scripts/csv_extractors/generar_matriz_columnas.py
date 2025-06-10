@@ -1,3 +1,4 @@
+from pathlib import Path
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -10,8 +11,8 @@ import os
 import logging
 
 # Configuración
-CSV_DIR = r"C:\Users\slunagda\AbsentismoEspana\data\raw\csv"
-OUTPUT_FILE = r"C:\Users\slunagda\AbsentismoEspana\informes\matriz_columnas_powerbi.xlsx"
+CSV_DIR = r"Path(__file__).resolve().parent\data\raw\csv"
+OUTPUT_FILE = r"Path(__file__).resolve().parent\informes\matriz_columnas_powerbi.xlsx"
 
 def main():
     """Función principal para generar matriz de columnas"""

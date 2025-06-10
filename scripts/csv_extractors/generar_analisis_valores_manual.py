@@ -1,3 +1,4 @@
+from pathlib import Path
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -142,7 +143,7 @@ def main():
     df_propuestas = pd.DataFrame(propuestas)
     
     # Guardar en Excel
-    OUTPUT_FILE = r"C:\Users\slunagda\AbsentismoEspana\informes\analisis_valores_compartidos.xlsx"
+    OUTPUT_FILE = r"Path(__file__).resolve().parent\informes\analisis_valores_compartidos.xlsx"
     
     with pd.ExcelWriter(OUTPUT_FILE, engine='openpyxl') as writer:
         df_diccionario.to_excel(writer, sheet_name='Diccionario_Valores', index=False)

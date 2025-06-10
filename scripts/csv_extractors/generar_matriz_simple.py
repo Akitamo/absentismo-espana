@@ -1,9 +1,10 @@
 import pandas as pd
 import os
+from pathlib import Path
 
 # Configuración
-CSV_DIR = r"C:\Users\slunagda\AbsentismoEspana\data\raw\csv"
-OUTPUT_FILE = r"C:\Users\slunagda\AbsentismoEspana\informes\matriz_columnas_powerbi.xlsx"
+CSV_DIR = r"Path(__file__).resolve().parent\data\raw\csv"
+OUTPUT_FILE = r"Path(__file__).resolve().parent\informes\matriz_columnas_powerbi.xlsx"
 
 def generar_matriz():
     print("🔍 Iniciando análisis de archivos CSV...")

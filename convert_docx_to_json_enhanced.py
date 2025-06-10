@@ -2,18 +2,19 @@ import re
 import json
 from docx import Document
 import os
+from pathlib import Path
 
 # Directorio base donde están todos los archivos
-base_dir = r"C:\Users\slunagda\AbsentismoEspana"
+base_dir = Path(__file__).resolve().parent
 
 # Rutas a los documentos Word con las URLs
 docx_paths = [
-    os.path.join(base_dir, "Análisis urls INE ETCL.docx"),
-    os.path.join(base_dir, "Análisis urls INE ETCL CSVs.docx")
+    base_dir / "Análisis urls INE ETCL.docx",
+    base_dir / "Análisis urls INE ETCL CSVs.docx"
 ]
 
 # Salida: fichero JSON con la lista completa de URLs y metadatos
-output_json = os.path.join(base_dir, "urls_etcl_completo.json")
+output_json = base_dir / "urls_etcl_completo.json"
 
 def extract_table_code(url):
     """Extrae el código de tabla de la URL"""
@@ -50,7 +51,7 @@ def generate_id(url, url_type):
 
 def process_document(docx_path):
     """Procesa un documento Word y extrae las URLs con sus metadatos"""
-    doc = Document(docx_path)
+    doc = Document(str(docx_path))
     urls = []
     last_title = None
     
@@ -106,7 +107,7 @@ def process_document(docx_path):
 # Procesar todos los documentos
 all_urls = []
 for docx_path in docx_paths:
-    if os.path.exists(docx_path):
+    if docx_path.exists():
         print(f"Procesando: {docx_path}")
         urls_from_doc = process_document(docx_path)
         all_urls.extend(urls_from_doc)

@@ -1,8 +1,9 @@
 import pandas as pd
 import os
+from pathlib import Path
 
 # Crear directorio processed
-OUTPUT_DIR = r"C:\Users\slunagda\AbsentismoEspana\data\processed"
+OUTPUT_DIR = r"Path(__file__).resolve().parent\data\processed"
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)
 
@@ -80,7 +81,7 @@ df_jornada.to_csv(os.path.join(OUTPUT_DIR, 'tabla_tipo_jornada.csv'), index=Fals
 print("✅ Archivos CSV individuales guardados")
 
 # Excel consolidado
-EXCEL_FILE = r"C:\Users\slunagda\AbsentismoEspana\informes\tablas_maestras_unificadas.xlsx"
+EXCEL_FILE = r"Path(__file__).resolve().parent\informes\tablas_maestras_unificadas.xlsx"
 
 with pd.ExcelWriter(EXCEL_FILE, engine='openpyxl') as writer:
     df_periodo.to_excel(writer, sheet_name='Periodo', index=False)

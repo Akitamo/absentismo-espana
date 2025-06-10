@@ -1,14 +1,15 @@
 import pandas as pd
+from pathlib import Path
 
 # Leer las tablas CSV creadas
-OUTPUT_DIR = r"C:\Users\slunagda\AbsentismoEspana\data\processed"
+OUTPUT_DIR = r"Path(__file__).resolve().parent\data\processed"
 
 df_periodo = pd.read_csv(f"{OUTPUT_DIR}/tabla_periodo.csv")
 df_ccaa = pd.read_csv(f"{OUTPUT_DIR}/tabla_ccaa.csv")
 df_jornada = pd.read_csv(f"{OUTPUT_DIR}/tabla_tipo_jornada.csv")
 
 # Crear Excel consolidado
-EXCEL_FILE = r"C:\Users\slunagda\AbsentismoEspana\informes\tablas_maestras_unificadas.xlsx"
+EXCEL_FILE = r"Path(__file__).resolve().parent\informes\tablas_maestras_unificadas.xlsx"
 
 with pd.ExcelWriter(EXCEL_FILE, engine='openpyxl') as writer:
     # Escribir cada tabla en su hoja

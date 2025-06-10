@@ -1,8 +1,10 @@
 import subprocess
 import os
+from pathlib import Path
 
 # Ir al directorio del proyecto
-os.chdir(r"C:\Users\slunagda\AbsentismoEspana")
+project_dir = Path(__file__).resolve().parent
+os.chdir(project_dir)
 
 # Verificar estado de git
 print("=== ESTADO ACTUAL DE GIT ===")
