@@ -6,6 +6,8 @@ Script temporal para ejecutar la descarga masiva de todas las tablas CSV del INE
 import os
 import sys
 from pathlib import Path
+from datetime import datetime
+import json
 
 # Configurar el directorio de trabajo
 script_dir = Path(__file__).parent
@@ -13,13 +15,77 @@ os.chdir(script_dir)
 
 print(f"📁 Directorio de trabajo: {os.getcwd()}")
 
-# Importar el extractor
+# Importar el extractor y analizador
 try:
     from extractor_csv_ine import ExtractorCSV_INE
-    print("✅ ExtractorCSV_INE importado correctamente")
+    from analizar_periodos import AnalizadorPeriodos
+    print("✅ Módulos importados correctamente")
 except ImportError as e:
-    print(f"❌ Error importando ExtractorCSV_INE: {e}")
+    print(f"❌ Error importando módulos: {e}")
     sys.exit(1)
+
+def generar_snapshot_con_periodos(extractor, informe_descarga):
+    """
+    Genera un snapshot completo que incluye análisis de periodos
+    
+    Args:
+        extractor: Instancia de ExtractorCSV_INE
+        informe_descarga: Resultado de la descarga masiva
+        
+    Returns:
+        bool: True si se generó correctamente
+    """
+    try:
+        print("\n📸 Generando snapshot con análisis de periodos...")
+        
+        # Primero generar el snapshot normal
+        if not extractor.generar_snapshot():
+            print("❌ Error generando snapshot base")
+            return False
+        
+        # Ahora añadir el análisis de periodos
+        print("🔍 Analizando periodos en los archivos descargados...")
+        analizador = AnalizadorPeriodos()
+        analisis_periodos = analizador.analizar_todos_los_csv()
+        
+        if not analisis_periodos:
+            print("⚠️ No se pudo realizar el análisis de periodos")
+            return True  # El snapshot base sí se generó
+        
+        # Guardar el análisis en el snapshot
+        fecha_hoy = datetime.now().strftime("%Y-%m-%d")
+        snapshot_dir = Path(__file__).parent.parent.parent / "snapshots" / fecha_hoy
+        
+        # Guardar periodos.json
+        periodos_path = snapshot_dir / "periodos.json"
+        analizador.guardar_analisis(analisis_periodos, periodos_path)
+        
+        # Mostrar resumen del análisis
+        resumen = analizador.generar_resumen(analisis_periodos)
+        print(f"\n📊 ANÁLISIS DE PERIODOS:")
+        print(f"   - Archivos analizados: {resumen['archivos_procesados']}/{resumen['total_archivos']}")
+        
+        if resumen['ultimo_periodo_disponible']:
+            ultimo = resumen['ultimo_periodo_disponible']
+            print(f"   - Último periodo disponible: {ultimo['texto']} ({ultimo['año']})")
+            
+            # Si es trimestral, mostrar info adicional
+            if 'trimestre' in ultimo:
+                print(f"   - Año: {ultimo['año']}, Trimestre: T{ultimo['trimestre']}")
+        
+        if resumen['archivos_con_error'] > 0:
+            print(f"   - ⚠️ Archivos con error: {resumen['archivos_con_error']}")
+            for archivo, error in resumen['errores'].items():
+                print(f"      - {archivo}: {error}")
+        
+        print(f"\n✅ Snapshot completo generado en: {snapshot_dir}")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error generando snapshot con periodos: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
 
 def main():
     """Función principal"""
@@ -104,6 +170,12 @@ def main():
             print("\n📈 ESTADÍSTICAS POR CATEGORÍA:")
             for categoria, stats in informe.get('estadisticas_por_categoria', {}).items():
                 print(f"   {categoria}: {stats['exitosos']}/{stats['total']} archivos")
+            
+            # NUEVO: Generar snapshot con análisis de periodos
+            if generar_snapshot_con_periodos(extractor, informe):
+                print("\n✅ Snapshot con análisis de periodos generado correctamente")
+            else:
+                print("\n⚠️ Hubo problemas generando el snapshot completo")
             
             return True
     else:
