@@ -1,0 +1,142 @@
+{
+  "6042_Tiempo_trabajo_por_trabajador-mes_tipo_jornada_sectores.csv": {
+    "tamaño_bytes": 592396,
+    "fecha_descarga": "2025-06-10T09:15:49"
+  },
+  "6043_Tiempo_trabajo_por_trabajador-mes_tipo_jornada_secciones_CNAE.csv": {
+    "tamaño_bytes": 2900420,
+    "fecha_descarga": "2025-06-10T09:15:50"
+  },
+  "6044_Tiempo_trabajo_por_trabajador-mes_sectores.csv": {
+    "tamaño_bytes": 443914,
+    "fecha_descarga": "2025-06-10T09:15:51"
+  },
+  "6045_Tiempo_trabajo_por_trabajador-mes_secciones_CNAE.csv": {
+    "tamaño_bytes": 769583,
+    "fecha_descarga": "2025-06-10T09:15:52"
+  },
+  "6046_Tiempo_trabajo_por_trabajador-mes_divisiones_CNAE.csv": {
+    "tamaño_bytes": 2245801,
+    "fecha_descarga": "2025-06-10T09:15:54"
+  },
+  "6063_Tiempo_trabajo_por_trabajador-mes_CCAA_tipo_jornada_sectores.csv": {
+    "tamaño_bytes": 8571099,
+    "fecha_descarga": "2025-06-10T09:15:56"
+  },
+  "11221_Costes_laborales_por_trabajador.csv": {
+    "tamaño_bytes": 184092,
+    "fecha_descarga": "2025-06-10T09:15:57"
+  },
+  "11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv": {
+    "tamaño_bytes": 175707,
+    "fecha_descarga": "2025-06-10T09:15:58"
+  },
+  "59391_Series_por_sectores_de_actividad_y_componentes_del_coste.csv": {
+    "tamaño_bytes": 1241483,
+    "fecha_descarga": "2025-06-10T09:15:59"
+  },
+  "59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv": {
+    "tamaño_bytes": 2360757,
+    "fecha_descarga": "2025-06-10T09:16:01"
+  },
+  "6030_Coste_laboral_por_trabajador_por_sectores.csv": {
+    "tamaño_bytes": 425011,
+    "fecha_descarga": "2025-06-10T09:16:02"
+  },
+  "6031_Coste_laboral_por_trabajador_por_tamaño_sectores.csv": {
+    "tamaño_bytes": 757237,
+    "fecha_descarga": "2025-06-10T09:16:03"
+  },
+  "6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv": {
+    "tamaño_bytes": 1456561,
+    "fecha_descarga": "2025-06-10T09:16:05"
+  },
+  "6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv": {
+    "tamaño_bytes": 3589581,
+    "fecha_descarga": "2025-06-10T09:16:06"
+  },
+  "6034_Coste_laboral_por_hora_efectiva_por_sectores.csv": {
+    "tamaño_bytes": 95399,
+    "fecha_descarga": "2025-06-10T09:16:07"
+  },
+  "6035_Coste_laboral_por_hora_efectiva_por_tamaño_sectores.csv": {
+    "tamaño_bytes": 427073,
+    "fecha_descarga": "2025-06-10T09:16:09"
+  },
+  "6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv": {
+    "tamaño_bytes": 469388,
+    "fecha_descarga": "2025-06-10T09:16:10"
+  },
+  "6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv": {
+    "tamaño_bytes": 2022987,
+    "fecha_descarga": "2025-06-10T09:16:11"
+  },
+  "6038_Coste_salarial_por_trabajador_tipo_jornada_sectores.csv": {
+    "tamaño_bytes": 362334,
+    "fecha_descarga": "2025-06-10T09:16:13"
+  },
+  "6039_Coste_salarial_por_trabajador_tipo_jornada_secciones_CNAE.csv": {
+    "tamaño_bytes": 1770863,
+    "fecha_descarga": "2025-06-10T09:16:14"
+  },
+  "6040_Coste_salarial_por_hora_efectiva_tipo_jornada_sectores.csv": {
+    "tamaño_bytes": 184507,
+    "fecha_descarga": "2025-06-10T09:16:15"
+  },
+  "6041_Coste_salarial_por_hora_efectiva_tipo_jornada_secciones_CNAE.csv": {
+    "tamaño_bytes": 900798,
+    "fecha_descarga": "2025-06-10T09:16:16"
+  },
+  "6047_Número_de_vacantes_por_sectores.csv": {
+    "tamaño_bytes": 11067,
+    "fecha_descarga": "2025-06-10T09:16:17"
+  },
+  "6048_Número_de_vacantes_por_secciones.csv": {
+    "tamaño_bytes": 54268,
+    "fecha_descarga": "2025-06-10T09:16:19"
+  },
+  "6049_Número_de_vacantes_por_tamaño_establecimiento.csv": {
+    "tamaño_bytes": 4756,
+    "fecha_descarga": "2025-06-10T09:16:20"
+  },
+  "6053_Motivos_no_vacantes_por_sectores.csv": {
+    "tamaño_bytes": 56470,
+    "fecha_descarga": "2025-06-10T09:16:21"
+  },
+  "6054_Motivos_no_vacantes_por_secciones.csv": {
+    "tamaño_bytes": 279083,
+    "fecha_descarga": "2025-06-10T09:16:22"
+  },
+  "6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv": {
+    "tamaño_bytes": 30958,
+    "fecha_descarga": "2025-06-10T09:16:24"
+  },
+  "6064_Número_de_vacantes_por_comunidad_autónoma.csv": {
+    "tamaño_bytes": 38143,
+    "fecha_descarga": "2025-06-10T09:16:25"
+  },
+  "6066_Motivos_no_vacantes_por_comunidad_autónoma.csv": {
+    "tamaño_bytes": 163100,
+    "fecha_descarga": "2025-06-10T09:16:26"
+  },
+  "6056_Percepciones_IT_coste_indemnización_por_actividad.csv": {
+    "tamaño_bytes": 286943,
+    "fecha_descarga": "2025-06-10T09:16:27"
+  },
+  "6057_Coste_por_hora_extraordinaria_actividad_económica.csv": {
+    "tamaño_bytes": 424228,
+    "fecha_descarga": "2025-06-10T09:16:28"
+  },
+  "6058_Coste_por_hora_extraordinaria_por_CCAA.csv": {
+    "tamaño_bytes": 38929,
+    "fecha_descarga": "2025-06-10T09:16:30"
+  },
+  "6061_Coste_laboral_por_trabajador_CCAA_sectores.csv": {
+    "tamaño_bytes": 3658451,
+    "fecha_descarga": "2025-06-10T09:16:31"
+  },
+  "6062_Coste_laboral_por_hora_efectiva_CCAA_sectores.csv": {
+    "tamaño_bytes": 2066258,
+    "fecha_descarga": "2025-06-10T09:16:32"
+  }
+}
