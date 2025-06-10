@@ -157,7 +157,12 @@ def main():
             print(f"📊 Tasa de éxito: {resumen['tasa_exito']:.1%}")
             print(f"📦 Tamaño total descargado: {resumen['tamaño_total_mb']:.1f} MB")
             print(f"⏱️  Tiempo total: {resumen['tiempo_total_min']:.1f} minutos")
-            print(f"💾 Velocidad promedio: {resumen['velocidad_promedio_mbps']:.2f} MB/s")
+            
+            # Solo mostrar velocidad si existe
+            if 'velocidad_promedio_mbps' in resumen:
+                print(f"💾 Velocidad promedio: {resumen['velocidad_promedio_mbps']:.2f} MB/s")
+            elif resumen['tiempo_total_min'] == 0:
+                print(f"💾 Velocidad: N/A (archivos ya existían)")
             
             if resumen['errores'] > 0:
                 print(f"⚠️  Archivos con errores: {resumen['errores']}")
