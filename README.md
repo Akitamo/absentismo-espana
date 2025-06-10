@@ -12,6 +12,9 @@ Mantener actualizados los datos de absentismo laboral en España descargando aut
 - ✅ Backup automático de versiones anteriores
 - ✅ Logs detallados de cada operación
 - ✅ Compatible con múltiples equipos/usuarios
+- 🆕 **Sistema de snapshots** para histórico de descargas
+- 🆕 **Análisis de periodos** para detectar nuevos trimestres
+- 🆕 **Comparación automática** para identificar actualizaciones del INE
 
 ## 📋 Requisitos previos
 - Python 3.8 o superior
@@ -54,7 +57,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Crear directorios necesarios
-mkdir -p logs data/raw/csv data/processed/csv backups/csv
+mkdir -p logs data/raw/csv data/processed/csv backups/csv snapshots scripts/extractors/comparaciones
 ```
 
 ## 📖 Uso
@@ -95,6 +98,51 @@ python extractor_csv_ine.py --activar tiempo_trabajo
 python extractor_csv_ine.py
 ```
 
+### 3. 🆕 Detectar nuevos periodos del INE
+
+Después de cada descarga, el sistema genera automáticamente un **snapshot** con análisis de periodos. Para comparar snapshots:
+
+```bash
+cd scripts/extractors
+
+# Comparar dos fechas específicas
+python comparar_periodos.py --fecha1 2025-03-15 --fecha2 2025-06-10
+
+# Comparar con el snapshot más reciente
+python comparar_periodos.py --fecha1 2025-03-15 --ultimo
+
+# Ver todos los snapshots disponibles
+python comparar_periodos.py --listar
+
+# Ver histórico completo de cambios
+python comparar_periodos.py --historico
+```
+
+## 📸 Sistema de Snapshots
+
+Cada vez que se ejecuta una descarga completa, se genera automáticamente un snapshot en `snapshots/YYYY-MM-DD/` que incluye:
+
+- **metadata.json**: Información general de la descarga
+- **checksums.json**: Tamaños y fechas de modificación
+- **summary.json**: Resumen por categorías
+- 🆕 **periodos.json**: Análisis detallado de periodos temporales
+
+### Ejemplo de salida del comparador:
+```
+=== ANÁLISIS DE ACTUALIZACIÓN INE ===
+Comparando: 2025-03-15 vs 2025-06-10
+
+🆕 NUEVOS PERIODOS DETECTADOS:
+┌─────────────────────────┬──────────────┬──────────────┐
+│ Archivo                 │ Periodo Ant. │ Periodo Nvo. │
+├─────────────────────────┼──────────────┼──────────────┤
+│ 6030_coste_laboral.csv  │ 2024T4       │ 2025T1       │
+│ 6042_tiempo_trabajo.csv │ 2024T4       │ 2025T1       │
+└─────────────────────────┴──────────────┴──────────────┘
+
+✨ NUEVO TRIMESTRE DISPONIBLE: 2025T1
+```
+
 ## 📁 Estructura del proyecto
 ```
 absentismoespana/
@@ -105,10 +153,15 @@ absentismoespana/
 │   └── extractors/
 │       ├── extractor_csv_ine.py        # Motor principal de descarga
 │       ├── ejecutar_descarga_masiva.py # Script de ejecución simple
+│       ├── analizar_periodos.py        # 🆕 Analizador de periodos
+│       ├── comparar_periodos.py        # 🆕 Comparador de snapshots
 │       ├── config_csv.json             # Configuración de tablas
 │       ├── utils_csv.py                # Utilidades auxiliares
 │       ├── descarga_masiva.bat         # Batch para Windows
-│       └── data/raw/csv/               # CSVs descargados organizados por fecha
+│       ├── comparaciones/              # 🆕 Resultados de comparaciones
+│       └── data/raw/csv/               # CSVs descargados
+├── snapshots/                          # 🆕 Histórico de descargas
+│   └── YYYY-MM-DD/                     # Un snapshot por fecha
 ├── logs/                               # Logs de descargas
 ├── backups/                            # Backups automáticos
 ├── config/                             # Configuración adicional
@@ -178,8 +231,14 @@ Los logs se guardan automáticamente en:
 
 El INE actualiza los datos trimestralmente. Se recomienda:
 1. Ejecutar la descarga al inicio de cada trimestre
-2. Verificar en la web del INE si hay nuevas tablas disponibles
+2. Comparar con el snapshot anterior para detectar nuevos periodos
 3. Si hay cambios en las URLs, actualizar los archivos DOCX y regenerar el JSON
+
+### 🆕 Detección automática de actualizaciones
+El sistema ahora detecta automáticamente:
+- **Nuevos trimestres**: Cuando el INE publica datos de un nuevo periodo
+- **Revisiones de datos**: Cuando se actualizan datos históricos
+- **Cambios estructurales**: Archivos nuevos o eliminados
 
 ## 🛠️ Solución de problemas
 
@@ -200,6 +259,11 @@ El INE actualiza los datos trimestralmente. Se recomienda:
 - Los archivos inválidos se eliminan y se reintentan
 - Se crean backups automáticos de versiones anteriores
 
+### Error en análisis de periodos
+- Verificar que los CSVs tengan columnas de fecha/periodo
+- Revisar el archivo `periodos.json` en el snapshot
+- Los errores se registran en el log
+
 ## 🤝 Contribuir
 
 1. Fork el proyecto
@@ -214,12 +278,23 @@ Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más deta
 
 ## 🗓️ Próximos pasos
 
+- [x] Sistema de snapshots para histórico
+- [x] Detección automática de nuevos periodos
+- [ ] Notificaciones automáticas cuando hay nuevos datos
 - [ ] Integración con base de datos PostgreSQL
 - [ ] API REST para consulta de datos
 - [ ] Dashboard en PowerBI
 - [ ] Análisis automático con IA
-- [ ] Notificaciones automáticas de actualizaciones
 
 ## 📞 Contacto
 
 Para preguntas o sugerencias sobre el proyecto, abrir un issue en GitHub.
+
+## 🎉 Últimas actualizaciones
+
+### v2.1.0 (2025-06-10)
+- 🆕 Sistema de snapshots para mantener histórico de descargas
+- 🆕 Análisis automático de periodos temporales en los CSVs
+- 🆕 Comparador de snapshots para detectar nuevos trimestres del INE
+- 🆕 Informes de comparación en formato JSON y Markdown
+- 🔧 Mejorada la portabilidad del código (sin rutas hardcodeadas)
