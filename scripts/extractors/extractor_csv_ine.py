@@ -1,0 +1,524 @@
+"""
+Extractor CSV del INE para Sistema de Absentismo España
+Descarga archivos CSV de las tablas ETCL del INE de forma robusta y configurable
+"""
+
+import json
+import time
+import logging
+from pathlib import Path
+from typing import Dict, List, Any, Optional, Tuple
+from datetime import datetime
+import requests
+
+from utils_csv import (
+    configurar_logging, crear_directorios, crear_sesion_robusta,
+    validar_archivo_csv, crear_backup_archivo, necesita_descarga,
+    generar_informe_descarga, limpiar_nombre_archivo, obtener_info_tabla
+)
+
+class ExtractorCSV_INE:
+    """
+    Extractor configurable y robusto para archivos CSV del INE
+    """
+    
+    def __init__(self, config_path: str = "config_csv.json"):
+        """
+        Inicializa el extractor
+        
+        Args:
+            config_path: Ruta al archivo de configuración
+        """
+        self.config_path = Path(config_path)
+        self.config = self._cargar_configuracion()
+        self.logger = configurar_logging(self.config)
+        self.session = crear_sesion_robusta(
+            timeout=self.config['configuracion_descarga']['timeout_segundos'],
+            reintentos=self.config['configuracion_descarga']['reintentos_maximos']
+        )
+        self.urls_data = {}
+        
+        # Crear directorios necesarios
+        crear_directorios(self.config)
+        
+        self.logger.info("ExtractorCSV_INE inicializado correctamente")
+    
+    def _cargar_configuracion(self) -> Dict[str, Any]:
+        """Carga la configuración desde archivo JSON"""
+        try:
+            with open(self.config_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            raise ValueError(f"Error cargando configuración: {e}")
+    
+    def cargar_urls_etcl(self, urls_file: str = "urls_etcl_completo.json") -> bool:
+        """
+        Carga las URLs desde el archivo de URLs completo
+        
+        Args:
+            urls_file: Archivo con las URLs del ETCL
+            
+        Returns:
+            True si se cargaron correctamente
+        """
+        urls_path = Path(urls_file)
+        if not urls_path.exists():
+            self.logger.error(f"Archivo de URLs no encontrado: {urls_file}")
+            return False
+        
+        try:
+            with open(urls_path, 'r', encoding='utf-8') as f:
+                self.urls_data = json.load(f)
+            
+            self.logger.info(f"URLs cargadas desde {urls_file}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Error cargando URLs: {e}")
+            return False
+    
+    def obtener_tablas_activas(self) -> List[Tuple[str, str, Dict[str, str]]]:
+        """
+        Obtiene lista de tablas activas según configuración
+        
+        Returns:
+            Lista de tuplas (tabla_id, url_csv, info_tabla)
+        """
+        tablas_activas = []
+        
+        for categoria, data in self.config['categorias'].items():
+            if not data.get('activa', False):
+                continue
+                
+            for tabla_id in data.get('tablas', []):
+                # Buscar URL en los datos cargados
+                url_csv = self._obtener_url_csv(tabla_id)
+                if url_csv:
+                    info_tabla = obtener_info_tabla(tabla_id, self.config)
+                    tablas_activas.append((tabla_id, url_csv, info_tabla))
+                else:
+                    self.logger.warning(f"URL CSV no encontrada para tabla {tabla_id}")
+        
+        self.logger.info(f"Tablas activas encontradas: {len(tablas_activas)}")
+        return tablas_activas
+    
+    def _obtener_url_csv(self, tabla_id: str) -> Optional[str]:
+        """Obtiene la URL CSV para una tabla específica"""
+        if not self.urls_data:
+            return None
+        
+        # Buscar en la estructura de URLs (nueva estructura)
+        if 'tablas' in self.urls_data:
+            for tabla in self.urls_data['tablas']:
+                if tabla.get('codigo_tabla') == tabla_id:
+                    return tabla.get('urls', {}).get('csv', {}).get('url')
+        
+        # Buscar en urls_individuales como fallback
+        if 'urls_individuales' in self.urls_data:
+            for url_data in self.urls_data['urls_individuales']:
+                if (url_data.get('codigo_tabla') == tabla_id and 
+                    url_data.get('tipo') == 'csv'):
+                    return url_data.get('url')
+        
+        return None
+    
+    def descargar_archivo(self, url: str, filepath: Path, tabla_id: str, 
+                         info_tabla: Dict[str, str]) -> Dict[str, Any]:
+        """
+        Descarga un archivo CSV con reintentos automáticos
+        
+        Args:
+            url: URL del archivo
+            filepath: Ruta de destino
+            tabla_id: ID de la tabla
+            info_tabla: Información de la tabla
+            
+        Returns:
+            Diccionario con resultado de la descarga
+        """
+        resultado = {
+            'tabla_id': tabla_id,
+            'url': url,
+            'archivo': str(filepath),
+            'exito': False,
+            'error': None,
+            'tamaño_bytes': 0,
+            'tiempo_descarga': 0,
+            'reintentos_usados': 0,
+            'info_tabla': info_tabla
+        }
+        
+        inicio = time.time()
+        
+        # Verificar si necesita descarga
+        if not necesita_descarga(url, filepath, self.config, self.urls_data):
+            self.logger.info(f"Archivo {tabla_id} ya existe y es válido, omitiendo descarga")
+            resultado.update({
+                'exito': True,
+                'error': 'omitido_existe',
+                'tamaño_bytes': filepath.stat().st_size if filepath.exists() else 0
+            })
+            return resultado
+        
+        # Crear backup si existe archivo previo
+        if filepath.exists() and self.config['configuracion_descarga']['crear_backup']:
+            backup_dir = Path(self.config['rutas']['backups'])
+            backup_path = crear_backup_archivo(filepath, backup_dir)
+            if backup_path:
+                self.logger.info(f"Backup creado: {backup_path}")
+        
+        # Intentar descarga con reintentos
+        max_reintentos = self.config['configuracion_descarga']['reintentos_maximos']
+        delay = self.config['configuracion_descarga']['delay_entre_reintentos']
+        
+        for intento in range(max_reintentos + 1):
+            try:
+                self.logger.info(f"Descargando {tabla_id} (intento {intento + 1}/{max_reintentos + 1})")
+                
+                response = self.session.get(url, stream=True)
+                response.raise_for_status()
+                
+                # Descargar archivo
+                with open(filepath, 'wb') as f:
+                    for chunk in response.iter_content(chunk_size=8192):
+                        f.write(chunk)
+                
+                # Validar archivo descargado
+                if self.config['configuracion_descarga']['validar_csv']:
+                    validacion = validar_archivo_csv(filepath)
+                    if not validacion['valido']:
+                        raise ValueError(f"CSV inválido: {validacion['error']}")
+                
+                # Éxito
+                resultado.update({
+                    'exito': True,
+                    'tamaño_bytes': filepath.stat().st_size,
+                    'reintentos_usados': intento
+                })
+                
+                self.logger.info(f"✅ {tabla_id} descargado exitosamente "
+                               f"({resultado['tamaño_bytes']} bytes)")
+                break
+                
+            except Exception as e:
+                error_msg = str(e)
+                resultado['error'] = error_msg
+                resultado['reintentos_usados'] = intento
+                
+                if intento < max_reintentos:
+                    self.logger.warning(f"❌ Error descargando {tabla_id} (intento {intento + 1}): {error_msg}")
+                    self.logger.info(f"Reintentando en {delay} segundos...")
+                    time.sleep(delay)
+                    delay *= 2  # Backoff exponencial
+                else:
+                    self.logger.error(f"❌ Error final descargando {tabla_id}: {error_msg}")
+                    # Limpiar archivo parcial si existe
+                    if filepath.exists():
+                        try:
+                            filepath.unlink()
+                        except:
+                            pass
+        
+        resultado['tiempo_descarga'] = time.time() - inicio
+        return resultado
+    
+    def descargar_todas_activas(self) -> Dict[str, Any]:
+        """
+        Descarga todas las tablas activas según configuración
+        
+        Returns:
+            Diccionario con resultados de todas las descargas
+        """
+        if not self.urls_data:
+            if not self.cargar_urls_etcl():
+                return {'error': 'No se pudieron cargar las URLs'}
+        
+        tablas_activas = self.obtener_tablas_activas()
+        if not tablas_activas:
+            return {'error': 'No hay tablas activas configuradas'}
+        
+        self.logger.info(f"🚀 Iniciando descarga de {len(tablas_activas)} tablas")
+        
+        resultados = []
+        data_dir = Path(self.config['rutas']['datos_raw'])
+        
+        for tabla_id, url_csv, info_tabla in tablas_activas:
+            # Generar nombre de archivo
+            nombre_limpio = limpiar_nombre_archivo(info_tabla['nombre'])
+            filename = f"{tabla_id}_{nombre_limpio}.csv"
+            filepath = data_dir / filename
+            
+            # Descargar
+            resultado = self.descargar_archivo(url_csv, filepath, tabla_id, info_tabla)
+            resultados.append(resultado)
+            
+            # Pausa entre descargas para ser respetuosos con el servidor
+            time.sleep(1)
+        
+        # Generar informe
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        informe_path = Path(self.config['rutas']['logs']) / f"informe_descarga_{timestamp}.json"
+        informe = generar_informe_descarga(resultados, informe_path)
+        
+        # Log resumen
+        resumen = informe['resumen']
+        self.logger.info(f"🏁 Descarga completada: {resumen['exitosos']}/{resumen['total_intentos']} "
+                        f"exitosos ({resumen['tasa_exito']:.1%})")
+        
+        return informe
+    
+    def listar_tablas_disponibles(self) -> Dict[str, List[Dict[str, str]]]:
+        """Lista todas las tablas disponibles por categoría"""
+        if not self.urls_data:
+            self.cargar_urls_etcl()
+        
+        disponibles = {}
+        
+        for categoria, data in self.config['categorias'].items():
+            disponibles[categoria] = []
+            for tabla_id in data.get('tablas', []):
+                url_csv = self._obtener_url_csv(tabla_id)
+                disponibles[categoria].append({
+                    'id': tabla_id,
+                    'nombre': data.get('nombres', {}).get(tabla_id, f"Tabla {tabla_id}"),
+                    'activa': data.get('activa', False),
+                    'url_disponible': url_csv is not None
+                })
+        
+        return disponibles
+    
+    def activar_categoria(self, categoria: str) -> bool:
+        """Activa una categoría específica"""
+        if categoria in self.config['categorias']:
+            self.config['categorias'][categoria]['activa'] = True
+            self._guardar_configuracion()
+            self.logger.info(f"Categoría '{categoria}' activada")
+            return True
+        return False
+    
+    def desactivar_categoria(self, categoria: str) -> bool:
+        """Desactiva una categoría específica"""
+        if categoria in self.config['categorias']:
+            self.config['categorias'][categoria]['activa'] = False
+            self._guardar_configuracion()
+            self.logger.info(f"Categoría '{categoria}' desactivada")
+            return True
+        return False
+    
+    def activar_todas_categorias(self) -> bool:
+        """Activa todas las categorías disponibles"""
+        try:
+            # Crear backup de la configuración actual
+            backup_path = self.config_path.with_suffix('.json.backup')
+            with open(backup_path, 'w', encoding='utf-8') as f:
+                json.dump(self.config, f, indent=2, ensure_ascii=False)
+            self.logger.info(f"Backup de configuración creado: {backup_path}")
+            
+            # Activar todas las categorías
+            categorias_activadas = []
+            for categoria in self.config['categorias']:
+                if not self.config['categorias'][categoria].get('activa', False):
+                    self.config['categorias'][categoria]['activa'] = True
+                    categorias_activadas.append(categoria)
+            
+            # Guardar configuración
+            self._guardar_configuracion()
+            
+            if categorias_activadas:
+                self.logger.info(f"Categorías activadas: {', '.join(categorias_activadas)}")
+                return True
+            else:
+                self.logger.info("Todas las categorías ya estaban activas")
+                return True
+                
+        except Exception as e:
+            self.logger.error(f"Error activando todas las categorías: {e}")
+            return False
+    
+    def verificar_sistema(self) -> Dict[str, Any]:
+        """Verifica el estado del sistema antes de descarga masiva"""
+        verificacion = {
+            'espacio_disponible_gb': 0,
+            'conexion_ine': False,
+            'directorios_ok': False,
+            'config_valida': False,
+            'urls_cargadas': False,
+            'tablas_totales': 0,
+            'tablas_activas': 0,
+            'estimacion_descarga': {
+                'archivos_total': 0,
+                'tamaño_estimado_mb': 0,
+                'tiempo_estimado_min': 0
+            }
+        }
+        
+        try:
+            # Verificar espacio en disco
+            import shutil
+            data_dir = Path(self.config['rutas']['datos_raw'])
+            espacio_libre = shutil.disk_usage(data_dir.parent)[-1]
+            verificacion['espacio_disponible_gb'] = round(espacio_libre / (1024**3), 2)
+            
+            # Verificar directorios
+            verificacion['directorios_ok'] = all([
+                Path(self.config['rutas']['datos_raw']).exists(),
+                Path(self.config['rutas']['logs']).exists()
+            ])
+            
+            # Verificar configuración
+            verificacion['config_valida'] = bool(self.config.get('categorias'))
+            
+            # Verificar URLs cargadas
+            verificacion['urls_cargadas'] = bool(self.urls_data)
+            
+            # Contar tablas
+            total_tablas = sum(len(cat.get('tablas', [])) for cat in self.config['categorias'].values())
+            tablas_activas = len(self.obtener_tablas_activas())
+            verificacion['tablas_totales'] = total_tablas
+            verificacion['tablas_activas'] = tablas_activas
+            
+            # Estimación de descarga (basada en archivos actuales)
+            verificacion['estimacion_descarga'] = {
+                'archivos_total': total_tablas,
+                'tamaño_estimado_mb': round(total_tablas * 2.0, 1),  # 2MB promedio por archivo
+                'tiempo_estimado_min': round((total_tablas * 0.5), 1)  # 30 seg promedio por archivo
+            }
+            
+            # Verificar conexión al INE (prueba rápida)
+            try:
+                response = self.session.get('https://servicios.ine.es/', timeout=10)
+                verificacion['conexion_ine'] = response.status_code == 200
+            except:
+                verificacion['conexion_ine'] = False
+                
+        except Exception as e:
+            self.logger.error(f"Error en verificación del sistema: {e}")
+        
+        return verificacion
+    
+    def _guardar_configuracion(self) -> None:
+        """Guarda la configuración actual"""
+        try:
+            with open(self.config_path, 'w', encoding='utf-8') as f:
+                json.dump(self.config, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            self.logger.error(f"Error guardando configuración: {e}")
+
+def main():
+    """Función principal para uso desde línea de comandos"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Extractor CSV del INE')
+    parser.add_argument('--config', default='config_csv.json', 
+                       help='Archivo de configuración')
+    parser.add_argument('--urls', default='../../urls_etcl_completo.json',
+                       help='Archivo de URLs')
+    parser.add_argument('--listar', action='store_true',
+                       help='Listar tablas disponibles')
+    parser.add_argument('--activar', help='Activar categoría específica')
+    parser.add_argument('--desactivar', help='Desactivar categoría específica')
+    parser.add_argument('--activar-todas', action='store_true',
+                       help='Activar todas las categorías y descargar')
+    parser.add_argument('--verificar-sistema', action='store_true',
+                       help='Verificar estado del sistema antes de descarga')
+    
+    args = parser.parse_args()
+    
+    # Inicializar extractor
+    extractor = ExtractorCSV_INE(args.config)
+    extractor.cargar_urls_etcl(args.urls)
+    
+    if args.verificar_sistema:
+        verificacion = extractor.verificar_sistema()
+        print("\n=== VERIFICACIÓN DEL SISTEMA ===")
+        print(f"✅ Espacio disponible: {verificacion['espacio_disponible_gb']} GB")
+        print(f"{'✅' if verificacion['conexion_ine'] else '❌'} Conexión al INE")
+        print(f"{'✅' if verificacion['directorios_ok'] else '❌'} Directorios")
+        print(f"{'✅' if verificacion['config_valida'] else '❌'} Configuración")
+        print(f"{'✅' if verificacion['urls_cargadas'] else '❌'} URLs cargadas")
+        print(f"\n📊 Tablas: {verificacion['tablas_activas']}/{verificacion['tablas_totales']} activas")
+        est = verificacion['estimacion_descarga']
+        print(f"📦 Estimación descarga completa: {est['archivos_total']} archivos, ~{est['tamaño_estimado_mb']} MB, ~{est['tiempo_estimado_min']} min")
+    
+    elif args.activar_todas:
+        print("🚀 Activando todas las categorías y descargando...")
+        
+        # Mostrar estado actual
+        disponibles = extractor.listar_tablas_disponibles()
+        total_activas_antes = sum(1 for cat in disponibles.values() for t in cat if t['activa'])
+        total_tablas = sum(len(cat) for cat in disponibles.values())
+        print(f"📊 Estado actual: {total_activas_antes}/{total_tablas} tablas activas")
+        
+        # Activar todas
+        if extractor.activar_todas_categorias():
+            total_activas_despues = total_tablas
+            print(f"✅ Todas las categorías activadas: {total_activas_despues}/{total_tablas} tablas")
+            
+            # Proceder con descarga
+            print("\n🚀 Iniciando descarga masiva...")
+            informe = extractor.descargar_todas_activas()
+            
+            if 'error' in informe:
+                print(f"❌ Error: {informe['error']}")
+            else:
+                resumen = informe['resumen']
+                print(f"\n🏁 DESCARGA MASIVA COMPLETADA")
+                print(f"✅ Exitosos: {resumen['exitosos']}/{resumen['total_intentos']} ({resumen['tasa_exito']:.1%})")
+                print(f"📦 Tamaño total: {resumen['tamaño_total_mb']:.1f} MB")
+                print(f"⏱️  Tiempo total: {resumen['tiempo_total_min']:.1f} minutos")
+                if resumen['errores'] > 0:
+                    print(f"⚠️  Errores: {resumen['errores']} archivos fallaron")
+        else:
+            print("❌ Error activando categorías")
+    
+    elif args.listar:
+        disponibles = extractor.listar_tablas_disponibles()
+        print("\n=== TABLAS DISPONIBLES ===")
+        for categoria, tablas in disponibles.items():
+            activa = "✅" if any(t['activa'] for t in tablas) else "❌"
+            print(f"\n{activa} {categoria.upper()}:")
+            for tabla in tablas:
+                url_ok = "✅" if tabla['url_disponible'] else "❌"
+                estado = "ACTIVA" if tabla['activa'] else "inactiva"
+                print(f"  {url_ok} {tabla['id']}: {tabla['nombre']} ({estado})")
+        
+        # Mostrar resumen
+        total_tablas = sum(len(cat) for cat in disponibles.values())
+        total_activas = sum(1 for cat in disponibles.values() for t in cat if t['activa'])
+        print(f"\n📊 RESUMEN: {total_activas}/{total_tablas} tablas activas")
+        if total_activas < total_tablas:
+            print(f"💡 Use --activar-todas para activar y descargar todas las tablas")
+    
+    elif args.activar:
+        if extractor.activar_categoria(args.activar):
+            print(f"✅ Categoría '{args.activar}' activada")
+        else:
+            print(f"❌ Categoría '{args.activar}' no encontrada")
+    
+    elif args.desactivar:
+        if extractor.desactivar_categoria(args.desactivar):
+            print(f"✅ Categoría '{args.desactivar}' desactivada")
+        else:
+            print(f"❌ Categoría '{args.desactivar}' no encontrada")
+    
+    else:
+        # Descarga por defecto (solo tablas activas)
+        disponibles = extractor.listar_tablas_disponibles()
+        total_activas = sum(1 for cat in disponibles.values() for t in cat if t['activa'])
+        
+        if total_activas == 0:
+            print("⚠️  No hay tablas activas. Use --activar-todas para activar y descargar todas.")
+            print("   O use --activar <categoria> para activar categorías específicas.")
+        else:
+            print(f"🚀 Iniciando descarga de {total_activas} tablas activas...")
+            informe = extractor.descargar_todas_activas()
+            
+            if 'error' in informe:
+                print(f"❌ Error: {informe['error']}")
+            else:
+                resumen = informe['resumen']
+                print(f"🏁 Completado: {resumen['exitosos']}/{resumen['total_intentos']} "
+                      f"exitosos ({resumen['tasa_exito']:.1%})")
+
+if __name__ == "__main__":
+    main()

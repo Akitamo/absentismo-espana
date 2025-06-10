@@ -1,44 +1,59 @@
-# Archivos de configuración con credenciales
-config/database.env
-*.env
-
-# Entorno virtual de Python
-venv/
-env/
-ENV/
-
-# Archivos compilados de Python
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # Logs
-logs/
 *.log
+logs/
 
-# Datos temporales y backups
+# Datos descargados
+scripts/extractors/data/raw/csv/*.csv
+data/raw/csv/*.csv
+
+# Backups
 backups/
-backup_*/
-data/raw/*.csv
-data/processed/*.csv
+backups_historicos/
+*.backup
+*.bak
 
-# Archivos del sistema
-.DS_Store
-Thumbs.db
+# Configuración local
+.env
+config/database.env
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
-# Archivos grandes de datos (evitar límite GitHub 100MB)
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Temporales
+temp/
+tmp/
+*.tmp
+
+# Informes generados
+informes/*.json
+informes/*.html
+informes/*.pdf
+
+# Archivos grandes
+*.csv
 *.xlsx
 *.xls
-data/raw/
-data/processed/
 
-# Archivos temporales
-*.tmp
-*.temp
+# Excepto archivos de configuración
+!config_csv.json
+!urls_etcl_completo.json
