@@ -14,13 +14,11 @@ venv.bak/
 *.log
 logs/
 
-# Datos descargados
-scripts/extractors/data/raw/csv/*.csv
+# Datos descargados (CSVs del INE)
 data/raw/csv/*.csv
 
 # Backups
 backups/
-backups_historicos/
 *.backup
 *.bak
 
@@ -30,7 +28,6 @@ backups_historicos/
 
 # Configuración local
 .env
-config/database.env
 config_local.py
 *.local
 
@@ -50,34 +47,20 @@ temp/
 tmp/
 *.tmp
 
-# Informes generados
-informes/*.json
-informes/*.html
-informes/*.pdf
-
 # Archivos grandes
 *.csv
 *.xlsx
 *.xls
 
-# Scripts temporales de testing
-*_simulado.py
-*_test.py
-analizar_snapshot_existente.py
-copiar_periodos.py
-crear_snapshot_simulado.py
-
-# Archivos de análisis temporales
-analisis_periodos_test.json
-
 # Excepto archivos de configuración
-!config_csv.json
 !urls_etcl_completo.json
 
-# Resultados temporales de análisis
-scripts/analysis/results/temp/
-scripts/analysis/notebooks/.ipynb_checkpoints/
+# Resultados muy grandes
+data/processed/**/*.pkl
+data/processed/**/*.parquet
+data/processed/**/*.csv
 
-# Archivos muy grandes de análisis
-scripts/analysis/results/**/*.pkl
-scripts/analysis/results/**/*.parquet
+# Archivos temporales de prueba
+TEST_*.py.bak
+*_test.py
+*_prueba.py

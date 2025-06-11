@@ -1,0 +1,499 @@
+{
+  "metadata": {
+    "timestamp": "2025-06-11_17-52-33",
+    "total_archivos": 35,
+    "archivos_ok": 35,
+    "archivos_error": 0,
+    "tamaño_total_mb": 37.25,
+    "fecha_analisis": "2025-06-11T17:52:34.007869"
+  },
+  "archivos": [
+    {
+      "archivo": "11221_Costes_laborales_por_trabajador.csv",
+      "tamaño_mb": 0.18,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 1800,
+      "columnas": 1,
+      "columnas_lista": [
+        "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv",
+      "tamaño_mb": 0.17,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 1800,
+      "columnas": 1,
+      "columnas_lista": [
+        "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "59391_Series_por_sectores_de_actividad_y_componentes_del_coste.csv",
+      "tamaño_mb": 1.18,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 9600,
+      "columnas": 1,
+      "columnas_lista": [
+        "Sectores de actividad CNAE 2009;Componentes del coste;Tipo de dato;Clase de indicador;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv",
+      "tamaño_mb": 2.25,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 32400,
+      "columnas": 1,
+      "columnas_lista": [
+        "Comunidades y Ciudades Autónomas;Componentes del coste;Tipo de dato;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6030_Coste_laboral_por_trabajador_por_sectores.csv",
+      "tamaño_mb": 0.41,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 4624,
+      "columnas": 1,
+      "columnas_lista": [
+        "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6031_Coste_laboral_por_trabajador_por_tamaño_sectores.csv",
+      "tamaño_mb": 0.72,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 7616,
+      "columnas": 1,
+      "columnas_lista": [
+        "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv",
+      "tamaño_mb": 1.39,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 15504,
+      "columnas": 1,
+      "columnas_lista": [
+        "Secciones de la CNAE-09;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv",
+      "tamaño_mb": 3.42,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 37604,
+      "columnas": 1,
+      "columnas_lista": [
+        "Divisiones de la CNAE-09;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6034_Coste_laboral_por_hora_efectiva_por_sectores.csv",
+      "tamaño_mb": 0.09,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 1088,
+      "columnas": 1,
+      "columnas_lista": [
+        "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6035_Coste_laboral_por_hora_efectiva_por_tamaño_sectores.csv",
+      "tamaño_mb": 0.41,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 4352,
+      "columnas": 1,
+      "columnas_lista": [
+        "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv",
+      "tamaño_mb": 0.45,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 5168,
+      "columnas": 1,
+      "columnas_lista": [
+        "Secciones de la CNAE-09;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv",
+      "tamaño_mb": 1.93,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 21488,
+      "columnas": 1,
+      "columnas_lista": [
+        "Divisiones de la CNAE-09;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6038_Coste_salarial_por_trabajador_tipo_jornada_sectores.csv",
+      "tamaño_mb": 0.35,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 3264,
+      "columnas": 1,
+      "columnas_lista": [
+        "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6039_Coste_salarial_por_trabajador_tipo_jornada_secciones_CNAE.csv",
+      "tamaño_mb": 1.69,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 15504,
+      "columnas": 1,
+      "columnas_lista": [
+        "Tipo de jornada;Secciones de la CNAE-09;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6040_Coste_salarial_por_hora_efectiva_tipo_jornada_sectores.csv",
+      "tamaño_mb": 0.18,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 1632,
+      "columnas": 1,
+      "columnas_lista": [
+        "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6041_Coste_salarial_por_hora_efectiva_tipo_jornada_secciones_CNAE.csv",
+      "tamaño_mb": 0.86,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 7752,
+      "columnas": 1,
+      "columnas_lista": [
+        "Tipo de jornada;Secciones de la CNAE-09;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6042_Tiempo_trabajo_por_trabajador-mes_tipo_jornada_sectores.csv",
+      "tamaño_mb": 0.56,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 5712,
+      "columnas": 1,
+      "columnas_lista": [
+        "Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6043_Tiempo_trabajo_por_trabajador-mes_tipo_jornada_secciones_CNAE.csv",
+      "tamaño_mb": 2.77,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 27132,
+      "columnas": 1,
+      "columnas_lista": [
+        "Tipo de jornada;Secciones de la CNAE-09;Tiempo de trabajo;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6044_Tiempo_trabajo_por_trabajador-mes_sectores.csv",
+      "tamaño_mb": 0.42,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 4896,
+      "columnas": 1,
+      "columnas_lista": [
+        "Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6045_Tiempo_trabajo_por_trabajador-mes_secciones_CNAE.csv",
+      "tamaño_mb": 0.73,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 9044,
+      "columnas": 1,
+      "columnas_lista": [
+        "Secciones de la CNAE-09;Tiempo de trabajo;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6046_Tiempo_trabajo_por_trabajador-mes_divisiones_CNAE.csv",
+      "tamaño_mb": 2.14,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 26860,
+      "columnas": 1,
+      "columnas_lista": [
+        "Divisiones de la CNAE-09;Tiempo de trabajo;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6047_Número_de_vacantes_por_sectores.csv",
+      "tamaño_mb": 0.01,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 184,
+      "columnas": 1,
+      "columnas_lista": [
+        "Sector de actividad;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6048_Número_de_vacantes_por_secciones.csv",
+      "tamaño_mb": 0.05,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 874,
+      "columnas": 1,
+      "columnas_lista": [
+        "Secciones de actividad;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6049_Número_de_vacantes_por_tamaño_establecimiento.csv",
+      "tamaño_mb": 0.0,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 184,
+      "columnas": 1,
+      "columnas_lista": [
+        "Tamaño del establecimiento;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6053_Motivos_no_vacantes_por_sectores.csv",
+      "tamaño_mb": 0.05,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 736,
+      "columnas": 1,
+      "columnas_lista": [
+        "Sectores de actividad;Motivos por los que no exiten puestos de trabajo vacantes;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6054_Motivos_no_vacantes_por_secciones.csv",
+      "tamaño_mb": 0.27,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 3496,
+      "columnas": 1,
+      "columnas_lista": [
+        "Secciones de actividad;Motivos por los que no exiten puestos de trabajo vacantes;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv",
+      "tamaño_mb": 0.03,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 736,
+      "columnas": 1,
+      "columnas_lista": [
+        "Tamaño del establecimiento;Motivos por los que no exiten puestos de trabajo vacantes;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6056_Percepciones_IT_coste_indemnización_por_actividad.csv",
+      "tamaño_mb": 0.27,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 2992,
+      "columnas": 1,
+      "columnas_lista": [
+        "Actividad económica CNAE-09;Clase de indicador;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6057_Coste_por_hora_extraordinaria_actividad_económica.csv",
+      "tamaño_mb": 0.4,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 6732,
+      "columnas": 1,
+      "columnas_lista": [
+        "Actividad económica CNAE-09;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6058_Coste_por_hora_extraordinaria_por_CCAA.csv",
+      "tamaño_mb": 0.04,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 1224,
+      "columnas": 1,
+      "columnas_lista": [
+        "Comunidades y Ciudades Autónomas;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6061_Coste_laboral_por_trabajador_CCAA_sectores.csv",
+      "tamaño_mb": 3.49,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 34272,
+      "columnas": 1,
+      "columnas_lista": [
+        "Comunidades y Ciudades Autónomas;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6062_Coste_laboral_por_hora_efectiva_CCAA_sectores.csv",
+      "tamaño_mb": 1.97,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 19584,
+      "columnas": 1,
+      "columnas_lista": [
+        "Comunidades y Ciudades Autónomas;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6063_Tiempo_trabajo_por_trabajador-mes_CCAA_tipo_jornada_sectores.csv",
+      "tamaño_mb": 8.17,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 73440,
+      "columnas": 1,
+      "columnas_lista": [
+        "Comunidades y Ciudades Autónomas;Tipo de jornada;Sectores de actividad CNAE 2009;Tiempo de trabajo;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6064_Número_de_vacantes_por_comunidad_autónoma.csv",
+      "tamaño_mb": 0.04,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 828,
+      "columnas": 1,
+      "columnas_lista": [
+        "Total Nacional;Comunidades y Ciudades Autónomas;Periodo;Total"
+      ],
+      "error": null
+    },
+    {
+      "archivo": "6066_Motivos_no_vacantes_por_comunidad_autónoma.csv",
+      "tamaño_mb": 0.16,
+      "encoding": "utf-8",
+      "status": "ok",
+      "filas": 3312,
+      "columnas": 1,
+      "columnas_lista": [
+        "Comunidad autónoma;Motivos por los que no exiten puestos de trabajo vacantes;Periodo;Total"
+      ],
+      "error": null
+    }
+  ],
+  "columnas_comunes": {
+    "Corrección de efectos;Componentes del coste;Tipo de dato;Periodo;Total": {
+      "archivos": [
+        "11221_Costes_laborales_por_trabajador.csv",
+        "11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv"
+      ],
+      "frecuencia": 2,
+      "porcentaje": 5.7
+    },
+    "Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": {
+      "archivos": [
+        "6030_Coste_laboral_por_trabajador_por_sectores.csv",
+        "6034_Coste_laboral_por_hora_efectiva_por_sectores.csv"
+      ],
+      "frecuencia": 2,
+      "porcentaje": 5.7
+    },
+    "Tamaño del establecimiento;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": {
+      "archivos": [
+        "6031_Coste_laboral_por_trabajador_por_tamaño_sectores.csv",
+        "6035_Coste_laboral_por_hora_efectiva_por_tamaño_sectores.csv"
+      ],
+      "frecuencia": 2,
+      "porcentaje": 5.7
+    },
+    "Secciones de la CNAE-09;Componentes del coste;Periodo;Total": {
+      "archivos": [
+        "6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv",
+        "6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv"
+      ],
+      "frecuencia": 2,
+      "porcentaje": 5.7
+    },
+    "Divisiones de la CNAE-09;Componentes del coste;Periodo;Total": {
+      "archivos": [
+        "6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv",
+        "6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv"
+      ],
+      "frecuencia": 2,
+      "porcentaje": 5.7
+    },
+    "Tipo de jornada;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": {
+      "archivos": [
+        "6038_Coste_salarial_por_trabajador_tipo_jornada_sectores.csv",
+        "6040_Coste_salarial_por_hora_efectiva_tipo_jornada_sectores.csv"
+      ],
+      "frecuencia": 2,
+      "porcentaje": 5.7
+    },
+    "Tipo de jornada;Secciones de la CNAE-09;Componentes del coste;Periodo;Total": {
+      "archivos": [
+        "6039_Coste_salarial_por_trabajador_tipo_jornada_secciones_CNAE.csv",
+        "6041_Coste_salarial_por_hora_efectiva_tipo_jornada_secciones_CNAE.csv"
+      ],
+      "frecuencia": 2,
+      "porcentaje": 5.7
+    },
+    "Comunidades y Ciudades Autónomas;Sectores de actividad CNAE 2009;Componentes del coste;Periodo;Total": {
+      "archivos": [
+        "6061_Coste_laboral_por_trabajador_CCAA_sectores.csv",
+        "6062_Coste_laboral_por_hora_efectiva_CCAA_sectores.csv"
+      ],
+      "frecuencia": 2,
+      "porcentaje": 5.7
+    }
+  },
+  "problemas": []
+}

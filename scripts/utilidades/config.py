@@ -1,7 +1,17 @@
-{
+"""
+Configuración del proyecto AbsentismoEspana
+Convertido automáticamente desde config_csv.json
+"""
+from pathlib import Path
+
+# Ruta base del proyecto
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+
+# Configuración principal
+CONFIG = {
   "categorias": {
     "tiempo_trabajo": {
-      "activa": true,
+      "activa": True,
       "descripcion": "Tablas de tiempo de trabajo por trabajador y mes",
       "tablas": [
         "6042",
@@ -21,7 +31,7 @@
       }
     },
     "costes_basicos": {
-      "activa": true,
+      "activa": True,
       "descripcion": "Costes laborales fundamentales",
       "tablas": [
         "11221",
@@ -33,7 +43,7 @@
       }
     },
     "series_temporales": {
-      "activa": true,
+      "activa": True,
       "descripcion": "Series temporales por sectores y CCAA",
       "tablas": [
         "59391",
@@ -45,7 +55,7 @@
       }
     },
     "costes_detallados": {
-      "activa": true,
+      "activa": True,
       "descripcion": "Costes laborales detallados por sectores y tamaños",
       "tablas": [
         "6030",
@@ -69,7 +79,7 @@
       }
     },
     "costes_salariales": {
-      "activa": true,
+      "activa": True,
       "descripcion": "Costes salariales específicos",
       "tablas": [
         "6038",
@@ -85,7 +95,7 @@
       }
     },
     "vacantes": {
-      "activa": true,
+      "activa": True,
       "descripcion": "Datos de vacantes y motivos",
       "tablas": [
         "6047",
@@ -109,7 +119,7 @@
       }
     },
     "otros_costes": {
-      "activa": true,
+      "activa": True,
       "descripcion": "Otros costes laborales específicos",
       "tablas": [
         "6056",
@@ -131,21 +141,56 @@
     "reintentos_maximos": 3,
     "timeout_segundos": 30,
     "delay_entre_reintentos": 2,
-    "verificar_existencia": true,
-    "sobrescribir_existentes": false,
-    "crear_backup": true,
-    "validar_csv": true,
+    "verificar_existencia": True,
+    "sobrescribir_existentes": False,
+    "crear_backup": True,
+    "validar_csv": True,
     "encoding": "utf-8"
   },
   "rutas": {
-    "datos_raw": "../../data/raw/csv/",
-    "datos_procesados": "../../data/processed/csv/",
-    "logs": "../../logs/",
-    "backups": "../../backups/csv/"
+    "datos_raw": "data/raw/csv/",
+    "datos_procesados": "data/processed/csv/",
+    "logs": "logs/",
+    "backups": "backups/csv/"
   },
   "logging": {
     "nivel": "INFO",
     "formato": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    "archivo": "../../logs/extractor_csv.log"
+    "archivo": "logs/extractor_csv.log"
   }
 }
+
+# Rutas de datos usando pathlib
+DATA_RAW_PATH = PROJECT_ROOT / 'data' / 'raw' / 'csv'
+DATA_PROCESSED_PATH = PROJECT_ROOT / 'data' / 'processed'
+SNAPSHOTS_PATH = PROJECT_ROOT / 'snapshots'
+LOGS_PATH = PROJECT_ROOT / 'logs'
+BACKUPS_PATH = PROJECT_ROOT / 'backups'
+
+# Funciones helper
+def get_categoria_config(categoria):
+    """Obtener configuración de una categoría específica"""
+    return CONFIG.get('categorias', {}).get(categoria, {})
+
+def get_ruta_raw():
+    """Obtener ruta completa a datos raw"""
+    return DATA_RAW_PATH
+
+def get_ruta_procesados():
+    """Obtener ruta completa a datos procesados"""
+    return DATA_PROCESSED_PATH
+
+def get_todas_las_tablas():
+    """Obtener lista de todas las tablas disponibles"""
+    todas_tablas = []
+    for categoria in CONFIG['categorias'].values():
+        if categoria.get('activa', True):
+            todas_tablas.extend(categoria.get('tablas', []))
+    return todas_tablas
+
+def get_nombre_tabla(codigo_tabla):
+    """Obtener el nombre descriptivo de una tabla por su código"""
+    for categoria in CONFIG['categorias'].values():
+        if codigo_tabla in categoria.get('nombres', {}):
+            return categoria['nombres'][codigo_tabla]
+    return f"Tabla {codigo_tabla}"

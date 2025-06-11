@@ -8,12 +8,12 @@ echo ============================================
 echo.
 
 cd /d "%~dp0"
-cd scripts\analysis\exploratory
+cd scripts\procesamiento
 
 echo Ejecutando reconocimiento inicial...
 echo.
 
-python reconocimiento_inicial.py
+python TEST_reconocimiento_inicial.py
 
 echo.
 echo Presiona cualquier tecla para cerrar...

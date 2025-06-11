@@ -1,5 +1,6 @@
 # 📋 **ESPECIFICACIONES TÉCNICAS PROYECTO ABSENTISMO v2.1**
-**Última actualización: 10 de junio de 2025**
+**Última actualización: 11 de junio de 2025**
+**Nota: Proyecto reorganizado el 11/06/2025 - Ver RESUMEN_REORGANIZACION.md**
 
 ## **PROYECTO: AbsentismoEspana - Sistema de Análisis de Datos ETCL del INE**
 
@@ -14,22 +15,28 @@ C:\Users\%USERPROFILE%\absentismoespana\
 ├── data/                               # 📁 Datos descargados (raíz del proyecto)
 │   ├── raw/
 │   │   └── csv/                        # 📊 35 CSVs del INE (~37MB)
-│   └── processed/                      # Para futuros datos procesados
+│   └── processed/                      # Datos procesados y resultados
+│       ├── analisis/                   # Resultados de análisis
+│       ├── comparaciones/              # 🆕 Resultados de comparaciones
+│       │   ├── YYYY-MM-DD_vs_YYYY-MM-DD.json
+│       │   └── YYYY-MM-DD_vs_YYYY-MM-DD.md
+│       └── tablas_finales/             # Para futuros CSVs procesados
 ├── scripts/
-│   ├── extractors/                     # Motor de descarga y análisis
-│   │   ├── extractor_csv_ine.py        # Clase principal de descarga
-│   │   ├── ejecutar_descarga_masiva.py # Script de ejecución con análisis
+│   ├── descarga/                       # Motor de descarga del INE
+│   │   ├── descargar_ine.py            # Clase principal de descarga
+│   │   ├── ejecutar_descarga_completa.py # Script de ejecución con análisis
+│   │   └── descarga_masiva.bat         # Batch para Windows
+│   │
+│   ├── procesamiento/                  # Scripts de análisis y comparación
 │   │   ├── analizar_periodos.py        # 🆕 Analizador de periodos temporales
-│   │   ├── comparar_periodos.py        # 🆕 Comparador de snapshots
-│   │   ├── config_csv.json             # Configuración de tablas
-│   │   ├── utils_csv.py                # Utilidades auxiliares
-│   │   ├── descarga_masiva.bat         # Batch para Windows
-│   │   └── comparaciones/              # 🆕 Resultados de comparaciones
-│   │       ├── YYYY-MM-DD_vs_YYYY-MM-DD.json
-│   │       └── YYYY-MM-DD_vs_YYYY-MM-DD.md
-│   └── analysis/                       # 🆕 Módulo de análisis exploratorio
-│       ├── exploratory/                # Scripts de análisis
-│       └── results/                    # Resultados de análisis
+│   │   ├── comparar_snapshots.py       # 🆕 Comparador de snapshots
+│   │   └── TEST_reconocimiento_inicial.py # Script de reconocimiento (en desarrollo)
+│   │
+│   ├── utilidades/                     # Código compartido y configuración
+│   │   ├── config.py                   # Configuración de tablas (antes config_csv.json)
+│   │   └── helpers.py                  # Utilidades auxiliares (antes utils_csv.py)
+│   │
+│   └── carga_bd/                       # (Futuro) Scripts para base de datos
 ├── snapshots/                          # 🆕 Histórico de descargas
 │   └── YYYY-MM-DD/                     # Un snapshot por fecha
 │       ├── metadata.json               # Info general de la descarga
@@ -108,31 +115,36 @@ setup_proyecto.bat
 
 #### **Descargar todos los CSVs con análisis**
 ```batch
-cd scripts\extractors
-python ejecutar_descarga_masiva.py
+cd scripts\descarga
+python ejecutar_descarga_completa.py
 ```
 
 #### **Comparar snapshots** 🆕
 ```batch
+cd scripts\procesamiento
+
 # Ver snapshots disponibles
-python comparar_periodos.py --listar
+python comparar_snapshots.py --listar
 
 # Comparar dos fechas
-python comparar_periodos.py --fecha1 2025-06-10 --fecha2 2025-06-11
+python comparar_snapshots.py --fecha1 2025-06-10 --fecha2 2025-06-11
 
 # Comparar con el más reciente
-python comparar_periodos.py --fecha1 2025-06-10 --ultimo
+python comparar_snapshots.py --fecha1 2025-06-10 --ultimo
 
 # Ver histórico de cambios
-python comparar_periodos.py --historico
+python comparar_snapshots.py --historico
 ```
 
 #### **Opciones avanzadas**
 ```batch
-python extractor_csv_ine.py --help
-python extractor_csv_ine.py --listar
-python extractor_csv_ine.py --verificar-sistema
-python extractor_csv_ine.py --activar [categoria]
+cd scripts\descarga
+
+python descargar_ine.py --help
+python descargar_ine.py --listar
+python descargar_ine.py --verificar-sistema
+
+# Para activar categorías, editar scripts\utilidades\config.py
 ```
 
 ### **📊 DATOS QUE GESTIONA**
@@ -175,8 +187,8 @@ python extractor_csv_ine.py --activar [categoria]
 
 ⚠️ **IMPORTANTE SOBRE UBICACIÓN DE DATOS**:
 - Los 35 CSVs se guardan en: `C:\Users\%USERPROFILE%\absentismoespana\data\raw\csv\`
-- NO en: `scripts/extractors/data/raw/csv/` (esta carpeta no se usa)
-- El config usa rutas relativas: `../../data/raw/csv/` (desde scripts/extractors/)
+- NO en: `scripts/descarga/data/raw/csv/` (esta carpeta no existe)
+- El config usa rutas relativas: `../../data/raw/csv/` (desde scripts/descarga/)
 
 #### **Actualizaciones del INE**
 - Datos trimestrales (4 veces al año)

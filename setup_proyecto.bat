@@ -94,10 +94,10 @@ if exist "%PROYECTO_DIR%urls_etcl_completo.json" (
     set TODO_OK=0
 )
 
-if exist "%PROYECTO_DIR%scripts\extractors\config_csv.json" (
-    echo ✅ config_csv.json encontrado
+if exist "%PROYECTO_DIR%scripts\utilidades\config.py" (
+    echo ✅ config.py encontrado
 ) else (
-    echo ❌ config_csv.json NO encontrado
+    echo ❌ config.py NO encontrado
     set TODO_OK=0
 )
 
@@ -111,11 +111,15 @@ if %TODO_OK%==1 (
     echo 🚀 PRÓXIMOS PASOS:
     echo.
     echo 1. Para descargar todos los CSVs:
-    echo    cd scripts\extractors
-    echo    python ejecutar_descarga_masiva.py
+    echo    cd scripts\descarga
+    echo    python ejecutar_descarga_completa.py
     echo.
     echo 2. O usa el batch:
-    echo    scripts\extractors\descarga_masiva.bat
+    echo    scripts\descarga\descarga_masiva.bat
+    echo.
+    echo 3. Para análisis y comparaciones:
+    echo    cd scripts\procesamiento
+    echo    python comparar_snapshots.py --listar
     echo.
 ) else (
     echo ===============================================

@@ -13,26 +13,27 @@ import requests
 import hashlib
 import pandas as pd
 
-from utils_csv import (
+# Importar desde la nueva ubicación
+import sys
+sys.path.append(str(Path(__file__).parent.parent))
+
+from utilidades.helpers import (
     configurar_logging, crear_directorios, crear_sesion_robusta,
     validar_archivo_csv, crear_backup_archivo, necesita_descarga,
     generar_informe_descarga, limpiar_nombre_archivo, obtener_info_tabla
 )
+from utilidades.config import CONFIG, PROJECT_ROOT, DATA_RAW_PATH, SNAPSHOTS_PATH
 
 class ExtractorCSV_INE:
     """
     Extractor configurable y robusto para archivos CSV del INE
     """
     
-    def __init__(self, config_path: str = "config_csv.json"):
+    def __init__(self):
         """
-        Inicializa el extractor
-        
-        Args:
-            config_path: Ruta al archivo de configuración
+        Inicializa el extractor usando la configuración del módulo config
         """
-        self.config_path = Path(config_path)
-        self.config = self._cargar_configuracion()
+        self.config = CONFIG
         self.logger = configurar_logging(self.config)
         self.session = crear_sesion_robusta(
             timeout=self.config['configuracion_descarga']['timeout_segundos'],
@@ -45,15 +46,7 @@ class ExtractorCSV_INE:
         
         self.logger.info("ExtractorCSV_INE inicializado correctamente")
     
-    def _cargar_configuracion(self) -> Dict[str, Any]:
-        """Carga la configuración desde archivo JSON"""
-        try:
-            with open(self.config_path, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except Exception as e:
-            raise ValueError(f"Error cargando configuración: {e}")
-    
-    def cargar_urls_etcl(self, urls_file: str = "urls_etcl_completo.json") -> bool:
+    def cargar_urls_etcl(self, urls_file: str = None) -> bool:
         """
         Carga las URLs desde el archivo de URLs completo
         
@@ -63,6 +56,9 @@ class ExtractorCSV_INE:
         Returns:
             True si se cargaron correctamente
         """
+        if urls_file is None:
+            urls_file = str(PROJECT_ROOT / "urls_etcl_completo.json")
+            
         urls_path = Path(urls_file)
         if not urls_path.exists():
             self.logger.error(f"Archivo de URLs no encontrado: {urls_file}")
@@ -164,7 +160,7 @@ class ExtractorCSV_INE:
         
         # Crear backup si existe archivo previo
         if filepath.exists() and self.config['configuracion_descarga']['crear_backup']:
-            backup_dir = Path(self.config['rutas']['backups'])
+            backup_dir = PROJECT_ROOT / self.config['rutas']['backups']
             backup_path = crear_backup_archivo(filepath, backup_dir)
             if backup_path:
                 self.logger.info(f"Backup creado: {backup_path}")
@@ -242,7 +238,7 @@ class ExtractorCSV_INE:
         self.logger.info(f"🚀 Iniciando descarga de {len(tablas_activas)} tablas")
         
         resultados = []
-        data_dir = Path(self.config['rutas']['datos_raw'])
+        data_dir = DATA_RAW_PATH
         
         for tabla_id, url_csv, info_tabla in tablas_activas:
             # Generar nombre de archivo
@@ -259,7 +255,7 @@ class ExtractorCSV_INE:
         
         # Generar informe
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        informe_path = Path(self.config['rutas']['logs']) / f"informe_descarga_{timestamp}.json"
+        informe_path = PROJECT_ROOT / self.config['rutas']['logs'] / f"informe_descarga_{timestamp}.json"
         informe = generar_informe_descarga(resultados, informe_path)
         
         # Log resumen
@@ -301,51 +297,19 @@ class ExtractorCSV_INE:
     
     def activar_categoria(self, categoria: str) -> bool:
         """Activa una categoría específica"""
-        if categoria in self.config['categorias']:
-            self.config['categorias'][categoria]['activa'] = True
-            self._guardar_configuracion()
-            self.logger.info(f"Categoría '{categoria}' activada")
-            return True
+        self.logger.warning("Para activar categorías, modifique config.py directamente")
         return False
     
     def desactivar_categoria(self, categoria: str) -> bool:
         """Desactiva una categoría específica"""
-        if categoria in self.config['categorias']:
-            self.config['categorias'][categoria]['activa'] = False
-            self._guardar_configuracion()
-            self.logger.info(f"Categoría '{categoria}' desactivada")
-            return True
+        self.logger.warning("Para desactivar categorías, modifique config.py directamente")
         return False
     
     def activar_todas_categorias(self) -> bool:
         """Activa todas las categorías disponibles"""
-        try:
-            # Crear backup de la configuración actual
-            backup_path = self.config_path.with_suffix('.json.backup')
-            with open(backup_path, 'w', encoding='utf-8') as f:
-                json.dump(self.config, f, indent=2, ensure_ascii=False)
-            self.logger.info(f"Backup de configuración creado: {backup_path}")
-            
-            # Activar todas las categorías
-            categorias_activadas = []
-            for categoria in self.config['categorias']:
-                if not self.config['categorias'][categoria].get('activa', False):
-                    self.config['categorias'][categoria]['activa'] = True
-                    categorias_activadas.append(categoria)
-            
-            # Guardar configuración
-            self._guardar_configuracion()
-            
-            if categorias_activadas:
-                self.logger.info(f"Categorías activadas: {', '.join(categorias_activadas)}")
-                return True
-            else:
-                self.logger.info("Todas las categorías ya estaban activas")
-                return True
-                
-        except Exception as e:
-            self.logger.error(f"Error activando todas las categorías: {e}")
-            return False
+        self.logger.warning("Para activar todas las categorías, modifique config.py directamente")
+        self.logger.info("Establezca 'activa': True en todas las categorías del CONFIG")
+        return False
     
     def verificar_sistema(self) -> Dict[str, Any]:
         """Verifica el estado del sistema antes de descarga masiva"""
@@ -367,14 +331,13 @@ class ExtractorCSV_INE:
         try:
             # Verificar espacio en disco
             import shutil
-            data_dir = Path(self.config['rutas']['datos_raw'])
-            espacio_libre = shutil.disk_usage(data_dir.parent)[-1]
+            espacio_libre = shutil.disk_usage(DATA_RAW_PATH)[-1]
             verificacion['espacio_disponible_gb'] = round(espacio_libre / (1024**3), 2)
             
             # Verificar directorios
             verificacion['directorios_ok'] = all([
-                Path(self.config['rutas']['datos_raw']).exists(),
-                Path(self.config['rutas']['logs']).exists()
+                DATA_RAW_PATH.exists(),
+                (PROJECT_ROOT / self.config['rutas']['logs']).exists()
             ])
             
             # Verificar configuración
@@ -417,7 +380,7 @@ class ExtractorCSV_INE:
         """
         try:
             # Crear directorio para snapshots si no existe
-            snapshot_base = Path(self.config_path).parent.parent.parent / 'snapshots'
+            snapshot_base = SNAPSHOTS_PATH
             snapshot_base.mkdir(exist_ok=True)
             
             # Crear directorio con fecha actual
@@ -428,8 +391,7 @@ class ExtractorCSV_INE:
             self.logger.info(f"📸 Generando snapshot en {snapshot_dir}")
             
             # Obtener lista de CSVs descargados
-            data_dir = Path(self.config['rutas']['datos_raw'])
-            csv_files = list(data_dir.glob("*.csv"))
+            csv_files = list(DATA_RAW_PATH.glob("*.csv"))
             
             if not csv_files:
                 self.logger.warning("No se encontraron archivos CSV para generar snapshot")
@@ -554,37 +516,23 @@ class ExtractorCSV_INE:
         except Exception as e:
             self.logger.error(f"Error generando snapshot: {e}")
             return {'exito': False, 'error': str(e)}
-    
-    def _guardar_configuracion(self) -> None:
-        """Guarda la configuración actual"""
-        try:
-            with open(self.config_path, 'w', encoding='utf-8') as f:
-                json.dump(self.config, f, indent=2, ensure_ascii=False)
-        except Exception as e:
-            self.logger.error(f"Error guardando configuración: {e}")
 
 def main():
     """Función principal para uso desde línea de comandos"""
     import argparse
     
     parser = argparse.ArgumentParser(description='Extractor CSV del INE')
-    parser.add_argument('--config', default='config_csv.json', 
-                       help='Archivo de configuración')
-    parser.add_argument('--urls', default='../../urls_etcl_completo.json',
-                       help='Archivo de URLs')
+    parser.add_argument('--urls', default=None,
+                       help='Archivo de URLs (por defecto busca en raíz del proyecto)')
     parser.add_argument('--listar', action='store_true',
                        help='Listar tablas disponibles')
-    parser.add_argument('--activar', help='Activar categoría específica')
-    parser.add_argument('--desactivar', help='Desactivar categoría específica')
-    parser.add_argument('--activar-todas', action='store_true',
-                       help='Activar todas las categorías y descargar')
     parser.add_argument('--verificar-sistema', action='store_true',
                        help='Verificar estado del sistema antes de descarga')
     
     args = parser.parse_args()
     
     # Inicializar extractor
-    extractor = ExtractorCSV_INE(args.config)
+    extractor = ExtractorCSV_INE()
     extractor.cargar_urls_etcl(args.urls)
     
     if args.verificar_sistema:
@@ -598,37 +546,6 @@ def main():
         print(f"\n📊 Tablas: {verificacion['tablas_activas']}/{verificacion['tablas_totales']} activas")
         est = verificacion['estimacion_descarga']
         print(f"📦 Estimación descarga completa: {est['archivos_total']} archivos, ~{est['tamaño_estimado_mb']} MB, ~{est['tiempo_estimado_min']} min")
-    
-    elif args.activar_todas:
-        print("🚀 Activando todas las categorías y descargando...")
-        
-        # Mostrar estado actual
-        disponibles = extractor.listar_tablas_disponibles()
-        total_activas_antes = sum(1 for cat in disponibles.values() for t in cat if t['activa'])
-        total_tablas = sum(len(cat) for cat in disponibles.values())
-        print(f"📊 Estado actual: {total_activas_antes}/{total_tablas} tablas activas")
-        
-        # Activar todas
-        if extractor.activar_todas_categorias():
-            total_activas_despues = total_tablas
-            print(f"✅ Todas las categorías activadas: {total_activas_despues}/{total_tablas} tablas")
-            
-            # Proceder con descarga
-            print("\n🚀 Iniciando descarga masiva...")
-            informe = extractor.descargar_todas_activas()
-            
-            if 'error' in informe:
-                print(f"❌ Error: {informe['error']}")
-            else:
-                resumen = informe['resumen']
-                print(f"\n🏁 DESCARGA MASIVA COMPLETADA")
-                print(f"✅ Exitosos: {resumen['exitosos']}/{resumen['total_intentos']} ({resumen['tasa_exito']:.1%})")
-                print(f"📦 Tamaño total: {resumen['tamaño_total_mb']:.1f} MB")
-                print(f"⏱️  Tiempo total: {resumen['tiempo_total_min']:.1f} minutos")
-                if resumen['errores'] > 0:
-                    print(f"⚠️  Errores: {resumen['errores']} archivos fallaron")
-        else:
-            print("❌ Error activando categorías")
     
     elif args.listar:
         disponibles = extractor.listar_tablas_disponibles()
@@ -645,20 +562,7 @@ def main():
         total_tablas = sum(len(cat) for cat in disponibles.values())
         total_activas = sum(1 for cat in disponibles.values() for t in cat if t['activa'])
         print(f"\n📊 RESUMEN: {total_activas}/{total_tablas} tablas activas")
-        if total_activas < total_tablas:
-            print(f"💡 Use --activar-todas para activar y descargar todas las tablas")
-    
-    elif args.activar:
-        if extractor.activar_categoria(args.activar):
-            print(f"✅ Categoría '{args.activar}' activada")
-        else:
-            print(f"❌ Categoría '{args.activar}' no encontrada")
-    
-    elif args.desactivar:
-        if extractor.desactivar_categoria(args.desactivar):
-            print(f"✅ Categoría '{args.desactivar}' desactivada")
-        else:
-            print(f"❌ Categoría '{args.desactivar}' no encontrada")
+        print(f"💡 Para activar más tablas, edite config.py")
     
     else:
         # Descarga por defecto (solo tablas activas)
@@ -666,8 +570,8 @@ def main():
         total_activas = sum(1 for cat in disponibles.values() for t in cat if t['activa'])
         
         if total_activas == 0:
-            print("⚠️  No hay tablas activas. Use --activar-todas para activar y descargar todas.")
-            print("   O use --activar <categoria> para activar categorías específicas.")
+            print("⚠️  No hay tablas activas.")
+            print("   Edite config.py para activar las categorías que desee descargar.")
         else:
             print(f"🚀 Iniciando descarga de {total_activas} tablas activas...")
             informe = extractor.descargar_todas_activas()
