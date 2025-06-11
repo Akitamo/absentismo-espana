@@ -64,6 +64,16 @@ python TEST_reconocimiento_inicial.py
 - Los CSVs NO van a Git (están en .gitignore)
 - Solo los JSONs de snapshots van a Git
 
+## 🧪 REGLA OBLIGATORIA PARA NUEVOS SCRIPTS
+**TODO script nuevo DEBE**:
+1. Crearse con prefijo `TEST_` (ej: `TEST_analizar_tendencias.py`)
+2. Una vez validado, renombrarse sin el prefijo
+3. Borrar la versión TEST_
+
+**Claude DEBE SIEMPRE**:
+- Preguntar antes de crear un script: "¿Es un script nuevo? Lo crearé como TEST_nombre.py"
+- Recordar al usuario renombrar cuando esté validado
+
 ## ARCHIVOS DE REFERENCIA
 - Especificaciones completas: `ESPECIFICACIONES_TECNICAS_V2.md` (actualizado 11/06)
 - Resumen reorganización: `RESUMEN_REORGANIZACION.md`
@@ -77,3 +87,18 @@ python TEST_reconocimiento_inicial.py
 - `comparar_snapshots.py` (antes comparar_periodos.py)
 - `helpers.py` (antes utils_csv.py)
 - `config.py` (antes config_csv.json)
+
+## 🎯 CÓMO GARANTIZAR QUE CLAUDE SIGA LAS INSTRUCCIONES
+
+**ANTES de CUALQUIER acción, Claude debe**:
+1. Revisar `ESPECIFICACIONES_TECNICAS_V2.md`
+2. Verificar `INSTRUCCIONES_CLAUDE.md`
+3. Comprobar si existe `RESUMEN_REORGANIZACION.md` para cambios recientes
+
+**AL CREAR cualquier código**:
+- Verificar estructura de carpetas actual
+- Usar siempre rutas relativas
+- Aplicar la regla TEST_ para scripts nuevos
+- Verificar que los imports usen las rutas correctas
+
+**RECORDATORIO**: Las especificaciones técnicas son la única fuente de verdad. Si hay dudas, siempre prevalecen sobre cualquier memoria de conversaciones anteriores.

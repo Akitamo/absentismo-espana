@@ -56,6 +56,19 @@ C:\Users\%USERPROFILE%\absentismoespana\
    - `%USERPROFILE%` en documentación
    - Rutas relativas desde la raíz del proyecto
 3. **El código debe funcionar** en cualquier equipo sin modificaciones
+
+### **🧪 REGLA DE NOMENCLATURA DE SCRIPTS**
+**OBLIGATORIO**: Todo script nuevo debe seguir este flujo:
+1. **Crear con prefijo `TEST_`**: `TEST_calcular_absentismo.py` (indica script en pruebas)
+2. **Probar y validar** hasta que funcione correctamente
+3. **Renombrar sin prefijo**: `calcular_absentismo.py` (indica script validado)
+4. **Borrar** la versión TEST_ anterior
+
+**Ejemplos**:
+- ❌ NUNCA crear directamente: `nuevo_analisis.py`
+- ✅ SIEMPRE crear primero: `TEST_nuevo_analisis.py`
+- Scripts con `TEST_` = En desarrollo, pueden fallar
+- Scripts sin prefijo = Validados y funcionales
 ```
 
 ### **🎯 OBJETIVO DEL PROYECTO**
@@ -283,3 +296,14 @@ python descargar_ine.py --verificar-sistema
 ---
 
 **NOTA PARA CLAUDE**: Este documento contiene TODA la información necesaria para continuar el desarrollo. Ante dudas, referirse a esta especificación antes que a memoria de conversaciones anteriores.
+
+### **⚠️ CHECKLIST OBLIGATORIO PARA CLAUDE**
+Antes de CUALQUIER acción en este proyecto:
+- [ ] ¿He revisado las ESPECIFICACIONES_TECNICAS_V2.md?
+- [ ] ¿He verificado INSTRUCCIONES_CLAUDE.md?
+- [ ] ¿Si creo un script nuevo, lo nombré con TEST_?
+- [ ] ¿Usé rutas relativas y NO hardcodeadas?
+- [ ] ¿Verifiqué que mis imports apuntan a las carpetas correctas?
+- [ ] ¿Respeté la estructura de carpetas actual?
+
+Si alguna respuesta es NO, DETENER y revisar la documentación.
