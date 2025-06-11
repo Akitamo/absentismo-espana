@@ -17,10 +17,12 @@ Ver archivo adjunto "ESPECIFICACIONES_TECNICAS_V2.md" para contexto completo.
 
 ## UBICACIONES CLAVE (RUTAS RELATIVAS)
 - Scripts principales: `scripts/extractors/`
-- CSVs descargados: `data/raw/csv/` (en .gitignore)
+- CSVs descargados: `data/raw/csv/` (en la RAÍZ del proyecto, NO en scripts/extractors)
 - Snapshots: `snapshots/YYYY-MM-DD/`
 - Comparaciones: `scripts/extractors/comparaciones/`
 - Configuración: `scripts/extractors/config_csv.json`
+- Scripts de análisis: `scripts/analysis/exploratory/`
+- Resultados análisis: `scripts/analysis/results/`
 
 ## COMANDOS RÁPIDOS
 ```bash

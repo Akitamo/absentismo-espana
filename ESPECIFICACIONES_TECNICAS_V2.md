@@ -11,19 +11,25 @@ C:\Users\%USERPROFILE%\absentismoespana\
 ├── urls_etcl_completo.json             # 35 URLs de tablas ETCL
 ├── setup_proyecto.bat                  # Setup inicial para nuevos usuarios
 ├── actualizar_github.bat               # Script genérico para commits
+├── data/                               # 📁 Datos descargados (raíz del proyecto)
+│   ├── raw/
+│   │   └── csv/                        # 📊 35 CSVs del INE (~37MB)
+│   └── processed/                      # Para futuros datos procesados
 ├── scripts/
-│   └── extractors/                     # Motor de descarga y análisis
-│       ├── extractor_csv_ine.py        # Clase principal de descarga
-│       ├── ejecutar_descarga_masiva.py # Script de ejecución con análisis
-│       ├── analizar_periodos.py        # 🆕 Analizador de periodos temporales
-│       ├── comparar_periodos.py        # 🆕 Comparador de snapshots
-│       ├── config_csv.json             # Configuración de tablas
-│       ├── utils_csv.py                # Utilidades auxiliares
-│       ├── descarga_masiva.bat         # Batch para Windows
-│       ├── comparaciones/              # 🆕 Resultados de comparaciones
-│       │   ├── YYYY-MM-DD_vs_YYYY-MM-DD.json
-│       │   └── YYYY-MM-DD_vs_YYYY-MM-DD.md
-│       └── data/raw/csv/               # CSVs descargados (en .gitignore)
+│   ├── extractors/                     # Motor de descarga y análisis
+│   │   ├── extractor_csv_ine.py        # Clase principal de descarga
+│   │   ├── ejecutar_descarga_masiva.py # Script de ejecución con análisis
+│   │   ├── analizar_periodos.py        # 🆕 Analizador de periodos temporales
+│   │   ├── comparar_periodos.py        # 🆕 Comparador de snapshots
+│   │   ├── config_csv.json             # Configuración de tablas
+│   │   ├── utils_csv.py                # Utilidades auxiliares
+│   │   ├── descarga_masiva.bat         # Batch para Windows
+│   │   └── comparaciones/              # 🆕 Resultados de comparaciones
+│   │       ├── YYYY-MM-DD_vs_YYYY-MM-DD.json
+│   │       └── YYYY-MM-DD_vs_YYYY-MM-DD.md
+│   └── analysis/                       # 🆕 Módulo de análisis exploratorio
+│       ├── exploratory/                # Scripts de análisis
+│       └── results/                    # Resultados de análisis
 ├── snapshots/                          # 🆕 Histórico de descargas
 │   └── YYYY-MM-DD/                     # Un snapshot por fecha
 │       ├── metadata.json               # Info general de la descarga
@@ -162,9 +168,15 @@ python extractor_csv_ine.py --activar [categoria]
 - Probar en diferentes equipos
 
 #### **Gestión de datos**
+- Los CSVs se descargan a `data/raw/csv/` en la RAÍZ del proyecto
 - CSVs en .gitignore (37MB, muy grandes para Git)
 - Solo JSONs de snapshots van a Git
 - Backups locales automáticos
+
+⚠️ **IMPORTANTE SOBRE UBICACIÓN DE DATOS**:
+- Los 35 CSVs se guardan en: `C:\Users\%USERPROFILE%\absentismoespana\data\raw\csv\`
+- NO en: `scripts/extractors/data/raw/csv/` (esta carpeta no se usa)
+- El config usa rutas relativas: `../../data/raw/csv/` (desde scripts/extractors/)
 
 #### **Actualizaciones del INE**
 - Datos trimestrales (4 veces al año)

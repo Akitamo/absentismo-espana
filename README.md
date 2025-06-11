@@ -118,6 +118,25 @@ python comparar_periodos.py --listar
 python comparar_periodos.py --historico
 ```
 
+### 4. 🆕 Análisis exploratorio de datos
+
+Después de descargar los CSVs, puedes ejecutar un reconocimiento inicial:
+
+```bash
+# Opción A: Usando el script Python
+cd scripts/analysis/exploratory
+python reconocimiento_inicial.py
+
+# Opción B: Usando el batch (Windows) desde la raíz
+reconocimiento_inicial.bat
+```
+
+Este análisis genera:
+- Resumen de todos los archivos CSV (tamaño, filas, columnas)
+- Detección de columnas comunes entre archivos
+- Identificación de problemas de encoding
+- Informe en JSON y Markdown en `scripts/analysis/results/reconocimiento/`
+
 ## 📸 Sistema de Snapshots
 
 Cada vez que se ejecuta una descarga completa, se genera automáticamente un snapshot en `snapshots/YYYY-MM-DD/` que incluye:
@@ -149,17 +168,29 @@ absentismoespana/
 ├── convert_docx_to_json_enhanced.py    # Genera JSON de URLs desde DOCX
 ├── urls_etcl_completo.json             # JSON con todas las URLs (35 tablas)
 ├── setup_proyecto.bat                  # Script de configuración inicial
+├── reconocimiento_inicial.bat          # 🆕 Ejecuta análisis exploratorio
+├── data/                               # 📁 Datos descargados (raíz del proyecto)
+│   ├── raw/
+│   │   └── csv/                        # 📊 35 CSVs del INE (~37MB)
+│   └── processed/                      # Para futuros datos procesados
 ├── scripts/
-│   └── extractors/
-│       ├── extractor_csv_ine.py        # Motor principal de descarga
-│       ├── ejecutar_descarga_masiva.py # Script de ejecución simple
-│       ├── analizar_periodos.py        # 🆕 Analizador de periodos
-│       ├── comparar_periodos.py        # 🆕 Comparador de snapshots
-│       ├── config_csv.json             # Configuración de tablas
-│       ├── utils_csv.py                # Utilidades auxiliares
-│       ├── descarga_masiva.bat         # Batch para Windows
-│       ├── comparaciones/              # 🆕 Resultados de comparaciones
-│       └── data/raw/csv/               # CSVs descargados
+│   ├── extractors/
+│   │   ├── extractor_csv_ine.py        # Motor principal de descarga
+│   │   ├── ejecutar_descarga_masiva.py # Script de ejecución simple
+│   │   ├── analizar_periodos.py        # 🆕 Analizador de periodos
+│   │   ├── comparar_periodos.py        # 🆕 Comparador de snapshots
+│   │   ├── config_csv.json             # Configuración de tablas
+│   │   ├── utils_csv.py                # Utilidades auxiliares
+│   │   ├── descarga_masiva.bat         # Batch para Windows
+│   │   └── comparaciones/              # 🆕 Resultados de comparaciones
+│   └── analysis/                       # 🆕 Módulo de análisis exploratorio
+│       ├── exploratory/                # Scripts de análisis
+│       │   ├── reconocimiento_inicial.py
+│       │   └── (próximos: analisis_exploratorio.py, etc.)
+│       └── results/                    # Resultados de análisis
+│           ├── reconocimiento/         # Informes de reconocimiento
+│           ├── exploratorio/           # Análisis detallados
+│           └── visualizations/         # Gráficos
 ├── snapshots/                          # 🆕 Histórico de descargas
 │   └── YYYY-MM-DD/                     # Un snapshot por fecha
 ├── logs/                               # Logs de descargas
@@ -280,6 +311,8 @@ Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más deta
 
 - [x] Sistema de snapshots para histórico
 - [x] Detección automática de nuevos periodos
+- [x] Módulo de análisis exploratorio (iniciado)
+- [ ] Análisis dimensional completo de los datos
 - [ ] Notificaciones automáticas cuando hay nuevos datos
 - [ ] Integración con base de datos PostgreSQL
 - [ ] API REST para consulta de datos
@@ -291,6 +324,12 @@ Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más deta
 Para preguntas o sugerencias sobre el proyecto, abrir un issue en GitHub.
 
 ## 🎉 Últimas actualizaciones
+
+### v2.2.0 (2025-06-11)
+- 🆕 Módulo de análisis exploratorio de datos
+- 🆕 Script de reconocimiento inicial de CSVs
+- 📝 Corrección de documentación sobre ubicación de archivos
+- 📁 Estructura mejorada para separar descarga de análisis
 
 ### v2.1.0 (2025-06-10)
 - 🆕 Sistema de snapshots para mantener histórico de descargas

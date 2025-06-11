@@ -73,3 +73,11 @@ analisis_periodos_test.json
 # Excepto archivos de configuración
 !config_csv.json
 !urls_etcl_completo.json
+
+# Resultados temporales de análisis
+scripts/analysis/results/temp/
+scripts/analysis/notebooks/.ipynb_checkpoints/
+
+# Archivos muy grandes de análisis
+scripts/analysis/results/**/*.pkl
+scripts/analysis/results/**/*.parquet
