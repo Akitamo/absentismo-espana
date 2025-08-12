@@ -1,0 +1,226 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "descripcion": "Configuración de tablas INE para el sistema de extracción de absentismo",
+    "total_tablas": 35,
+    "fecha_actualizacion": "2025-08-12"
+  },
+  "categorias": {
+    "tiempo_trabajo": {
+      "descripcion": "Tablas de tiempo de trabajo por trabajador y mes",
+      "tablas": {
+        "6042": {
+          "nombre": "Tiempo trabajo por trabajador-mes, tipo jornada, sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6042.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6042?tip=AM&"
+        },
+        "6043": {
+          "nombre": "Tiempo trabajo por trabajador-mes, tipo jornada, secciones CNAE",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6043.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6043?tip=AM&"
+        },
+        "6044": {
+          "nombre": "Tiempo trabajo por trabajador-mes, sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6044.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6044?tip=AM&"
+        },
+        "6045": {
+          "nombre": "Tiempo trabajo por trabajador-mes, secciones CNAE",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6045.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6045?tip=AM&"
+        },
+        "6046": {
+          "nombre": "Tiempo trabajo por trabajador-mes, divisiones CNAE",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6046.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6046?tip=AM&"
+        },
+        "6063": {
+          "nombre": "Tiempo trabajo por trabajador-mes, CCAA, tipo jornada, sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6063.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6063?tip=AM&"
+        }
+      }
+    },
+    "costes_basicos": {
+      "descripcion": "Costes laborales fundamentales",
+      "tablas": {
+        "11221": {
+          "nombre": "Costes laborales por trabajador",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/11221.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/11221?tip=AM&"
+        },
+        "11222": {
+          "nombre": "Costes laborales por hora efectiva de trabajo",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/11222.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/11222?tip=AM&"
+        }
+      }
+    },
+    "series_temporales": {
+      "descripcion": "Series temporales por sectores y CCAA",
+      "tablas": {
+        "59391": {
+          "nombre": "Series por sectores de actividad y componentes del coste",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/59391.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/59391?tip=AM&"
+        },
+        "59392": {
+          "nombre": "Series por comunidad autónoma y componentes del coste",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/59392.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/59392?tip=AM&"
+        }
+      }
+    },
+    "costes_detallados": {
+      "descripcion": "Costes laborales detallados por sectores y tamaños",
+      "tablas": {
+        "6030": {
+          "nombre": "Coste laboral por trabajador por sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6030.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6030?tip=AM&"
+        },
+        "6031": {
+          "nombre": "Coste laboral por trabajador por tamaño, sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6031.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6031?tip=AM&"
+        },
+        "6032": {
+          "nombre": "Coste laboral por trabajador por secciones CNAE",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6032.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6032?tip=AM&"
+        },
+        "6033": {
+          "nombre": "Coste laboral por trabajador por divisiones CNAE",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6033.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6033?tip=AM&"
+        },
+        "6034": {
+          "nombre": "Coste laboral por hora efectiva por sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6034.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6034?tip=AM&"
+        },
+        "6035": {
+          "nombre": "Coste laboral por hora efectiva por tamaño, sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6035.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6035?tip=AM&"
+        },
+        "6036": {
+          "nombre": "Coste laboral por hora efectiva por secciones CNAE",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6036.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6036?tip=AM&"
+        },
+        "6037": {
+          "nombre": "Coste laboral por hora efectiva por divisiones CNAE",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6037.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6037?tip=AM&"
+        }
+      }
+    },
+    "costes_salariales": {
+      "descripcion": "Costes salariales específicos",
+      "tablas": {
+        "6038": {
+          "nombre": "Coste salarial por trabajador, tipo jornada, sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6038.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6038?tip=AM&"
+        },
+        "6039": {
+          "nombre": "Coste salarial por trabajador, tipo jornada, secciones CNAE",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6039.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6039?tip=AM&"
+        },
+        "6040": {
+          "nombre": "Coste salarial por hora efectiva, tipo jornada, sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6040.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6040?tip=AM&"
+        },
+        "6041": {
+          "nombre": "Coste salarial por hora efectiva, tipo jornada, secciones CNAE",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6041.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6041?tip=AM&"
+        }
+      }
+    },
+    "vacantes": {
+      "descripcion": "Datos de vacantes y motivos",
+      "tablas": {
+        "6047": {
+          "nombre": "Número de vacantes por sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6047.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6047?tip=AM&"
+        },
+        "6048": {
+          "nombre": "Número de vacantes por secciones",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6048.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6048?tip=AM&"
+        },
+        "6049": {
+          "nombre": "Número de vacantes por tamaño establecimiento",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6049.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6049?tip=AM&"
+        },
+        "6053": {
+          "nombre": "Motivos no vacantes por sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6053.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6053?tip=AM&"
+        },
+        "6054": {
+          "nombre": "Motivos no vacantes por secciones",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6054.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6054?tip=AM&"
+        },
+        "6055": {
+          "nombre": "Motivos no vacantes por tamaño establecimiento",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6055.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6055?tip=AM&"
+        },
+        "6064": {
+          "nombre": "Número de vacantes por comunidad autónoma",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6064.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6064?tip=AM&"
+        },
+        "6066": {
+          "nombre": "Motivos no vacantes por comunidad autónoma",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6066.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6066?tip=AM&"
+        }
+      }
+    },
+    "otros_costes": {
+      "descripcion": "Otros costes laborales específicos",
+      "tablas": {
+        "6056": {
+          "nombre": "Percepciones IT, coste indemnización por actividad",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6056.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6056?tip=AM&"
+        },
+        "6057": {
+          "nombre": "Coste por hora extraordinaria, actividad económica",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6057.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6057?tip=AM&"
+        },
+        "6058": {
+          "nombre": "Coste por hora extraordinaria por CCAA",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6058.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6058?tip=AM&"
+        },
+        "6061": {
+          "nombre": "Coste laboral por trabajador, CCAA, sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6061.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6061?tip=AM&"
+        },
+        "6062": {
+          "nombre": "Coste laboral por hora efectiva, CCAA, sectores",
+          "url_csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6062.csv?nocab=1",
+          "url_json": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/6062?tip=AM&"
+        }
+      }
+    }
+  },
+  "configuracion_descarga": {
+    "reintentos_maximos": 3,
+    "timeout_segundos": 30,
+    "delay_entre_reintentos": 2,
+    "encodings_posibles": ["utf-8", "latin-1", "ISO-8859-1", "cp1252"]
+  }
+}
