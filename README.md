@@ -1,175 +1,125 @@
-# AbsentismoEspana - Sistema de Análisis de Datos ETCL del INE
+# AbsentismoEspana
 
-Sistema automatizado para descargar y analizar los datos de absentismo laboral de España desde las tablas ETCL del Instituto Nacional de Estadística.
+Sistema modular para la extracción y procesamiento de datos de absentismo laboral del Instituto Nacional de Estadística (INE) de España.
 
-## 🎯 Objetivo
-Mantener actualizados los datos de absentismo laboral en España descargando automáticamente las 35 tablas ETCL del INE y preparándolos para análisis.
+## 📊 Descripción
 
-## 📋 Funcionalidades
-- ✅ Descarga automática de 35 tablas ETCL en formato CSV
-- ✅ Sistema de reintentos y validación de descargas
-- ✅ Backup automático de versiones anteriores
-- ✅ Logs detallados de cada operación
-- ✅ Sistema de snapshots para histórico de descargas
-- ✅ Análisis de periodos para detectar nuevos trimestres
-- ✅ Comparación automática para identificar actualizaciones del INE
-- ✅ Análisis exploratorio de datos
+Este proyecto automatiza la descarga y procesamiento de los datos de la Encuesta Trimestral de Coste Laboral (ETCL) del INE, específicamente las 35 tablas relacionadas con costes laborales, tiempo de trabajo y absentismo en España.
 
-## 📋 Requisitos previos
+## 🚀 Características
+
+- **Extracción automática** de 35 tablas del INE
+- **Detección de actualizaciones** en los datos fuente
+- **Procesamiento robusto** con soporte multi-encoding
+- **Arquitectura modular** con agentes independientes
+- **CLI intuitiva** para todas las operaciones
+
+## 📋 Requisitos
+
 - Python 3.8 o superior
-- Git
-- Conexión a internet
+- pip (gestor de paquetes de Python)
 
-## 🚀 Instalación
+## 🔧 Instalación
 
-### 1. Clonar el repositorio
+1. Clonar el repositorio:
 ```bash
 git clone https://github.com/Akitamo/absentismo-espana.git
-cd absentismoespana
+cd absentismo-espana
 ```
 
-### 2. Configuración inicial (Windows)
-```bash
-# Ejecutar el script de setup
-setup_proyecto.bat
-```
-
-### 3. Instalar dependencias
+2. Instalar dependencias:
 ```bash
 pip install -r requirements.txt
 ```
 
-## 📖 Uso
+## 💻 Uso
 
-### 1. Descargar todos los CSVs
-
+### Verificar actualizaciones en INE
 ```bash
-cd scripts\descarga
-python ejecutar_descarga_completa.py
+python main.py --check
 ```
 
-O directamente con opciones:
+### Descargar datos
+
+Todas las tablas:
 ```bash
-# Ver estado del sistema
-python descargar_ine.py --verificar-sistema
-
-# Ver tablas disponibles
-python descargar_ine.py --listar
+python main.py --download-all
 ```
 
-### 2. Análisis exploratorio de datos
-
-Después de descargar los CSVs:
-
+Tabla específica:
 ```bash
-# Opción A: Usando el script Python
-cd scripts\procesamiento
-python TEST_reconocimiento_inicial.py
-
-# Opción B: Usando el batch desde la raíz
-reconocimiento_inicial.bat
+python main.py --download 6042
 ```
 
-### 3. Comparar snapshots
-
-Para detectar nuevos periodos del INE:
-
+### Obtener información de una tabla
 ```bash
-cd scripts\procesamiento
-
-# Comparar dos fechas
-python comparar_snapshots.py --fecha1 2025-06-10 --fecha2 2025-06-11
-
-# Ver snapshots disponibles
-python comparar_snapshots.py --listar
+python main.py --info 6042
 ```
 
-## 📁 Estructura del proyecto
-```
-absentismoespana/
-├── data/                               # Todos los datos
-│   ├── raw/
-│   │   └── csv/                        # 35 CSVs del INE (~37MB)
-│   └── processed/                      # Datos procesados
-│       ├── analisis/                   # Resultados de análisis
-│       └── comparaciones/              # Comparaciones entre snapshots
-│
-├── scripts/                            # Todos los scripts
-│   ├── descarga/                       # Scripts de descarga
-│   │   ├── descargar_ine.py
-│   │   └── ejecutar_descarga_completa.py
-│   │
-│   ├── procesamiento/                  # Scripts de análisis
-│   │   ├── TEST_reconocimiento_inicial.py
-│   │   ├── analizar_periodos.py
-│   │   └── comparar_snapshots.py
-│   │
-│   └── utilidades/                     # Código compartido
-│       ├── config.py                   # Configuración
-│       └── helpers.py                  # Funciones auxiliares
-│
-├── snapshots/                          # Histórico de descargas
-│   └── YYYY-MM-DD/                     # Un snapshot por fecha
-│       ├── metadata.json
-│       ├── checksums.json
-│       └── periodos.json
-│
-├── backups/                            # Respaldos automáticos
-├── logs/                               # Registros
-├── requirements.txt                    # Dependencias Python
-└── README.md                           # Este archivo
+### Procesar datos (próximamente)
+```bash
+python main.py --process-all
+python main.py --process 6042
 ```
 
-## 📊 Datos descargados
+## 📁 Estructura del Proyecto
 
-### Categorías de datos (35 tablas en total):
-1. **Tiempo de trabajo** (6 tablas) - Horas trabajadas/no trabajadas
-2. **Costes básicos** (2 tablas) - Costes por trabajador y hora
-3. **Series temporales** (2 tablas) - Evolución histórica
-4. **Costes detallados** (8 tablas) - Por sectores y CNAE
-5. **Costes salariales** (4 tablas) - Salarios por tipo jornada
-6. **Vacantes** (8 tablas) - Puestos vacantes y motivos
-7. **Otros costes** (5 tablas) - IT, horas extra, por CCAA
+```
+absentismo-espana/
+├── agent_extractor/    # Módulo de extracción de datos
+├── agent_processor/    # Módulo de procesamiento (en desarrollo)
+├── config/            # Configuración de tablas
+├── data/
+│   ├── raw/          # CSVs originales del INE
+│   ├── processed/    # Datos procesados
+│   └── metadata/     # Información de actualizaciones
+├── main.py           # Interfaz CLI principal
+└── requirements.txt  # Dependencias Python
+```
 
-## 🔧 Configuración
+## 📊 Datos Disponibles
 
-La configuración está en `scripts/utilidades/config.py`:
-- Activar/desactivar categorías de descarga
-- Parámetros de reintentos y timeouts
-- Rutas de almacenamiento
+El sistema procesa 35 tablas del INE organizadas en 7 categorías:
 
-## 📝 Resultados
+- **Tiempo de trabajo** (6 tablas): Horas trabajadas y no trabajadas
+- **Costes básicos** (2 tablas): Costes por trabajador y hora
+- **Series temporales** (2 tablas): Evolución histórica
+- **Costes detallados** (8 tablas): Desglose por sector y actividad
+- **Costes salariales** (4 tablas): Costes por tipo de jornada
+- **Vacantes** (8 tablas): Puestos vacantes y motivos
+- **Otros costes** (5 tablas): IT, horas extra, regional
 
-- **CSVs descargados**: `data/raw/csv/`
-- **Análisis**: `data/processed/analisis/`
-- **Comparaciones**: `data/processed/comparaciones/`
-- **Logs**: `logs/`
+## 🔄 Estado del Proyecto
 
-## 🔄 Actualizaciones del INE
+- ✅ **Fase 1:** Extractor de datos (completado)
+- 🔄 **Fase 2:** Procesador de datos (en desarrollo)
+- ⏳ **Fase 3:** Análisis y visualización (planificado)
 
-El INE actualiza los datos trimestralmente. El sistema detecta automáticamente:
-- Nuevos trimestres disponibles
-- Revisiones de datos históricos
-- Cambios en la estructura de archivos
+Para ver el estado detallado del proyecto, consultar [CONTEXT.md](CONTEXT.md).
 
 ## 🤝 Contribuir
 
+Las contribuciones son bienvenidas. Por favor:
+
 1. Fork el proyecto
-2. Crear una rama (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit (`git commit -m 'Añadir nueva funcionalidad'`)
-4. Push (`git push origin feature/nueva-funcionalidad`)
-5. Abrir Pull Request
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
-## 📄 Licencia
+## 📝 Licencia
 
-Este proyecto está bajo la Licencia MIT.
+Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
 
-## 🗓️ Próximos pasos
+## 🔗 Enlaces
 
-- [x] Sistema de descarga automática
-- [x] Detección de nuevos periodos
-- [x] Análisis exploratorio inicial
-- [ ] Base de datos PostgreSQL
-- [ ] API REST
-- [ ] Dashboard PowerBI
-- [ ] Análisis con IA
+- [Instituto Nacional de Estadística (INE)](https://www.ine.es)
+- [Encuesta Trimestral de Coste Laboral](https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736045053&menu=ultiDatos&idp=1254735976596)
+
+## 📧 Contacto
+
+Para preguntas o sugerencias sobre este proyecto, por favor abrir un [issue](https://github.com/Akitamo/absentismo-espana/issues) en GitHub.
+
+---
+
+**Nota:** Este proyecto no está afiliado con el Instituto Nacional de Estadística. Es una herramienta independiente para facilitar el acceso y procesamiento de datos públicos.

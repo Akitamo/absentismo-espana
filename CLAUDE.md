@@ -1,97 +1,80 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides stable context for Claude AI when working with this repository.
 
 ## Project Overview
-AbsentismoEspana v2 is a modular agent-based system for extracting and processing Spain's National Statistics Institute (INE) labor absenteeism data from the ETCL dataset (35 CSV tables with quarterly labor cost data).
+**AbsentismoEspana** - Modular system for extracting and processing Spain's National Statistics Institute (INE) labor absenteeism data from the ETCL (Encuesta Trimestral de Coste Laboral) dataset.
 
-## GitHub Repository
-- **URL**: https://github.com/Akitamo/absentismo-espana
-- **Main branch**: v1 original (monolithic architecture)
-- **Active branch**: `v2-refactor` (new modular architecture)
-- **Pull Request**: Create from https://github.com/Akitamo/absentismo-espana/pull/new/v2-refactor
+## Repository Information
+- **GitHub:** https://github.com/Akitamo/absentismo-espana
+- **Language:** Python 3.8+
+- **License:** MIT
 
-## Current Status
-- **Date**: August 12, 2025
-- **Phase 1**: ✅ COMPLETED - Extraction Agent
-- **Phase 2**: 🔄 PENDING - Processing Agent
-- **Location**: Working in `v2-refactor` branch
+## Architecture
+```
+Modular Agent-Based System:
+├── Agent Extractor: Downloads and validates CSV data from INE
+└── Agent Processor: Cleans and structures data (dimensions/metrics)
+```
 
-## V2 Architecture (Active Development)
+## Project Structure
+```
+absentismo-espana/
+├── agent_extractor/     # Data extraction from INE
+├── agent_processor/     # Data processing and cleaning
+├── config/              # Configuration files
+│   └── tables.json      # 35 INE table definitions
+├── data/
+│   ├── raw/            # Original CSV files from INE
+│   ├── processed/      # Cleaned and structured data
+│   └── metadata/       # Update tracking
+├── main.py             # CLI interface
+├── requirements.txt    # Python dependencies
+├── README.md          # User documentation
+├── CLAUDE.md          # This file (stable context)
+└── CONTEXT.md         # Dynamic project status
+```
 
-### Commands
+## Key Commands
 ```bash
-# Install dependencies
-pip install -r requirements.txt
-
 # Check for updates
 python main.py --check
 
-# Download all tables
+# Download data
 python main.py --download-all
+python main.py --download [table_id]
 
-# Download specific table
-python main.py --download 6042
-
-# Get table info
-python main.py --info 6042
+# Process data (when implemented)
+python main.py --process-all
+python main.py --process [table_id]
 ```
 
-### Current Structure
-```
-absentismo-espana/
-├── agent_extractor/       # Extraction agent (Phase 1 - DONE)
-│   ├── __init__.py       # Orchestrator
-│   ├── ine_scraper.py    # Scrapes INE for updates
-│   └── downloader.py      # Robust CSV download
-├── config/
-│   └── tables.json        # 35 table definitions
-├── data/
-│   ├── raw/              # Downloaded CSVs
-│   └── metadata/         # Update detection
-├── main.py               # CLI interface
-├── requirements.txt      # Minimal dependencies
-├── CLAUDE_PROJECT.md     # Claude Desktop context
-└── CLAUDE_INIT_PROMPT.md # Claude Desktop initialization
+## Data Sources
+- **35 ETCL tables** from INE covering:
+  - Tiempo de trabajo (6 tables)
+  - Costes básicos (2 tables)  
+  - Series temporales (2 tables)
+  - Costes detallados (8 tables)
+  - Costes salariales (4 tables)
+  - Vacantes (8 tables)
+  - Otros costes (5 tables)
 
-```
-
-### Phase 2: Processing Agent (NEXT TASK)
-To implement:
-- `agent_processor/`: Data cleaning and dimension/metric separation
-- Automatic detection of dimensions vs metrics
-- Metadata extraction from Phase 1 output
-- Structured output to `data/processed/`
-
-## Data Categories (35 Tables)
-- **Tiempo de trabajo** (6): Hours worked/not worked
-- **Costes básicos** (2): Basic costs per worker/hour
-- **Series temporales** (2): Historical evolution
-- **Costes detallados** (8): Detailed costs by sector
-- **Costes salariales** (4): Salary costs by workday
-- **Vacantes** (8): Job vacancies and reasons
-- **Otros costes** (5): IT costs, overtime, regional
-
-## Key Features
-- **Update Detection**: Checks INE for new data releases
-- **Robust Downloads**: 3-retry system with exponential backoff
-- **Multi-encoding Support**: UTF-8, Latin-1, ISO-8859-1, CP1252
-- **Modular Design**: Independent agents for extraction and processing
+## Technical Considerations
+- **Multi-encoding support:** UTF-8, Latin-1, ISO-8859-1, CP1252
+- **Robust downloads:** 3-retry system with exponential backoff
+- **Path handling:** Use `Path(__file__).parent` (no hardcoding)
+- **Error handling:** Comprehensive try-except blocks
+- **Data formats:** CSV input, JSON/CSV output
 
 ## Development Guidelines
-- Use `Path(__file__).parent` for paths (no hardcoding)
-- Each agent should be independent
-- Maintain robust error handling
-- Follow existing code patterns
-- Test with 2-3 tables before full runs
+1. Each agent must be independent and self-contained
+2. Follow existing code patterns and conventions
+3. Test with subset (2-3 tables) before full runs
+4. Maintain backward compatibility with existing data
+5. Document all new functionality in docstrings
 
-## Next Session Context
-When resuming work:
-1. We're in `v2-refactor` branch
-2. Phase 1 (Extractor) is complete and working
-3. Next task: Implement Phase 2 (Processor Agent)
-4. The processor should:
-   - Read CSVs from `data/raw/`
-   - Identify dimensions vs metrics
-   - Clean and structure data
-   - Output to `data/processed/`
+## Important Notes
+- Always check CONTEXT.md for current project status
+- INE updates data quarterly (verify with --check command)
+- Preserve original CSV encoding when processing
+- Handle missing values and data anomalies gracefully
