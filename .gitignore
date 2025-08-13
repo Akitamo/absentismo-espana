@@ -41,6 +41,11 @@ config_local.py
 # Sistema
 .DS_Store
 Thumbs.db
+nul
+
+# Base de datos DuckDB (solo para desarrollo local)
+*.db
+data/analysis.db
 
 # Temporales
 temp/

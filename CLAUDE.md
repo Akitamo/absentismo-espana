@@ -78,6 +78,32 @@ python main.py --process [table_id]
 - **Comment non-obvious code** and ensure everything is understandable to a mid-level developer
 - When writing complex logic, **add an inline `# Reason:` comment** explaining the why, not just the what
 
+## Development Tools
+
+### MCP DuckDB Server (Development Only)
+- **Status:** Configured and available for data exploration
+- **Purpose:** Fast SQL queries on CSVs during development phase
+- **Database:** `data/analysis.db` (auto-created)
+- **Usage:** Query CSVs directly without loading into memory
+
+Example queries:
+```sql
+-- Read CSV directly
+SELECT * FROM read_csv('data/raw/csv/6042_*.csv') LIMIT 10;
+
+-- Analyze periods
+SELECT periodo, COUNT(*) 
+FROM read_csv('data/raw/csv/*.csv') 
+GROUP BY periodo ORDER BY periodo;
+
+-- Detect dimensions (columns with few unique values)
+SELECT column_name, COUNT(DISTINCT column_value) as unique_count
+FROM (SELECT unnest(columns(*)) FROM read_csv('data/raw/csv/6042_*.csv'))
+WHERE unique_count < 100;
+```
+
+**IMPORTANT:** MCP is for exploration only. Production logic must be in Python.
+
 ## Important Notes
 - Always check CONTEXT.md for current project status
 - INE updates data quarterly (verify with --check command)

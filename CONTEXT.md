@@ -1,14 +1,14 @@
 # PROJECT STATUS - AbsentismoEspana
 
 ## 📅 Última actualización
-**Fecha:** 2025-08-13 15:45
-**Sesión:** Reorganización completa y limpieza del proyecto
+**Fecha:** 2025-08-13 16:30
+**Sesión:** Configuración de herramientas de desarrollo (MCP DuckDB)
 
 ## ✅ Completado recientemente
 - [x] Limpieza masiva de archivos (~80% eliminado)
-- [x] Eliminación de carpetas backups, logs, snapshots
-- [x] Eliminación de documentación temporal del refactor
-- [x] Migración a arquitectura modular v2
+- [x] Merge v2-refactor → main y eliminación de branch
+- [x] Creación de sistema de documentación dual (CLAUDE.md estático + CONTEXT.md dinámico)
+- [x] Instalación y configuración de MCP DuckDB para exploración de datos
 - [x] Agent Extractor (Fase 1) implementado y funcionando
 - [x] Sistema de descarga robusto con reintentos
 - [x] 35 tablas INE configuradas en config/tables.json
@@ -35,6 +35,8 @@
 - **Dimensiones:** Detectar automáticamente columnas categóricas
 - **Métricas:** Identificar columnas numéricas con valores
 - **CLI:** Interfaz unificada en main.py
+- **Desarrollo:** MCP DuckDB para exploración SQL durante desarrollo
+- **Producción:** Todo el código final en Python puro (sin MCP)
 
 ## ⚠️ Problemas conocidos
 - CSVs del INE usan diferentes encodings según la tabla
@@ -48,11 +50,17 @@
 - **Última descarga:** Junio 2025
 - **Próxima actualización INE:** Verificar con --check
 
+## 🛠️ Herramientas disponibles
+- **MCP DuckDB:** Servidor configurado para consultas SQL sobre CSVs
+  - Comando: `claude mcp list` para verificar estado
+  - Base de datos: `data/analysis.db`
+  - Uso: Exploración y análisis rápido durante desarrollo
+
 ## 💡 Notas para la próxima sesión
+- Usar MCP DuckDB para explorar estructura de datos antes de implementar agent_processor
+- Identificar patrones comunes entre las 35 tablas con SQL
 - Revisar si hay actualizaciones en INE con `python main.py --check`
-- Considerar implementar cache para datos procesados
-- Evaluar necesidad de logs más detallados
-- Posible implementación de tests unitarios
+- Implementar agent_processor basándose en los hallazgos de la exploración
 
 ## 🚀 Comandos disponibles actualmente
 ```bash
