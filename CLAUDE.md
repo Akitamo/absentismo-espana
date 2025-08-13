@@ -73,6 +73,11 @@ python main.py --process [table_id]
 4. Maintain backward compatibility with existing data
 5. Document all new functionality in docstrings
 
+## Documentation & Explainability
+- **Update `README.md`** when new features are added, dependencies change, or setup steps are modified
+- **Comment non-obvious code** and ensure everything is understandable to a mid-level developer
+- When writing complex logic, **add an inline `# Reason:` comment** explaining the why, not just the what
+
 ## Important Notes
 - Always check CONTEXT.md for current project status
 - INE updates data quarterly (verify with --check command)
