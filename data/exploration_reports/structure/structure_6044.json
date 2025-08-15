@@ -1,0 +1,106 @@
+{
+  "codigo_tabla": "6044",
+  "archivo": "6044_Tiempo_trabajo_por_trabajador-mes,_sectores.csv",
+  "fecha_analisis": "2025-08-15T19:23:24.895484",
+  "tamaño_bytes": 450440,
+  "tamaño_mb": 0.43,
+  "encoding": "utf-8",
+  "separador": ";",
+  "num_filas": 4968,
+  "num_columnas": 4,
+  "columnas": [
+    "Sectores de actividad CNAE 2009",
+    "Tiempo de trabajo",
+    "Periodo",
+    "Total"
+  ],
+  "columnas_detalle": {
+    "Sectores de actividad CNAE 2009": {
+      "posicion": 0,
+      "valores_unicos_muestra": 1,
+      "tiene_vacios": false,
+      "primeros_valores": [
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)"
+      ],
+      "tipo_probable": "dimension"
+    },
+    "Tiempo de trabajo": {
+      "posicion": 1,
+      "valores_unicos_muestra": 15,
+      "tiene_vacios": false,
+      "primeros_valores": [
+        "Horas efectivas",
+        "Horas no trabajadas por permisos remunerados",
+        "Horas no trabajadas por fiestas"
+      ],
+      "tipo_probable": "dimension"
+    },
+    "Periodo": {
+      "posicion": 2,
+      "valores_unicos_muestra": 69,
+      "tiene_vacios": false,
+      "primeros_valores": [
+        "2015T3",
+        "2022T1",
+        "2023T1"
+      ],
+      "tipo_probable": "temporal"
+    },
+    "Total": {
+      "posicion": 3,
+      "valores_unicos_muestra": 296,
+      "tiene_vacios": false,
+      "primeros_valores": [
+        "153,6",
+        "19,7",
+        "150,8"
+      ],
+      "tipo_probable": "metrica"
+    }
+  },
+  "primeras_filas": [
+    {
+      "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+      "Tiempo de trabajo": "Horas pactadas",
+      "Periodo": "2025T1",
+      "Total": "151"
+    },
+    {
+      "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+      "Tiempo de trabajo": "Horas pactadas",
+      "Periodo": "2024T4",
+      "Total": "151,4"
+    },
+    {
+      "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+      "Tiempo de trabajo": "Horas pactadas",
+      "Periodo": "2024T3",
+      "Total": "153,3"
+    }
+  ],
+  "ultimas_filas": [
+    {
+      "Sectores de actividad CNAE 2009": "Servicios",
+      "Tiempo de trabajo": "Horas extras por trabajador",
+      "Periodo": "2008T3",
+      "Total": "0,7"
+    },
+    {
+      "Sectores de actividad CNAE 2009": "Servicios",
+      "Tiempo de trabajo": "Horas extras por trabajador",
+      "Periodo": "2008T2",
+      "Total": "0,7"
+    },
+    {
+      "Sectores de actividad CNAE 2009": "Servicios",
+      "Tiempo de trabajo": "Horas extras por trabajador",
+      "Periodo": "2008T1",
+      "Total": "0,7"
+    }
+  ],
+  "rango_temporal": {
+    "primer_periodo": "2008T1",
+    "ultimo_periodo": "2025T1",
+    "total_periodos": 69
+  }
+}

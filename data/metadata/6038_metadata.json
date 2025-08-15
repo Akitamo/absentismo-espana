@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6038",
-  "fecha_descarga": "2025-08-15T09:59:07.368250",
-  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6038_Coste_salarial_por_trabajador_tipo_jornada_sectores.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "79c621545fb6525a20f15138ec886a4bbf6c4f195e3767fa21c8bc5708200ff4",
-  "tamaño_bytes": 362334,
-  "url_origen": null,
-  "version": 1
+  "fecha_descarga": "2025-08-15T19:04:21.854010",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6038_Coste_salarial_por_trabajador,_tipo_jornada,_sectores.csv",
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "9a238c7cceee902716d761d93793f414b264da84ca7ca9bed85c27e6b3e756a3",
+  "tamaño_bytes": 367664,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6038.csv?nocab=1",
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.368250",
+    "periodo": "2024T4",
+    "hash": "79c621545fb6525a20f15138ec886a4bbf6c4f195e3767fa21c8bc5708200ff4"
+  }
 }

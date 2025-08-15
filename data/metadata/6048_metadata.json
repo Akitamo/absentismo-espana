@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6048",
-  "fecha_descarga": "2025-08-15T09:59:07.438906",
+  "fecha_descarga": "2025-08-15T19:04:28.331231",
   "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6048_Número_de_vacantes_por_secciones.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "746984ee34baaaed5247e5111ed4723b9d209a71ca031e98456c6aef27c2bfb3",
-  "tamaño_bytes": 54268,
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "1984f4f4d56a7e713209669413d463a9ff8a70fc2439b2d737892b97c4f590bf",
+  "tamaño_bytes": 55454,
   "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6048.csv?nocab=1",
-  "version": 1
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.438906",
+    "periodo": "2024T4",
+    "hash": "746984ee34baaaed5247e5111ed4723b9d209a71ca031e98456c6aef27c2bfb3"
+  }
 }

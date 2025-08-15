@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6047",
-  "fecha_descarga": "2025-08-15T09:59:07.436907",
+  "fecha_descarga": "2025-08-15T19:04:27.265922",
   "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6047_Número_de_vacantes_por_sectores.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "4c8b059f5dad08bf619b06af56cfeb81728dbd28fc3e47fb34e269dfd1fa5ed2",
-  "tamaño_bytes": 11067,
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "7af78bc619a8b099484e54c6c774b11dc1ea9054a03183919715b5a2f4cc5f7b",
+  "tamaño_bytes": 11309,
   "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6047.csv?nocab=1",
-  "version": 1
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.436907",
+    "periodo": "2024T4",
+    "hash": "4c8b059f5dad08bf619b06af56cfeb81728dbd28fc3e47fb34e269dfd1fa5ed2"
+  }
 }

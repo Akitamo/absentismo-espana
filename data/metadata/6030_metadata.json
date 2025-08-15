@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6030",
-  "fecha_descarga": "2025-08-15T09:59:07.304252",
+  "fecha_descarga": "2025-08-15T19:04:07.596367",
   "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6030_Coste_laboral_por_trabajador_por_sectores.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "e768e6c806351f5efa87bad07564ebd732c39ffc4cb3c4e6a1a786bd5b27f1ec",
-  "tamaño_bytes": 425011,
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "e7ceae0a5998cf22d28282f701ee7a7f101c36987fbdfc58ea994a259e477ef4",
+  "tamaño_bytes": 431266,
   "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6030.csv?nocab=1",
-  "version": 1
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.304252",
+    "periodo": "2024T4",
+    "hash": "e768e6c806351f5efa87bad07564ebd732c39ffc4cb3c4e6a1a786bd5b27f1ec"
+  }
 }

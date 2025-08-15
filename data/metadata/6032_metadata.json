@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6032",
-  "fecha_descarga": "2025-08-15T09:59:07.314993",
+  "fecha_descarga": "2025-08-15T19:04:11.079934",
   "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "eb72e70aaad6a849b1cdf94803b4299959f626dd72164696a9c969c5fc7ef7b5",
-  "tamaño_bytes": 1456561,
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "1264faf0a1a500f9ce24d37528ad0edd0475fae5eb929a0ff090a73022dd1538",
+  "tamaño_bytes": 1477993,
   "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6032.csv?nocab=1",
-  "version": 1
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.314993",
+    "periodo": "2024T4",
+    "hash": "eb72e70aaad6a849b1cdf94803b4299959f626dd72164696a9c969c5fc7ef7b5"
+  }
 }

@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6037",
-  "fecha_descarga": "2025-08-15T09:59:07.355761",
+  "fecha_descarga": "2025-08-15T19:04:20.714488",
   "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "70db40900445126c5612ced839ff002e11f5462ebf3104e18de1ddcd60944124",
-  "tamaño_bytes": 2022987,
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "dc540793d7f5250a28f4cadc66ef93e9e5108d710bf93c8fe07e7e83351a28a5",
+  "tamaño_bytes": 2052763,
   "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6037.csv?nocab=1",
-  "version": 1
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.355761",
+    "periodo": "2024T4",
+    "hash": "70db40900445126c5612ced839ff002e11f5462ebf3104e18de1ddcd60944124"
+  }
 }

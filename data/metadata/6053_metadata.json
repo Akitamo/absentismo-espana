@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6053",
-  "fecha_descarga": "2025-08-15T09:59:07.441387",
+  "fecha_descarga": "2025-08-15T19:04:30.295939",
   "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6053_Motivos_no_vacantes_por_sectores.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "a274e34b5b5734a190302293c668b2f22438ba461f22eafdd7f9b4f0f1c79293",
-  "tamaño_bytes": 56470,
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "3f3b3c545c17abc1e04521c650af41db5fe137528748f189cc175a50161230c6",
+  "tamaño_bytes": 57698,
   "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6053.csv?nocab=1",
-  "version": 1
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.441387",
+    "periodo": "2024T4",
+    "hash": "a274e34b5b5734a190302293c668b2f22438ba461f22eafdd7f9b4f0f1c79293"
+  }
 }

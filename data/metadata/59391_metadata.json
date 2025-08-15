@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "59391",
-  "fecha_descarga": "2025-08-15T09:59:07.278928",
+  "fecha_descarga": "2025-08-15T19:04:03.614968",
   "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\59391_Series_por_sectores_de_actividad_y_componentes_del_coste.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "b22b43c044ae9945819731dc248e5799f8c7777d7ceefee8feb593a1676410d4",
-  "tamaño_bytes": 1241483,
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "a18c9cfd10c8c9a2a3ca0d142a46337e2b94a039d9639143196a06aaf60316e1",
+  "tamaño_bytes": 1253917,
   "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/59391.csv?nocab=1",
-  "version": 1
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.278928",
+    "periodo": "2024T4",
+    "hash": "b22b43c044ae9945819731dc248e5799f8c7777d7ceefee8feb593a1676410d4"
+  }
 }

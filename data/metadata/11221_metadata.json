@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "11221",
-  "fecha_descarga": "2025-08-15T09:59:07.271523",
+  "fecha_descarga": "2025-08-15T19:04:01.539763",
   "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\11221_Costes_laborales_por_trabajador.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "f80fd3c04cf1b670d090cf65a7665aa6c4244be8b386a41aca2b21a30ba0cb36",
-  "tamaño_bytes": 184092,
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "2c7a426bcfad8e32ddd4615f5421eec74639f44251b1b48aba039f0532cdb97e",
+  "tamaño_bytes": 185949,
   "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/11221.csv?nocab=1",
-  "version": 1
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.271523",
+    "periodo": "2024T4",
+    "hash": "f80fd3c04cf1b670d090cf65a7665aa6c4244be8b386a41aca2b21a30ba0cb36"
+  }
 }

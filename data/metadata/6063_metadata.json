@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6063",
-  "fecha_descarga": "2025-08-15T09:59:07.492229",
-  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6063_Tiempo_trabajo_por_trabajador-mes_CCAA_tipo_jornada_sectores.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "50985365e93ede074dd573cc48a63343ada3e476bbbb0d400058d9da87895e69",
-  "tamaño_bytes": 8571099,
-  "url_origen": null,
-  "version": 1
+  "fecha_descarga": "2025-08-15T19:04:00.420987",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6063_Tiempo_trabajo_por_trabajador-mes,_CCAA,_tipo_jornada,_sectores.csv",
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "2e39fcf1fff759b312e72e18569352cad1b14308801c3e37e759d230ac4b01b4",
+  "tamaño_bytes": 8697158,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6063.csv?nocab=1",
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.492229",
+    "periodo": "2024T4",
+    "hash": "50985365e93ede074dd573cc48a63343ada3e476bbbb0d400058d9da87895e69"
+  }
 }

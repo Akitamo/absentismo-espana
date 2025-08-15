@@ -25,13 +25,16 @@ Modular Agent-Based System:
 ```
 absentismo-espana/
 ├── agent_extractor/     # Data extraction from INE
-├── agent_processor/     # Data processing and cleaning
+├── agent_processor/     # Data processing and cleaning [TODO]
 ├── config/              # Configuration files
 │   └── tables.json      # 35 INE table definitions
 ├── data/
-│   ├── raw/            # Original CSV files from INE
-│   ├── processed/      # Cleaned and structured data
-│   └── metadata/       # Update tracking
+│   ├── raw/csv/        # 35 Original CSV files from INE (one per table)
+│   ├── metadata/       # Update tracking and version control
+│   ├── backups/        # Automatic backups with timestamps
+│   └── exploration_reports/ # Analysis reports for agent_processor design
+├── exploration/         # Data exploration scripts and tools
+├── scripts/            # Utility scripts
 ├── main.py             # CLI interface
 ├── requirements.txt    # Python dependencies
 ├── README.md          # User documentation
@@ -57,7 +60,8 @@ python main.py --process-all
 python main.py --process [table_id]
 
 # Auxiliary scripts
-python scripts/generate_metadata.py # Generate retroactive metadata for existing files
+python scripts/generate_metadata.py    # Generate retroactive metadata for existing files
+python scripts/validate_no_duplicates.py # Validate and clean duplicate CSV files
 ```
 
 ## Data Sources
@@ -79,7 +83,10 @@ python scripts/generate_metadata.py # Generate retroactive metadata for existing
 - **Metadata system:** JSON files with SHA256 hashes for version tracking
 - **Backup system:** Automatic backups before updates with timestamps
 - **Update strategy:** Incremental updates only when new data is available
+- **INE data behavior:** Downloads complete historical files (2008T1 to latest), not incremental
+- **Duplicate prevention:** Pattern-based file matching to prevent duplicates when INE changes names
 - **Windows compatibility:** Text markers instead of emojis for console output
+- **Anti-duplication system:** Automatic cleanup of old files when updating to prevent duplicates
 
 ## Development Guidelines
 1. **IMPORTANT: Always propose actions before implementing** - Never proceed with code changes until explicitly approved with "ok"
@@ -122,6 +129,10 @@ WHERE unique_count < 100;
 
 ## Important Notes
 - Always check CONTEXT.md for current project status
-- INE updates data quarterly (verify with --check command)
+- **INE Data Logic:** Each CSV contains COMPLETE historical data from 2008T1 to latest quarter
+- **Update Behavior:** When new data is available, INE provides the entire updated file
+- **File Management:** System creates backups and replaces old files to prevent duplicates
+- INE updates data quarterly (verify with --check-smart command)
 - Preserve original CSV encoding when processing
 - Handle missing values and data anomalies gracefully
+- Use pattern matching ({codigo}_*.csv) to handle INE filename variations

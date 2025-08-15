@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6049",
-  "fecha_descarga": "2025-08-15T09:59:07.439907",
+  "fecha_descarga": "2025-08-15T19:04:29.259345",
   "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6049_Número_de_vacantes_por_tamaño_establecimiento.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "14abf00dec25852ef2365c5b7cba27bf71afc74ec3cfd9d121c20204674bc36b",
-  "tamaño_bytes": 4756,
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "6999594c205004cebe873af707e4f8daea2373618c6c75f49cba96e00e9f06f9",
+  "tamaño_bytes": 4859,
   "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6049.csv?nocab=1",
-  "version": 1
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.439907",
+    "periodo": "2024T4",
+    "hash": "14abf00dec25852ef2365c5b7cba27bf71afc74ec3cfd9d121c20204674bc36b"
+  }
 }

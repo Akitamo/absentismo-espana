@@ -1,0 +1,126 @@
+{
+  "codigo_tabla": "6043",
+  "archivo": "6043_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_secciones_CNAE.csv",
+  "fecha_analisis": "2025-08-15T19:23:24.849406",
+  "tamaño_bytes": 2943080,
+  "tamaño_mb": 2.81,
+  "encoding": "utf-8",
+  "separador": ";",
+  "num_filas": 27531,
+  "num_columnas": 5,
+  "columnas": [
+    "Tipo de jornada",
+    "Secciones de la CNAE-09",
+    "Tiempo de trabajo",
+    "Periodo",
+    "Total"
+  ],
+  "columnas_detalle": {
+    "Tipo de jornada": {
+      "posicion": 0,
+      "valores_unicos_muestra": 1,
+      "tiene_vacios": false,
+      "primeros_valores": [
+        "Ambas jornadas"
+      ],
+      "tipo_probable": "dimension"
+    },
+    "Secciones de la CNAE-09": {
+      "posicion": 1,
+      "valores_unicos_muestra": 3,
+      "tiene_vacios": false,
+      "primeros_valores": [
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "C Industria manufacturera",
+        "B Industrias extractivas"
+      ],
+      "tipo_probable": "dimension"
+    },
+    "Tiempo de trabajo": {
+      "posicion": 2,
+      "valores_unicos_muestra": 7,
+      "tiene_vacios": false,
+      "primeros_valores": [
+        "Horas efectivas",
+        "Horas pagadas",
+        "Horas no trabajadas por I.T",
+        "Horas no trabajadas",
+        "Horas pactadas"
+      ],
+      "tipo_probable": "dimension"
+    },
+    "Periodo": {
+      "posicion": 3,
+      "valores_unicos_muestra": 69,
+      "tiene_vacios": false,
+      "primeros_valores": [
+        "2015T3",
+        "2022T1",
+        "2023T1"
+      ],
+      "tipo_probable": "temporal"
+    },
+    "Total": {
+      "posicion": 4,
+      "valores_unicos_muestra": 442,
+      "tiene_vacios": false,
+      "primeros_valores": [
+        "23,2",
+        "4,4",
+        "1,5"
+      ],
+      "tipo_probable": "metrica"
+    }
+  },
+  "primeras_filas": [
+    {
+      "Tipo de jornada": "Ambas jornadas",
+      "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+      "Tiempo de trabajo": "Horas pactadas",
+      "Periodo": "2025T1",
+      "Total": "151"
+    },
+    {
+      "Tipo de jornada": "Ambas jornadas",
+      "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+      "Tiempo de trabajo": "Horas pactadas",
+      "Periodo": "2024T4",
+      "Total": "151,4"
+    },
+    {
+      "Tipo de jornada": "Ambas jornadas",
+      "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+      "Tiempo de trabajo": "Horas pactadas",
+      "Periodo": "2024T3",
+      "Total": "153,3"
+    }
+  ],
+  "ultimas_filas": [
+    {
+      "Tipo de jornada": "Jornada a tiempo parcial",
+      "Secciones de la CNAE-09": "S Otros servicios",
+      "Tiempo de trabajo": "Horas extras por trabajador",
+      "Periodo": "2008T3",
+      "Total": "0,1"
+    },
+    {
+      "Tipo de jornada": "Jornada a tiempo parcial",
+      "Secciones de la CNAE-09": "S Otros servicios",
+      "Tiempo de trabajo": "Horas extras por trabajador",
+      "Periodo": "2008T2",
+      "Total": "0"
+    },
+    {
+      "Tipo de jornada": "Jornada a tiempo parcial",
+      "Secciones de la CNAE-09": "S Otros servicios",
+      "Tiempo de trabajo": "Horas extras por trabajador",
+      "Periodo": "2008T1",
+      "Total": "0"
+    }
+  ],
+  "rango_temporal": {
+    "primer_periodo": "2008T1",
+    "ultimo_periodo": "2025T1",
+    "total_periodos": 69
+  }
+}

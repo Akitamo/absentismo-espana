@@ -201,20 +201,42 @@ class UpdateManager:
         # Proceder con la actualización
         print(f"[INFO] Actualizando tabla {codigo_tabla}...")
         
-        # Buscar path del archivo actual
-        metadata = self.metadata_manager.get_table_metadata(codigo_tabla)
-        if metadata and 'archivo' in metadata:
-            archivo_actual = Path(metadata['archivo'])
-            
-            # Crear backup
+        # Buscar TODOS los archivos existentes para esta tabla (por patrón)
+        csv_dir = self.base_path / 'data' / 'raw' / 'csv'
+        archivos_existentes = list(csv_dir.glob(f"{codigo_tabla}_*.csv"))
+        
+        # Crear backup y eliminar archivos antiguos
+        for archivo_actual in archivos_existentes:
             if archivo_actual.exists():
                 backup_path = self.metadata_manager.create_backup(archivo_actual)
                 print(f"  Backup creado: {backup_path.name}")
+                
+                # IMPORTANTE: Eliminar el archivo original después del backup
+                try:
+                    archivo_actual.unlink()
+                    print(f"  Archivo antiguo eliminado: {archivo_actual.name}")
+                except Exception as e:
+                    self.logger.warning(f"No se pudo eliminar {archivo_actual.name}: {e}")
         
         # Descargar nueva versión
         resultado_descarga = self.downloader.download_single_table(codigo_tabla)
         
         if resultado_descarga['exitoso']:
+            # Verificar que solo quede UN archivo para esta tabla
+            archivos_finales = list(csv_dir.glob(f"{codigo_tabla}_*.csv"))
+            if len(archivos_finales) > 1:
+                self.logger.warning(f"ADVERTENCIA: Múltiples archivos para tabla {codigo_tabla}: {[f.name for f in archivos_finales]}")
+                # Intentar limpieza automática manteniendo el más reciente
+                archivos_finales.sort(key=lambda x: x.stat().st_mtime, reverse=True)
+                for archivo_extra in archivos_finales[1:]:
+                    try:
+                        archivo_extra.unlink()
+                        print(f"  Limpieza: Eliminado duplicado {archivo_extra.name}")
+                    except Exception as e:
+                        self.logger.error(f"No se pudo eliminar duplicado {archivo_extra.name}: {e}")
+            elif len(archivos_finales) == 0:
+                self.logger.error(f"ERROR: No se encontró archivo para tabla {codigo_tabla} después de la descarga")
+            
             return {
                 'codigo': codigo_tabla,
                 'actualizado': True,
@@ -275,11 +297,32 @@ class UpdateManager:
         with open(resumen_path, 'w', encoding='utf-8') as f:
             json.dump(resultados, f, indent=2, ensure_ascii=False)
         
+        # Validación final de duplicados
+        print("\n[VALIDACIÓN DE DUPLICADOS]")
+        csv_dir = self.base_path / 'data' / 'raw' / 'csv'
+        duplicados = []
+        
+        # Verificar todas las tablas procesadas
+        for detalle in resultados['detalles']:
+            if detalle['actualizado']:
+                codigo = detalle['codigo']
+                archivos = list(csv_dir.glob(f"{codigo}_*.csv"))
+                if len(archivos) > 1:
+                    duplicados.append(f"{codigo} ({len(archivos)} archivos)")
+        
+        if duplicados:
+            print(f"  [ADVERTENCIA] Duplicados detectados: {', '.join(duplicados)}")
+            resultados['advertencias'] = f"Duplicados en: {duplicados}"
+        else:
+            print(f"  [OK] Sin duplicados detectados")
+        
         print("\n" + "="*60)
         print("RESUMEN DE ACTUALIZACIÓN")
         print("="*60)
         print(f"Tablas actualizadas: {resultados['tablas_actualizadas']}")
         print(f"Errores: {resultados['errores']}")
+        if duplicados:
+            print(f"Advertencias: {len(duplicados)} tablas con duplicados")
         print(f"Resumen guardado en: {resumen_path}")
         
         return resultados

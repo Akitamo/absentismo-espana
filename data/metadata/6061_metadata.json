@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6061",
-  "fecha_descarga": "2025-08-15T09:59:07.457793",
-  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6061_Coste_laboral_por_trabajador_CCAA_sectores.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "99a7bdf7762fe952cb6afcb611b38353dc5e7df13c076edfd8dfe915eb3e632a",
-  "tamaño_bytes": 3658451,
-  "url_origen": null,
-  "version": 1
+  "fecha_descarga": "2025-08-15T19:04:41.551331",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6061_Coste_laboral_por_trabajador,_CCAA,_sectores.csv",
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "54d13ea53a25ce048f6e6aebfa726ffe886d35dbb16c3bedb1674ad596dcc257",
+  "tamaño_bytes": 3712273,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6061.csv?nocab=1",
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.457793",
+    "periodo": "2024T4",
+    "hash": "99a7bdf7762fe952cb6afcb611b38353dc5e7df13c076edfd8dfe915eb3e632a"
+  }
 }

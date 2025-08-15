@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6057",
-  "fecha_descarga": "2025-08-15T09:59:07.451774",
-  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6057_Coste_por_hora_extraordinaria_actividad_económica.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "186a56c3661eb4dfde650cd58b5abaf9888f41547a91adc2963908b89b1e6319",
-  "tamaño_bytes": 424228,
-  "url_origen": null,
-  "version": 1
+  "fecha_descarga": "2025-08-15T19:04:37.520645",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6057_Coste_por_hora_extraordinaria,_actividad_económica.csv",
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "76eca92d878c7dfbfb33201123715fa8ea442d49a8cbd1281696a440f317a99a",
+  "tamaño_bytes": 430469,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6057.csv?nocab=1",
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.451774",
+    "periodo": "2024T4",
+    "hash": "186a56c3661eb4dfde650cd58b5abaf9888f41547a91adc2963908b89b1e6319"
+  }
 }

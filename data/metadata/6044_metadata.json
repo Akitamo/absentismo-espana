@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "6044",
-  "fecha_descarga": "2025-08-15T09:59:07.412928",
-  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6044_Tiempo_trabajo_por_trabajador-mes_sectores.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "47d7cfa23dde1c045e2cd832ea66f29821695a92619c8dd90486f969aabea341",
-  "tamaño_bytes": 443914,
-  "url_origen": null,
-  "version": 1
+  "fecha_descarga": "2025-08-15T19:03:51.604848",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6044_Tiempo_trabajo_por_trabajador-mes,_sectores.csv",
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "c10505da395b3430e92df99f088b454b4f7356b80b34e1d4ad7ccfc18658b992",
+  "tamaño_bytes": 450440,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6044.csv?nocab=1",
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.412928",
+    "periodo": "2024T4",
+    "hash": "47d7cfa23dde1c045e2cd832ea66f29821695a92619c8dd90486f969aabea341"
+  }
 }

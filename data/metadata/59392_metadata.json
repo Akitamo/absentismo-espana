@@ -1,10 +1,15 @@
 {
   "codigo_tabla": "59392",
-  "fecha_descarga": "2025-08-15T09:59:07.286306",
+  "fecha_descarga": "2025-08-15T19:04:06.091936",
   "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv",
-  "ultimo_periodo": "2024T4",
-  "hash_archivo": "f5943be3fc45cd8a3b7cb3d69cfd804d93506cb3db791861f1f1ccaed52445b9",
-  "tamaño_bytes": 2360757,
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "3d1175105594342a9107d1a276c68abaf8e4cb93c81e6acfb87ea70d89affd2d",
+  "tamaño_bytes": 2384417,
   "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/59392.csv?nocab=1",
-  "version": 1
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.286306",
+    "periodo": "2024T4",
+    "hash": "f5943be3fc45cd8a3b7cb3d69cfd804d93506cb3db791861f1f1ccaed52445b9"
+  }
 }

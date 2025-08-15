@@ -1,0 +1,245 @@
+{
+  "fecha_actualizacion": "2025-08-15T19:03:47.434233",
+  "tablas_actualizadas": 34,
+  "errores": 0,
+  "detalles": [
+    {
+      "codigo": "6043",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6044",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6045",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6046",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6063",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "11221",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "11222",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "59391",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "59392",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6030",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6031",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6032",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6033",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6034",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6035",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6036",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6037",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6038",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6039",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6040",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6041",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6047",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6048",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6049",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6053",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6054",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6055",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6064",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6066",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6056",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6057",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6058",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6061",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    },
+    {
+      "codigo": "6062",
+      "actualizado": true,
+      "periodo_anterior": "2024T4",
+      "periodo_nuevo": "2025T1",
+      "mensaje": "Actualización exitosa"
+    }
+  ]
+}
