@@ -1,8 +1,26 @@
-# Dependencias mínimas para el Agente Extractor
-# Fase 1: Solo descarga y detección de actualizaciones
+# Dependencias del proyecto AbsentismoEspana
+# ===========================================
 
+# Fase 1: Agent Extractor (Completado)
+# -------------------------------------
 # HTTP y scraping
 requests==2.31.0
+beautifulsoup4==4.12.2
 
-# Procesamiento de datos (para fase 2)
-pandas==2.0.3
+# Fase 2: Exploración y Análisis (En progreso)
+# ---------------------------------------------
+# Procesamiento de datos
+pandas==2.2.2
+numpy==1.26.4
+
+# Generación de Excel
+openpyxl==3.1.2
+
+# Desarrollo y Testing (Opcional)
+# --------------------------------
+# Base de datos para exploración
+# duckdb==0.10.1  # Solo si se usa MCP DuckDB
+
+# Utilidades
+# ----------
+python-dateutil==2.8.2

@@ -1,0 +1,2217 @@
+{
+  "11221": {
+    "codigo": "11221",
+    "archivo": "11221_Costes_laborales_por_trabajador.csv",
+    "num_filas": 1818,
+    "num_columnas": 5,
+    "columnas": [
+      "Corrección de efectos",
+      "Componentes del coste",
+      "Tipo de dato",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Corrección de efectos": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 2,
+        "ejemplos": [
+          "Datos no ajustados de estacionalidad y calendario",
+          "Datos ajustados de calendario"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 1,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "Coste total por trabajador",
+          "Coste salarial total por trabajador",
+          "Otros costes por trabajador"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tipo de dato": {
+        "posicion": 2,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 2,
+        "ejemplos": [
+          "Euros",
+          "Tasa de variación anual"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 101,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 589,
+        "ejemplos": [
+          "3.124,55",
+          "3.258,14",
+          "3.020,71"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "11222": {
+    "codigo": "11222",
+    "archivo": "11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv",
+    "num_filas": 1818,
+    "num_columnas": 5,
+    "columnas": [
+      "Corrección de efectos",
+      "Componentes del coste",
+      "Tipo de dato",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Corrección de efectos": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 2,
+        "ejemplos": [
+          "Datos no ajustados de estacionalidad y calendario",
+          "Datos ajustados de calendario"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 1,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "Coste laboral total por hora",
+          "Coste salarial total por hora",
+          "Otros costes por hora"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tipo de dato": {
+        "posicion": 2,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 2,
+        "ejemplos": [
+          "Euros",
+          "Tasa de variación anual"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 101,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 540,
+        "ejemplos": [
+          "23,6",
+          "25,63",
+          "25,08"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "59391": {
+    "codigo": "59391",
+    "archivo": "59391_Series_por_sectores_de_actividad_y_componentes_del_coste.csv",
+    "num_filas": 9696,
+    "num_columnas": 6,
+    "columnas": [
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Tipo de dato",
+      "Clase de indicador",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 1,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Coste total por trabajador",
+          "Coste salarial total por trabajador",
+          "Coste salarial ordinario por trabajador",
+          "Otros costes por trabajador"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tipo de dato": {
+        "posicion": 2,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "Euros",
+          "Índice",
+          "Tasa de variación anual"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Clase de indicador": {
+        "posicion": 3,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Principales series de ETCL"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 4,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 101,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 5,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 693,
+        "ejemplos": [
+          "3.124,55",
+          "3.258,14",
+          "3.020,71"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "59392": {
+    "codigo": "59392",
+    "archivo": "59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv",
+    "num_filas": 32724,
+    "num_columnas": 5,
+    "columnas": [
+      "Comunidades y Ciudades Autónomas",
+      "Componentes del coste",
+      "Tipo de dato",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Comunidades y Ciudades Autónomas": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Total Nacional"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 1,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Coste total por trabajador",
+          "Coste salarial total por trabajador",
+          "Otros costes por trabajador",
+          "Coste laboral total por hora"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tipo de dato": {
+        "posicion": 2,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "Euros",
+          "Índice",
+          "Tasa de variación anual"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 101,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 692,
+        "ejemplos": [
+          "3.124,55",
+          "3.258,14",
+          "3.020,71"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6030": {
+    "codigo": "6030",
+    "archivo": "6030_Coste_laboral_por_trabajador_por_sectores.csv",
+    "num_filas": 4692,
+    "num_columnas": 4,
+    "columnas": [
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 1,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 15,
+        "ejemplos": [
+          "Coste laboral total",
+          "Coste salarial total",
+          "Coste salarial ordinario"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 959,
+        "ejemplos": [
+          "3.124,55",
+          "3.258,14",
+          "3.020,71"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6031": {
+    "codigo": "6031",
+    "archivo": "6031_Coste_laboral_por_trabajador_por_tamaño,_sectores.csv",
+    "num_filas": 7728,
+    "num_columnas": 5,
+    "columnas": [
+      "Tamaño del establecimiento",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Tamaño del establecimiento": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Total"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 7,
+        "ejemplos": [
+          "Coste laboral total",
+          "Coste salarial total",
+          "Coste salarial ordinario",
+          "Otros costes",
+          "Coste por percepciones no salariales"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 990,
+        "ejemplos": [
+          "3.124,55",
+          "3.258,14",
+          "3.020,71"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6032": {
+    "codigo": "6032",
+    "archivo": "6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv",
+    "num_filas": 15732,
+    "num_columnas": 4,
+    "columnas": [
+      "Secciones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Secciones de la CNAE-09": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 2,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 1,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 12,
+        "ejemplos": [
+          "Coste laboral total",
+          "Coste salarial total",
+          "Coste salarial ordinario"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 994,
+        "ejemplos": [
+          "3.124,55",
+          "3.258,14",
+          "3.020,71"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6033": {
+    "codigo": "6033",
+    "archivo": "6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv",
+    "num_filas": 38157,
+    "num_columnas": 4,
+    "columnas": [
+      "Divisiones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Divisiones de la CNAE-09": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas",
+          "10 Industria de la alimentación"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 1,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 7,
+        "ejemplos": [
+          "Coste laboral total",
+          "Coste salarial total",
+          "Coste salarial ordinario",
+          "Otros costes",
+          "Coste por percepciones no salariales"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 993,
+        "ejemplos": [
+          "3.124,55",
+          "3.258,14",
+          "3.020,71"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6034": {
+    "codigo": "6034",
+    "archivo": "6034_Coste_laboral_por_hora_efectiva_por_sectores.csv",
+    "num_filas": 1104,
+    "num_columnas": 4,
+    "columnas": [
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción",
+          "Servicios"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 1,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Coste laboral total por hora",
+          "Coste salarial total por hora",
+          "Coste salarial ordinario por hora",
+          "Otros costes por hora"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 714,
+        "ejemplos": [
+          "23,6",
+          "25,63",
+          "25,08"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6035": {
+    "codigo": "6035",
+    "archivo": "6035_Coste_laboral_por_hora_efectiva_por_tamaño,_sectores.csv",
+    "num_filas": 4416,
+    "num_columnas": 5,
+    "columnas": [
+      "Tamaño del establecimiento",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Tamaño del establecimiento": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Total"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción",
+          "Servicios"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Coste laboral total por hora",
+          "Coste salarial total por hora",
+          "Coste salarial ordinario por hora",
+          "Otros costes por hora"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 714,
+        "ejemplos": [
+          "23,6",
+          "25,63",
+          "25,08"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6036": {
+    "codigo": "6036",
+    "archivo": "6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv",
+    "num_filas": 5244,
+    "num_columnas": 4,
+    "columnas": [
+      "Secciones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Secciones de la CNAE-09": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas",
+          "C Industria manufacturera",
+          "D Suministro de energía eléctrica, gas, vapor y aire acondicionado"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 1,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Coste laboral total por hora",
+          "Coste salarial total por hora",
+          "Coste salarial ordinario por hora",
+          "Otros costes por hora"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 838,
+        "ejemplos": [
+          "23,6",
+          "25,63",
+          "25,08"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6037": {
+    "codigo": "6037",
+    "archivo": "6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv",
+    "num_filas": 21804,
+    "num_columnas": 4,
+    "columnas": [
+      "Divisiones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Divisiones de la CNAE-09": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas",
+          "10 Industria de la alimentación",
+          "11 Fabricación de bebidas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 1,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Coste laboral total por hora",
+          "Coste salarial total por hora",
+          "Coste salarial ordinario por hora",
+          "Otros costes por hora"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 797,
+        "ejemplos": [
+          "23,6",
+          "25,63",
+          "25,08"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6038": {
+    "codigo": "6038",
+    "archivo": "6038_Coste_salarial_por_trabajador,_tipo_jornada,_sectores.csv",
+    "num_filas": 3312,
+    "num_columnas": 5,
+    "columnas": [
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Tipo de jornada": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Ambas jornadas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción",
+          "Servicios"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Coste salarial total",
+          "Coste salarial ordinario",
+          "Coste salarial pagos extraordinarios",
+          "Coste salarial pagos atrasados"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 993,
+        "ejemplos": [
+          "2.290,46",
+          "2.442,32",
+          "2.205,43"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6039": {
+    "codigo": "6039",
+    "archivo": "6039_Coste_salarial_por_trabajador,_tipo_jornada,_secciones_CNAE.csv",
+    "num_filas": 15732,
+    "num_columnas": 5,
+    "columnas": [
+      "Tipo de jornada",
+      "Secciones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Tipo de jornada": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Ambas jornadas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Secciones de la CNAE-09": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas",
+          "C Industria manufacturera",
+          "D Suministro de energía eléctrica, gas, vapor y aire acondicionado"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Coste salarial total",
+          "Coste salarial ordinario",
+          "Coste salarial pagos extraordinarios",
+          "Coste salarial pagos atrasados"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 991,
+        "ejemplos": [
+          "2.290,46",
+          "2.442,32",
+          "2.205,43"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6040": {
+    "codigo": "6040",
+    "archivo": "6040_Coste_salarial_por_hora_efectiva,_tipo_jornada,_sectores.csv",
+    "num_filas": 1656,
+    "num_columnas": 5,
+    "columnas": [
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Tipo de jornada": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 2,
+        "ejemplos": [
+          "Ambas jornadas",
+          "Jornada a tiempo completo"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción",
+          "Servicios"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 2,
+        "ejemplos": [
+          "Coste salarial total por hora",
+          "Coste salarial ordinario por hora"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 566,
+        "ejemplos": [
+          "17,3",
+          "19,21",
+          "18,31"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6041": {
+    "codigo": "6041",
+    "archivo": "6041_Coste_salarial_por_hora_efectiva,_tipo_jornada,_secciones_CNAE.csv",
+    "num_filas": 7866,
+    "num_columnas": 5,
+    "columnas": [
+      "Tipo de jornada",
+      "Secciones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Tipo de jornada": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Ambas jornadas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Secciones de la CNAE-09": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 8,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas",
+          "C Industria manufacturera",
+          "D Suministro de energía eléctrica, gas, vapor y aire acondicionado",
+          "E Suministro de agua, actividades de saneamiento, gestión de residuos y descontaminación"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 2,
+        "ejemplos": [
+          "Coste salarial total por hora",
+          "Coste salarial ordinario por hora"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 726,
+        "ejemplos": [
+          "17,3",
+          "19,21",
+          "18,31"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6042": {
+    "codigo": "6042",
+    "archivo": "6042_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_sectores.csv",
+    "num_filas": 5796,
+    "num_columnas": 5,
+    "columnas": [
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Tipo de jornada": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Ambas jornadas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tiempo de trabajo": {
+        "posicion": 2,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 7,
+        "ejemplos": [
+          "Horas pactadas",
+          "Horas pagadas",
+          "Horas efectivas",
+          "Horas no trabajadas",
+          "Horas no trabajadas por vacaciones y fiestas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 439,
+        "ejemplos": [
+          "151",
+          "151,4",
+          "153,3"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6043": {
+    "codigo": "6043",
+    "archivo": "6043_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_secciones_CNAE.csv",
+    "num_filas": 27531,
+    "num_columnas": 5,
+    "columnas": [
+      "Tipo de jornada",
+      "Secciones de la CNAE-09",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Tipo de jornada": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Ambas jornadas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Secciones de la CNAE-09": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas",
+          "C Industria manufacturera"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tiempo de trabajo": {
+        "posicion": 2,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 7,
+        "ejemplos": [
+          "Horas pactadas",
+          "Horas pagadas",
+          "Horas efectivas",
+          "Horas no trabajadas",
+          "Horas no trabajadas por vacaciones y fiestas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 442,
+        "ejemplos": [
+          "151",
+          "151,4",
+          "153,3"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6044": {
+    "codigo": "6044",
+    "archivo": "6044_Tiempo_trabajo_por_trabajador-mes,_sectores.csv",
+    "num_filas": 4968,
+    "num_columnas": 4,
+    "columnas": [
+      "Sectores de actividad CNAE 2009",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tiempo de trabajo": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 15,
+        "ejemplos": [
+          "Horas pactadas",
+          "Horas pagadas",
+          "Horas efectivas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 296,
+        "ejemplos": [
+          "151",
+          "151,4",
+          "153,3"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6045": {
+    "codigo": "6045",
+    "archivo": "6045_Tiempo_trabajo_por_trabajador-mes,_secciones_CNAE.csv",
+    "num_filas": 9177,
+    "num_columnas": 4,
+    "columnas": [
+      "Secciones de la CNAE-09",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Secciones de la CNAE-09": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas",
+          "C Industria manufacturera"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tiempo de trabajo": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 7,
+        "ejemplos": [
+          "Horas pactadas",
+          "Horas pagadas",
+          "Horas efectivas",
+          "Horas no trabajadas",
+          "Horas no trabajadas por vacaciones y fiestas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 442,
+        "ejemplos": [
+          "151",
+          "151,4",
+          "153,3"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6046": {
+    "codigo": "6046",
+    "archivo": "6046_Tiempo_trabajo_por_trabajador-mes,_divisiones_CNAE.csv",
+    "num_filas": 27255,
+    "num_columnas": 4,
+    "columnas": [
+      "Divisiones de la CNAE-09",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Divisiones de la CNAE-09": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas",
+          "10 Industria de la alimentación"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tiempo de trabajo": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 5,
+        "ejemplos": [
+          "Horas pactadas",
+          "Horas pagadas",
+          "Horas efectivas",
+          "Horas no trabajadas",
+          "Horas extras por trabajador"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 440,
+        "ejemplos": [
+          "151",
+          "151,4",
+          "153,3"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6047": {
+    "codigo": "6047",
+    "archivo": "6047_Número_de_vacantes_por_sectores.csv",
+    "num_filas": 188,
+    "num_columnas": 3,
+    "columnas": [
+      "Sector de actividad",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Sector de actividad": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción",
+          "Servicios"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 1,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 47,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 188,
+        "ejemplos": [
+          152.885,
+          148.018,
+          150.541
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6048": {
+    "codigo": "6048",
+    "archivo": "6048_Número_de_vacantes_por_secciones.csv",
+    "num_filas": 893,
+    "num_columnas": 3,
+    "columnas": [
+      "Secciones de actividad",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Secciones de actividad": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 19,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas",
+          "C Industria manufacturera"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 1,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 47,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 746,
+        "ejemplos": [
+          "152.885",
+          "148.018",
+          "150.541"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6049": {
+    "codigo": "6049",
+    "archivo": "6049_Número_de_vacantes_por_tamaño_establecimiento.csv",
+    "num_filas": 188,
+    "num_columnas": 3,
+    "columnas": [
+      "Tamaño del establecimiento",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Tamaño del establecimiento": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Total",
+          "De 1 a 49",
+          "De 50 a 199",
+          "De 200 o más"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 1,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 47,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 187,
+        "ejemplos": [
+          152.885,
+          148.018,
+          150.541
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6053": {
+    "codigo": "6053",
+    "archivo": "6053_Motivos_no_vacantes_por_sectores.csv",
+    "num_filas": 752,
+    "num_columnas": 4,
+    "columnas": [
+      "Sectores de actividad",
+      "Motivos por los que no exiten puestos de trabajo vacantes",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Sectores de actividad": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción",
+          "Servicios"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Motivos por los que no exiten puestos de trabajo vacantes": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Total",
+          "No se necesita ningún trabajador",
+          "Elevado coste de contratación",
+          "Otros"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 47,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 101,
+        "ejemplos": [
+          "100",
+          "91,5",
+          "92"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6054": {
+    "codigo": "6054",
+    "archivo": "6054_Motivos_no_vacantes_por_secciones.csv",
+    "num_filas": 3572,
+    "num_columnas": 4,
+    "columnas": [
+      "Secciones de actividad",
+      "Motivos por los que no exiten puestos de trabajo vacantes",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Secciones de actividad": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 6,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "B Industrias extractivas",
+          "C Industria manufacturera",
+          "D Suministro de energía eléctrica, gas, vapor y aire acondicionado",
+          "E Suministro de agua, actividades de saneamiento, gestión de residuos y descontaminación"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Motivos por los que no exiten puestos de trabajo vacantes": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Total",
+          "No se necesita ningún trabajador",
+          "Elevado coste de contratación",
+          "Otros"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 47,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 148,
+        "ejemplos": [
+          "100",
+          "91,5",
+          "92"
+        ],
+        "tiene_nulos": "True"
+      }
+    },
+    "separador": ";"
+  },
+  "6055": {
+    "codigo": "6055",
+    "archivo": "6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv",
+    "num_filas": 752,
+    "num_columnas": 4,
+    "columnas": [
+      "Tamaño del establecimiento",
+      "Motivos por los que no exiten puestos de trabajo vacantes",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Tamaño del establecimiento": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Total",
+          "De 1 a 49",
+          "De 50 a 199",
+          "De 200 o más"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Motivos por los que no exiten puestos de trabajo vacantes": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Total",
+          "No se necesita ningún trabajador",
+          "Elevado coste de contratación",
+          "Otros"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 47,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 193,
+        "ejemplos": [
+          "100",
+          "91,5",
+          "92"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6056": {
+    "codigo": "6056",
+    "archivo": "6056_Percepciones_IT,_coste_indemnización_por_actividad.csv",
+    "num_filas": 3036,
+    "num_columnas": 4,
+    "columnas": [
+      "Actividad económica CNAE-09",
+      "Clase de indicador",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Actividad económica CNAE-09": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 8,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción",
+          "Servicios",
+          "B Industrias extractivas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Clase de indicador": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 2,
+        "ejemplos": [
+          "Percepciones por día de IT",
+          "Coste indemnización por trabajador despedido"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 900,
+        "ejemplos": [
+          "15,43",
+          "14,36",
+          "12,85"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6057": {
+    "codigo": "6057",
+    "archivo": "6057_Coste_por_hora_extraordinaria,_actividad_económica.csv",
+    "num_filas": 6831,
+    "num_columnas": 3,
+    "columnas": [
+      "Actividad económica CNAE-09",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Actividad económica CNAE-09": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 15,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 1,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 736,
+        "ejemplos": [
+          "19,32",
+          "19,35",
+          "18,83"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6058": {
+    "codigo": "6058",
+    "archivo": "6058_Coste_por_hora_extraordinaria_por_CCAA.csv",
+    "num_filas": 1242,
+    "num_columnas": 3,
+    "columnas": [
+      "Comunidades y Ciudades Autónomas",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Comunidades y Ciudades Autónomas": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 15,
+        "ejemplos": [
+          "Total Nacional",
+          "01 Andalucía",
+          "02 Aragón"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 1,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 563,
+        "ejemplos": [
+          "19,32",
+          "19,35",
+          "18,83"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6061": {
+    "codigo": "6061",
+    "archivo": "6061_Coste_laboral_por_trabajador,_CCAA,_sectores.csv",
+    "num_filas": 34776,
+    "num_columnas": 5,
+    "columnas": [
+      "Comunidades y Ciudades Autónomas",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Comunidades y Ciudades Autónomas": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Total Nacional"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 7,
+        "ejemplos": [
+          "Coste laboral total",
+          "Coste salarial total",
+          "Coste salarial ordinario",
+          "Otros costes",
+          "Coste por percepciones no salariales"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 990,
+        "ejemplos": [
+          "3.124,55",
+          "3.258,14",
+          "3.020,71"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6062": {
+    "codigo": "6062",
+    "archivo": "6062_Coste_laboral_por_hora_efectiva,_CCAA,_sectores.csv",
+    "num_filas": 19872,
+    "num_columnas": 5,
+    "columnas": [
+      "Comunidades y Ciudades Autónomas",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Comunidades y Ciudades Autónomas": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Total Nacional"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción",
+          "Servicios"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Componentes del coste": {
+        "posicion": 2,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Coste laboral total por hora",
+          "Coste salarial total por hora",
+          "Coste salarial ordinario por hora",
+          "Otros costes por hora"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 3,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 4,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 714,
+        "ejemplos": [
+          "23,6",
+          "25,63",
+          "25,08"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6063": {
+    "codigo": "6063",
+    "archivo": "6063_Tiempo_trabajo_por_trabajador-mes,_CCAA,_tipo_jornada,_sectores.csv",
+    "num_filas": 74520,
+    "num_columnas": 6,
+    "columnas": [
+      "Comunidades y Ciudades Autónomas",
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Comunidades y Ciudades Autónomas": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Total Nacional"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tipo de jornada": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Ambas jornadas"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Sectores de actividad CNAE 2009": {
+        "posicion": 2,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 3,
+        "ejemplos": [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "Industria",
+          "Construcción"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Tiempo de trabajo": {
+        "posicion": 3,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 5,
+        "ejemplos": [
+          "Horas pactadas",
+          "Horas pagadas",
+          "Horas efectivas",
+          "Horas no trabajadas",
+          "Horas extras por trabajador"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 4,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 69,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 5,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 395,
+        "ejemplos": [
+          "151",
+          "151,4",
+          "153,3"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6064": {
+    "codigo": "6064",
+    "archivo": "6064_Número_de_vacantes_por_comunidad_autónoma.csv",
+    "num_filas": 846,
+    "num_columnas": 4,
+    "columnas": [
+      "Total Nacional",
+      "Comunidades y Ciudades Autónomas",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Total Nacional": {
+        "posicion": 0,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 1,
+        "ejemplos": [
+          "Total Nacional"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Comunidades y Ciudades Autónomas": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 17,
+        "ejemplos": [
+          "01 Andalucía",
+          "02 Aragón",
+          "03 Asturias, Principado de"
+        ],
+        "tiene_nulos": "True"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 47,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 800,
+        "ejemplos": [
+          152.885,
+          148.018,
+          150.541
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  },
+  "6066": {
+    "codigo": "6066",
+    "archivo": "6066_Motivos_no_vacantes_por_comunidad_autónoma.csv",
+    "num_filas": 3384,
+    "num_columnas": 4,
+    "columnas": [
+      "Comunidad autónoma",
+      "Motivos por los que no exiten puestos de trabajo vacantes",
+      "Periodo",
+      "Total"
+    ],
+    "columnas_detalle": {
+      "Comunidad autónoma": {
+        "posicion": 0,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 6,
+        "ejemplos": [
+          "Total Nacional",
+          "01 Andalucía",
+          "02 Aragón",
+          "03 Asturias, Principado de",
+          "04 Balears, Illes"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Motivos por los que no exiten puestos de trabajo vacantes": {
+        "posicion": 1,
+        "tipo_detectado": "DIMENSION",
+        "valores_unicos_muestra": 4,
+        "ejemplos": [
+          "Total",
+          "No se necesita ningún trabajador",
+          "Elevado coste de contratación",
+          "Otros"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Periodo": {
+        "posicion": 2,
+        "tipo_detectado": "TEMPORAL",
+        "valores_unicos_muestra": 47,
+        "ejemplos": [
+          "2025T1",
+          "2024T4",
+          "2024T3"
+        ],
+        "tiene_nulos": "False"
+      },
+      "Total": {
+        "posicion": 3,
+        "tipo_detectado": "METRICA",
+        "valores_unicos_muestra": 147,
+        "ejemplos": [
+          "100",
+          "91,5",
+          "92"
+        ],
+        "tiene_nulos": "False"
+      }
+    },
+    "separador": ";"
+  }
+}

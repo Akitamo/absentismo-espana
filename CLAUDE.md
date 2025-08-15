@@ -32,11 +32,19 @@ absentismo-espana/
 │   ├── raw/csv/        # 35 Original CSV files from INE (one per table)
 │   ├── metadata/       # Update tracking and version control
 │   ├── backups/        # Automatic backups with timestamps
-│   └── exploration_reports/ # Analysis reports for agent_processor design
+│   └── exploration_reports/ # Analysis reports and Excel matrices
+│       ├── structure/  # Individual table structure analysis (JSON)
+│       ├── *.json      # Comprehensive analysis data
+│       └── *.xlsx      # Excel reports with column matrices
 ├── exploration/         # Data exploration scripts and tools
+│   ├── csv_explorer.py     # Basic CSV structure analysis
+│   ├── columns_analyzer.py # Mass analysis and Excel generation
+│   └── report_viewer.py    # HTML report generation [WIP]
 ├── scripts/            # Utility scripts
+│   ├── generate_metadata.py      # Retroactive metadata generation
+│   └── validate_no_duplicates.py # Anti-duplicate validation and cleanup
 ├── main.py             # CLI interface
-├── requirements.txt    # Python dependencies
+├── requirements.txt    # Python dependencies (pandas, openpyxl, numpy)
 ├── README.md          # User documentation
 ├── CLAUDE.md          # This file (stable context)
 └── CONTEXT.md         # Dynamic project status
@@ -60,8 +68,12 @@ python main.py --process-all
 python main.py --process [table_id]
 
 # Auxiliary scripts
-python scripts/generate_metadata.py    # Generate retroactive metadata for existing files
+python scripts/generate_metadata.py      # Generate retroactive metadata for existing files
 python scripts/validate_no_duplicates.py # Validate and clean duplicate CSV files
+
+# Data exploration scripts
+python exploration/csv_explorer.py       # Analyze CSV structure and identify dimensions/metrics
+python exploration/columns_analyzer.py   # Mass analysis of all 35 tables with Excel output
 ```
 
 ## Data Sources
@@ -126,6 +138,13 @@ WHERE unique_count < 100;
 ```
 
 **IMPORTANT:** MCP is for exploration only. Production logic must be in Python.
+
+### Data Exploration Tools (Python-based)
+- **csv_explorer.py:** Automated structure analysis with dimension/metric detection
+- **columns_analyzer.py:** Mass analysis of all 35 tables generating Excel matrices  
+- **Pandas integration:** Deep analysis with encoding detection and data profiling
+- **Excel output:** Comprehensive column matrices for agent_processor design
+- **JSON reports:** Structured analysis data for programmatic consumption
 
 ## Important Notes
 - Always check CONTEXT.md for current project status
