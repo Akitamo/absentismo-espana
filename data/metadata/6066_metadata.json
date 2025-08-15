@@ -1,0 +1,10 @@
+{
+  "codigo_tabla": "6066",
+  "fecha_descarga": "2025-08-15T09:59:07.542106",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6066_Motivos_no_vacantes_por_comunidad_autónoma.csv",
+  "ultimo_periodo": "2024T4",
+  "hash_archivo": "a3257bbc5757cbd319f75f44077a1cb448fe299a99c2384c7333b848b1ef47f9",
+  "tamaño_bytes": 163100,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6066.csv?nocab=1",
+  "version": 1
+}

@@ -1,0 +1,10 @@
+{
+  "codigo_tabla": "6036",
+  "fecha_descarga": "2025-08-15T09:59:07.351764",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv",
+  "ultimo_periodo": "2024T4",
+  "hash_archivo": "af08e5d7cf7d928e1821ddec38d4ce73864a865581b0fd767b1e2de2a3e3c001",
+  "tamaño_bytes": 469388,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6036.csv?nocab=1",
+  "version": 1
+}

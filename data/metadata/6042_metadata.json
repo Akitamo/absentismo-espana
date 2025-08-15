@@ -1,0 +1,15 @@
+{
+  "codigo_tabla": "6042",
+  "fecha_descarga": "2025-08-15T10:08:33.379140",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6042_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_sectores.csv",
+  "ultimo_periodo": "2025T1",
+  "hash_archivo": "b5faa7d5c8e00ad46c9bb1b58ac3b71de7ff027fb627081389dd881e4727e37e",
+  "tamaño_bytes": 601106,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6042.csv?nocab=1",
+  "version": 2,
+  "version_anterior": {
+    "fecha": "2025-08-15T09:59:07.392275",
+    "periodo": "2024T4",
+    "hash": "da124dfe1b3fdd9da8de8ee9f08e3a833a2327de12372302ce753ee589c24a3d"
+  }
+}

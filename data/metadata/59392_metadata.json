@@ -1,0 +1,10 @@
+{
+  "codigo_tabla": "59392",
+  "fecha_descarga": "2025-08-15T09:59:07.286306",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv",
+  "ultimo_periodo": "2024T4",
+  "hash_archivo": "f5943be3fc45cd8a3b7cb3d69cfd804d93506cb3db791861f1f1ccaed52445b9",
+  "tamaño_bytes": 2360757,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/59392.csv?nocab=1",
+  "version": 1
+}

@@ -10,6 +10,7 @@ import csv
 from pathlib import Path
 from datetime import datetime
 import logging
+from .metadata_manager import MetadataManager
 
 class Downloader:
     """Descarga robusta de tablas del INE con reintentos y validación"""
@@ -21,6 +22,7 @@ class Downloader:
         self.config = self._load_config()
         self.session = self._create_session()
         self.logger = self._setup_logger()
+        self.metadata_manager = MetadataManager()
     
     def _load_config(self):
         """Carga la configuración"""
@@ -183,15 +185,30 @@ class Downloader:
                             continue
                     
                     if texto_decodificado:
+                        # Verificar si necesita actualización antes de guardar
+                        csv_path = self.data_path / 'csv' / f"{codigo}_{tabla_info['nombre'].replace(' ', '_').replace('/', '-')}.csv"
+                        csv_path.parent.mkdir(parents=True, exist_ok=True)
+                        
+                        # Crear backup si el archivo existe
+                        if csv_path.exists():
+                            self.metadata_manager.create_backup(csv_path)
+                        
                         # Guardar con encoding UTF-8
-                        with open(file_path, 'w', encoding='utf-8', newline='') as f:
+                        with open(csv_path, 'w', encoding='utf-8', newline='') as f:
                             f.write(texto_decodificado)
                         
                         # Validar el CSV
-                        if self._validate_csv(file_path):
+                        if self._validate_csv(csv_path):
+                            # Guardar metadata
+                            self.metadata_manager.save_table_metadata(
+                                codigo_tabla=codigo,
+                                csv_path=csv_path,
+                                url_origen=tabla_info['url_csv']
+                            )
                             resultado['exitoso'] = True
                             resultado['tamaño_kb'] = len(content) / 1024
-                            self.logger.info(f"Tabla {codigo} descargada exitosamente")
+                            resultado['archivo'] = str(csv_path)
+                            self.logger.info(f"Tabla {codigo} descargada y metadata actualizada")
                             return resultado
                         else:
                             resultado['error'] = 'CSV no válido'

@@ -1,0 +1,10 @@
+{
+  "codigo_tabla": "6053",
+  "fecha_descarga": "2025-08-15T09:59:07.441387",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6053_Motivos_no_vacantes_por_sectores.csv",
+  "ultimo_periodo": "2024T4",
+  "hash_archivo": "a274e34b5b5734a190302293c668b2f22438ba461f22eafdd7f9b4f0f1c79293",
+  "tamaño_bytes": 56470,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6053.csv?nocab=1",
+  "version": 1
+}

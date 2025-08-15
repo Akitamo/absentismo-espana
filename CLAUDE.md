@@ -14,7 +14,11 @@ This file provides stable context for Claude AI when working with this repositor
 ```
 Modular Agent-Based System:
 ├── Agent Extractor: Downloads and validates CSV data from INE
-└── Agent Processor: Cleans and structures data (dimensions/metrics)
+│   ├── INEScraper: Checks for updates from INE website
+│   ├── Downloader: Robust CSV download with retries
+│   ├── MetadataManager: Version tracking and hash validation
+│   └── UpdateManager: Smart incremental updates
+└── Agent Processor: Cleans and structures data (dimensions/metrics) [TODO]
 ```
 
 ## Project Structure
@@ -37,16 +41,23 @@ absentismo-espana/
 
 ## Key Commands
 ```bash
-# Check for updates
-python main.py --check
+# Basic commands
+python main.py --check              # Check for updates (deprecated - slow)
+python main.py --download-all       # Download all tables
+python main.py --download [table_id] # Download specific table
+python main.py --info [table_id]    # Get table information
 
-# Download data
-python main.py --download-all
-python main.py --download [table_id]
+# Smart update commands (recommended)
+python main.py --check-smart        # Fast update check using local metadata
+python main.py --update [table_id]  # Update specific table if new data available
+python main.py --update-all         # Update all tables with new data
 
 # Process data (when implemented)
 python main.py --process-all
 python main.py --process [table_id]
+
+# Auxiliary scripts
+python scripts/generate_metadata.py # Generate retroactive metadata for existing files
 ```
 
 ## Data Sources
@@ -65,13 +76,18 @@ python main.py --process [table_id]
 - **Path handling:** Use `Path(__file__).parent` (no hardcoding)
 - **Error handling:** Comprehensive try-except blocks
 - **Data formats:** CSV input, JSON/CSV output
+- **Metadata system:** JSON files with SHA256 hashes for version tracking
+- **Backup system:** Automatic backups before updates with timestamps
+- **Update strategy:** Incremental updates only when new data is available
+- **Windows compatibility:** Text markers instead of emojis for console output
 
 ## Development Guidelines
-1. Each agent must be independent and self-contained
-2. Follow existing code patterns and conventions
-3. Test with subset (2-3 tables) before full runs
-4. Maintain backward compatibility with existing data
-5. Document all new functionality in docstrings
+1. **IMPORTANT: Always propose actions before implementing** - Never proceed with code changes until explicitly approved with "ok"
+2. Each agent must be independent and self-contained
+3. Follow existing code patterns and conventions
+4. Test with subset (2-3 tables) before full runs
+5. Maintain backward compatibility with existing data
+6. Document all new functionality in docstrings
 
 ## Documentation & Explainability
 - **Update `README.md`** when new features are added, dependencies change, or setup steps are modified

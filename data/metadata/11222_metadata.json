@@ -1,0 +1,10 @@
+{
+  "codigo_tabla": "11222",
+  "fecha_descarga": "2025-08-15T09:59:07.275526",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv",
+  "ultimo_periodo": "2024T4",
+  "hash_archivo": "01789c019139389fdc50227e70316fba6451cc1df8aba392bc11db6ea19bdef8",
+  "tamaño_bytes": 175707,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/11222.csv?nocab=1",
+  "version": 1
+}

@@ -1,0 +1,10 @@
+{
+  "codigo_tabla": "6054",
+  "fecha_descarga": "2025-08-15T09:59:07.443394",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6054_Motivos_no_vacantes_por_secciones.csv",
+  "ultimo_periodo": "2024T4",
+  "hash_archivo": "a1f9814941036799da30ce95ff67594fc006493619d737bfb5efc5b157fd3582",
+  "tamaño_bytes": 279083,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6054.csv?nocab=1",
+  "version": 1
+}

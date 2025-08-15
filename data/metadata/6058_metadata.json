@@ -1,0 +1,10 @@
+{
+  "codigo_tabla": "6058",
+  "fecha_descarga": "2025-08-15T09:59:07.455790",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6058_Coste_por_hora_extraordinaria_por_CCAA.csv",
+  "ultimo_periodo": "2024T4",
+  "hash_archivo": "4251b1475965898ca6c4190036e6fd7d8950ead526eadc4a038bb76cc1ecb3f9",
+  "tamaño_bytes": 38929,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6058.csv?nocab=1",
+  "version": 1
+}

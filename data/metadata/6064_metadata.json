@@ -1,0 +1,10 @@
+{
+  "codigo_tabla": "6064",
+  "fecha_descarga": "2025-08-15T09:59:07.540116",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6064_Número_de_vacantes_por_comunidad_autónoma.csv",
+  "ultimo_periodo": "2024T4",
+  "hash_archivo": "ad5e1f7af94619707e53b6d31d48274294f10e8021f74d7e9fb7736e64d81767",
+  "tamaño_bytes": 38143,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6064.csv?nocab=1",
+  "version": 1
+}

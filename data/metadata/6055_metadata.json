@@ -1,0 +1,10 @@
+{
+  "codigo_tabla": "6055",
+  "fecha_descarga": "2025-08-15T09:59:07.446775",
+  "archivo": "C:\\dev\\projects\\absentismo-espana\\data\\raw\\csv\\6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv",
+  "ultimo_periodo": "2024T4",
+  "hash_archivo": "7656ee0402deba67a2f7ac1c9df307c598be4616411e1b6323e33c7d42646952",
+  "tamaño_bytes": 30958,
+  "url_origen": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/6055.csv?nocab=1",
+  "version": 1
+}

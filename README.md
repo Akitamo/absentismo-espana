@@ -9,6 +9,9 @@ Este proyecto automatiza la descarga y procesamiento de los datos de la Encuesta
 ## 🚀 Características
 
 - **Extracción automática** de 35 tablas del INE
+- **Sistema de actualización inteligente** con verificación incremental
+- **Metadata y versionado** con tracking completo de cambios
+- **Backups automáticos** antes de actualizar datos
 - **Detección de actualizaciones** en los datos fuente
 - **Procesamiento robusto** con soporte multi-encoding
 - **Arquitectura modular** con agentes independientes
@@ -34,7 +37,14 @@ pip install -r requirements.txt
 
 ## 💻 Uso
 
-### Verificar actualizaciones en INE
+### Verificar actualizaciones
+
+Método rápido (recomendado - usa metadata local):
+```bash
+python main.py --check-smart
+```
+
+Método tradicional (más lento - consulta INE directamente):
 ```bash
 python main.py --check
 ```
@@ -56,6 +66,18 @@ python main.py --download 6042
 python main.py --info 6042
 ```
 
+### Actualizar datos
+
+Actualizar tabla específica (solo si hay nuevos datos):
+```bash
+python main.py --update 6042
+```
+
+Actualizar todas las tablas con nuevos datos:
+```bash
+python main.py --update-all
+```
+
 ### Procesar datos (próximamente)
 ```bash
 python main.py --process-all
@@ -67,12 +89,18 @@ python main.py --process 6042
 ```
 absentismo-espana/
 ├── agent_extractor/    # Módulo de extracción de datos
+│   ├── downloader.py  # Descarga robusta con reintentos
+│   ├── metadata_manager.py # Gestión de versiones y tracking
+│   └── updater.py     # Sistema de actualización inteligente
 ├── agent_processor/    # Módulo de procesamiento (en desarrollo)
 ├── config/            # Configuración de tablas
 ├── data/
 │   ├── raw/          # CSVs originales del INE
 │   ├── processed/    # Datos procesados
-│   └── metadata/     # Información de actualizaciones
+│   ├── metadata/     # Tracking de versiones (JSON)
+│   └── backups/      # Backups automáticos
+├── scripts/           # Scripts auxiliares
+│   └── generate_metadata.py # Generar metadata retroactivo
 ├── main.py           # Interfaz CLI principal
 └── requirements.txt  # Dependencias Python
 ```
@@ -92,7 +120,13 @@ El sistema procesa 35 tablas del INE organizadas en 7 categorías:
 ## 🔄 Estado del Proyecto
 
 - ✅ **Fase 1:** Extractor de datos (completado)
+  - Sistema de descarga robusto
+  - Metadata y versionado implementado
+  - Actualización incremental inteligente
+  - Backups automáticos funcionando
 - 🔄 **Fase 2:** Procesador de datos (en desarrollo)
+  - Detección de dimensiones vs métricas
+  - Limpieza y normalización de datos
 - ⏳ **Fase 3:** Análisis y visualización (planificado)
 
 Para ver el estado detallado del proyecto, consultar [CONTEXT.md](CONTEXT.md).
