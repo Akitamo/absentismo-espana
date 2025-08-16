@@ -1,0 +1,691 @@
+{
+  "11221": {
+    "codigo": "11221",
+    "archivo": "11221_Costes_laborales_por_trabajador.csv",
+    "num_filas": 1818,
+    "dimensiones_unificadas": [
+      "correccion_efectos",
+      "tipo_valor",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (3 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Corrección de efectos",
+      "Componentes del coste",
+      "Tipo de dato",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "11222": {
+    "codigo": "11222",
+    "archivo": "11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv",
+    "num_filas": 1818,
+    "dimensiones_unificadas": [
+      "correccion_efectos",
+      "tipo_valor",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (3 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Corrección de efectos",
+      "Componentes del coste",
+      "Tipo de dato",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "59391": {
+    "codigo": "59391",
+    "archivo": "59391_Series_por_sectores_de_actividad_y_componentes_del_coste.csv",
+    "num_filas": 9696,
+    "dimensiones_unificadas": [
+      "sector",
+      "tipo_valor",
+      "clase_indicador",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (4 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Tipo de dato",
+      "Clase de indicador",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "59392": {
+    "codigo": "59392",
+    "archivo": "59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv",
+    "num_filas": 32724,
+    "dimensiones_unificadas": [
+      "ccaa",
+      "tipo_valor",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (4 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Comunidades y Ciudades Autónomas",
+      "Componentes del coste",
+      "Tipo de dato",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6030": {
+    "codigo": "6030",
+    "archivo": "6030_Coste_laboral_por_trabajador_por_sectores.csv",
+    "num_filas": 4692,
+    "dimensiones_unificadas": [
+      "sector",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (15 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6031": {
+    "codigo": "6031",
+    "archivo": "6031_Coste_laboral_por_trabajador_por_tamaño,_sectores.csv",
+    "num_filas": 7728,
+    "dimensiones_unificadas": [
+      "tamaño_empresa",
+      "sector",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (7 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Tamaño del establecimiento",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6032": {
+    "codigo": "6032",
+    "archivo": "6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv",
+    "num_filas": 15732,
+    "dimensiones_unificadas": [
+      "sector_detalle",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (12 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Secciones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6033": {
+    "codigo": "6033",
+    "archivo": "6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv",
+    "num_filas": 38157,
+    "dimensiones_unificadas": [
+      "sector_division",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (7 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Divisiones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6034": {
+    "codigo": "6034",
+    "archivo": "6034_Coste_laboral_por_hora_efectiva_por_sectores.csv",
+    "num_filas": 1104,
+    "dimensiones_unificadas": [
+      "sector",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (4 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6035": {
+    "codigo": "6035",
+    "archivo": "6035_Coste_laboral_por_hora_efectiva_por_tamaño,_sectores.csv",
+    "num_filas": 4416,
+    "dimensiones_unificadas": [
+      "tamaño_empresa",
+      "sector",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (4 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Tamaño del establecimiento",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6036": {
+    "codigo": "6036",
+    "archivo": "6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv",
+    "num_filas": 5244,
+    "dimensiones_unificadas": [
+      "sector_detalle",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (4 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Secciones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6037": {
+    "codigo": "6037",
+    "archivo": "6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv",
+    "num_filas": 21804,
+    "dimensiones_unificadas": [
+      "sector_division",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (4 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Divisiones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6038": {
+    "codigo": "6038",
+    "archivo": "6038_Coste_salarial_por_trabajador,_tipo_jornada,_sectores.csv",
+    "num_filas": 3312,
+    "dimensiones_unificadas": [
+      "tipo_jornada",
+      "sector",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (4 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6039": {
+    "codigo": "6039",
+    "archivo": "6039_Coste_salarial_por_trabajador,_tipo_jornada,_secciones_CNAE.csv",
+    "num_filas": 15732,
+    "dimensiones_unificadas": [
+      "tipo_jornada",
+      "sector_detalle",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (4 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Tipo de jornada",
+      "Secciones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6040": {
+    "codigo": "6040",
+    "archivo": "6040_Coste_salarial_por_hora_efectiva,_tipo_jornada,_sectores.csv",
+    "num_filas": 1656,
+    "dimensiones_unificadas": [
+      "tipo_jornada",
+      "sector",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (2 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6041": {
+    "codigo": "6041",
+    "archivo": "6041_Coste_salarial_por_hora_efectiva,_tipo_jornada,_secciones_CNAE.csv",
+    "num_filas": 7866,
+    "dimensiones_unificadas": [
+      "tipo_jornada",
+      "sector_detalle",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (2 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Tipo de jornada",
+      "Secciones de la CNAE-09",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6042": {
+    "codigo": "6042",
+    "archivo": "6042_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_sectores.csv",
+    "num_filas": 5796,
+    "dimensiones_unificadas": [
+      "tipo_jornada",
+      "sector",
+      "tipo_tiempo_trabajo",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6043": {
+    "codigo": "6043",
+    "archivo": "6043_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_secciones_CNAE.csv",
+    "num_filas": 27531,
+    "dimensiones_unificadas": [
+      "tipo_jornada",
+      "sector_detalle",
+      "tipo_tiempo_trabajo",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Tipo de jornada",
+      "Secciones de la CNAE-09",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6044": {
+    "codigo": "6044",
+    "archivo": "6044_Tiempo_trabajo_por_trabajador-mes,_sectores.csv",
+    "num_filas": 4968,
+    "dimensiones_unificadas": [
+      "sector",
+      "tipo_tiempo_trabajo",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Sectores de actividad CNAE 2009",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6045": {
+    "codigo": "6045",
+    "archivo": "6045_Tiempo_trabajo_por_trabajador-mes,_secciones_CNAE.csv",
+    "num_filas": 9177,
+    "dimensiones_unificadas": [
+      "sector_detalle",
+      "tipo_tiempo_trabajo",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Secciones de la CNAE-09",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6046": {
+    "codigo": "6046",
+    "archivo": "6046_Tiempo_trabajo_por_trabajador-mes,_divisiones_CNAE.csv",
+    "num_filas": 27255,
+    "dimensiones_unificadas": [
+      "sector_division",
+      "tipo_tiempo_trabajo",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Divisiones de la CNAE-09",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6047": {
+    "codigo": "6047",
+    "archivo": "6047_Número_de_vacantes_por_sectores.csv",
+    "num_filas": 188,
+    "dimensiones_unificadas": [
+      "sector",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Sector de actividad",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6048": {
+    "codigo": "6048",
+    "archivo": "6048_Número_de_vacantes_por_secciones.csv",
+    "num_filas": 893,
+    "dimensiones_unificadas": [
+      "sector_detalle",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Secciones de actividad",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6049": {
+    "codigo": "6049",
+    "archivo": "6049_Número_de_vacantes_por_tamaño_establecimiento.csv",
+    "num_filas": 188,
+    "dimensiones_unificadas": [
+      "tamaño_empresa",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Tamaño del establecimiento",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6053": {
+    "codigo": "6053",
+    "archivo": "6053_Motivos_no_vacantes_por_sectores.csv",
+    "num_filas": 752,
+    "dimensiones_unificadas": [
+      "sector",
+      "motivo_no_vacante",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Sectores de actividad",
+      "Motivos por los que no exiten puestos de trabajo vacantes",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6054": {
+    "codigo": "6054",
+    "archivo": "6054_Motivos_no_vacantes_por_secciones.csv",
+    "num_filas": 3572,
+    "dimensiones_unificadas": [
+      "sector_detalle",
+      "motivo_no_vacante",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Secciones de actividad",
+      "Motivos por los que no exiten puestos de trabajo vacantes",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6055": {
+    "codigo": "6055",
+    "archivo": "6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv",
+    "num_filas": 752,
+    "dimensiones_unificadas": [
+      "tamaño_empresa",
+      "motivo_no_vacante",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Tamaño del establecimiento",
+      "Motivos por los que no exiten puestos de trabajo vacantes",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6056": {
+    "codigo": "6056",
+    "archivo": "6056_Percepciones_IT,_coste_indemnización_por_actividad.csv",
+    "num_filas": 3036,
+    "dimensiones_unificadas": [
+      "sector",
+      "clase_indicador",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Actividad económica CNAE-09",
+      "Clase de indicador",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6057": {
+    "codigo": "6057",
+    "archivo": "6057_Coste_por_hora_extraordinaria,_actividad_económica.csv",
+    "num_filas": 6831,
+    "dimensiones_unificadas": [
+      "sector",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Actividad económica CNAE-09",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6058": {
+    "codigo": "6058",
+    "archivo": "6058_Coste_por_hora_extraordinaria_por_CCAA.csv",
+    "num_filas": 1242,
+    "dimensiones_unificadas": [
+      "ccaa",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Comunidades y Ciudades Autónomas",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6061": {
+    "codigo": "6061",
+    "archivo": "6061_Coste_laboral_por_trabajador,_CCAA,_sectores.csv",
+    "num_filas": 34776,
+    "dimensiones_unificadas": [
+      "ccaa",
+      "sector",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (7 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Comunidades y Ciudades Autónomas",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6062": {
+    "codigo": "6062",
+    "archivo": "6062_Coste_laboral_por_hora_efectiva,_CCAA,_sectores.csv",
+    "num_filas": 19872,
+    "dimensiones_unificadas": [
+      "ccaa",
+      "sector",
+      "periodo"
+    ],
+    "metricas": [
+      "tipo_metrica (4 tipos)",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Comunidades y Ciudades Autónomas",
+      "Sectores de actividad CNAE 2009",
+      "Componentes del coste",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6063": {
+    "codigo": "6063",
+    "archivo": "6063_Tiempo_trabajo_por_trabajador-mes,_CCAA,_tipo_jornada,_sectores.csv",
+    "num_filas": 74520,
+    "dimensiones_unificadas": [
+      "ccaa",
+      "tipo_jornada",
+      "sector",
+      "tipo_tiempo_trabajo",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Comunidades y Ciudades Autónomas",
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Tiempo de trabajo",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6064": {
+    "codigo": "6064",
+    "archivo": "6064_Número_de_vacantes_por_comunidad_autónoma.csv",
+    "num_filas": 846,
+    "dimensiones_unificadas": [
+      "ccaa",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico",
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Total Nacional",
+      "Comunidades y Ciudades Autónomas",
+      "Periodo",
+      "Total"
+    ]
+  },
+  "6066": {
+    "codigo": "6066",
+    "archivo": "6066_Motivos_no_vacantes_por_comunidad_autónoma.csv",
+    "num_filas": 3384,
+    "dimensiones_unificadas": [
+      "ccaa",
+      "motivo_no_vacante",
+      "periodo"
+    ],
+    "metricas": [
+      "valor_numerico"
+    ],
+    "columnas_originales": [
+      "Comunidad autónoma",
+      "Motivos por los que no exiten puestos de trabajo vacantes",
+      "Periodo",
+      "Total"
+    ]
+  }
+}

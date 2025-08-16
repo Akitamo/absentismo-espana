@@ -1,0 +1,152 @@
+{
+  "dimension_groups": {
+    "SECTORES": {
+      "variantes_nombres": [
+        "Sectores de actividad",
+        "Actividad económica CNAE-09",
+        "Sectores de actividad CNAE 2009",
+        "Sector de actividad"
+      ],
+      "num_tablas": 16,
+      "tablas": [
+        "6042",
+        "6040",
+        "6063",
+        "6047",
+        "6053",
+        "6038",
+        "6056",
+        "6030",
+        "6044",
+        "6057",
+        "59391",
+        "6061",
+        "6035",
+        "6034",
+        "6062",
+        "6031"
+      ]
+    },
+    "TIPO_JORNADA": {
+      "variantes_nombres": [
+        "Tipo de jornada"
+      ],
+      "num_tablas": 7,
+      "tablas": [
+        "6041",
+        "6042",
+        "6040",
+        "6063",
+        "6038",
+        "6043",
+        "6039"
+      ]
+    },
+    "COMUNIDADES": {
+      "variantes_nombres": [
+        "Comunidades y Ciudades Autónomas",
+        "Total Nacional",
+        "Comunidad autónoma"
+      ],
+      "num_tablas": 7,
+      "tablas": [
+        "6058",
+        "6063",
+        "6066",
+        "6064",
+        "6061",
+        "6062",
+        "59392"
+      ]
+    },
+    "PERIODO": {
+      "variantes_nombres": [
+        "Periodo"
+      ],
+      "num_tablas": 35,
+      "tablas": [
+        "6045",
+        "6053",
+        "6056",
+        "6036",
+        "6057",
+        "6034",
+        "59391",
+        "6049",
+        "6033",
+        "6063",
+        "6040",
+        "6032",
+        "6047",
+        "6030",
+        "6044",
+        "6048",
+        "6037",
+        "6064",
+        "6035",
+        "6061",
+        "6031",
+        "6041",
+        "6054",
+        "6046",
+        "11222",
+        "6043",
+        "11221",
+        "6055",
+        "6062",
+        "6058",
+        "6042",
+        "6066",
+        "6038",
+        "6039",
+        "59392"
+      ]
+    },
+    "COMPONENTES_COSTE": {
+      "variantes_nombres": [
+        "Componentes del coste"
+      ],
+      "num_tablas": 18,
+      "tablas": [
+        "6041",
+        "6039",
+        "6040",
+        "6032",
+        "6038",
+        "6030",
+        "6036",
+        "11222",
+        "6031",
+        "59391",
+        "6037",
+        "6061",
+        "6035",
+        "11221",
+        "6034",
+        "6062",
+        "59392",
+        "6033"
+      ]
+    },
+    "TIPO_DATO": {
+      "variantes_nombres": [
+        "Tipo de dato"
+      ],
+      "num_tablas": 4,
+      "tablas": [
+        "59391",
+        "59392",
+        "11221",
+        "11222"
+      ]
+    }
+  },
+  "componentes_coste": {
+    "tablas_con_componentes": [
+      "6030",
+      "11221",
+      "6061",
+      "6038",
+      "59391"
+    ],
+    "componentes_unicos": 

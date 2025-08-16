@@ -1,0 +1,257 @@
+{
+  "dimension_groups": {
+    "SECTORES": {
+      "variantes_nombres": [
+        "Sectores de actividad CNAE 2009",
+        "Sector de actividad",
+        "Actividad económica CNAE-09",
+        "Sectores de actividad"
+      ],
+      "num_tablas": 16,
+      "tablas": [
+        "59391",
+        "6034",
+        "6035",
+        "6031",
+        "6053",
+        "6042",
+        "6038",
+        "6057",
+        "6030",
+        "6040",
+        "6061",
+        "6062",
+        "6056",
+        "6044",
+        "6047",
+        "6063"
+      ]
+    },
+    "TIPO_JORNADA": {
+      "variantes_nombres": [
+        "Tipo de jornada"
+      ],
+      "num_tablas": 7,
+      "tablas": [
+        "6043",
+        "6041",
+        "6042",
+        "6038",
+        "6040",
+        "6039",
+        "6063"
+      ]
+    },
+    "COMUNIDADES": {
+      "variantes_nombres": [
+        "Comunidad autónoma",
+        "Total Nacional",
+        "Comunidades y Ciudades Autónomas"
+      ],
+      "num_tablas": 7,
+      "tablas": [
+        "59392",
+        "6058",
+        "6066",
+        "6062",
+        "6061",
+        "6064",
+        "6063"
+      ]
+    },
+    "PERIODO": {
+      "variantes_nombres": [
+        "Periodo"
+      ],
+      "num_tablas": 35,
+      "tablas": [
+        "6043",
+        "6066",
+        "6055",
+        "6031",
+        "6046",
+        "6061",
+        "11221",
+        "6039",
+        "6049",
+        "6053",
+        "6054",
+        "6063",
+        "59391",
+        "6041",
+        "6030",
+        "6033",
+        "6036",
+        "6047",
+        "6048",
+        "6045",
+        "6035",
+        "11222",
+        "6037",
+        "6040",
+        "6062",
+        "6032",
+        "6056",
+        "6064",
+        "59392",
+        "6058",
+        "6034",
+        "6057",
+        "6042",
+        "6038",
+        "6044"
+      ]
+    },
+    "COMPONENTES_COSTE": {
+      "variantes_nombres": [
+        "Componentes del coste"
+      ],
+      "num_tablas": 18,
+      "tablas": [
+        "6036",
+        "59391",
+        "59392",
+        "6034",
+        "6035",
+        "11222",
+        "6031",
+        "6037",
+        "6041",
+        "6038",
+        "6030",
+        "6040",
+        "6061",
+        "6032",
+        "6062",
+        "6033",
+        "11221",
+        "6039"
+      ]
+    },
+    "TIPO_DATO": {
+      "variantes_nombres": [
+        "Tipo de dato"
+      ],
+      "num_tablas": 4,
+      "tablas": [
+        "59391",
+        "11221",
+        "59392",
+        "11222"
+      ]
+    }
+  },
+  "componentes_coste": {
+    "tablas_con_componentes": [
+      "6030",
+      "11221",
+      "6061",
+      "6038",
+      "59391"
+    ],
+    "componentes_unicos": [
+      "Coste por otras cotizaciones sociales obligatorias",
+      "Coste por cotizaciones obligatorias",
+      "Coste salarial pagos atrasados",
+      "Coste salarial total por trabajador",
+      "Coste total por trabajador",
+      "Coste por percepciones no salariales",
+      "Coste por despido",
+      "Coste salarial ordinario por hora",
+      "Coste salarial total",
+      "Coste por otras percepciones no salariales",
+      "Coste por contingencias comunes",
+      "Coste salarial pagos extraordinarios",
+      "Otros costes",
+      "Coste laboral total",
+      "Coste por otras prestaciones sociales directas",
+      "Subvenciones y bonificaciones de la S.Social",
+      "Coste por I.T.",
+      "Coste salarial ordinario por trabajador",
+      "Coste por desempleo,  Fogasa y F. Profesional",
+      "Coste laboral total por hora",
+      "Coste salarial total por hora",
+      "Coste salarial ordinario",
+      "Coste por desempleo parcial",
+      "Otros costes por hora",
+      "Otros costes por trabajador"
+    ],
+    "jerarquia": {
+      "COSTE_TOTAL": [
+        "Coste salarial total por trabajador",
+        "Coste total por trabajador",
+        "Coste salarial total",
+        "Coste laboral total",
+        "Coste laboral total por hora",
+        "Coste salarial total por hora"
+      ],
+      "COSTE_SALARIAL": [
+        "Coste salarial pagos atrasados",
+        "Coste por percepciones no salariales",
+        "Coste salarial ordinario por hora",
+        "Coste por otras percepciones no salariales",
+        "Coste salarial pagos extraordinarios",
+        "Coste salarial ordinario por trabajador",
+        "Coste salarial ordinario"
+      ],
+      "COSTE_NO_SALARIAL": [
+        "Coste por I.T."
+      ],
+      "COTIZACIONES": [
+        "Coste por otras cotizaciones sociales obligatorias",
+        "Coste por cotizaciones obligatorias"
+      ],
+      "OTROS": [
+        "Coste por despido",
+        "Coste por contingencias comunes",
+        "Otros costes",
+        "Coste por otras prestaciones sociales directas",
+        "Subvenciones y bonificaciones de la S.Social",
+        "Coste por desempleo,  Fogasa y F. Profesional",
+        "Coste por desempleo parcial",
+        "Otros costes por hora",
+        "Otros costes por trabajador"
+      ]
+    },
+    "metricas_reales": [
+      "Coste por trabajador",
+      "Coste por hora efectiva",
+      "Horas trabajadas",
+      "Número de vacantes",
+      "Porcentaje/Proporción"
+    ]
+  },
+  "estructura_uniforme": {
+    "columnas_universales": [
+      "Periodo",
+      "Total"
+    ],
+    "patrones_estructura": [
+      "Todas las tablas: Dimensiones + Periodo + Total (métrica)",
+      "Periodo siempre en formato YYYYTQ",
+      "Total siempre contiene el valor numérico",
+      "Separador decimal: coma (,)",
+      "Separador de miles: punto (.)"
+    ],
+    "dimensiones_principales": [
+      "SECTORES (4 valores fijos)",
+      "TIPO_JORNADA (3 valores fijos)",
+      "COMUNIDADES (18 valores)",
+      "COMPONENTES_COSTE (variable según detalle)"
+    ]
+  },
+  "esquema_unificado": {
+    "dimensiones_normalizadas": {
+      "periodo": "Todos los valores de Periodo",
+      "sector": "Unificar Sectores/Sector de actividad/etc",
+      "tipo_jornada": "Cuando aplique",
+      "comunidad_autonoma": "Cuando aplique",
+      "tipo_metrica": "Derivado de Componentes del coste",
+      "unidad_medida": "Euros/Horas/Número/Porcentaje"
+    },
+    "metrica_normalizada": {
+      "valor": "El valor numérico de Total",
+      "tipo_valor": "Absoluto/Tasa variación/Índice"
+    }
+  }
+}

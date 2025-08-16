@@ -37,9 +37,16 @@ absentismo-espana/
 │       ├── *.json      # Comprehensive analysis data
 │       └── *.xlsx      # Excel reports with column matrices
 ├── exploration/         # Data exploration scripts and tools
-│   ├── csv_explorer.py     # Basic CSV structure analysis
-│   ├── columns_analyzer.py # Mass analysis and Excel generation
-│   └── report_viewer.py    # HTML report generation [WIP]
+│   ├── csv_explorer.py              # Basic CSV structure analysis
+│   ├── columns_analyzer.py          # Mass analysis and Excel generation
+│   ├── analyze_8_tables.py          # Advanced analysis with unique values extraction
+│   ├── consolidate_patterns.py      # Pattern consolidation across tables
+│   ├── unified_schema_35_tables.py  # Unified schema application
+│   ├── identify_metrics_per_table.py # Clear metric identification by category
+│   ├── final_matrix_consolidated.py # Final consolidated matrix generation
+│   └── report_viewer.py             # HTML report generation [WIP]
+├── docs/                # Reference documentation
+│   └── metodologia_ETCL_INE_2023.pdf # Official INE methodology document
 ├── scripts/            # Utility scripts
 │   ├── generate_metadata.py      # Retroactive metadata generation
 │   └── validate_no_duplicates.py # Anti-duplicate validation and cleanup
@@ -72,8 +79,13 @@ python scripts/generate_metadata.py      # Generate retroactive metadata for exi
 python scripts/validate_no_duplicates.py # Validate and clean duplicate CSV files
 
 # Data exploration scripts
-python exploration/csv_explorer.py       # Analyze CSV structure and identify dimensions/metrics
-python exploration/columns_analyzer.py   # Mass analysis of all 35 tables with Excel output
+python exploration/csv_explorer.py              # Analyze CSV structure and identify dimensions/metrics
+python exploration/columns_analyzer.py          # Mass analysis of all 35 tables with Excel output
+python exploration/analyze_8_tables.py          # Advanced analysis of representative tables with unique values
+python exploration/consolidate_patterns.py      # Consolidate patterns identified across tables
+python exploration/unified_schema_35_tables.py  # Apply unified schema to all 35 tables
+python exploration/identify_metrics_per_table.py # Identify and categorize metrics per table
+python exploration/final_matrix_consolidated.py # Generate final consolidated matrix
 ```
 
 ## Data Sources
@@ -113,6 +125,29 @@ python exploration/columns_analyzer.py   # Mass analysis of all 35 tables with E
 - **Comment non-obvious code** and ensure everything is understandable to a mid-level developer
 - When writing complex logic, **add an inline `# Reason:` comment** explaining the why, not just the what
 
+## Metodología INE de Referencia
+- **Documento oficial**: `docs/metodologia_ETCL_INE_2023.pdf` (Encuesta Trimestral de Coste Laboral)
+- **35 variables publicadas** confirmadas por el INE
+- **Definiciones oficiales** de todas las métricas y dimensiones en páginas 18-20 del documento
+- **Cobertura**: Secciones B-S CNAE-09, 82 divisiones de actividad, 17 CCAA (Ceuta y Melilla con Andalucía)
+- **Periodo**: Datos trimestrales desde 2008T1 (algunas series desde 2000T1)
+
+### Estructura de Datos Confirmada (Validada con Metodología INE)
+**7 Categorías de Métricas:**
+1. **COSTES LABORALES** (18 tablas): Por trabajador/hora, hasta 15 componentes
+2. **TIEMPO DE TRABAJO** (6 tablas): Horas pactadas, efectivas, extras, IT, vacaciones
+3. **COSTE SALARIAL** (4 tablas): Ordinario, extraordinario, atrasados
+4. **VACANTES** (4 tablas): Número absoluto de puestos vacantes
+5. **MOTIVOS NO VACANTES** (4 tablas): Distribución porcentual
+6. **SERIES TEMPORALES** (2 tablas): Valores, índices, tasas variación
+
+**Dimensiones Principales:**
+- **PERIODO**: 100% tablas, formato YYYYTQ
+- **SECTOR**: 77% tablas (Industria, Construcción, Servicios, Total)
+- **TIPO JORNADA**: 20% tablas (Completa, Parcial, Ambas)
+- **CCAA**: 20% tablas (17 comunidades + Total Nacional)
+- **TAMAÑO EMPRESA**: 11% tablas (8 grupos por número trabajadores)
+
 ## Development Tools
 
 ### MCP DuckDB Server (Development Only)
@@ -141,10 +176,16 @@ WHERE unique_count < 100;
 
 ### Data Exploration Tools (Python-based)
 - **csv_explorer.py:** Automated structure analysis with dimension/metric detection
-- **columns_analyzer.py:** Mass analysis of all 35 tables generating Excel matrices  
+- **columns_analyzer.py:** Mass analysis of all 35 tables generating Excel matrices
+- **analyze_8_tables.py:** Advanced analysis with unique values extraction for pattern identification
+- **consolidate_patterns.py:** Pattern consolidation identifying uniform behaviors across tables
+- **unified_schema_35_tables.py:** Unified schema application with dimension normalization
+- **identify_metrics_per_table.py:** Clear metric categorization into 7 main types
+- **final_matrix_consolidated.py:** Final consolidated matrix with complete data structure
 - **Pandas integration:** Deep analysis with encoding detection and data profiling
-- **Excel output:** Comprehensive column matrices for agent_processor design
-- **JSON reports:** Structured analysis data for programmatic consumption
+- **Excel output:** Progressive matrices from initial exploration to final consolidated structure
+- **JSON reports:** Structured analysis data validated against official INE methodology
+- **INE Validation:** 100% alignment with official methodology document
 
 ## Important Notes
 - Always check CONTEXT.md for current project status

@@ -1,0 +1,397 @@
+{
+  "11221": {
+    "codigo": "11221",
+    "archivo": "11221_Costes_laborales_por_trabajador.csv",
+    "metrica_principal": "COSTE LABORAL POR TRABAJADOR",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Coste laboral mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Coste salarial total por trabajador",
+      "Coste total por trabajador",
+      "Otros costes por trabajador"
+    ]
+  },
+  "11222": {
+    "codigo": "11222",
+    "archivo": "11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv",
+    "metrica_principal": "COSTE LABORAL POR HORA",
+    "unidad_medida": "Euros/hora efectiva",
+    "descripcion": "Coste laboral por hora efectiva de trabajo",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "59391": {
+    "codigo": "59391",
+    "archivo": "59391_Series_por_sectores_de_actividad_y_componentes_del_coste.csv",
+    "metrica_principal": "COSTE LABORAL POR TRABAJADOR",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Coste laboral mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Coste laboral total por hora",
+      "Coste salarial ordinario por hora",
+      "Coste salarial ordinario por trabajador",
+      "Coste salarial total por hora",
+      "Coste salarial total por trabajador",
+      "Coste total por trabajador",
+      "Otros costes por hora",
+      "Otros costes por trabajador"
+    ]
+  },
+  "59392": {
+    "codigo": "59392",
+    "archivo": "59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv",
+    "metrica_principal": "COSTE LABORAL POR TRABAJADOR",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Coste laboral mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6030": {
+    "codigo": "6030",
+    "archivo": "6030_Coste_laboral_por_trabajador_por_sectores.csv",
+    "metrica_principal": "COSTE LABORAL POR TRABAJADOR",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Coste laboral mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Coste laboral total",
+      "Coste por I.T.",
+      "Coste por contingencias comunes",
+      "Coste por cotizaciones obligatorias",
+      "Coste por desempleo parcial",
+      "Coste por desempleo,  Fogasa y F. Profesional",
+      "Coste por despido",
+      "Coste por otras cotizaciones sociales obligatorias",
+      "Coste por otras percepciones no salariales",
+      "Coste por otras prestaciones sociales directas",
+      "Coste por percepciones no salariales",
+      "Coste salarial ordinario",
+      "Coste salarial pagos atrasados",
+      "Coste salarial pagos extraordinarios",
+      "Coste salarial total",
+      "Otros costes",
+      "Subvenciones y bonificaciones de la S.Social"
+    ]
+  },
+  "6031": {
+    "codigo": "6031",
+    "archivo": "6031_Coste_laboral_por_trabajador_por_tamaño,_sectores.csv",
+    "metrica_principal": "COSTE LABORAL POR TRABAJADOR",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Coste laboral mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6032": {
+    "codigo": "6032",
+    "archivo": "6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv",
+    "metrica_principal": "COSTE LABORAL POR TRABAJADOR",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Coste laboral mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6033": {
+    "codigo": "6033",
+    "archivo": "6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv",
+    "metrica_principal": "COSTE LABORAL POR TRABAJADOR",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Coste laboral mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6034": {
+    "codigo": "6034",
+    "archivo": "6034_Coste_laboral_por_hora_efectiva_por_sectores.csv",
+    "metrica_principal": "COSTE LABORAL POR HORA",
+    "unidad_medida": "Euros/hora efectiva",
+    "descripcion": "Coste laboral por hora efectiva de trabajo",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6035": {
+    "codigo": "6035",
+    "archivo": "6035_Coste_laboral_por_hora_efectiva_por_tamaño,_sectores.csv",
+    "metrica_principal": "COSTE LABORAL POR HORA",
+    "unidad_medida": "Euros/hora efectiva",
+    "descripcion": "Coste laboral por hora efectiva de trabajo",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6036": {
+    "codigo": "6036",
+    "archivo": "6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv",
+    "metrica_principal": "COSTE LABORAL POR HORA",
+    "unidad_medida": "Euros/hora efectiva",
+    "descripcion": "Coste laboral por hora efectiva de trabajo",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6037": {
+    "codigo": "6037",
+    "archivo": "6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv",
+    "metrica_principal": "COSTE LABORAL POR HORA",
+    "unidad_medida": "Euros/hora efectiva",
+    "descripcion": "Coste laboral por hora efectiva de trabajo",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6038": {
+    "codigo": "6038",
+    "archivo": "6038_Coste_salarial_por_trabajador,_tipo_jornada,_sectores.csv",
+    "metrica_principal": "COSTE SALARIAL",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Componente salarial del coste laboral",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Coste salarial ordinario",
+      "Coste salarial pagos atrasados",
+      "Coste salarial pagos extraordinarios",
+      "Coste salarial total"
+    ]
+  },
+  "6039": {
+    "codigo": "6039",
+    "archivo": "6039_Coste_salarial_por_trabajador,_tipo_jornada,_secciones_CNAE.csv",
+    "metrica_principal": "COSTE SALARIAL",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Componente salarial del coste laboral",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6040": {
+    "codigo": "6040",
+    "archivo": "6040_Coste_salarial_por_hora_efectiva,_tipo_jornada,_sectores.csv",
+    "metrica_principal": "COSTE SALARIAL",
+    "unidad_medida": "Euros/hora efectiva",
+    "descripcion": "Componente salarial del coste laboral",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6041": {
+    "codigo": "6041",
+    "archivo": "6041_Coste_salarial_por_hora_efectiva,_tipo_jornada,_secciones_CNAE.csv",
+    "metrica_principal": "COSTE SALARIAL",
+    "unidad_medida": "Euros/hora efectiva",
+    "descripcion": "Componente salarial del coste laboral",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6042": {
+    "codigo": "6042",
+    "archivo": "6042_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_sectores.csv",
+    "metrica_principal": "HORAS DE TRABAJO",
+    "unidad_medida": "Horas por trabajador-mes",
+    "descripcion": "Tiempo de trabajo mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Horas pactadas",
+      "Horas efectivas",
+      "Horas pagadas",
+      "Horas extras",
+      "Horas no trabajadas (IT, vacaciones, etc.)"
+    ]
+  },
+  "6043": {
+    "codigo": "6043",
+    "archivo": "6043_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_secciones_CNAE.csv",
+    "metrica_principal": "HORAS DE TRABAJO",
+    "unidad_medida": "Horas por trabajador-mes",
+    "descripcion": "Tiempo de trabajo mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Horas pactadas",
+      "Horas efectivas",
+      "Horas pagadas",
+      "Horas extras",
+      "Horas no trabajadas (IT, vacaciones, etc.)"
+    ]
+  },
+  "6044": {
+    "codigo": "6044",
+    "archivo": "6044_Tiempo_trabajo_por_trabajador-mes,_sectores.csv",
+    "metrica_principal": "HORAS DE TRABAJO",
+    "unidad_medida": "Horas por trabajador-mes",
+    "descripcion": "Tiempo de trabajo mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Horas pactadas",
+      "Horas efectivas",
+      "Horas pagadas",
+      "Horas extras",
+      "Horas no trabajadas (IT, vacaciones, etc.)"
+    ]
+  },
+  "6045": {
+    "codigo": "6045",
+    "archivo": "6045_Tiempo_trabajo_por_trabajador-mes,_secciones_CNAE.csv",
+    "metrica_principal": "HORAS DE TRABAJO",
+    "unidad_medida": "Horas por trabajador-mes",
+    "descripcion": "Tiempo de trabajo mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Horas pactadas",
+      "Horas efectivas",
+      "Horas pagadas",
+      "Horas extras",
+      "Horas no trabajadas (IT, vacaciones, etc.)"
+    ]
+  },
+  "6046": {
+    "codigo": "6046",
+    "archivo": "6046_Tiempo_trabajo_por_trabajador-mes,_divisiones_CNAE.csv",
+    "metrica_principal": "HORAS DE TRABAJO",
+    "unidad_medida": "Horas por trabajador-mes",
+    "descripcion": "Tiempo de trabajo mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Horas pactadas",
+      "Horas efectivas",
+      "Horas pagadas",
+      "Horas extras",
+      "Horas no trabajadas (IT, vacaciones, etc.)"
+    ]
+  },
+  "6047": {
+    "codigo": "6047",
+    "archivo": "6047_Número_de_vacantes_por_sectores.csv",
+    "metrica_principal": "NÚMERO DE VACANTES",
+    "unidad_medida": "Número absoluto",
+    "descripcion": "Número de puestos de trabajo vacantes",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  },
+  "6048": {
+    "codigo": "6048",
+    "archivo": "6048_Número_de_vacantes_por_secciones.csv",
+    "metrica_principal": "NÚMERO DE VACANTES",
+    "unidad_medida": "Número absoluto",
+    "descripcion": "Número de puestos de trabajo vacantes",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  },
+  "6049": {
+    "codigo": "6049",
+    "archivo": "6049_Número_de_vacantes_por_tamaño_establecimiento.csv",
+    "metrica_principal": "NÚMERO DE VACANTES",
+    "unidad_medida": "Número absoluto",
+    "descripcion": "Número de puestos de trabajo vacantes",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  },
+  "6053": {
+    "codigo": "6053",
+    "archivo": "6053_Motivos_no_vacantes_por_sectores.csv",
+    "metrica_principal": "MOTIVOS NO VACANTES",
+    "unidad_medida": "Porcentaje",
+    "descripcion": "Distribución porcentual de motivos por los que no hay vacantes",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  },
+  "6054": {
+    "codigo": "6054",
+    "archivo": "6054_Motivos_no_vacantes_por_secciones.csv",
+    "metrica_principal": "MOTIVOS NO VACANTES",
+    "unidad_medida": "Porcentaje",
+    "descripcion": "Distribución porcentual de motivos por los que no hay vacantes",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  },
+  "6055": {
+    "codigo": "6055",
+    "archivo": "6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv",
+    "metrica_principal": "MOTIVOS NO VACANTES",
+    "unidad_medida": "Porcentaje",
+    "descripcion": "Distribución porcentual de motivos por los que no hay vacantes",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  },
+  "6056": {
+    "codigo": "6056",
+    "archivo": "6056_Percepciones_IT,_coste_indemnización_por_actividad.csv",
+    "metrica_principal": "COSTE LABORAL POR TRABAJADOR",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Coste laboral mensual por trabajador",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  },
+  "6057": {
+    "codigo": "6057",
+    "archivo": "6057_Coste_por_hora_extraordinaria,_actividad_económica.csv",
+    "metrica_principal": "COSTE LABORAL POR HORA",
+    "unidad_medida": "Euros/hora efectiva",
+    "descripcion": "Coste laboral por hora efectiva de trabajo",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  },
+  "6058": {
+    "codigo": "6058",
+    "archivo": "6058_Coste_por_hora_extraordinaria_por_CCAA.csv",
+    "metrica_principal": "COSTE LABORAL POR HORA",
+    "unidad_medida": "Euros/hora efectiva",
+    "descripcion": "Coste laboral por hora efectiva de trabajo",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  },
+  "6061": {
+    "codigo": "6061",
+    "archivo": "6061_Coste_laboral_por_trabajador,_CCAA,_sectores.csv",
+    "metrica_principal": "COSTE LABORAL POR TRABAJADOR",
+    "unidad_medida": "Euros/trabajador-mes",
+    "descripcion": "Coste laboral mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Coste laboral total",
+      "Coste por cotizaciones obligatorias",
+      "Coste por percepciones no salariales",
+      "Coste salarial ordinario",
+      "Coste salarial total",
+      "Otros costes",
+      "Subvenciones y bonificaciones de la S.Social"
+    ]
+  },
+  "6062": {
+    "codigo": "6062",
+    "archivo": "6062_Coste_laboral_por_hora_efectiva,_CCAA,_sectores.csv",
+    "metrica_principal": "COSTE LABORAL POR HORA",
+    "unidad_medida": "Euros/hora efectiva",
+    "descripcion": "Coste laboral por hora efectiva de trabajo",
+    "multiples_metricas": true,
+    "detalle_metricas": []
+  },
+  "6063": {
+    "codigo": "6063",
+    "archivo": "6063_Tiempo_trabajo_por_trabajador-mes,_CCAA,_tipo_jornada,_sectores.csv",
+    "metrica_principal": "HORAS DE TRABAJO",
+    "unidad_medida": "Horas por trabajador-mes",
+    "descripcion": "Tiempo de trabajo mensual por trabajador",
+    "multiples_metricas": true,
+    "detalle_metricas": [
+      "Horas pactadas",
+      "Horas efectivas",
+      "Horas pagadas",
+      "Horas extras",
+      "Horas no trabajadas (IT, vacaciones, etc.)"
+    ]
+  },
+  "6064": {
+    "codigo": "6064",
+    "archivo": "6064_Número_de_vacantes_por_comunidad_autónoma.csv",
+    "metrica_principal": "NÚMERO DE VACANTES",
+    "unidad_medida": "Número absoluto",
+    "descripcion": "Número de puestos de trabajo vacantes",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  },
+  "6066": {
+    "codigo": "6066",
+    "archivo": "6066_Motivos_no_vacantes_por_comunidad_autónoma.csv",
+    "metrica_principal": "MOTIVOS NO VACANTES",
+    "unidad_medida": "Porcentaje",
+    "descripcion": "Distribución porcentual de motivos por los que no hay vacantes",
+    "multiples_metricas": false,
+    "detalle_metricas": []
+  }
+}
