@@ -1,0 +1,217 @@
+{
+  "timestamp": "20250816_101226",
+  "summary": {
+    "total": 8,
+    "success": 6,
+    "failed": 2,
+    "match_rates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "validations": [
+    {
+      "status": "validated",
+      "table_code": "6042",
+      "csv_file": "6042_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_sectores.csv",
+      "web_data_summary": {
+        "rows": 6,
+        "cols": 9
+      },
+      "csv_data_summary": {
+        "total_rows": 5796,
+        "total_cols": 5,
+        "latest_period_rows": 84
+      },
+      "sample_comparisons": [
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 89.3,
+          "csv": 151.0,
+          "difference": 61.7,
+          "percentage_diff": 69.0929451287794
+        },
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 89.3,
+          "csv": 132.4,
+          "difference": 43.10000000000001,
+          "percentage_diff": 48.26427771556553
+        },
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 89.3,
+          "csv": 8.6,
+          "difference": 80.7,
+          "percentage_diff": 90.36954087346025
+        }
+      ],
+      "match_rate": 0.0
+    },
+    {
+      "status": "validated",
+      "table_code": "6030",
+      "csv_file": "6030_Coste_laboral_por_trabajador_por_sectores.csv",
+      "web_data_summary": {
+        "rows": 4,
+        "cols": 2
+      },
+      "csv_data_summary": {
+        "total_rows": 4692,
+        "total_cols": 4,
+        "latest_period_rows": 68
+      },
+      "sample_comparisons": [],
+      "match_rate": 0.0
+    },
+    {
+      "status": "validated",
+      "table_code": "6062",
+      "csv_file": "6062_Coste_laboral_por_hora_efectiva,_CCAA,_sectores.csv",
+      "web_data_summary": {
+        "rows": 2,
+        "cols": 6
+      },
+      "csv_data_summary": {
+        "total_rows": 19872,
+        "total_cols": 5,
+        "latest_period_rows": 288
+      },
+      "sample_comparisons": [
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 6.3,
+          "csv": 23.6,
+          "difference": 17.3,
+          "percentage_diff": 274.6031746031746
+        },
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 6.3,
+          "csv": 17.3,
+          "difference": 11.0,
+          "percentage_diff": 174.6031746031746
+        }
+      ],
+      "match_rate": 0.0
+    },
+    {
+      "status": "no_table_found",
+      "table_code": "6047",
+      "url": "https://ine.es/jaxiT3/Datos.htm?t=6047"
+    },
+    {
+      "status": "validated",
+      "table_code": "11221",
+      "csv_file": "11221_Costes_laborales_por_trabajador.csv",
+      "web_data_summary": {
+        "rows": 6,
+        "cols": 9
+      },
+      "csv_data_summary": {
+        "total_rows": 1818,
+        "total_cols": 5,
+        "latest_period_rows": 18
+      },
+      "sample_comparisons": [
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 3183.09,
+          "csv": 3124.55,
+          "difference": 58.539999999999964,
+          "percentage_diff": 1.8390934595000443
+        },
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 3183.09,
+          "csv": 2290.46,
+          "difference": 892.6300000000001,
+          "percentage_diff": 28.042876575905808
+        },
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 3183.09,
+          "csv": 834.09,
+          "difference": 2349.0,
+          "percentage_diff": 73.79621688359424
+        }
+      ],
+      "match_rate": 0.0
+    },
+    {
+      "status": "validated",
+      "table_code": "6038",
+      "csv_file": "6038_Coste_salarial_por_trabajador,_tipo_jornada,_sectores.csv",
+      "web_data_summary": {
+        "rows": 6,
+        "cols": 9
+      },
+      "csv_data_summary": {
+        "total_rows": 3312,
+        "total_cols": 5,
+        "latest_period_rows": 48
+      },
+      "sample_comparisons": [
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 996.04,
+          "csv": 2290.46,
+          "difference": 1294.42,
+          "percentage_diff": 129.95662824786154
+        },
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 996.04,
+          "csv": 217.93,
+          "difference": 778.1099999999999,
+          "percentage_diff": 78.12035661218424
+        },
+        {
+          "match": false,
+          "type": "numeric",
+          "web": 996.04,
+          "csv": 2663.2,
+          "difference": 1667.1599999999999,
+          "percentage_diff": 167.3788201277057
+        }
+      ],
+      "match_rate": 0.0
+    },
+    {
+      "status": "request_error",
+      "table_code": "6050",
+      "url": "https://ine.es/jaxiT3/Datos.htm?t=6050",
+      "error": "404 Client Error: Not Found for url: https://ine.es/jaxiT3/Datos.htm?t=6050"
+    },
+    {
+      "status": "validated",
+      "table_code": "6045",
+      "csv_file": "6045_Tiempo_trabajo_por_trabajador-mes,_secciones_CNAE.csv",
+      "web_data_summary": {
+        "rows": 19,
+        "cols": 2
+      },
+      "csv_data_summary": {
+        "total_rows": 9177,
+        "total_cols": 4,
+        "latest_period_rows": 133
+      },
+      "sample_comparisons": [],
+      "match_rate": 0.0
+    }
+  ]
+}

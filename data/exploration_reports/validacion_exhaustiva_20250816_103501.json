@@ -1,0 +1,1292 @@
+{
+  "timestamp": "20250816_103501",
+  "summary": {
+    "total": 33,
+    "validated": 33,
+    "with_matches": 33,
+    "perfect_match": 33,
+    "partial_match": 0,
+    "no_match": 0,
+    "errors": 0
+  },
+  "tables": [
+    {
+      "code": "6042",
+      "name": "Tiempo trabajo por trabajador-mes, tipo jornada, sectores",
+      "status": "VALIDATED",
+      "csv_file": "6042_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_sectores.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "151,0",
+          "csv": "151",
+          "context": {
+            "Tipo de jornada": "Ambas jornadas",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Tiempo de trabajo": "Horas pactadas"
+          }
+        },
+        {
+          "web": "168,4",
+          "csv": "168,4",
+          "context": {
+            "Tipo de jornada": "Jornada a tiempo completo",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Tiempo de trabajo": "Horas pactadas"
+          }
+        },
+        {
+          "web": "89,3",
+          "csv": "89,3",
+          "context": {
+            "Tipo de jornada": "Jornada a tiempo parcial",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Tiempo de trabajo": "Horas pactadas"
+          }
+        }
+      ],
+      "web_values_count": 9,
+      "csv_rows_2025": 84
+    },
+    {
+      "code": "6043",
+      "name": "Tiempo trabajo por trabajador-mes, tipo jornada, secciones CNAE",
+      "status": "VALIDATED",
+      "csv_file": "6043_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_secciones_CNAE.csv",
+      "matches": 5,
+      "text_matches": 3,
+      "examples": [
+        {
+          "web": "151,0",
+          "csv": "151",
+          "context": {
+            "Tipo de jornada": "Ambas jornadas",
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Tiempo de trabajo": "Horas pactadas"
+          }
+        },
+        {
+          "web": "151,4",
+          "csv": "151,4",
+          "context": {
+            "Tipo de jornada": "Ambas jornadas",
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Tiempo de trabajo": "Horas pagadas"
+          }
+        },
+        {
+          "web": "132,4",
+          "csv": "132,4",
+          "context": {
+            "Tipo de jornada": "Ambas jornadas",
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Tiempo de trabajo": "Horas efectivas"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 399
+    },
+    {
+      "code": "6044",
+      "name": "Tiempo trabajo por trabajador-mes, sectores",
+      "status": "VALIDATED",
+      "csv_file": "6044_Tiempo_trabajo_por_trabajador-mes,_sectores.csv",
+      "matches": 4,
+      "text_matches": 4,
+      "examples": [
+        {
+          "web": "151,0",
+          "csv": "151",
+          "context": {
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Tiempo de trabajo": "Horas pactadas",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "165,1",
+          "csv": "165,1",
+          "context": {
+            "Sectores de actividad CNAE 2009": "Industria",
+            "Tiempo de trabajo": "Horas pactadas",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "165,9",
+          "csv": "165,9",
+          "context": {
+            "Sectores de actividad CNAE 2009": "Construcción",
+            "Tiempo de trabajo": "Horas pactadas",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 4,
+      "csv_rows_2025": 72
+    },
+    {
+      "code": "6045",
+      "name": "Tiempo trabajo por trabajador-mes, secciones CNAE",
+      "status": "VALIDATED",
+      "csv_file": "6045_Tiempo_trabajo_por_trabajador-mes,_secciones_CNAE.csv",
+      "matches": 5,
+      "text_matches": 9,
+      "examples": [
+        {
+          "web": "151,0",
+          "csv": "151",
+          "context": {
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Tiempo de trabajo": "Horas pactadas",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "166,8",
+          "csv": "166,8",
+          "context": {
+            "Secciones de la CNAE-09": "B Industrias extractivas",
+            "Tiempo de trabajo": "Horas pactadas",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "165,8",
+          "csv": "165,8",
+          "context": {
+            "Secciones de la CNAE-09": "C Industria manufacturera",
+            "Tiempo de trabajo": "Horas pactadas",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 133
+    },
+    {
+      "code": "6046",
+      "name": "Tiempo trabajo por trabajador-mes, divisiones CNAE",
+      "status": "VALIDATED",
+      "csv_file": "6046_Tiempo_trabajo_por_trabajador-mes,_divisiones_CNAE.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "151,0",
+          "csv": "151",
+          "context": {
+            "Divisiones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Tiempo de trabajo": "Horas pactadas",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "166,8",
+          "csv": "166,8",
+          "context": {
+            "Divisiones de la CNAE-09": "B Industrias extractivas",
+            "Tiempo de trabajo": "Horas pactadas",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "163,8",
+          "csv": "163,8",
+          "context": {
+            "Divisiones de la CNAE-09": "10 Industria de la alimentación",
+            "Tiempo de trabajo": "Horas pactadas",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 395
+    },
+    {
+      "code": "6063",
+      "name": "Tiempo trabajo por trabajador-mes, CCAA, tipo jornada, sectores",
+      "status": "VALIDATED",
+      "csv_file": "6063_Tiempo_trabajo_por_trabajador-mes,_CCAA,_tipo_jornada,_sectores.csv",
+      "matches": 4,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "151,0",
+          "csv": "151",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "Total Nacional",
+            "Tipo de jornada": "Ambas jornadas",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)"
+          }
+        },
+        {
+          "web": "149,4",
+          "csv": "149,4",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "01 Andalucía",
+            "Tipo de jornada": "Ambas jornadas",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)"
+          }
+        },
+        {
+          "web": "151,8",
+          "csv": "151,8",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "02 Aragón",
+            "Tipo de jornada": "Ambas jornadas",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 1080
+    },
+    {
+      "code": "11221",
+      "name": "Costes laborales por trabajador",
+      "status": "VALIDATED",
+      "csv_file": "11221_Costes_laborales_por_trabajador.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "3.124,55",
+          "csv": "3.124,55",
+          "context": {
+            "Corrección de efectos": "Datos no ajustados de estacionalidad y calendario",
+            "Componentes del coste": "Coste total por trabajador",
+            "Tipo de dato": "Euros"
+          }
+        },
+        {
+          "web": "3.123,95",
+          "csv": "3.123,95",
+          "context": {
+            "Corrección de efectos": "Datos ajustados de calendario",
+            "Componentes del coste": "Coste total por trabajador",
+            "Tipo de dato": "Euros"
+          }
+        },
+        {
+          "web": "3.183,09",
+          "csv": "3.183,09",
+          "context": {
+            "Corrección de efectos": "Datos ajustados de estacionalidad y calendario",
+            "Componentes del coste": "Coste total por trabajador",
+            "Tipo de dato": "Euros"
+          }
+        }
+      ],
+      "web_values_count": 9,
+      "csv_rows_2025": 18
+    },
+    {
+      "code": "11222",
+      "name": "Costes laborales por hora efectiva de trabajo",
+      "status": "VALIDATED",
+      "csv_file": "11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "23,60",
+          "csv": "23,6",
+          "context": {
+            "Corrección de efectos": "Datos no ajustados de estacionalidad y calendario",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Tipo de dato": "Euros"
+          }
+        },
+        {
+          "web": "23,76",
+          "csv": "23,76",
+          "context": {
+            "Corrección de efectos": "Datos ajustados de calendario",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Tipo de dato": "Euros"
+          }
+        },
+        {
+          "web": "25,01",
+          "csv": "25,01",
+          "context": {
+            "Corrección de efectos": "Datos ajustados de estacionalidad y calendario",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Tipo de dato": "Euros"
+          }
+        }
+      ],
+      "web_values_count": 9,
+      "csv_rows_2025": 18
+    },
+    {
+      "code": "59391",
+      "name": "Series por sectores de actividad y componentes del coste",
+      "status": "VALIDATED",
+      "csv_file": "59391_Series_por_sectores_de_actividad_y_componentes_del_coste.csv",
+      "matches": 4,
+      "text_matches": 4,
+      "examples": [
+        {
+          "web": "3.124,55",
+          "csv": "3.124,55",
+          "context": {
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste total por trabajador",
+            "Tipo de dato": "Euros"
+          }
+        },
+        {
+          "web": "3.668,09",
+          "csv": "3.668,09",
+          "context": {
+            "Sectores de actividad CNAE 2009": "Industria",
+            "Componentes del coste": "Coste total por trabajador",
+            "Tipo de dato": "Euros"
+          }
+        },
+        {
+          "web": "3.003,06",
+          "csv": "3.003,06",
+          "context": {
+            "Sectores de actividad CNAE 2009": "Construcción",
+            "Componentes del coste": "Coste total por trabajador",
+            "Tipo de dato": "Euros"
+          }
+        }
+      ],
+      "web_values_count": 4,
+      "csv_rows_2025": 96
+    },
+    {
+      "code": "59392",
+      "name": "Series por comunidad autónoma y componentes del coste",
+      "status": "VALIDATED",
+      "csv_file": "59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv",
+      "matches": 4,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "3.124,55",
+          "csv": "3.124,55",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "Total Nacional",
+            "Componentes del coste": "Coste total por trabajador",
+            "Tipo de dato": "Euros"
+          }
+        },
+        {
+          "web": "2.689,73",
+          "csv": "2.689,73",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "01 Andalucía",
+            "Componentes del coste": "Coste total por trabajador",
+            "Tipo de dato": "Euros"
+          }
+        },
+        {
+          "web": "2.897,63",
+          "csv": "2.897,63",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "02 Aragón",
+            "Componentes del coste": "Coste total por trabajador",
+            "Tipo de dato": "Euros"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 324
+    },
+    {
+      "code": "6030",
+      "name": "Coste laboral por trabajador por sectores",
+      "status": "VALIDATED",
+      "csv_file": "6030_Coste_laboral_por_trabajador_por_sectores.csv",
+      "matches": 4,
+      "text_matches": 4,
+      "examples": [
+        {
+          "web": "3.124,55",
+          "csv": "3.124,55",
+          "context": {
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "3.668,09",
+          "csv": "3.668,09",
+          "context": {
+            "Sectores de actividad CNAE 2009": "Industria",
+            "Componentes del coste": "Coste laboral total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "3.003,06",
+          "csv": "3.003,06",
+          "context": {
+            "Sectores de actividad CNAE 2009": "Construcción",
+            "Componentes del coste": "Coste laboral total",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 4,
+      "csv_rows_2025": 68
+    },
+    {
+      "code": "6031",
+      "name": "Coste laboral por trabajador por tamaño, sectores",
+      "status": "VALIDATED",
+      "csv_file": "6031_Coste_laboral_por_trabajador_por_tamaño,_sectores.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "3.124,55",
+          "csv": "3.124,55",
+          "context": {
+            "Tamaño del establecimiento": "Total",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total"
+          }
+        },
+        {
+          "web": "2.569,43",
+          "csv": "2.569,43",
+          "context": {
+            "Tamaño del establecimiento": "De 1 a 49",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total"
+          }
+        },
+        {
+          "web": "3.289,47",
+          "csv": "3.289,47",
+          "context": {
+            "Tamaño del establecimiento": "De 50 a 199",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 112
+    },
+    {
+      "code": "6032",
+      "name": "Coste laboral por trabajador por secciones CNAE",
+      "status": "VALIDATED",
+      "csv_file": "6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv",
+      "matches": 5,
+      "text_matches": 9,
+      "examples": [
+        {
+          "web": "3.124,55",
+          "csv": "3.124,55",
+          "context": {
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "4.603,46",
+          "csv": "4.603,46",
+          "context": {
+            "Secciones de la CNAE-09": "B Industrias extractivas",
+            "Componentes del coste": "Coste laboral total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "3.585,61",
+          "csv": "3.585,61",
+          "context": {
+            "Secciones de la CNAE-09": "C Industria manufacturera",
+            "Componentes del coste": "Coste laboral total",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 228
+    },
+    {
+      "code": "6033",
+      "name": "Coste laboral por trabajador por divisiones CNAE",
+      "status": "VALIDATED",
+      "csv_file": "6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "3.124,55",
+          "csv": "3.124,55",
+          "context": {
+            "Divisiones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "4.603,46",
+          "csv": "4.603,46",
+          "context": {
+            "Divisiones de la CNAE-09": "B Industrias extractivas",
+            "Componentes del coste": "Coste laboral total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "2.890,03",
+          "csv": "2.890,03",
+          "context": {
+            "Divisiones de la CNAE-09": "10 Industria de la alimentación",
+            "Componentes del coste": "Coste laboral total",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 553
+    },
+    {
+      "code": "6034",
+      "name": "Coste laboral por hora efectiva por sectores",
+      "status": "VALIDATED",
+      "csv_file": "6034_Coste_laboral_por_hora_efectiva_por_sectores.csv",
+      "matches": 4,
+      "text_matches": 4,
+      "examples": [
+        {
+          "web": "23,60",
+          "csv": "23,6",
+          "context": {
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "25,44",
+          "csv": "25,44",
+          "context": {
+            "Sectores de actividad CNAE 2009": "Industria",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "20,33",
+          "csv": "20,33",
+          "context": {
+            "Sectores de actividad CNAE 2009": "Construcción",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 4,
+      "csv_rows_2025": 16
+    },
+    {
+      "code": "6035",
+      "name": "Coste laboral por hora efectiva por tamaño, sectores",
+      "status": "VALIDATED",
+      "csv_file": "6035_Coste_laboral_por_hora_efectiva_por_tamaño,_sectores.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "23,60",
+          "csv": "23,6",
+          "context": {
+            "Tamaño del establecimiento": "Total",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total por hora"
+          }
+        },
+        {
+          "web": "19,35",
+          "csv": "19,35",
+          "context": {
+            "Tamaño del establecimiento": "De 1 a 49",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total por hora"
+          }
+        },
+        {
+          "web": "24,76",
+          "csv": "24,76",
+          "context": {
+            "Tamaño del establecimiento": "De 50 a 199",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total por hora"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 64
+    },
+    {
+      "code": "6036",
+      "name": "Coste laboral por hora efectiva por secciones CNAE",
+      "status": "VALIDATED",
+      "csv_file": "6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv",
+      "matches": 5,
+      "text_matches": 9,
+      "examples": [
+        {
+          "web": "23,60",
+          "csv": "23,6",
+          "context": {
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "31,21",
+          "csv": "31,21",
+          "context": {
+            "Secciones de la CNAE-09": "B Industrias extractivas",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "24,72",
+          "csv": "24,72",
+          "context": {
+            "Secciones de la CNAE-09": "C Industria manufacturera",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 76
+    },
+    {
+      "code": "6037",
+      "name": "Coste laboral por hora efectiva por divisiones CNAE",
+      "status": "VALIDATED",
+      "csv_file": "6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "23,60",
+          "csv": "23,6",
+          "context": {
+            "Divisiones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "31,21",
+          "csv": "31,21",
+          "context": {
+            "Divisiones de la CNAE-09": "B Industrias extractivas",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "20,39",
+          "csv": "20,39",
+          "context": {
+            "Divisiones de la CNAE-09": "10 Industria de la alimentación",
+            "Componentes del coste": "Coste laboral total por hora",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 316
+    },
+    {
+      "code": "6038",
+      "name": "Coste salarial por trabajador, tipo jornada, sectores",
+      "status": "VALIDATED",
+      "csv_file": "6038_Coste_salarial_por_trabajador,_tipo_jornada,_sectores.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "2.290,46",
+          "csv": "2.290,46",
+          "context": {
+            "Tipo de jornada": "Ambas jornadas",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total"
+          }
+        },
+        {
+          "web": "2.653,66",
+          "csv": "2.653,66",
+          "context": {
+            "Tipo de jornada": "Jornada a tiempo completo",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total"
+          }
+        },
+        {
+          "web": "996,04",
+          "csv": "996,04",
+          "context": {
+            "Tipo de jornada": "Jornada a tiempo parcial",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total"
+          }
+        }
+      ],
+      "web_values_count": 9,
+      "csv_rows_2025": 48
+    },
+    {
+      "code": "6039",
+      "name": "Coste salarial por trabajador, tipo jornada, secciones CNAE",
+      "status": "VALIDATED",
+      "csv_file": "6039_Coste_salarial_por_trabajador,_tipo_jornada,_secciones_CNAE.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "2.290,46",
+          "csv": "2.290,46",
+          "context": {
+            "Tipo de jornada": "Ambas jornadas",
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total"
+          }
+        },
+        {
+          "web": "2.653,66",
+          "csv": "2.653,66",
+          "context": {
+            "Tipo de jornada": "Jornada a tiempo completo",
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total"
+          }
+        },
+        {
+          "web": "996,04",
+          "csv": "996,04",
+          "context": {
+            "Tipo de jornada": "Jornada a tiempo parcial",
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total"
+          }
+        }
+      ],
+      "web_values_count": 9,
+      "csv_rows_2025": 228
+    },
+    {
+      "code": "6040",
+      "name": "Coste salarial por hora efectiva, tipo jornada, sectores",
+      "status": "VALIDATED",
+      "csv_file": "6040_Coste_salarial_por_hora_efectiva,_tipo_jornada,_sectores.csv",
+      "matches": 5,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "17,30",
+          "csv": "17,3",
+          "context": {
+            "Tipo de jornada": "Ambas jornadas",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total por hora"
+          }
+        },
+        {
+          "web": "18,02",
+          "csv": "18,02",
+          "context": {
+            "Tipo de jornada": "Jornada a tiempo completo",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total por hora"
+          }
+        },
+        {
+          "web": "12,56",
+          "csv": "12,56",
+          "context": {
+            "Tipo de jornada": "Jornada a tiempo parcial",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total por hora"
+          }
+        }
+      ],
+      "web_values_count": 9,
+      "csv_rows_2025": 24
+    },
+    {
+      "code": "6041",
+      "name": "Coste salarial por hora efectiva, tipo jornada, secciones CNAE",
+      "status": "VALIDATED",
+      "csv_file": "6041_Coste_salarial_por_hora_efectiva,_tipo_jornada,_secciones_CNAE.csv",
+      "matches": 4,
+      "text_matches": 3,
+      "examples": [
+        {
+          "web": "17,30",
+          "csv": "17,3",
+          "context": {
+            "Tipo de jornada": "Ambas jornadas",
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total por hora"
+          }
+        },
+        {
+          "web": "15,30",
+          "csv": "15,3",
+          "context": {
+            "Tipo de jornada": "Ambas jornadas",
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial ordinario por hora"
+          }
+        },
+        {
+          "web": "17,30",
+          "csv": "17,3",
+          "context": {
+            "Tipo de jornada": "Ambas jornadas",
+            "Secciones de la CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total por hora"
+          }
+        }
+      ],
+      "web_values_count": 4,
+      "csv_rows_2025": 114
+    },
+    {
+      "code": "6048",
+      "name": "Número de vacantes por secciones",
+      "status": "VALIDATED",
+      "csv_file": "6048_Número_de_vacantes_por_secciones.csv",
+      "matches": 5,
+      "text_matches": 9,
+      "examples": [
+        {
+          "web": "152.885",
+          "csv": "152.885",
+          "context": {
+            "Secciones de actividad": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "11.205",
+          "csv": "11.205",
+          "context": {
+            "Secciones de actividad": "C Industria manufacturera",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "1.474",
+          "csv": "1.474",
+          "context": {
+            "Secciones de actividad": "E Suministro de agua, actividades de saneamiento, gestión de residuos y descontaminación",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 19
+    },
+    {
+      "code": "6053",
+      "name": "Motivos no vacantes por sectores",
+      "status": "VALIDATED",
+      "csv_file": "6053_Motivos_no_vacantes_por_sectores.csv",
+      "matches": 4,
+      "text_matches": 4,
+      "examples": [
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Sectores de actividad": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Sectores de actividad": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Sectores de actividad": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 4,
+      "csv_rows_2025": 16
+    },
+    {
+      "code": "6054",
+      "name": "Motivos no vacantes por secciones",
+      "status": "VALIDATED",
+      "csv_file": "6054_Motivos_no_vacantes_por_secciones.csv",
+      "matches": 5,
+      "text_matches": 9,
+      "examples": [
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Secciones de actividad": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Secciones de actividad": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Secciones de actividad": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 76
+    },
+    {
+      "code": "6055",
+      "name": "Motivos no vacantes por tamaño establecimiento",
+      "status": "VALIDATED",
+      "csv_file": "6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv",
+      "matches": 4,
+      "text_matches": 4,
+      "examples": [
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Tamaño del establecimiento": "Total",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Tamaño del establecimiento": "Total",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Tamaño del establecimiento": "Total",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 4,
+      "csv_rows_2025": 16
+    },
+    {
+      "code": "6064",
+      "name": "Número de vacantes por comunidad autónoma",
+      "status": "VALIDATED",
+      "csv_file": "6064_Número_de_vacantes_por_comunidad_autónoma.csv",
+      "matches": 4,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "152.885",
+          "csv": "152.885",
+          "context": {
+            "Total Nacional": "Total Nacional",
+            "Comunidades y Ciudades Autónomas": NaN,
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "21.422",
+          "csv": "21.422",
+          "context": {
+            "Total Nacional": "Total Nacional",
+            "Comunidades y Ciudades Autónomas": "01 Andalucía",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "4.195",
+          "csv": "4.195",
+          "context": {
+            "Total Nacional": "Total Nacional",
+            "Comunidades y Ciudades Autónomas": "02 Aragón",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 18
+    },
+    {
+      "code": "6066",
+      "name": "Motivos no vacantes por comunidad autónoma",
+      "status": "VALIDATED",
+      "csv_file": "6066_Motivos_no_vacantes_por_comunidad_autónoma.csv",
+      "matches": 4,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Comunidad autónoma": "Total Nacional",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Comunidad autónoma": "Total Nacional",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "100,00",
+          "csv": "100",
+          "context": {
+            "Comunidad autónoma": "Total Nacional",
+            "Motivos por los que no exiten puestos de trabajo vacantes": "Total",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 72
+    },
+    {
+      "code": "6056",
+      "name": "Percepciones IT, coste indemnización por actividad",
+      "status": "VALIDATED",
+      "csv_file": "6056_Percepciones_IT,_coste_indemnización_por_actividad.csv",
+      "matches": 5,
+      "text_matches": 9,
+      "examples": [
+        {
+          "web": "15,43",
+          "csv": "15,43",
+          "context": {
+            "Actividad económica CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Clase de indicador": "Percepciones por día de IT",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "13,26",
+          "csv": "13,26",
+          "context": {
+            "Actividad económica CNAE-09": "Industria",
+            "Clase de indicador": "Percepciones por día de IT",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "9,34",
+          "csv": "9,34",
+          "context": {
+            "Actividad económica CNAE-09": "Construcción",
+            "Clase de indicador": "Percepciones por día de IT",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 44
+    },
+    {
+      "code": "6057",
+      "name": "Coste por hora extraordinaria, actividad económica",
+      "status": "VALIDATED",
+      "csv_file": "6057_Coste_por_hora_extraordinaria,_actividad_económica.csv",
+      "matches": 5,
+      "text_matches": 9,
+      "examples": [
+        {
+          "web": "19,32",
+          "csv": "19,32",
+          "context": {
+            "Actividad económica CNAE-09": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "24,26",
+          "csv": "24,26",
+          "context": {
+            "Actividad económica CNAE-09": "Industria",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "23,10",
+          "csv": "23,1",
+          "context": {
+            "Actividad económica CNAE-09": "Construcción",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 99
+    },
+    {
+      "code": "6058",
+      "name": "Coste por hora extraordinaria por CCAA",
+      "status": "VALIDATED",
+      "csv_file": "6058_Coste_por_hora_extraordinaria_por_CCAA.csv",
+      "matches": 4,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "19,32",
+          "csv": "19,32",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "Total Nacional",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "18,14",
+          "csv": "18,14",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "01 Andalucía",
+            "Periodo": "2025T1"
+          }
+        },
+        {
+          "web": "19,98",
+          "csv": "19,98",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "02 Aragón",
+            "Periodo": "2025T1"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 18
+    },
+    {
+      "code": "6061",
+      "name": "Coste laboral por trabajador, CCAA, sectores",
+      "status": "VALIDATED",
+      "csv_file": "6061_Coste_laboral_por_trabajador,_CCAA,_sectores.csv",
+      "matches": 4,
+      "text_matches": 10,
+      "examples": [
+        {
+          "web": "3.124,55",
+          "csv": "3.124,55",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "Total Nacional",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total"
+          }
+        },
+        {
+          "web": "2.689,73",
+          "csv": "2.689,73",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "01 Andalucía",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total"
+          }
+        },
+        {
+          "web": "2.897,63",
+          "csv": "2.897,63",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "02 Aragón",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total"
+          }
+        }
+      ],
+      "web_values_count": 10,
+      "csv_rows_2025": 504
+    },
+    {
+      "code": "6062",
+      "name": "Coste laboral por hora efectiva, CCAA, sectores",
+      "status": "VALIDATED",
+      "csv_file": "6062_Coste_laboral_por_hora_efectiva,_CCAA,_sectores.csv",
+      "matches": 5,
+      "text_matches": 3,
+      "examples": [
+        {
+          "web": "23,60",
+          "csv": "23,6",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "Total Nacional",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste laboral total por hora"
+          }
+        },
+        {
+          "web": "17,30",
+          "csv": "17,3",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "Total Nacional",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial total por hora"
+          }
+        },
+        {
+          "web": "15,30",
+          "csv": "15,3",
+          "context": {
+            "Comunidades y Ciudades Autónomas": "Total Nacional",
+            "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+            "Componentes del coste": "Coste salarial ordinario por hora"
+          }
+        }
+      ],
+      "web_values_count": 8,
+      "csv_rows_2025": 288
+    }
+  ]
+}

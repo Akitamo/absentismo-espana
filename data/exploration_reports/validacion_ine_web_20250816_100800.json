@@ -1,0 +1,344 @@
+[
+  {
+    "table_code": "6062",
+    "ine_web": {
+      "table_code": "6062",
+      "status": "success",
+      "url": "https://ine.es/jaxiT3/Datos.htm?t=6062",
+      "headers": [
+        "Coste laboral total por hora",
+        "Coste salarial total por hora",
+        "Coste salarial ordinario por hora",
+        "Otros costes por hora",
+        "2025T1",
+        "2025T1",
+        "2025T1",
+        "2025T1"
+      ],
+      "data_sample": [
+        [
+          "Total Nacional",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "23,60",
+          "17,30",
+          "15,30",
+          "6,30"
+        ],
+        [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "23,60",
+          "17,30",
+          "15,30",
+          "6,30"
+        ]
+      ],
+      "periodo_reciente": "2025T1",
+      "num_filas": 2
+    },
+    "comparison": {
+      "status": "compared",
+      "csv_file": "6062_Coste_laboral_por_hora_efectiva,_CCAA,_sectores.csv",
+      "csv_sample": {
+        "Comunidades y Ciudades Autónomas": "Total Nacional",
+        "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "Componentes del coste": "Coste laboral total por hora",
+        "Periodo": "2025T1",
+        "Total": "23,6"
+      },
+      "ine_sample": [
+        "Total Nacional",
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "23,60",
+        "17,30",
+        "15,30",
+        "6,30"
+      ]
+    }
+  },
+  {
+    "table_code": "6030",
+    "ine_web": {
+      "table_code": "6030",
+      "status": "success",
+      "url": "https://ine.es/jaxiT3/Datos.htm?t=6030",
+      "headers": [
+        "Coste laboral total",
+        "2025T1"
+      ],
+      "data_sample": [
+        [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "3.124,55"
+        ],
+        [
+          "Industria",
+          "3.668,09"
+        ],
+        [
+          "Construcción",
+          "3.003,06"
+        ],
+        [
+          "Servicios",
+          "3.042,41"
+        ]
+      ],
+      "periodo_reciente": "2025T1",
+      "num_filas": 4
+    },
+    "comparison": {
+      "status": "compared",
+      "csv_file": "6030_Coste_laboral_por_trabajador_por_sectores.csv",
+      "csv_sample": {
+        "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "Componentes del coste": "Coste laboral total",
+        "Periodo": "2025T1",
+        "Total": "3.124,55"
+      },
+      "ine_sample": [
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "3.124,55"
+      ]
+    }
+  },
+  {
+    "table_code": "6042",
+    "ine_web": {
+      "table_code": "6042",
+      "status": "success",
+      "url": "https://ine.es/jaxiT3/Datos.htm?t=6042",
+      "headers": [
+        "Horas pactadas",
+        "2025T1"
+      ],
+      "data_sample": [
+        [
+          "Ambas jornadas",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "151,0",
+          "Jornada a tiempo completo",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "168,4",
+          "Jornada a tiempo parcial",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "89,3"
+        ],
+        [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "151,0"
+        ],
+        [
+          "Jornada a tiempo completo",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "168,4",
+          "Jornada a tiempo parcial",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "89,3"
+        ],
+        [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "168,4"
+        ],
+        [
+          "Jornada a tiempo parcial",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "89,3"
+        ],
+        [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "89,3"
+        ]
+      ],
+      "periodo_reciente": "2025T1",
+      "num_filas": 6
+    },
+    "comparison": {
+      "status": "compared",
+      "csv_file": "6042_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_sectores.csv",
+      "csv_sample": {
+        "Tipo de jornada": "Ambas jornadas",
+        "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "Tiempo de trabajo": "Horas pactadas",
+        "Periodo": "2025T1",
+        "Total": "151"
+      },
+      "ine_sample": [
+        "Ambas jornadas",
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "151,0",
+        "Jornada a tiempo completo",
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "168,4",
+        "Jornada a tiempo parcial",
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "89,3"
+      ]
+    }
+  },
+  {
+    "table_code": "6047",
+    "ine_web": {
+      "table_code": "6047",
+      "status": "no_table_found",
+      "url": "https://ine.es/jaxiT3/Datos.htm?t=6047"
+    },
+    "comparison": {
+      "status": "compared",
+      "csv_file": "6047_Número_de_vacantes_por_sectores.csv",
+      "csv_sample": {
+        "Sector de actividad": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "Periodo": "2025T1",
+        "Total": 152.885
+      },
+      "ine_sample": null
+    }
+  },
+  {
+    "table_code": "11221",
+    "ine_web": {
+      "table_code": "11221",
+      "status": "success",
+      "url": "https://ine.es/jaxiT3/Datos.htm?t=11221",
+      "headers": [
+        "Euros",
+        "2025T1"
+      ],
+      "data_sample": [
+        [
+          "Datos no ajustados de estacionalidad y calendario",
+          "Coste total por trabajador",
+          "3.124,55",
+          "Datos ajustados de calendario",
+          "Coste total por trabajador",
+          "3.123,95",
+          "Datos ajustados de estacionalidad y calendario",
+          "Coste total por trabajador",
+          "3.183,09"
+        ],
+        [
+          "Coste total por trabajador",
+          "3.124,55"
+        ],
+        [
+          "Datos ajustados de calendario",
+          "Coste total por trabajador",
+          "3.123,95",
+          "Datos ajustados de estacionalidad y calendario",
+          "Coste total por trabajador",
+          "3.183,09"
+        ],
+        [
+          "Coste total por trabajador",
+          "3.123,95"
+        ],
+        [
+          "Datos ajustados de estacionalidad y calendario",
+          "Coste total por trabajador",
+          "3.183,09"
+        ],
+        [
+          "Coste total por trabajador",
+          "3.183,09"
+        ]
+      ],
+      "periodo_reciente": "2025T1",
+      "num_filas": 6
+    },
+    "comparison": {
+      "status": "compared",
+      "csv_file": "11221_Costes_laborales_por_trabajador.csv",
+      "csv_sample": {
+        "Corrección de efectos": "Datos no ajustados de estacionalidad y calendario",
+        "Componentes del coste": "Coste total por trabajador",
+        "Tipo de dato": "Euros",
+        "Periodo": "2025T1",
+        "Total": "3.124,55"
+      },
+      "ine_sample": [
+        "Datos no ajustados de estacionalidad y calendario",
+        "Coste total por trabajador",
+        "3.124,55",
+        "Datos ajustados de calendario",
+        "Coste total por trabajador",
+        "3.123,95",
+        "Datos ajustados de estacionalidad y calendario",
+        "Coste total por trabajador",
+        "3.183,09"
+      ]
+    }
+  },
+  {
+    "table_code": "6038",
+    "ine_web": {
+      "table_code": "6038",
+      "status": "success",
+      "url": "https://ine.es/jaxiT3/Datos.htm?t=6038",
+      "headers": [
+        "Coste salarial total",
+        "2025T1"
+      ],
+      "data_sample": [
+        [
+          "Ambas jornadas",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "2.290,46",
+          "Jornada a tiempo completo",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "2.653,66",
+          "Jornada a tiempo parcial",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "996,04"
+        ],
+        [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "2.290,46"
+        ],
+        [
+          "Jornada a tiempo completo",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "2.653,66",
+          "Jornada a tiempo parcial",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "996,04"
+        ],
+        [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "2.653,66"
+        ],
+        [
+          "Jornada a tiempo parcial",
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "996,04"
+        ],
+        [
+          "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+          "996,04"
+        ]
+      ],
+      "periodo_reciente": "2025T1",
+      "num_filas": 6
+    },
+    "comparison": {
+      "status": "compared",
+      "csv_file": "6038_Coste_salarial_por_trabajador,_tipo_jornada,_sectores.csv",
+      "csv_sample": {
+        "Tipo de jornada": "Ambas jornadas",
+        "Sectores de actividad CNAE 2009": "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "Componentes del coste": "Coste salarial total",
+        "Periodo": "2025T1",
+        "Total": "2.290,46"
+      },
+      "ine_sample": [
+        "Ambas jornadas",
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "2.290,46",
+        "Jornada a tiempo completo",
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "2.653,66",
+        "Jornada a tiempo parcial",
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)",
+        "996,04"
+      ]
+    }
+  }
+]
