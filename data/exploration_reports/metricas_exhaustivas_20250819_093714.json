@@ -1,0 +1,2009 @@
+{
+  "6042": {
+    "codigo": "6042",
+    "nombre": "Tiempo trabajo por trabajador-mes, tipo jornada, sectores",
+    "categoria": "Tablas de tiempo de trabajo por trabajador y mes",
+    "archivo": "6042_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_sectores.csv",
+    "total_columnas": 5,
+    "total_filas": 5796,
+    "dimensiones": [
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 3,
+    "metricas": [
+      {
+        "nombre": "Ambas jornadas",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo completo",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo parcial",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 3,
+    "metricas_por_categoria": {
+      "TIEMPO_TRABAJO": {
+        "total": 3,
+        "metricas": [
+          "Ambas jornadas",
+          "Jornada a tiempo completo",
+          "Jornada a tiempo parcial"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6043": {
+    "codigo": "6043",
+    "nombre": "Tiempo trabajo por trabajador-mes, tipo jornada, secciones CNAE",
+    "categoria": "Tablas de tiempo de trabajo por trabajador y mes",
+    "archivo": "6043_Tiempo_trabajo_por_trabajador-mes,_tipo_jornada,_secciones_CNAE.csv",
+    "total_columnas": 5,
+    "total_filas": 27531,
+    "dimensiones": [
+      "Tipo de jornada",
+      "Secciones de la CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 3,
+    "metricas": [
+      {
+        "nombre": "Ambas jornadas",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo completo",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo parcial",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 3,
+    "metricas_por_categoria": {
+      "TIEMPO_TRABAJO": {
+        "total": 3,
+        "metricas": [
+          "Ambas jornadas",
+          "Jornada a tiempo completo",
+          "Jornada a tiempo parcial"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6044": {
+    "codigo": "6044",
+    "nombre": "Tiempo trabajo por trabajador-mes, sectores",
+    "categoria": "Tablas de tiempo de trabajo por trabajador y mes",
+    "archivo": "6044_Tiempo_trabajo_por_trabajador-mes,_sectores.csv",
+    "total_columnas": 4,
+    "total_filas": 4968,
+    "dimensiones": [
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [],
+    "total_metricas": 0,
+    "metricas_por_categoria": {},
+    "formato_datos": "ancho"
+  },
+  "6045": {
+    "codigo": "6045",
+    "nombre": "Tiempo trabajo por trabajador-mes, secciones CNAE",
+    "categoria": "Tablas de tiempo de trabajo por trabajador y mes",
+    "archivo": "6045_Tiempo_trabajo_por_trabajador-mes,_secciones_CNAE.csv",
+    "total_columnas": 4,
+    "total_filas": 9177,
+    "dimensiones": [
+      "Secciones de la CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [],
+    "total_metricas": 0,
+    "metricas_por_categoria": {},
+    "formato_datos": "ancho"
+  },
+  "6046": {
+    "codigo": "6046",
+    "nombre": "Tiempo trabajo por trabajador-mes, divisiones CNAE",
+    "categoria": "Tablas de tiempo de trabajo por trabajador y mes",
+    "archivo": "6046_Tiempo_trabajo_por_trabajador-mes,_divisiones_CNAE.csv",
+    "total_columnas": 4,
+    "total_filas": 27255,
+    "dimensiones": [
+      "Divisiones de la CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [],
+    "total_metricas": 0,
+    "metricas_por_categoria": {},
+    "formato_datos": "ancho"
+  },
+  "6063": {
+    "codigo": "6063",
+    "nombre": "Tiempo trabajo por trabajador-mes, CCAA, tipo jornada, sectores",
+    "categoria": "Tablas de tiempo de trabajo por trabajador y mes",
+    "archivo": "6063_Tiempo_trabajo_por_trabajador-mes,_CCAA,_tipo_jornada,_sectores.csv",
+    "total_columnas": 6,
+    "total_filas": 74520,
+    "dimensiones": [
+      "Comunidades y Ciudades Autónomas",
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 4,
+    "metricas": [
+      {
+        "nombre": "Ambas jornadas",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo completo",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo parcial",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 3,
+    "metricas_por_categoria": {
+      "TIEMPO_TRABAJO": {
+        "total": 3,
+        "metricas": [
+          "Ambas jornadas",
+          "Jornada a tiempo completo",
+          "Jornada a tiempo parcial"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "11221": {
+    "codigo": "11221",
+    "nombre": "Costes laborales por trabajador",
+    "categoria": "Costes laborales fundamentales",
+    "archivo": "11221_Costes_laborales_por_trabajador.csv",
+    "total_columnas": 5,
+    "total_filas": 1818,
+    "dimensiones": [
+      "Periodo"
+    ],
+    "total_dimensiones": 1,
+    "metricas": [
+      {
+        "nombre": "Otros costes por trabajador",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Euros",
+        "categoria": "OTROS",
+        "columna_origen": "Tipo de dato",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Tasa de variación anual",
+        "categoria": "INDICES",
+        "columna_origen": "Tipo de dato",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 3,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 1,
+        "metricas": [
+          "Otros costes por trabajador"
+        ]
+      },
+      "INDICES": {
+        "total": 1,
+        "metricas": [
+          "Tasa de variación anual"
+        ]
+      },
+      "OTROS": {
+        "total": 1,
+        "metricas": [
+          "Euros"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "11222": {
+    "codigo": "11222",
+    "nombre": "Costes laborales por hora efectiva de trabajo",
+    "categoria": "Costes laborales fundamentales",
+    "archivo": "11222_Costes_laborales_por_hora_efectiva_de_trabajo.csv",
+    "total_columnas": 5,
+    "total_filas": 1818,
+    "dimensiones": [
+      "Periodo"
+    ],
+    "total_dimensiones": 1,
+    "metricas": [
+      {
+        "nombre": "Otros costes por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Euros",
+        "categoria": "OTROS",
+        "columna_origen": "Tipo de dato",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Tasa de variación anual",
+        "categoria": "INDICES",
+        "columna_origen": "Tipo de dato",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 3,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 1,
+        "metricas": [
+          "Otros costes por hora"
+        ]
+      },
+      "INDICES": {
+        "total": 1,
+        "metricas": [
+          "Tasa de variación anual"
+        ]
+      },
+      "OTROS": {
+        "total": 1,
+        "metricas": [
+          "Euros"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "59391": {
+    "codigo": "59391",
+    "nombre": "Series por sectores de actividad y componentes del coste",
+    "categoria": "Series temporales por sectores y CCAA",
+    "archivo": "59391_Series_por_sectores_de_actividad_y_componentes_del_coste.csv",
+    "total_columnas": 6,
+    "total_filas": 9696,
+    "dimensiones": [
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario por trabajador",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes por trabajador",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial ordinario por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Euros",
+        "categoria": "OTROS",
+        "columna_origen": "Tipo de dato",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Índice",
+        "categoria": "INDICES",
+        "columna_origen": "Tipo de dato",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Tasa de variación anual",
+        "categoria": "INDICES",
+        "columna_origen": "Tipo de dato",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Principales series de ETCL",
+        "categoria": "OTROS",
+        "columna_origen": "Clase de indicador",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 8,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 4,
+        "metricas": [
+          "Coste salarial ordinario por hora",
+          "Coste salarial ordinario por trabajador",
+          "Otros costes por hora",
+          "Otros costes por trabajador"
+        ]
+      },
+      "INDICES": {
+        "total": 2,
+        "metricas": [
+          "Tasa de variación anual",
+          "Índice"
+        ]
+      },
+      "OTROS": {
+        "total": 2,
+        "metricas": [
+          "Euros",
+          "Principales series de ETCL"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "59392": {
+    "codigo": "59392",
+    "nombre": "Series por comunidad autónoma y componentes del coste",
+    "categoria": "Series temporales por sectores y CCAA",
+    "archivo": "59392_Series_por_comunidad_autónoma_y_componentes_del_coste.csv",
+    "total_columnas": 5,
+    "total_filas": 32724,
+    "dimensiones": [
+      "Comunidades y Ciudades Autónomas",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "Otros costes por trabajador",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Euros",
+        "categoria": "OTROS",
+        "columna_origen": "Tipo de dato",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Índice",
+        "categoria": "INDICES",
+        "columna_origen": "Tipo de dato",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Tasa de variación anual",
+        "categoria": "INDICES",
+        "columna_origen": "Tipo de dato",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 5,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 2,
+        "metricas": [
+          "Otros costes por hora",
+          "Otros costes por trabajador"
+        ]
+      },
+      "INDICES": {
+        "total": 2,
+        "metricas": [
+          "Tasa de variación anual",
+          "Índice"
+        ]
+      },
+      "OTROS": {
+        "total": 1,
+        "metricas": [
+          "Euros"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6030": {
+    "codigo": "6030",
+    "nombre": "Coste laboral por trabajador por sectores",
+    "categoria": "Costes laborales detallados por sectores y tamaños",
+    "archivo": "6030_Coste_laboral_por_trabajador_por_sectores.csv",
+    "total_columnas": 4,
+    "total_filas": 4692,
+    "dimensiones": [
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial pagos extraordinarios",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial pagos atrasados",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por percepciones no salariales",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por I.T.",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por desempleo parcial",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por otras prestaciones sociales directas",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por otras percepciones no salariales",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por cotizaciones obligatorias",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por contingencias comunes",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por desempleo,  Fogasa y F. Profesional",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por otras cotizaciones sociales obligatorias",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Subvenciones y bonificaciones de la S.Social",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por despido",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 15,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 15,
+        "metricas": [
+          "Coste por I.T.",
+          "Coste por contingencias comunes",
+          "Coste por cotizaciones obligatorias",
+          "Coste por desempleo parcial",
+          "Coste por desempleo,  Fogasa y F. Profesional",
+          "Coste por despido",
+          "Coste por otras cotizaciones sociales obligatorias",
+          "Coste por otras percepciones no salariales",
+          "Coste por otras prestaciones sociales directas",
+          "Coste por percepciones no salariales",
+          "Coste salarial ordinario",
+          "Coste salarial pagos atrasados",
+          "Coste salarial pagos extraordinarios",
+          "Otros costes",
+          "Subvenciones y bonificaciones de la S.Social"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6031": {
+    "codigo": "6031",
+    "nombre": "Coste laboral por trabajador por tamaño, sectores",
+    "categoria": "Costes laborales detallados por sectores y tamaños",
+    "archivo": "6031_Coste_laboral_por_trabajador_por_tamaño,_sectores.csv",
+    "total_columnas": 5,
+    "total_filas": 7728,
+    "dimensiones": [
+      "Tamaño del establecimiento",
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 3,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por percepciones no salariales",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por cotizaciones obligatorias",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Subvenciones y bonificaciones de la S.Social",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 5,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 5,
+        "metricas": [
+          "Coste por cotizaciones obligatorias",
+          "Coste por percepciones no salariales",
+          "Coste salarial ordinario",
+          "Otros costes",
+          "Subvenciones y bonificaciones de la S.Social"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6032": {
+    "codigo": "6032",
+    "nombre": "Coste laboral por trabajador por secciones CNAE",
+    "categoria": "Costes laborales detallados por sectores y tamaños",
+    "archivo": "6032_Coste_laboral_por_trabajador_por_secciones_CNAE.csv",
+    "total_columnas": 4,
+    "total_filas": 15732,
+    "dimensiones": [
+      "Secciones de la CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial extraordinario",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por percepciones no salariales",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por cotizaciones obligatorias",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por contingencias comunes",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por desempleo,  Fogasa y F. Profesional",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por otras cotizaciones obligatorias",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Subvenciones y bonificaciones de la S.Social",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por despido",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 10,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 10,
+        "metricas": [
+          "Coste por contingencias comunes",
+          "Coste por cotizaciones obligatorias",
+          "Coste por desempleo,  Fogasa y F. Profesional",
+          "Coste por despido",
+          "Coste por otras cotizaciones obligatorias",
+          "Coste por percepciones no salariales",
+          "Coste salarial extraordinario",
+          "Coste salarial ordinario",
+          "Otros costes",
+          "Subvenciones y bonificaciones de la S.Social"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6033": {
+    "codigo": "6033",
+    "nombre": "Coste laboral por trabajador por divisiones CNAE",
+    "categoria": "Costes laborales detallados por sectores y tamaños",
+    "archivo": "6033_Coste_laboral_por_trabajador_por_divisiones_CNAE.csv",
+    "total_columnas": 4,
+    "total_filas": 38157,
+    "dimensiones": [
+      "Divisiones de la CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por percepciones no salariales",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por cotizaciones obligatorias",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Subvenciones y bonificaciones de la S.Social",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 5,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 5,
+        "metricas": [
+          "Coste por cotizaciones obligatorias",
+          "Coste por percepciones no salariales",
+          "Coste salarial ordinario",
+          "Otros costes",
+          "Subvenciones y bonificaciones de la S.Social"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6034": {
+    "codigo": "6034",
+    "nombre": "Coste laboral por hora efectiva por sectores",
+    "categoria": "Costes laborales detallados por sectores y tamaños",
+    "archivo": "6034_Coste_laboral_por_hora_efectiva_por_sectores.csv",
+    "total_columnas": 4,
+    "total_filas": 1104,
+    "dimensiones": [
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 2,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 2,
+        "metricas": [
+          "Coste salarial ordinario por hora",
+          "Otros costes por hora"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6035": {
+    "codigo": "6035",
+    "nombre": "Coste laboral por hora efectiva por tamaño, sectores",
+    "categoria": "Costes laborales detallados por sectores y tamaños",
+    "archivo": "6035_Coste_laboral_por_hora_efectiva_por_tamaño,_sectores.csv",
+    "total_columnas": 5,
+    "total_filas": 4416,
+    "dimensiones": [
+      "Tamaño del establecimiento",
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 3,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 2,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 2,
+        "metricas": [
+          "Coste salarial ordinario por hora",
+          "Otros costes por hora"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6036": {
+    "codigo": "6036",
+    "nombre": "Coste laboral por hora efectiva por secciones CNAE",
+    "categoria": "Costes laborales detallados por sectores y tamaños",
+    "archivo": "6036_Coste_laboral_por_hora_efectiva_por_secciones_CNAE.csv",
+    "total_columnas": 4,
+    "total_filas": 5244,
+    "dimensiones": [
+      "Secciones de la CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 2,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 2,
+        "metricas": [
+          "Coste salarial ordinario por hora",
+          "Otros costes por hora"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6037": {
+    "codigo": "6037",
+    "nombre": "Coste laboral por hora efectiva por divisiones CNAE",
+    "categoria": "Costes laborales detallados por sectores y tamaños",
+    "archivo": "6037_Coste_laboral_por_hora_efectiva_por_divisiones_CNAE.csv",
+    "total_columnas": 4,
+    "total_filas": 21804,
+    "dimensiones": [
+      "Divisiones de la CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 2,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 2,
+        "metricas": [
+          "Coste salarial ordinario por hora",
+          "Otros costes por hora"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6038": {
+    "codigo": "6038",
+    "nombre": "Coste salarial por trabajador, tipo jornada, sectores",
+    "categoria": "Costes salariales específicos",
+    "archivo": "6038_Coste_salarial_por_trabajador,_tipo_jornada,_sectores.csv",
+    "total_columnas": 5,
+    "total_filas": 3312,
+    "dimensiones": [
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 3,
+    "metricas": [
+      {
+        "nombre": "Ambas jornadas",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo completo",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo parcial",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial ordinario",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial pagos extraordinarios",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial pagos atrasados",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 6,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 3,
+        "metricas": [
+          "Coste salarial ordinario",
+          "Coste salarial pagos atrasados",
+          "Coste salarial pagos extraordinarios"
+        ]
+      },
+      "TIEMPO_TRABAJO": {
+        "total": 3,
+        "metricas": [
+          "Ambas jornadas",
+          "Jornada a tiempo completo",
+          "Jornada a tiempo parcial"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6039": {
+    "codigo": "6039",
+    "nombre": "Coste salarial por trabajador, tipo jornada, secciones CNAE",
+    "categoria": "Costes salariales específicos",
+    "archivo": "6039_Coste_salarial_por_trabajador,_tipo_jornada,_secciones_CNAE.csv",
+    "total_columnas": 5,
+    "total_filas": 15732,
+    "dimensiones": [
+      "Tipo de jornada",
+      "Secciones de la CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 3,
+    "metricas": [
+      {
+        "nombre": "Ambas jornadas",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo completo",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo parcial",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial ordinario",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial pagos extraordinarios",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial pagos atrasados",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 6,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 3,
+        "metricas": [
+          "Coste salarial ordinario",
+          "Coste salarial pagos atrasados",
+          "Coste salarial pagos extraordinarios"
+        ]
+      },
+      "TIEMPO_TRABAJO": {
+        "total": 3,
+        "metricas": [
+          "Ambas jornadas",
+          "Jornada a tiempo completo",
+          "Jornada a tiempo parcial"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6040": {
+    "codigo": "6040",
+    "nombre": "Coste salarial por hora efectiva, tipo jornada, sectores",
+    "categoria": "Costes salariales específicos",
+    "archivo": "6040_Coste_salarial_por_hora_efectiva,_tipo_jornada,_sectores.csv",
+    "total_columnas": 5,
+    "total_filas": 1656,
+    "dimensiones": [
+      "Tipo de jornada",
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 3,
+    "metricas": [
+      {
+        "nombre": "Ambas jornadas",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo completo",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo parcial",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial ordinario por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 4,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 1,
+        "metricas": [
+          "Coste salarial ordinario por hora"
+        ]
+      },
+      "TIEMPO_TRABAJO": {
+        "total": 3,
+        "metricas": [
+          "Ambas jornadas",
+          "Jornada a tiempo completo",
+          "Jornada a tiempo parcial"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6041": {
+    "codigo": "6041",
+    "nombre": "Coste salarial por hora efectiva, tipo jornada, secciones CNAE",
+    "categoria": "Costes salariales específicos",
+    "archivo": "6041_Coste_salarial_por_hora_efectiva,_tipo_jornada,_secciones_CNAE.csv",
+    "total_columnas": 5,
+    "total_filas": 7866,
+    "dimensiones": [
+      "Tipo de jornada",
+      "Secciones de la CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 3,
+    "metricas": [
+      {
+        "nombre": "Ambas jornadas",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo completo",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Jornada a tiempo parcial",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Tipo de jornada",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste salarial ordinario por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 4,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 1,
+        "metricas": [
+          "Coste salarial ordinario por hora"
+        ]
+      },
+      "TIEMPO_TRABAJO": {
+        "total": 3,
+        "metricas": [
+          "Ambas jornadas",
+          "Jornada a tiempo completo",
+          "Jornada a tiempo parcial"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6047": {
+    "codigo": "6047",
+    "nombre": "Número de vacantes por sectores",
+    "categoria": "Datos de vacantes y motivos",
+    "archivo": "6047_Número_de_vacantes_por_sectores.csv",
+    "total_columnas": 3,
+    "total_filas": 188,
+    "dimensiones": [
+      "Sector de actividad",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [],
+    "total_metricas": 0,
+    "metricas_por_categoria": {},
+    "formato_datos": "ancho"
+  },
+  "6048": {
+    "codigo": "6048",
+    "nombre": "Número de vacantes por secciones",
+    "categoria": "Datos de vacantes y motivos",
+    "archivo": "6048_Número_de_vacantes_por_secciones.csv",
+    "total_columnas": 3,
+    "total_filas": 893,
+    "dimensiones": [
+      "Secciones de actividad",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [],
+    "total_metricas": 0,
+    "metricas_por_categoria": {},
+    "formato_datos": "ancho"
+  },
+  "6049": {
+    "codigo": "6049",
+    "nombre": "Número de vacantes por tamaño establecimiento",
+    "categoria": "Datos de vacantes y motivos",
+    "archivo": "6049_Número_de_vacantes_por_tamaño_establecimiento.csv",
+    "total_columnas": 3,
+    "total_filas": 188,
+    "dimensiones": [
+      "Tamaño del establecimiento",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [],
+    "total_metricas": 0,
+    "metricas_por_categoria": {},
+    "formato_datos": "ancho"
+  },
+  "6053": {
+    "codigo": "6053",
+    "nombre": "Motivos no vacantes por sectores",
+    "categoria": "Datos de vacantes y motivos",
+    "archivo": "6053_Motivos_no_vacantes_por_sectores.csv",
+    "total_columnas": 4,
+    "total_filas": 752,
+    "dimensiones": [
+      "Sectores de actividad",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "No se necesita ningún trabajador",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Elevado coste de contratación",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros",
+        "categoria": "OTROS",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 3,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 1,
+        "metricas": [
+          "Elevado coste de contratación"
+        ]
+      },
+      "TIEMPO_TRABAJO": {
+        "total": 1,
+        "metricas": [
+          "No se necesita ningún trabajador"
+        ]
+      },
+      "OTROS": {
+        "total": 1,
+        "metricas": [
+          "Otros"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6054": {
+    "codigo": "6054",
+    "nombre": "Motivos no vacantes por secciones",
+    "categoria": "Datos de vacantes y motivos",
+    "archivo": "6054_Motivos_no_vacantes_por_secciones.csv",
+    "total_columnas": 4,
+    "total_filas": 3572,
+    "dimensiones": [
+      "Secciones de actividad",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "No se necesita ningún trabajador",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Elevado coste de contratación",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros",
+        "categoria": "OTROS",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 3,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 1,
+        "metricas": [
+          "Elevado coste de contratación"
+        ]
+      },
+      "TIEMPO_TRABAJO": {
+        "total": 1,
+        "metricas": [
+          "No se necesita ningún trabajador"
+        ]
+      },
+      "OTROS": {
+        "total": 1,
+        "metricas": [
+          "Otros"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6055": {
+    "codigo": "6055",
+    "nombre": "Motivos no vacantes por tamaño establecimiento",
+    "categoria": "Datos de vacantes y motivos",
+    "archivo": "6055_Motivos_no_vacantes_por_tamaño_establecimiento.csv",
+    "total_columnas": 4,
+    "total_filas": 752,
+    "dimensiones": [
+      "Tamaño del establecimiento",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "No se necesita ningún trabajador",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Elevado coste de contratación",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros",
+        "categoria": "OTROS",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 3,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 1,
+        "metricas": [
+          "Elevado coste de contratación"
+        ]
+      },
+      "TIEMPO_TRABAJO": {
+        "total": 1,
+        "metricas": [
+          "No se necesita ningún trabajador"
+        ]
+      },
+      "OTROS": {
+        "total": 1,
+        "metricas": [
+          "Otros"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6064": {
+    "codigo": "6064",
+    "nombre": "Número de vacantes por comunidad autónoma",
+    "categoria": "Datos de vacantes y motivos",
+    "archivo": "6064_Número_de_vacantes_por_comunidad_autónoma.csv",
+    "total_columnas": 4,
+    "total_filas": 846,
+    "dimensiones": [
+      "Comunidades y Ciudades Autónomas",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [],
+    "total_metricas": 0,
+    "metricas_por_categoria": {},
+    "formato_datos": "ancho"
+  },
+  "6066": {
+    "codigo": "6066",
+    "nombre": "Motivos no vacantes por comunidad autónoma",
+    "categoria": "Datos de vacantes y motivos",
+    "archivo": "6066_Motivos_no_vacantes_por_comunidad_autónoma.csv",
+    "total_columnas": 4,
+    "total_filas": 3384,
+    "dimensiones": [
+      "Comunidad autónoma",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "No se necesita ningún trabajador",
+        "categoria": "TIEMPO_TRABAJO",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Elevado coste de contratación",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros",
+        "categoria": "OTROS",
+        "columna_origen": "Motivos por los que no exiten puestos de trabajo vacantes",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 3,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 1,
+        "metricas": [
+          "Elevado coste de contratación"
+        ]
+      },
+      "TIEMPO_TRABAJO": {
+        "total": 1,
+        "metricas": [
+          "No se necesita ningún trabajador"
+        ]
+      },
+      "OTROS": {
+        "total": 1,
+        "metricas": [
+          "Otros"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6056": {
+    "codigo": "6056",
+    "nombre": "Percepciones IT, coste indemnización por actividad",
+    "categoria": "Otros costes laborales específicos",
+    "archivo": "6056_Percepciones_IT,_coste_indemnización_por_actividad.csv",
+    "total_columnas": 4,
+    "total_filas": 3036,
+    "dimensiones": [
+      "Actividad económica CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [
+      {
+        "nombre": "Percepciones por día de IT",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Clase de indicador",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste indemnización por trabajador despedido",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Clase de indicador",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 2,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 2,
+        "metricas": [
+          "Coste indemnización por trabajador despedido",
+          "Percepciones por día de IT"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6057": {
+    "codigo": "6057",
+    "nombre": "Coste por hora extraordinaria, actividad económica",
+    "categoria": "Otros costes laborales específicos",
+    "archivo": "6057_Coste_por_hora_extraordinaria,_actividad_económica.csv",
+    "total_columnas": 3,
+    "total_filas": 6831,
+    "dimensiones": [
+      "Actividad económica CNAE-09",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [],
+    "total_metricas": 0,
+    "metricas_por_categoria": {},
+    "formato_datos": "ancho"
+  },
+  "6058": {
+    "codigo": "6058",
+    "nombre": "Coste por hora extraordinaria por CCAA",
+    "categoria": "Otros costes laborales específicos",
+    "archivo": "6058_Coste_por_hora_extraordinaria_por_CCAA.csv",
+    "total_columnas": 3,
+    "total_filas": 1242,
+    "dimensiones": [
+      "Comunidades y Ciudades Autónomas",
+      "Periodo"
+    ],
+    "total_dimensiones": 2,
+    "metricas": [],
+    "total_metricas": 0,
+    "metricas_por_categoria": {},
+    "formato_datos": "ancho"
+  },
+  "6061": {
+    "codigo": "6061",
+    "nombre": "Coste laboral por trabajador, CCAA, sectores",
+    "categoria": "Otros costes laborales específicos",
+    "archivo": "6061_Coste_laboral_por_trabajador,_CCAA,_sectores.csv",
+    "total_columnas": 5,
+    "total_filas": 34776,
+    "dimensiones": [
+      "Comunidades y Ciudades Autónomas",
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 3,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por percepciones no salariales",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Coste por cotizaciones obligatorias",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Subvenciones y bonificaciones de la S.Social",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 5,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 5,
+        "metricas": [
+          "Coste por cotizaciones obligatorias",
+          "Coste por percepciones no salariales",
+          "Coste salarial ordinario",
+          "Otros costes",
+          "Subvenciones y bonificaciones de la S.Social"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  },
+  "6062": {
+    "codigo": "6062",
+    "nombre": "Coste laboral por hora efectiva, CCAA, sectores",
+    "categoria": "Otros costes laborales específicos",
+    "archivo": "6062_Coste_laboral_por_hora_efectiva,_CCAA,_sectores.csv",
+    "total_columnas": 5,
+    "total_filas": 19872,
+    "dimensiones": [
+      "Comunidades y Ciudades Autónomas",
+      "Sectores de actividad CNAE 2009",
+      "Periodo"
+    ],
+    "total_dimensiones": 3,
+    "metricas": [
+      {
+        "nombre": "Coste salarial ordinario por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      },
+      {
+        "nombre": "Otros costes por hora",
+        "categoria": "COSTES_LABORALES",
+        "columna_origen": "Componentes del coste",
+        "tipo_dato": "valor_categorico",
+        "valores_unicos": 1,
+        "tiene_nulos": false,
+        "valores_ejemplo": []
+      }
+    ],
+    "total_metricas": 2,
+    "metricas_por_categoria": {
+      "COSTES_LABORALES": {
+        "total": 2,
+        "metricas": [
+          "Coste salarial ordinario por hora",
+          "Otros costes por hora"
+        ]
+      }
+    },
+    "formato_datos": "largo"
+  }
+}

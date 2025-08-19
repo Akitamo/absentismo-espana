@@ -1,0 +1,282 @@
+{
+  "metricas_validadas": [
+    {
+      "metrica_extraida": "Coste laboral total",
+      "metrica_oficial": "Coste laboral total",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste por I.T.",
+      "metrica_oficial": "Coste por I.T.",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste por contingencias comunes",
+      "metrica_oficial": "Coste por contingencias comunes",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste por cotizaciones obligatorias",
+      "metrica_oficial": "Coste por cotizaciones obligatorias",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste por desempleo parcial",
+      "metrica_oficial": "Coste por desempleo",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste por despido",
+      "metrica_oficial": "Coste por despido",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste por otras cotizaciones sociales obligatorias",
+      "metrica_oficial": "Coste por otras cotizaciones sociales obligatorias",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste por otras percepciones no salariales",
+      "metrica_oficial": "Coste por otras percepciones no salariales",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste por otras prestaciones sociales directas",
+      "metrica_oficial": "Coste por otras prestaciones sociales directas",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste por percepciones no salariales",
+      "metrica_oficial": "Coste por percepciones no salariales",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste salarial extraordinario",
+      "metrica_oficial": "Coste salarial extraordinario",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste salarial ordinario",
+      "metrica_oficial": "Coste salarial ordinario",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste salarial pagos atrasados",
+      "metrica_oficial": "Coste salarial pagos atrasados",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste salarial pagos extraordinarios",
+      "metrica_oficial": "Coste salarial pagos extraordinarios",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste salarial total",
+      "metrica_oficial": "Coste salarial total",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Horas efectivas",
+      "metrica_oficial": "Horas efectivas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas extras por trabajador",
+      "metrica_oficial": "Horas extras",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas",
+      "metrica_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas pactadas",
+      "metrica_oficial": "Horas pactadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas pagadas",
+      "metrica_oficial": "Horas pagadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Número de vacantes",
+      "metrica_oficial": "Número de vacantes",
+      "categoria": "VACANTES"
+    },
+    {
+      "metrica_extraida": "Otros costes",
+      "metrica_oficial": "Otros costes",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Percepciones por día de IT",
+      "metrica_oficial": "Percepciones por día de I.T.",
+      "categoria": "COSTES_LABORALES"
+    }
+  ],
+  "metricas_no_encontradas": [
+    "Coste indemnización por trabajador despedido",
+    "Coste por otras cotizaciones obligatorias",
+    "Elevado coste de contratación",
+    "Euros",
+    "Horas perdidas en el lugar de trabajo",
+    "No se necesita ningún trabajador",
+    "Subvenciones y bonificaciones de la S.Social",
+    "Tasa de variación anual",
+    "Índice"
+  ],
+  "metricas_parciales": [
+    {
+      "metrica_extraida": "Coste laboral total por hora",
+      "posible_oficial": "Coste laboral total",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste por desempleo,  Fogasa y F. Profesional",
+      "posible_oficial": "Coste por desempleo",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste salarial ordinario por hora",
+      "posible_oficial": "Coste salarial ordinario",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Coste salarial total por hora",
+      "posible_oficial": "Coste salarial total",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas por I.T",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas por compensación horas extras",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas por conflictividad laboral",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas por fiestas",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas por maternidad",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas por otras causas",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas por permisos remunerados",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas por razones técnicas o económicas",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas por vacaciones",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas por vacaciones y fiestas",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas y no pagadas",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Horas no trabajadas y pagadas",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Otras horas no trabajadas y remuneradas",
+      "posible_oficial": "Horas no trabajadas",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica_extraida": "Otros",
+      "posible_oficial": "Otros costes",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica_extraida": "Otros costes por hora",
+      "posible_oficial": "Otros costes",
+      "categoria": "COSTES_LABORALES"
+    }
+  ],
+  "resumen_por_categoria": {
+    "COSTES_LABORALES": {
+      "total_oficiales": 22,
+      "encontradas_exactas": 17,
+      "encontradas_parciales": 6,
+      "porcentaje_cobertura": 77.3
+    },
+    "TIEMPO_TRABAJO": {
+      "total_oficiales": 13,
+      "encontradas_exactas": 5,
+      "encontradas_parciales": 13,
+      "porcentaje_cobertura": 38.5
+    },
+    "VACANTES": {
+      "total_oficiales": 2,
+      "encontradas_exactas": 1,
+      "encontradas_parciales": 0,
+      "porcentaje_cobertura": 50.0
+    }
+  },
+  "metricas_oficiales_faltantes": [
+    {
+      "metrica": "Coste total",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica": "Subvenciones y bonificaciones de la Seguridad Social",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica": "Coste indemnización trabajador despedido",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica": "Coste por hora extra",
+      "categoria": "COSTES_LABORALES"
+    },
+    {
+      "metrica": "Horas extraordinarias",
+      "categoria": "TIEMPO_TRABAJO"
+    },
+    {
+      "metrica": "Motivos por los que no existen vacantes",
+      "categoria": "VACANTES"
+    }
+  ],
+  "resumen_global": {
+    "total_metricas_oficiales": 37,
+    "total_metricas_extraidas": 51,
+    "metricas_validadas": 23,
+    "metricas_parciales": 19,
+    "metricas_no_encontradas": 9,
+    "porcentaje_precision": 45.1,
+    "porcentaje_cobertura": 62.2
+  }
+}
