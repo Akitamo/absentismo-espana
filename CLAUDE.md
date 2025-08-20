@@ -262,9 +262,11 @@ Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unifi
 | ccaa_codigo | VARCHAR(2) | NO | INE code or NULL |
 | cnae_nivel | ENUM | YES | TOTAL, SECTOR_BS, SECCION, DIVISION |
 | cnae_codigo | VARCHAR(5) | NO | CNAE code or NULL |
+| jerarquia_sector_cod | VARCHAR(50) | NO | Path: TOTAL>SECCION>C>DIVISION>10 |
+| jerarquia_sector_lbl | VARCHAR(100) | NO | Path: Total>Sección C>División 10 |
 | tipo_jornada | ENUM | NO | TOTAL, COMPLETA, PARCIAL, NULL |
 | metrica | ENUM | YES | horas_pactadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas |
-| causa | ENUM | NO | 9 causes for HNT, NULL for others |
+| causa | ENUM | NO | it_total, maternidad_paternidad, permisos_retribuidos, conflictividad, representacion_sindical, otros, vacaciones, festivos, erte_suspension, NULL |
 | valor | DECIMAL | YES | Numeric value |
 | es_total_ccaa | BOOLEAN | YES | TRUE if NAC |
 | es_total_cnae | BOOLEAN | YES | TRUE if TOTAL level |

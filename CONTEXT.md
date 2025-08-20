@@ -63,9 +63,11 @@ periodo + ambito_territorial + ccaa_codigo + cnae_nivel + cnae_codigo + tipo_jor
 | cnae_nivel | ENUM | SÍ | TOTAL, SECTOR_BS, SECCION, DIVISION |
 | cnae_codigo | VARCHAR(5) | NO | Código CNAE o NULL |
 | cnae_nombre | VARCHAR(200) | NO | Descripción sector |
+| jerarquia_sector_cod | VARCHAR(50) | NO | Path: TOTAL>SECCION>C>DIVISION>10 |
+| jerarquia_sector_lbl | VARCHAR(100) | NO | Path: Total>Sección C>División 10 |
 | tipo_jornada | ENUM | NO | TOTAL, COMPLETA, PARCIAL, NULL |
 | metrica | ENUM | SÍ | horas_pactadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas |
-| causa | ENUM | NO | 9 causas para HNT, NULL otros |
+| causa | ENUM | NO | it_total, maternidad_paternidad, permisos_retribuidos, conflictividad, representacion_sindical, otros, vacaciones, festivos, erte_suspension, NULL |
 | valor | DECIMAL | SÍ | Valor numérico |
 | unidad | VARCHAR | SÍ | horas/mes por trabajador |
 | fuente_tabla | VARCHAR(4) | SÍ | 6042-6046, 6063 |

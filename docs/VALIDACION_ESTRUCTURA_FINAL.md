@@ -85,9 +85,11 @@ periodo + ambito_territorial + ccaa_codigo + cnae_nivel + cnae_codigo + tipo_jor
 | **cnae_nivel** | ENUM | SÍ | TOTAL, SECTOR_BS, SECCION, DIVISION | Granularidad sector |
 | **cnae_codigo** | STRING | NO | B-S, C, 10, NULL | Código CNAE |
 | **cnae_nombre** | STRING | NO | Texto o NULL | Descripción sector |
+| **jerarquia_sector_cod** | STRING | NO | TOTAL>SECCION>C>DIVISION>10 | Jerarquía códigos |
+| **jerarquia_sector_lbl** | STRING | NO | Total>Sección C>División 10 | Jerarquía nombres |
 | **tipo_jornada** | ENUM | NO | TOTAL, COMPLETA, PARCIAL, NULL | Tipo jornada |
 | **metrica** | ENUM | SÍ | horas_pactadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas | Tipo métrica |
-| **causa** | ENUM | NO | it_total, maternidad_paternidad, etc., NULL | Causa si HNT |
+| **causa** | ENUM | NO | it_total, maternidad_paternidad, permisos_retribuidos, conflictividad, representacion_sindical, otros, vacaciones, festivos, erte_suspension, NULL | Causa si HNT |
 | **valor** | DECIMAL | SÍ | ≥0 | Valor numérico |
 | **unidad** | STRING | SÍ | horas/mes por trabajador | Unidad fija |
 | **fuente_tabla** | ENUM | SÍ | 6042-6046, 6063 | Tabla origen |
@@ -123,37 +125,39 @@ periodo + ambito_territorial + ccaa_codigo + cnae_nivel + cnae_codigo + tipo_jor
 ### Caso 1: Tasa absentismo nacional por trimestre
 ```sql
 SELECT periodo, 
-       SUM(CASE WHEN causa IN ('it_total','maternidad_paternidad','permisos_retribuidos',
-                               'conflictividad','representacion_sindical','otros') 
+       SUM(CASE WHEN metrica = 'horas_no_trabajadas' 
+                AND causa IN ('it_total','maternidad_paternidad','permisos_retribuidos',
+                              'conflictividad','representacion_sindical','otros') 
                 THEN valor ELSE 0 END) / 
-       MAX(CASE WHEN metrica = 'horas_pactadas' THEN valor END) * 100 as tasa
+       SUM(CASE WHEN metrica = 'horas_pactadas' THEN valor ELSE 0 END) * 100 as tasa
 FROM tabla
-WHERE ambito_territorial = 'NAC' 
-  AND cnae_nivel = 'TOTAL'
-  AND (tipo_jornada = 'TOTAL' OR tipo_jornada IS NULL)
+WHERE rol_grano = 'NAC_TOTAL'  -- Usar rol_grano para filtrar correctamente
 GROUP BY periodo
 ```
 **✅ FUNCIONA**
 
 ### Caso 2: Ranking CCAA
 ```sql
-SELECT ccaa_nombre, valor as hp
+SELECT ccaa_nombre, 
+       SUM(CASE WHEN metrica = 'horas_pactadas' THEN valor ELSE 0 END) as hp
 FROM tabla  
-WHERE ambito_territorial = 'CCAA'
-  AND metrica = 'horas_pactadas'
-  AND cnae_nivel = 'TOTAL'
+WHERE rol_grano IN ('CCAA_TOTAL', 'CCAA_TOTAL_JORNADA')
   AND periodo = '2025T1'
-ORDER BY valor DESC
+  AND tipo_jornada = 'TOTAL'  -- O NULL según disponibilidad
+GROUP BY ccaa_nombre
+ORDER BY hp DESC
 ```
 **✅ FUNCIONA** - Solo usa tabla 6063
 
 ### Caso 3: Análisis por división CNAE
 ```sql
-SELECT cnae_codigo, cnae_nombre, valor
+SELECT cnae_codigo, cnae_nombre, 
+       SUM(CASE WHEN metrica = 'horas_pactadas' THEN valor ELSE 0 END) as hp
 FROM tabla
-WHERE cnae_nivel = 'DIVISION'
-  AND metrica = 'horas_pactadas'
+WHERE rol_grano = 'NAC_DIVISION'  -- Usar rol_grano específico
   AND periodo = '2025T1'
+GROUP BY cnae_codigo, cnae_nombre
+ORDER BY hp DESC
 ```
 **✅ FUNCIONA** - Solo usa tabla 6046
 
