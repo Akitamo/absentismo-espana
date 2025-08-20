@@ -1,0 +1,425 @@
+{
+  "tabla_estructura": [
+    {
+      "nombre": "periodo",
+      "tipo": "string (YYYYTQ)",
+      "requerido": true,
+      "descripcion": "Trimestre de referencia en formato 'YYYYTQ' (p.ej., 2025T2).",
+      "ejemplo": "2025T2"
+    },
+    {
+      "nombre": "periodo_inicio",
+      "tipo": "date (YYYY-MM-DD)",
+      "requerido": true,
+      "descripcion": "Primer día del trimestre correspondiente a 'periodo'.",
+      "ejemplo": "2025-04-01"
+    },
+    {
+      "nombre": "periodo_fin",
+      "tipo": "date (YYYY-MM-DD)",
+      "requerido": true,
+      "descripcion": "Último día del trimestre correspondiente a 'periodo'.",
+      "ejemplo": "2025-06-30"
+    },
+    {
+      "nombre": "ambito_territorial",
+      "tipo": "enum {NAC, CCAA}",
+      "requerido": true,
+      "descripcion": "NAC = Ámbito nacional; CCAA = Comunidad Autónoma.",
+      "ejemplo": "NAC"
+    },
+    {
+      "nombre": "ccaa_codigo",
+      "tipo": "string (código INE)",
+      "requerido": false,
+      "descripcion": "Código oficial INE de la CCAA cuando 'ambito_territorial' = CCAA; NULL si NAC.",
+      "ejemplo": "08"
+    },
+    {
+      "nombre": "ccaa_nombre",
+      "tipo": "string",
+      "requerido": false,
+      "descripcion": "Nombre oficial de la CCAA; NULL si NAC.",
+      "ejemplo": "Cataluña"
+    },
+    {
+      "nombre": "cnae_nivel",
+      "tipo": "enum {TOTAL, SECTOR_BS, SECCION, DIVISION}",
+      "requerido": true,
+      "descripcion": "Nivel de detalle sectorial publicado por la tabla de origen.",
+      "ejemplo": "SECCION"
+    },
+    {
+      "nombre": "cnae_codigo",
+      "tipo": "string",
+      "requerido": false,
+      "descripcion": "Código CNAE aplicable: B–S para SECCION; 2 dígitos '10'..'99' para DIVISION; NULL si TOTAL.",
+      "ejemplo": "C"
+    },
+    {
+      "nombre": "cnae_nombre",
+      "tipo": "string",
+      "requerido": false,
+      "descripcion": "Descripción del código CNAE correspondiente; NULL si TOTAL.",
+      "ejemplo": "Industria manufacturera"
+    },
+    {
+      "nombre": "jerarquia_sector_cod",
+      "tipo": "string (path de códigos)",
+      "requerido": false,
+      "descripcion": "Ruta jerárquica por códigos, p.ej. 'TOTAL>SECCION>C>DIVISION>10'.",
+      "ejemplo": "TOTAL>SECCION>C>DIVISION>10"
+    },
+    {
+      "nombre": "jerarquia_sector_lbl",
+      "tipo": "string (path de etiquetas)",
+      "requerido": false,
+      "descripcion": "Ruta jerárquica por etiquetas legibles, p.ej. 'Total>Sección C>División 10'.",
+      "ejemplo": "Total>Sección C>División 10"
+    },
+    {
+      "nombre": "tipo_jornada",
+      "tipo": "enum {TOTAL, COMPLETA, PARCIAL} | NULL",
+      "requerido": false,
+      "descripcion": "Usar NULL cuando la tabla no publica jornada; en caso contrario usar {TOTAL, COMPLETA, PARCIAL}.",
+      "ejemplo": "COMPLETA"
+    },
+    {
+      "nombre": "metrica",
+      "tipo": "enum {horas_pactadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas}",
+      "requerido": true,
+      "descripcion": "Variables directas de ETCL (sin tasas).",
+      "ejemplo": "horas_no_trabajadas"
+    },
+    {
+      "nombre": "causa",
+      "tipo": "enum (solo si metrica = horas_no_trabajadas)",
+      "requerido": false,
+      "descripcion": "Causa específica cuando 'metrica' = 'horas_no_trabajadas'. NULL en el resto.",
+      "ejemplo": "it_total"
+    },
+    {
+      "nombre": "unidad",
+      "tipo": "string (constante)",
+      "requerido": true,
+      "descripcion": "Siempre 'horas/mes por trabajador'.",
+      "ejemplo": "horas/mes por trabajador"
+    },
+    {
+      "nombre": "valor",
+      "tipo": "decimal(12,3)",
+      "requerido": true,
+      "descripcion": "Separador decimal punto. Valor ≥ 0.",
+      "ejemplo": "6.230"
+    },
+    {
+      "nombre": "fuente_tabla",
+      "tipo": "enum {6042, 6043, 6044, 6045, 6046, 6063}",
+      "requerido": true,
+      "descripcion": "Identifica la tabla ETCL exacta de origen.",
+      "ejemplo": "6043"
+    },
+    {
+      "nombre": "version_datos",
+      "tipo": "string",
+      "requerido": true,
+      "descripcion": "Etiqueta de versión de extracción/carga (YYYY_MM_DD o hash).",
+      "ejemplo": "2025_08_20"
+    },
+    {
+      "nombre": "fecha_carga",
+      "tipo": "datetime",
+      "requerido": true,
+      "descripcion": "Fecha y hora de carga (UTC o TZ del proyecto).",
+      "ejemplo": "2025-08-20 17:30:21"
+    },
+    {
+      "nombre": "es_total_ccaa",
+      "tipo": "boolean (derivado)",
+      "requerido": false,
+      "descripcion": "TRUE si 'ambito_territorial'='NAC'; FALSE si 'CCAA'.",
+      "ejemplo": "TRUE"
+    },
+    {
+      "nombre": "es_total_cnae",
+      "tipo": "boolean (derivado)",
+      "requerido": false,
+      "descripcion": "TRUE si 'cnae_nivel'='TOTAL' o 'cnae_codigo' es NULL.",
+      "ejemplo": "FALSE"
+    },
+    {
+      "nombre": "es_total_jornada",
+      "tipo": "boolean (derivado)",
+      "requerido": false,
+      "descripcion": "TRUE si 'tipo_jornada' es NULL o 'TOTAL'.",
+      "ejemplo": "TRUE"
+    },
+    {
+      "nombre": "rol_grano",
+      "tipo": "enum {...}",
+      "requerido": false,
+      "descripcion": "Corte canónico combinando geografía+sector+jornada.",
+      "ejemplo": "NAC_SECCION"
+    }
+  ],
+  "dominios": {
+    "ambito_territorial": [
+      "NAC",
+      "CCAA"
+    ],
+    "cnae_nivel": [
+      "TOTAL",
+      "SECTOR_BS",
+      "SECCION",
+      "DIVISION"
+    ],
+    "tipo_jornada": [
+      "TOTAL",
+      "COMPLETA",
+      "PARCIAL"
+    ],
+    "metrica": [
+      "horas_pactadas",
+      "horas_efectivas",
+      "horas_extraordinarias",
+      "horas_no_trabajadas"
+    ],
+    "causa": [
+      "it_total",
+      "maternidad_paternidad",
+      "permisos_retribuidos",
+      "conflictividad",
+      "representacion_sindical",
+      "otros",
+      "vacaciones",
+      "festivos",
+      "erte_suspension"
+    ],
+    "unidad": [
+      "horas/mes por trabajador"
+    ],
+    "fuente_tabla": [
+      "6042",
+      "6043",
+      "6044",
+      "6045",
+      "6046",
+      "6063"
+    ],
+    "rol_grano": [
+      "NAC_TOTAL",
+      "NAC_TOTAL_JORNADA",
+      "NAC_SECTOR_BS",
+      "NAC_SECCION",
+      "NAC_DIVISION",
+      "CCAA_TOTAL",
+      "CCAA_TOTAL_JORNADA"
+    ],
+    "boolean": [
+      "TRUE",
+      "FALSE"
+    ]
+  },
+  "validaciones": [
+    {
+      "regla": "formato_periodo",
+      "criterio": "Patrón 'YYYYTQ' (Q ∈ {1,2,3,4})."
+    },
+    {
+      "regla": "coherencia_periodo_fechas",
+      "criterio": "'periodo_inicio' y 'periodo_fin' deben encajar con el trimestre de 'periodo'."
+    },
+    {
+      "regla": "territorio_consistente",
+      "criterio": "Si NAC → ccaa_* = NULL. Si CCAA → ccaa_* informado."
+    },
+    {
+      "regla": "cnae_consistente",
+      "criterio": "Si cnae_nivel = TOTAL → cnae_codigo y cnae_nombre = NULL; en otro caso, ambos informados."
+    },
+    {
+      "regla": "jerarquia_sector_valida",
+      "criterio": "Si se informa jerarquía, debe ser coherente con cnae_nivel/codigo."
+    },
+    {
+      "regla": "jornada_aplicabilidad",
+      "criterio": "En tablas sin jornada, 'tipo_jornada' = NULL; en tablas con jornada, usar {TOTAL, COMPLETA, PARCIAL}."
+    },
+    {
+      "regla": "metrica_causa",
+      "criterio": "Si metrica ≠ 'horas_no_trabajadas' → causa = NULL; si = 'horas_no_trabajadas' → causa ∈ dominio."
+    },
+    {
+      "regla": "unidad_constante",
+      "criterio": "Siempre 'horas/mes por trabajador'."
+    },
+    {
+      "regla": "valor_valido",
+      "criterio": "valor ≥ 0; separador decimal '.'."
+    },
+    {
+      "regla": "fuente_tabla_valida",
+      "criterio": "fuente_tabla ∈ {6042, 6043, 6044, 6045, 6046, 6063}."
+    },
+    {
+      "regla": "no_sumar_niveles_distintos",
+      "criterio": "No mezclar SECTOR_BS con SECCION o DIVISION."
+    },
+    {
+      "regla": "no_reconstruir_totales",
+      "criterio": "No reconstruir 'TOTAL' sumando subgrupos (son promedios). Usar total publicado del mismo rol_grano."
+    },
+    {
+      "regla": "nacional_vs_ccaa",
+      "criterio": "No mezclar NAC con CCAA en la misma agregación."
+    },
+    {
+      "regla": "jornada_homogenea",
+      "criterio": "Para comparativas por jornada, usar solo filas con jornada publicada."
+    },
+    {
+      "regla": "suma_causas",
+      "criterio": "En un mismo grano, Σ horas_no_trabajadas por causa = horas_no_trabajadas total (± redondeo)."
+    },
+    {
+      "regla": "identidad_HE",
+      "criterio": "HE ≈ HP + Extras − Horas no trabajadas (± redondeo)."
+    }
+  ],
+  "jerarquia_cnae": [
+    {
+      "cnae_nivel": "TOTAL",
+      "cnae_codigo": null,
+      "jerarquia_cod": "TOTAL",
+      "jerarquia_lbl": "Total",
+      "ejemplo": "TOTAL economía"
+    },
+    {
+      "cnae_nivel": "SECTOR_BS",
+      "cnae_codigo": "IND",
+      "jerarquia_cod": "TOTAL>B_S>IND",
+      "jerarquia_lbl": "Total>Gran sector>Industria",
+      "ejemplo": "Gran sector: Industria"
+    },
+    {
+      "cnae_nivel": "SECCION",
+      "cnae_codigo": "C",
+      "jerarquia_cod": "TOTAL>SECCION>C",
+      "jerarquia_lbl": "Total>Sección C",
+      "ejemplo": "Sección C"
+    },
+    {
+      "cnae_nivel": "DIVISION",
+      "cnae_codigo": "10",
+      "jerarquia_cod": "TOTAL>SECCION>C>DIVISION>10",
+      "jerarquia_lbl": "Total>Sección C>División 10",
+      "ejemplo": "División 10"
+    }
+  ],
+  "cobertura_tablas": {
+    "6042": {
+      "periodo": true,
+      "sector": "Sí (B-S)",
+      "ccaa": false,
+      "jornada": true,
+      "granularidad": "Agregado (Industria, Construcción, Servicios)"
+    },
+    "6043": {
+      "periodo": true,
+      "sector": "Sí (Secciones)",
+      "ccaa": false,
+      "jornada": true,
+      "granularidad": "Detalle (21 secciones)"
+    },
+    "6044": {
+      "periodo": true,
+      "sector": "Sí (B-S)",
+      "ccaa": false,
+      "jornada": false,
+      "granularidad": "Agregado"
+    },
+    "6045": {
+      "periodo": true,
+      "sector": "Sí (Secciones)",
+      "ccaa": false,
+      "jornada": false,
+      "granularidad": "Detalle (Secciones)"
+    },
+    "6046": {
+      "periodo": true,
+      "sector": "Sí (Divisiones)",
+      "ccaa": false,
+      "jornada": false,
+      "granularidad": "Muy detalle (82 divisiones)"
+    },
+    "6063": {
+      "periodo": true,
+      "sector": "Sí (B-S)",
+      "ccaa": true,
+      "jornada": true,
+      "granularidad": "Agregado + CCAA"
+    }
+  },
+  "mapeo_columnas_ine": {
+    "dimensiones": {
+      "Periodo": "periodo",
+      "Comunidades y Ciudades Autónomas": "ccaa_nombre",
+      "Tipo de jornada": "tipo_jornada",
+      "Sectores de actividad CNAE 2009": "cnae_nombre",
+      "Secciones de actividad": "cnae_nombre",
+      "Divisiones de la CNAE-09": "cnae_nombre",
+      "Tiempo de trabajo": "metrica_base"
+    },
+    "metricas_base": {
+      "Horas pactadas": "horas_pactadas",
+      "Horas efectivas": "horas_efectivas",
+      "Horas extraordinarias": "horas_extraordinarias",
+      "Horas pagadas": "horas_pagadas"
+    },
+    "causas_hnt": {
+      "Horas no trabajadas: incapacidad temporal": "it_total",
+      "Horas no trabajadas: maternidad": "maternidad_paternidad",
+      "Horas no trabajadas: permisos remunerados": "permisos_retribuidos",
+      "Horas no trabajadas: conflictividad laboral": "conflictividad",
+      "Horas no trabajadas: representación sindical": "representacion_sindical",
+      "Horas no trabajadas: otros motivos": "otros",
+      "Horas no trabajadas: vacaciones": "vacaciones",
+      "Horas no trabajadas: fiestas": "festivos",
+      "Horas no trabajadas: razones técnicas o económicas": "erte_suspension"
+    },
+    "valor": "Total"
+  },
+  "procesamiento": {
+    "tablas_incluidas": [
+      "6042",
+      "6043",
+      "6044",
+      "6045",
+      "6046",
+      "6063"
+    ],
+    "unidad_fija": "horas/mes por trabajador",
+    "decimal_separator": ",",
+    "output_decimal": ".",
+    "encoding_csv": "utf-8-sig",
+    "separator_csv": ";"
+  },
+  "reglas_negocio": {
+    "denominador_tasas": "horas_pactadas",
+    "excluir_absentismo": [
+      "vacaciones",
+      "festivos",
+      "erte_suspension"
+    ],
+    "incluir_absentismo": [
+      "it_total",
+      "maternidad_paternidad",
+      "permisos_retribuidos",
+      "conflictividad",
+      "representacion_sindical",
+      "otros"
+    ],
+    "identidad_he": "HE = HP + HEXT - HNT_TOTAL",
+    "ceuta_melilla": "Integradas con Andalucía en tabla 6063"
+  }
+}

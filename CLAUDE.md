@@ -19,16 +19,17 @@ Modular Agent-Based System:
 │   ├── MetadataManager: Version tracking and hash validation
 │   ├── UpdateManager: Smart incremental updates
 │   └── MetricsExtractor: 51 unique metrics identified and validated (112% coverage)
-└── Agent Processor: Cleans and structures data (dimensions/metrics) [NEXT PHASE]
+└── Agent Processor: Transforms raw data into unified analysis table [IN DESIGN]
 ```
 
 ## Project Structure
 ```
 absentismo-espana/
 ├── agent_extractor/     # Data extraction from INE
-├── agent_processor/     # Data processing and cleaning [TODO]
+├── agent_processor/     # Data processing into unified table [IN DESIGN]
 ├── config/              # Configuration files
-│   └── tables.json      # 35 INE table definitions
+│   ├── tables.json      # 35 INE table definitions
+│   └── procesador_config_completo.json # Agent Processor configuration
 ├── data/
 │   ├── raw/csv/        # 35 Original CSV files from INE (one per table)
 │   ├── metadata/       # Update tracking and version control
@@ -236,3 +237,59 @@ WHERE unique_count < 100;
 - Tables 6047 and 6049 lack web endpoints but use same extraction process
 - **Metrics categorization validated** against official INE methodology document
 - **Confidence level: Maximum - Agent Extractor ready for production**
+
+## Agent Processor Design (20-ago-2025)
+
+### Purpose
+Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unified analysis table for absenteeism reporting (Adecco/Randstad format).
+
+### Input Tables (Tiempo de Trabajo only)
+- **6042**: Nacional + Sectores B-S + Jornada
+- **6043**: Nacional + Secciones CNAE + Jornada  
+- **6044**: Nacional + Sectores B-S (sin jornada)
+- **6045**: Nacional + Secciones CNAE (sin jornada)
+- **6046**: Nacional + Divisiones CNAE (sin jornada)
+- **6063**: CCAA + Sectores B-S + Jornada
+
+### Output Table Structure: `observaciones_tiempo_trabajo`
+
+**Primary Key**: `periodo + ambito_territorial + ccaa_codigo + cnae_nivel + cnae_codigo + tipo_jornada + metrica + causa`
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| periodo | VARCHAR(6) | YES | Quarter (YYYYTQ) |
+| ambito_territorial | ENUM | YES | NAC or CCAA |
+| ccaa_codigo | VARCHAR(2) | NO | INE code or NULL |
+| cnae_nivel | ENUM | YES | TOTAL, SECTOR_BS, SECCION, DIVISION |
+| cnae_codigo | VARCHAR(5) | NO | CNAE code or NULL |
+| tipo_jornada | ENUM | NO | TOTAL, COMPLETA, PARCIAL, NULL |
+| metrica | ENUM | YES | horas_pactadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas |
+| causa | ENUM | NO | 9 causes for HNT, NULL for others |
+| valor | DECIMAL | YES | Numeric value |
+| es_total_ccaa | BOOLEAN | YES | TRUE if NAC |
+| es_total_cnae | BOOLEAN | YES | TRUE if TOTAL level |
+| es_total_jornada | BOOLEAN | YES | TRUE if NULL or TOTAL |
+| rol_grano | ENUM | YES | Grain identifier |
+
+### Key Design Decisions
+
+1. **Heterogeneous Granularity Solution**: `rol_grano` field uniquely identifies each combination preventing invalid aggregations
+2. **Double Counting Prevention**: Boolean flags (`es_total_*`) explicitly mark totals
+3. **Jornada Handling**: NULL when not available (tables 6044-6046), with `es_total_jornada` flag
+4. **Metrics Structure**: Separated into `metrica` (4 types) + `causa` (9 types for HNT)
+5. **CCAA Limitation**: Only available in table 6063 at B-S level
+6. **Ceuta/Melilla**: Integrated with Andalucía (INE decision maintained)
+
+### Validation Rules
+
+1. **Uniqueness**: No duplicates in primary key
+2. **Completeness**: causa required if metrica='horas_no_trabajadas'
+3. **Mathematical Coherence**: HE ≈ HP + HEXT - HNT_total (±0.5)
+4. **Sum of Causes**: Σ(HNT by cause) ≈ HNT_total (±0.5)
+5. **No Mixed Levels**: Never sum different cnae_nivel or ambito_territorial
+
+### Processing Configuration
+- **Source**: `config/procesador_config_completo.json`
+- **Mappings**: INE column names → standardized fields
+- **Validations**: 16 business rules from Excel v3
+- **Domains**: Closed lists for all categorical fields
