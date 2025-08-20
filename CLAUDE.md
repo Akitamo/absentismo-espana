@@ -264,14 +264,16 @@ Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unifi
 | cnae_codigo | VARCHAR(5) | NO | CNAE code or NULL |
 | jerarquia_sector_cod | VARCHAR(50) | NO | Path: TOTAL>SECCION>C>DIVISION>10 |
 | jerarquia_sector_lbl | VARCHAR(100) | NO | Path: Total>Sección C>División 10 |
-| tipo_jornada | ENUM | NO | TOTAL, COMPLETA, PARCIAL, NULL |
+| tipo_jornada | ENUM | NO | TOTAL, COMPLETA, PARCIAL, NULL (NULL for tables 6044-6046) |
 | metrica | ENUM | YES | horas_pactadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas |
-| causa | ENUM | NO | it_total, maternidad_paternidad, permisos_retribuidos, conflictividad, representacion_sindical, otros, vacaciones, festivos, erte_suspension, NULL |
+| causa | ENUM | NO | it_total, maternidad_paternidad, permisos_retribuidos, conflictividad, representacion_sindical, otros, vacaciones*, festivos*, erte_suspension*, NULL (*excluded from general absenteeism) |
 | valor | DECIMAL | YES | Numeric value |
 | es_total_ccaa | BOOLEAN | YES | TRUE if NAC |
 | es_total_cnae | BOOLEAN | YES | TRUE if TOTAL level |
 | es_total_jornada | BOOLEAN | YES | TRUE if NULL or TOTAL |
-| rol_grano | ENUM | YES | Grain identifier |
+| rol_grano | ENUM | YES | NAC_TOTAL, NAC_TOTAL_JORNADA, NAC_SECTOR_BS, NAC_SECTOR_BS_JORNADA, NAC_SECCION, NAC_SECCION_JORNADA, NAC_DIVISION, CCAA_TOTAL, CCAA_TOTAL_JORNADA, CCAA_SECTOR_BS, CCAA_SECTOR_BS_JORNADA |
+| version_datos | VARCHAR(10) | NO | INE data version (e.g., "2024T3") |
+| fecha_carga | TIMESTAMP | YES | Load timestamp for audit |
 
 ### Key Design Decisions
 
