@@ -1,0 +1,144 @@
+{
+  "dimension_mappings": {
+    "periodo": {
+      "source_columns": ["Periodo"],
+      "type": "direct"
+    },
+    "sectores": {
+      "6042": {
+        "B_S Industria, construcción y servicios (excepto actividades de los hogares como empleadores y de organizaciones y organismos extraterritoriales)": {"cnae_nivel": "TOTAL", "cnae_codigo": null},
+        "Total": {"cnae_nivel": "TOTAL", "cnae_codigo": null},
+        "Industria": {"cnae_nivel": "SECTOR_BS", "cnae_codigo": "B-E"},
+        "Construcción": {"cnae_nivel": "SECTOR_BS", "cnae_codigo": "F"},
+        "Servicios": {"cnae_nivel": "SECTOR_BS", "cnae_codigo": "G-S"}
+      },
+      "6043": {
+        "Total": {"cnae_nivel": "TOTAL", "cnae_codigo": null},
+        "B. Industrias extractivas": {"cnae_nivel": "SECCION", "cnae_codigo": "B"},
+        "C. Industria manufacturera": {"cnae_nivel": "SECCION", "cnae_codigo": "C"},
+        "D. Suministro de energía eléctrica, gas, vapor y aire acondicionado": {"cnae_nivel": "SECCION", "cnae_codigo": "D"},
+        "E. Suministro de agua, actividades de saneamiento, gestión de residuos y descontaminación": {"cnae_nivel": "SECCION", "cnae_codigo": "E"},
+        "F. Construcción": {"cnae_nivel": "SECCION", "cnae_codigo": "F"},
+        "G. Comercio al por mayor y al por menor; reparación de vehículos de motor y motocicletas": {"cnae_nivel": "SECCION", "cnae_codigo": "G"},
+        "H. Transporte y almacenamiento": {"cnae_nivel": "SECCION", "cnae_codigo": "H"},
+        "I. Hostelería": {"cnae_nivel": "SECCION", "cnae_codigo": "I"},
+        "J. Información y comunicaciones": {"cnae_nivel": "SECCION", "cnae_codigo": "J"},
+        "K. Actividades financieras y de seguros": {"cnae_nivel": "SECCION", "cnae_codigo": "K"},
+        "L. Actividades inmobiliarias": {"cnae_nivel": "SECCION", "cnae_codigo": "L"},
+        "M. Actividades profesionales, científicas y técnicas": {"cnae_nivel": "SECCION", "cnae_codigo": "M"},
+        "N. Actividades administrativas y servicios auxiliares": {"cnae_nivel": "SECCION", "cnae_codigo": "N"},
+        "O. Administración Pública y defensa; Seguridad Social obligatoria": {"cnae_nivel": "SECCION", "cnae_codigo": "O"},
+        "P. Educación": {"cnae_nivel": "SECCION", "cnae_codigo": "P"},
+        "Q. Actividades sanitarias y de servicios sociales": {"cnae_nivel": "SECCION", "cnae_codigo": "Q"},
+        "R. Actividades artísticas, recreativas y de entretenimiento": {"cnae_nivel": "SECCION", "cnae_codigo": "R"},
+        "S. Otros servicios": {"cnae_nivel": "SECCION", "cnae_codigo": "S"}
+      }
+    },
+    "tipo_jornada": {
+      "mapping": {
+        "Ambas jornadas": "TOTAL",
+        "Jornada a tiempo completo": "COMPLETA",
+        "Jornada a tiempo parcial": "PARCIAL",
+        "Total": "TOTAL"
+      },
+      "null_for_tables": ["6044", "6045", "6046"]
+    },
+    "comunidades": {
+      "6063": {
+        "Total Nacional": {"ambito_territorial": "NAC", "ccaa_codigo": null},
+        "Andalucía": {"ambito_territorial": "CCAA", "ccaa_codigo": "01"},
+        "Aragón": {"ambito_territorial": "CCAA", "ccaa_codigo": "02"},
+        "Asturias, Principado de": {"ambito_territorial": "CCAA", "ccaa_codigo": "03"},
+        "Balears, Illes": {"ambito_territorial": "CCAA", "ccaa_codigo": "04"},
+        "Canarias": {"ambito_territorial": "CCAA", "ccaa_codigo": "05"},
+        "Cantabria": {"ambito_territorial": "CCAA", "ccaa_codigo": "06"},
+        "Castilla y León": {"ambito_territorial": "CCAA", "ccaa_codigo": "07"},
+        "Castilla - La Mancha": {"ambito_territorial": "CCAA", "ccaa_codigo": "08"},
+        "Cataluña": {"ambito_territorial": "CCAA", "ccaa_codigo": "09"},
+        "Comunitat Valenciana": {"ambito_territorial": "CCAA", "ccaa_codigo": "10"},
+        "Extremadura": {"ambito_territorial": "CCAA", "ccaa_codigo": "11"},
+        "Galicia": {"ambito_territorial": "CCAA", "ccaa_codigo": "12"},
+        "Madrid, Comunidad de": {"ambito_territorial": "CCAA", "ccaa_codigo": "13"},
+        "Murcia, Región de": {"ambito_territorial": "CCAA", "ccaa_codigo": "14"},
+        "Navarra, Comunidad Foral de": {"ambito_territorial": "CCAA", "ccaa_codigo": "15"},
+        "País Vasco": {"ambito_territorial": "CCAA", "ccaa_codigo": "16"},
+        "Rioja, La": {"ambito_territorial": "CCAA", "ccaa_codigo": "17"}
+      }
+    }
+  },
+  "metric_mappings": {
+    "Horas pactadas": {"metrica": "horas_pactadas", "causa": null},
+    "Horas pagadas": {"metrica": "horas_efectivas", "causa": null},
+    "Horas efectivas": {"metrica": "horas_efectivas", "causa": null},
+    "Horas efectivas de trabajo": {"metrica": "horas_efectivas", "causa": null},
+    "Horas extras por trabajador": {"metrica": "horas_extraordinarias", "causa": null},
+    "Horas extraordinarias": {"metrica": "horas_extraordinarias", "causa": null},
+    "Horas no trabajadas": {"metrica": "horas_no_trabajadas", "causa": null},
+    "Horas no trabajadas por vacaciones y fiestas": {"metrica": "horas_no_trabajadas", "causa": "vacaciones"},
+    "Horas no trabajadas por I.T": {"metrica": "horas_no_trabajadas", "causa": "it_total"},
+    "I.T. (incapacidad temporal)": {"metrica": "horas_no_trabajadas", "causa": "it_total"},
+    "Maternidad": {"metrica": "horas_no_trabajadas", "causa": "maternidad_paternidad"},
+    "Permisos remunerados y otros motivos (incluido el tiempo no trabajado por guarda legal)": {"metrica": "horas_no_trabajadas", "causa": "permisos_retribuidos"},
+    "Vacaciones y fiestas": {"metrica": "horas_no_trabajadas", "causa": "vacaciones"},
+    "Conflictividad laboral": {"metrica": "horas_no_trabajadas", "causa": "conflictividad"},
+    "Representación sindical": {"metrica": "horas_no_trabajadas", "causa": "representacion_sindical"},
+    "Otras causas": {"metrica": "horas_no_trabajadas", "causa": "otros"},
+    "ERE y suspensión de empleo": {"metrica": "horas_no_trabajadas", "causa": "erte_suspension"},
+    "Horas no trabajadas y pagadas": {"metrica": "horas_no_trabajadas", "causa": null},
+    "Horas no trabajadas y no pagadas": {"metrica": "horas_no_trabajadas", "causa": "otros"},
+    "Horas no trabajadas por vacaciones": {"metrica": "horas_no_trabajadas", "causa": "vacaciones"},
+    "Horas no trabajadas por fiestas": {"metrica": "horas_no_trabajadas", "causa": "festivos"},
+    "Horas no trabajadas por maternidad": {"metrica": "horas_no_trabajadas", "causa": "maternidad_paternidad"},
+    "Horas no trabajadas por permisos remunerados": {"metrica": "horas_no_trabajadas", "causa": "permisos_retribuidos"},
+    "Horas no trabajadas por razones técnicas o económicas": {"metrica": "horas_no_trabajadas", "causa": "erte_suspension"},
+    "Horas no trabajadas por compensación horas extras": {"metrica": "horas_no_trabajadas", "causa": "otros"},
+    "Otras horas no trabajadas y remuneradas": {"metrica": "horas_no_trabajadas", "causa": "otros"},
+    "Horas perdidas en el lugar de trabajo": {"metrica": "horas_no_trabajadas", "causa": "otros"},
+    "Horas no trabajadas por conflictividad laboral": {"metrica": "horas_no_trabajadas", "causa": "conflictividad"},
+    "Horas no trabajadas por otras causas": {"metrica": "horas_no_trabajadas", "causa": "otros"}
+  },
+  "tables_config": {
+    "6042": {
+      "name": "Nacional + Sectores B-S + Jornada",
+      "has_ccaa": false,
+      "has_jornada": true,
+      "cnae_nivel": "SECTOR_BS",
+      "rol_grano_base": "NAC_SECTOR_BS"
+    },
+    "6043": {
+      "name": "Nacional + Secciones CNAE + Jornada",
+      "has_ccaa": false,
+      "has_jornada": true,
+      "cnae_nivel": "SECCION",
+      "rol_grano_base": "NAC_SECCION"
+    },
+    "6044": {
+      "name": "Nacional + Sectores B-S (sin jornada)",
+      "has_ccaa": false,
+      "has_jornada": false,
+      "cnae_nivel": "SECTOR_BS",
+      "rol_grano_base": "NAC_SECTOR_BS"
+    },
+    "6045": {
+      "name": "Nacional + Secciones CNAE (sin jornada)",
+      "has_ccaa": false,
+      "has_jornada": false,
+      "cnae_nivel": "SECCION",
+      "rol_grano_base": "NAC_SECCION"
+    },
+    "6046": {
+      "name": "Nacional + Divisiones CNAE (sin jornada)",
+      "has_ccaa": false,
+      "has_jornada": false,
+      "cnae_nivel": "DIVISION",
+      "rol_grano_base": "NAC_DIVISION"
+    },
+    "6063": {
+      "name": "CCAA + Sectores B-S + Jornada",
+      "has_ccaa": true,
+      "has_jornada": true,
+      "cnae_nivel": "SECTOR_BS",
+      "rol_grano_base": "CCAA_SECTOR_BS"
+    }
+  }
+}

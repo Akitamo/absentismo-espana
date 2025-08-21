@@ -238,7 +238,14 @@ WHERE unique_count < 100;
 - **Metrics categorization validated** against official INE methodology document
 - **Confidence level: Maximum - Agent Extractor ready for production**
 
-## Agent Processor Design (20-ago-2025)
+## Agent Processor Design (21-ago-2025)
+
+### Estado: EN IMPLEMENTACIÓN (85% completado)
+- ✅ Pipeline ETL implementado (Extractor, Transformer, Loader)
+- ✅ DuckDB integrado con esquema de 23 campos
+- ✅ Carga de prueba exitosa (últimos 4 trimestres)
+- ⏳ Validación contra INE: 1/6 tablas parcialmente validada
+- ⏳ Carga histórica completa pendiente de validación
 
 ### Purpose
 Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unified analysis table for absenteeism reporting (Adecco/Randstad format).
@@ -297,3 +304,35 @@ Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unifi
 - **Mappings**: INE column names → standardized fields
 - **Validations**: 16 business rules from Excel v3
 - **Domains**: Closed lists for all categorical fields
+
+### Decisiones Técnicas Validadas
+1. **VALORES TAL CUAL DEL INE**: NO dividir por 10 (151 = 15.1 horas)
+2. **Mapeos confirmados desde exploración** (NO re-mapear):
+   - tipo_jornada: Ya validado en `consolidate_patterns.py`
+   - sectores: Mapeo completo validado
+   - CCAA: 17 comunidades + Total Nacional
+3. **Campo rol_grano**: Previene agregaciones incorrectas (funcionando)
+
+### Validaciones Pendientes CRÍTICAS
+- Tabla 6042: Discrepancia en Industria B-E (165.1 vs 152.4)
+- Tablas 6043-6046, 6063: Sin validar contra INE web
+
+### IMPORTANTE - Reglas de Validación
+1. SIEMPRE usar valores de exploración validada (agosto 2025)
+2. NO re-validar directamente contra CSVs
+3. Contrastar con URLs INE: https://www.ine.es/jaxiT3/Datos.htm?t={codigo}
+4. Generar reporte consolidado de todas las validaciones
+
+## Lógica de Validación de Datos
+
+### Fuentes de Verdad (por orden de prioridad)
+1. **Scripts de exploración validados** (agosto 2025)
+   - `exploration/validate_specific_values.py`
+   - `exploration/validate_all_tables.py`
+   - `exploration/consolidate_patterns.py`
+2. **Web INE** (https://www.ine.es/jaxiT3/Datos.htm?t={codigo})
+3. **Metodología INE** (docs/metodologia_ETCL_INE_2023.pdf)
+
+### NUNCA usar como fuente primaria:
+- CSVs directamente (ya validados en exploración)
+- Valores hardcodeados sin verificar origen

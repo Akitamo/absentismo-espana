@@ -6,6 +6,11 @@ Sistema modular para la extracción y procesamiento de datos de absentismo labor
 
 Este proyecto automatiza la descarga y procesamiento de los datos de la Encuesta Trimestral de Coste Laboral (ETCL) del INE, específicamente las 35 tablas relacionadas con costes laborales, tiempo de trabajo y absentismo en España.
 
+### Estado del Proyecto
+- **Agent Extractor**: ✅ COMPLETADO - 51 métricas extraídas y validadas
+- **Agent Processor**: 🔧 EN DESARROLLO (85%) - Pipeline ETL implementado, validaciones pendientes
+- **Dashboard Streamlit**: 📅 PLANIFICADO - Con capacidad NL2SQL
+
 ## 🚀 Características
 
 - **Extracción automática** de 35 tablas del INE
@@ -78,25 +83,37 @@ Actualizar todas las tablas con nuevos datos:
 python main.py --update-all
 ```
 
-### Procesar datos (próximamente)
+### Procesar datos
 ```bash
-python main.py --process-all
-python main.py --process 6042
+# Cargar datos en modo test (últimos 4 trimestres)
+python agent_processor/processor.py --test
+
+# Cargar todos los datos históricos (2008T1-presente)
+python agent_processor/processor.py --full
+
+# Validar datos contra INE
+python validate_against_ine.py
 ```
 
 ## 📁 Estructura del Proyecto
 
 ```
 absentismo-espana/
-├── agent_extractor/    # Módulo de extracción de datos
+├── agent_extractor/    # Módulo de extracción de datos ✅ COMPLETADO
 │   ├── downloader.py  # Descarga robusta con reintentos
 │   ├── metadata_manager.py # Gestión de versiones y tracking
 │   └── updater.py     # Sistema de actualización inteligente
-├── agent_processor/    # Módulo de procesamiento (en desarrollo)
+├── agent_processor/    # Módulo de procesamiento 🔧 EN DESARROLLO (85%)
+│   ├── processor.py   # Orquestador principal ETL
+│   ├── etl/          # Pipeline de transformación
+│   │   ├── extractor.py    # Lectura de CSVs
+│   │   ├── transformer.py  # Mapeo y pivoteo
+│   │   └── loader.py       # Carga a DuckDB
+│   └── config/       # Configuración y mapeos
 ├── config/            # Configuración de tablas
 ├── data/
 │   ├── raw/          # CSVs originales del INE
-│   ├── processed/    # Datos procesados
+│   ├── analysis.db   # Base de datos DuckDB
 │   ├── metadata/     # Tracking de versiones (JSON)
 │   └── backups/      # Backups automáticos
 ├── scripts/           # Scripts auxiliares
@@ -119,17 +136,50 @@ El sistema procesa 35 tablas del INE organizadas en 7 categorías:
 
 ## 🔄 Estado del Proyecto
 
-- ✅ **Fase 1:** Extractor de datos (completado)
-  - Sistema de descarga robusto
+- ✅ **Fase 1:** Extractor de datos COMPLETADO
+  - 51 métricas únicas extraídas y validadas
+  - 112% cobertura vs metodología INE
+  - Sistema de descarga robusto con reintentos
   - Metadata y versionado implementado
   - Actualización incremental inteligente
   - Backups automáticos funcionando
-- 🔄 **Fase 2:** Procesador de datos (en desarrollo)
-  - Detección de dimensiones vs métricas
-  - Limpieza y normalización de datos
-- ⏳ **Fase 3:** Análisis y visualización (planificado)
+- 🔧 **Fase 2:** Procesador de datos EN DESARROLLO (85%)
+  - Pipeline ETL implementado (Extractor, Transformer, Loader)
+  - Base de datos DuckDB integrada
+  - Esquema de 23 campos validado
+  - Validación contra INE: 1/6 tablas
+  - Pendiente: Validación completa y carga histórica
+- 📅 **Fase 3:** Dashboard Streamlit PLANIFICADO
+  - Visualizaciones interactivas
+  - Capacidad NL2SQL para consultas en lenguaje natural
 
 Para ver el estado detallado del proyecto, consultar [CONTEXT.md](CONTEXT.md).
+
+## 🔍 Agent Processor - Validación de Datos
+
+### Validación contra INE
+```bash
+# Validar datos cargados contra valores oficiales del INE
+python validate_against_ine.py
+
+# Generar reporte de validación (próximamente)
+python validation_report_generator.py
+```
+
+### URLs de Referencia INE
+Las validaciones se realizan contra los datos oficiales en:
+- Tabla 6042: https://www.ine.es/jaxiT3/Datos.htm?t=6042
+- Tabla 6043: https://www.ine.es/jaxiT3/Datos.htm?t=6043
+- Tabla 6044: https://www.ine.es/jaxiT3/Datos.htm?t=6044
+- Tabla 6045: https://www.ine.es/jaxiT3/Datos.htm?t=6045
+- Tabla 6046: https://www.ine.es/jaxiT3/Datos.htm?t=6046
+- Tabla 6063: https://www.ine.es/jaxiT3/Datos.htm?t=6063
+
+### Estado de Validación (21-ago-2025)
+| Tabla | Estado | Observaciones |
+|-------|--------|---------------|
+| 6042 | Parcial | Discrepancia en sector Industria B-E |
+| 6043-6063 | Pendiente | Por validar contra web INE |
 
 ## 🤝 Contribuir
 

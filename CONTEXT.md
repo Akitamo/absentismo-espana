@@ -1,10 +1,59 @@
 # PROJECT STATUS - AbsentismoEspana
 
 ## 📅 Última actualización
-**Fecha:** 2025-08-20 18:45
-**Sesión:** Diseño definitivo Agent Processor - Estructura tabla unificada validada
+**Fecha:** 2025-08-21
+**Sesión:** Implementación Agent Processor - Validaciones pendientes
 
-## ✅ Completado recientemente
+## 🔧 Agent Processor: EN DESARROLLO (85%)
+
+### Implementado ✅
+
+1. **Pipeline ETL completo**
+   - `agent_processor/etl/extractor.py`: Lee CSVs con detección automática de encoding
+   - `agent_processor/etl/transformer.py`: Mapea dimensiones y pivota métricas
+   - `agent_processor/etl/loader.py`: Carga a DuckDB con validaciones
+   - `agent_processor/processor.py`: Orquestador principal del pipeline
+   
+2. **Base de datos DuckDB**
+   - Tabla: `observaciones_tiempo_trabajo` (23 campos)
+   - Esquema validado contra diseño Excel v3
+   - Datos test: ~25,000 registros (2024T2-2025T1)
+   - Sin duplicados en clave primaria
+   - Campo `rol_grano` funcionando para prevenir agregaciones incorrectas
+
+3. **Configuración validada**
+   - `agent_processor/config/mappings.json`: Mapeos desde exploración agosto 2025
+   - Valores almacenados TAL CUAL del INE (sin dividir por 10)
+   - Mapeos de tipo_jornada, sectores CNAE, CCAA confirmados
+
+### Validaciones Realizadas ⚠️
+
+| Tabla | Estado | Valores Validados | Discrepancias | URL INE |
+|-------|--------|-------------------|---------------|---------|
+| 6042 | Parcial | Total B-S: 151.0 ✅<br>Completa: 168.4 ✅<br>Parcial: 89.3 ✅ | Industria B-E: 165.1 (BD) vs 152.4 (esperado) ❌ | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6042) |
+| 6043 | NO | - | - | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6043) |
+| 6044 | NO | - | - | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6044) |
+| 6045 | NO | - | - | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6045) |
+| 6046 | NO | - | - | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6046) |
+| 6063 | NO | - | - | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6063) |
+
+### Decisiones Críticas Tomadas ✓
+
+1. **NO re-validar CSVs**: Usar trabajo de exploración agosto 2025 como fuente de verdad
+2. **Valores sin transformar**: 151 significa 15.1 horas pero se guarda como 151
+3. **Prevención duplicados**: Campo `rol_grano` implementado y funcional
+4. **Mapeos desde exploración**: No crear nuevos mapeos, usar los validados
+
+### Pendiente 🔄
+
+1. **CRÍTICO**: Resolver discrepancia Industria B-E en tabla 6042
+2. **CRÍTICO**: Validar tablas 6043-6046, 6063 contra INE web
+3. Generar reporte consolidado de validaciones
+4. Cargar datos históricos completos (2008T1-2025T1) - SOLO después de validación completa
+5. Crear vistas de análisis en DuckDB
+6. Implementar dashboard Streamlit con NL2SQL
+
+## ✅ Completado anteriormente
 
 ### 🎯 DISEÑO AGENT PROCESSOR FINALIZADO (20-ago-2025)
 
