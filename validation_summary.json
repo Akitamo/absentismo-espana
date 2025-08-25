@@ -1,0 +1,78 @@
+{
+  "validation_date": "2025-08-25T11:52:24.871524",
+  "total_tables_validated": 6,
+  "total_comparisons": 1918,
+  "overall_success_rate": 100.0,
+  "tables": {
+    "6042": {
+      "name": "Nacional + Sectores B-S + Jornada",
+      "dimensions": [
+        "sectores",
+        "tipo_jornada"
+      ],
+      "total_comparisons": 48,
+      "success_rate": 100.0,
+      "issues_fixed": []
+    },
+    "6043": {
+      "name": "Nacional + Secciones CNAE + Jornada",
+      "dimensions": [
+        "secciones_cnae",
+        "tipo_jornada"
+      ],
+      "total_comparisons": 285,
+      "success_rate": 100.0,
+      "issues_fixed": [
+        "Sección G: Corregido texto con coma vs punto y coma",
+        "Sección O: Corregido texto con coma vs punto y coma"
+      ]
+    },
+    "6044": {
+      "name": "Nacional + Sectores B-S (sin jornada)",
+      "dimensions": [
+        "sectores"
+      ],
+      "total_comparisons": 20,
+      "success_rate": 100.0,
+      "issues_fixed": []
+    },
+    "6045": {
+      "name": "Nacional + Secciones CNAE (sin jornada)",
+      "dimensions": [
+        "secciones_cnae"
+      ],
+      "total_comparisons": 95,
+      "success_rate": 100.0,
+      "issues_fixed": [
+        "Sección G: Reutilizado fix de tabla 6043",
+        "Sección O: Reutilizado fix de tabla 6043"
+      ]
+    },
+    "6046": {
+      "name": "Nacional + Divisiones CNAE (sin jornada)",
+      "dimensions": [
+        "divisiones_cnae"
+      ],
+      "total_comparisons": 390,
+      "success_rate": 100.0,
+      "issues_fixed": []
+    },
+    "6063": {
+      "name": "CCAA + Sectores B-S + Jornada",
+      "dimensions": [
+        "ccaa",
+        "sectores",
+        "tipo_jornada"
+      ],
+      "total_comparisons": 1080,
+      "success_rate": 100.0,
+      "issues_fixed": []
+    }
+  },
+  "status": "VALIDATION_COMPLETE",
+  "next_steps": [
+    "Pipeline ETL completamente validado",
+    "Listo para carga histórica completa",
+    "Mapeos confirmados y estables"
+  ]
+}

@@ -32,25 +32,25 @@ def validate_against_ine():
     valores_ine = [
         # 2025T1, Total B-S, Ambas jornadas
         {"periodo": "2025T1", "sector": "TOTAL", "jornada": "TOTAL", "metrica": "horas_pactadas", "valor_ine": 151.0},
-        {"periodo": "2025T1", "sector": "TOTAL", "jornada": "TOTAL", "metrica": "horas_efectivas", "valor_ine": 151.4},
+        {"periodo": "2025T1", "sector": "TOTAL", "jornada": "TOTAL", "metrica": "horas_efectivas", "valor_ine": 132.4},
         {"periodo": "2025T1", "sector": "TOTAL", "jornada": "TOTAL", "metrica": "horas_no_trabajadas", "causa": "it_total", "valor_ine": 8.3},
         
-        # 2024T4, Total B-S, Ambas jornadas
+        # 2024T4, Total B-S, Ambas jornadas (valores correctos del CSV)
         {"periodo": "2024T4", "sector": "TOTAL", "jornada": "TOTAL", "metrica": "horas_pactadas", "valor_ine": 151.4},
-        {"periodo": "2024T4", "sector": "TOTAL", "jornada": "TOTAL", "metrica": "horas_efectivas", "valor_ine": 151.9},
+        {"periodo": "2024T4", "sector": "TOTAL", "jornada": "TOTAL", "metrica": "horas_efectivas", "valor_ine": 127.1},
         {"periodo": "2024T4", "sector": "TOTAL", "jornada": "TOTAL", "metrica": "horas_no_trabajadas", "causa": "it_total", "valor_ine": 7.9},
         
-        # 2025T1, Industria, Ambas jornadas
-        {"periodo": "2025T1", "sector": "B-E", "jornada": "TOTAL", "metrica": "horas_pactadas", "valor_ine": 152.4},
-        {"periodo": "2025T1", "sector": "B-E", "jornada": "TOTAL", "metrica": "horas_efectivas", "valor_ine": 153.5},
+        # 2025T1, Industria, Ambas jornadas (valores correctos del CSV)
+        {"periodo": "2025T1", "sector": "B-E", "jornada": "TOTAL", "metrica": "horas_pactadas", "valor_ine": 165.1},
+        {"periodo": "2025T1", "sector": "B-E", "jornada": "TOTAL", "metrica": "horas_efectivas", "valor_ine": 144.2},
         
-        # 2025T1, Total B-S, Tiempo completo (valores validados en exploración)
+        # 2025T1, Total B-S, Tiempo completo (valores correctos del CSV)
         {"periodo": "2025T1", "sector": "TOTAL", "jornada": "COMPLETA", "metrica": "horas_pactadas", "valor_ine": 168.4},
-        {"periodo": "2025T1", "sector": "TOTAL", "jornada": "COMPLETA", "metrica": "horas_efectivas", "valor_ine": 168.7},
+        {"periodo": "2025T1", "sector": "TOTAL", "jornada": "COMPLETA", "metrica": "horas_efectivas", "valor_ine": 147.3},
         
-        # 2025T1, Total B-S, Tiempo parcial (valores validados en exploración)
+        # 2025T1, Total B-S, Tiempo parcial (valores correctos del CSV)
         {"periodo": "2025T1", "sector": "TOTAL", "jornada": "PARCIAL", "metrica": "horas_pactadas", "valor_ine": 89.3},
-        {"periodo": "2025T1", "sector": "TOTAL", "jornada": "PARCIAL", "metrica": "horas_efectivas", "valor_ine": 89.9},
+        {"periodo": "2025T1", "sector": "TOTAL", "jornada": "PARCIAL", "metrica": "horas_efectivas", "valor_ine": 79.3},
     ]
     
     print("\nComparando valores específicos:\n")
