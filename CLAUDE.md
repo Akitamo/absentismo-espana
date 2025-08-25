@@ -242,10 +242,11 @@ WHERE unique_count < 100;
 
 ### Estado: EN IMPLEMENTACIÓN (85% completado)
 - ✅ Pipeline ETL implementado (Extractor, Transformer, Loader)
-- ✅ DuckDB integrado con esquema de 23 campos
+- ✅ DuckDB integrado con esquema de 24 campos (incluye horas_pagadas)
 - ✅ Carga de prueba exitosa (últimos 4 trimestres)
-- ⏳ Validación contra INE: 1/6 tablas parcialmente validada
-- ⏳ Carga histórica completa pendiente de validación
+- ✅ Validación contra INE: 1/6 tablas COMPLETAMENTE validada (6042: 12/12 valores OK)
+- ⏳ Validación pendiente: Tablas 6043-6046, 6063
+- ⏳ Carga histórica completa pendiente de validación completa
 
 ### Purpose
 Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unified analysis table for absenteeism reporting (Adecco/Randstad format).
@@ -272,7 +273,7 @@ Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unifi
 | jerarquia_sector_cod | VARCHAR(50) | NO | Path: TOTAL>SECCION>C>DIVISION>10 |
 | jerarquia_sector_lbl | VARCHAR(100) | NO | Path: Total>Sección C>División 10 |
 | tipo_jornada | ENUM | NO | TOTAL, COMPLETA, PARCIAL, NULL (NULL for tables 6044-6046) |
-| metrica | ENUM | YES | horas_pactadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas |
+| metrica | ENUM | YES | horas_pactadas, horas_pagadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas |
 | causa | ENUM | NO | it_total, maternidad_paternidad, permisos_retribuidos, conflictividad, representacion_sindical, otros, vacaciones*, festivos*, erte_suspension*, NULL (*excluded from general absenteeism) |
 | valor | DECIMAL | YES | Numeric value |
 | es_total_ccaa | BOOLEAN | YES | TRUE if NAC |
@@ -313,15 +314,23 @@ Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unifi
    - CCAA: 17 comunidades + Total Nacional
 3. **Campo rol_grano**: Previene agregaciones incorrectas (funcionando)
 
-### Validaciones Pendientes CRÍTICAS
-- Tabla 6042: Discrepancia en Industria B-E (165.1 vs 152.4)
-- Tablas 6043-6046, 6063: Sin validar contra INE web
+### Estado de Validaciones
+- ✅ Tabla 6042: COMPLETAMENTE VALIDADA (Industria B-E: 165.1 es CORRECTO)
+- ⏳ Tablas 6043-6046, 6063: Pendientes de validar contra INE web
 
 ### IMPORTANTE - Reglas de Validación
-1. SIEMPRE usar valores de exploración validada (agosto 2025)
-2. NO re-validar directamente contra CSVs
-3. Contrastar con URLs INE: https://www.ine.es/jaxiT3/Datos.htm?t={codigo}
-4. Generar reporte consolidado de todas las validaciones
+1. **PRIMERO** consultar `docs/EXPLORACION_VALIDADA.md` - Contiene TODOS los valores ya validados
+2. SIEMPRE usar valores de exploración validada (agosto 2025)
+3. NO re-validar directamente contra CSVs sin revisar exploración previa
+4. Solo contrastar con URLs INE si el valor NO está en exploración validada
+5. Generar reporte consolidado de todas las validaciones
+
+### Diferencia CRÍTICA: Horas Pagadas vs Horas Efectivas
+**IMPORTANTE**: Son métricas DIFERENTES en el INE:
+- **Horas pagadas**: Todas las horas por las que se paga (incluye vacaciones, permisos, etc.)
+- **Horas efectivas**: Solo las horas realmente trabajadas
+- **Relación**: Horas pagadas > Horas efectivas (SIEMPRE)
+- **Ejemplo real**: Industria 2025T1: Pagadas=166.0, Efectivas=144.2 (diferencia=21.8)
 
 ## Lógica de Validación de Datos
 
@@ -336,3 +345,8 @@ Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unifi
 ### NUNCA usar como fuente primaria:
 - CSVs directamente (ya validados en exploración)
 - Valores hardcodeados sin verificar origen
+
+### Documentación de Exploración Validada
+- **CRÍTICO**: `docs/EXPLORACION_VALIDADA.md` - Consultar SIEMPRE antes de cualquier validación
+- Contiene todos los valores validados, mapeos confirmados y lecciones aprendidas
+- Si un valor está ahí, NO necesita re-validación

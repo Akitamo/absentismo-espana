@@ -97,7 +97,7 @@ class Loader:
                 CHECK (ambito_territorial IN ('NAC', 'CCAA')),
                 CHECK (cnae_nivel IN ('TOTAL', 'SECTOR_BS', 'SECCION', 'DIVISION')),
                 CHECK (tipo_jornada IN ('TOTAL', 'COMPLETA', 'PARCIAL') OR tipo_jornada IS NULL),
-                CHECK (metrica IN ('horas_pactadas', 'horas_efectivas', 'horas_extraordinarias', 'horas_no_trabajadas')),
+                CHECK (metrica IN ('horas_pactadas', 'horas_pagadas', 'horas_efectivas', 'horas_extraordinarias', 'horas_no_trabajadas')),
                 CHECK (valor >= 0)
             );
             """

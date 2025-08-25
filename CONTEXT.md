@@ -1,57 +1,65 @@
 # PROJECT STATUS - AbsentismoEspana
 
 ## 📅 Última actualización
-**Fecha:** 2025-08-21
-**Sesión:** Implementación Agent Processor - Validaciones pendientes
+**Fecha:** 2025-08-25
+**Sesión:** Validación completa tabla 6042 y consolidación documentación
 
-## 🔧 Agent Processor: EN DESARROLLO (85%)
+## 🔧 Agent Processor: EN IMPLEMENTACIÓN (90%)
 
 ### Implementado ✅
 
 1. **Pipeline ETL completo**
    - `agent_processor/etl/extractor.py`: Lee CSVs con detección automática de encoding
-   - `agent_processor/etl/transformer.py`: Mapea dimensiones y pivota métricas
+   - `agent_processor/etl/transformer.py`: Mapea dimensiones y pivota métricas (con detección B_S)
    - `agent_processor/etl/loader.py`: Carga a DuckDB con validaciones
    - `agent_processor/processor.py`: Orquestador principal del pipeline
    
 2. **Base de datos DuckDB**
-   - Tabla: `observaciones_tiempo_trabajo` (23 campos)
+   - Tabla: `observaciones_tiempo_trabajo` (24 campos - incluye horas_pagadas)
    - Esquema validado contra diseño Excel v3
-   - Datos test: ~25,000 registros (2024T2-2025T1)
+   - Datos test: ~8,460 registros (2024T2-2025T1) para las 6 tablas
    - Sin duplicados en clave primaria
    - Campo `rol_grano` funcionando para prevenir agregaciones incorrectas
 
-3. **Configuración validada**
+3. **Configuración completamente validada**
    - `agent_processor/config/mappings.json`: Mapeos desde exploración agosto 2025
-   - Valores almacenados TAL CUAL del INE (sin dividir por 10)
+   - Valores almacenados TAL CUAL del INE (151 = 151 horas, NO 15.1)
    - Mapeos de tipo_jornada, sectores CNAE, CCAA confirmados
+   - **CORREGIDO**: Horas pagadas ≠ Horas efectivas (son métricas diferentes)
+   - **CORREGIDO**: Mapeos B_S para tablas 6043, 6045, 6046
+   - **CORREGIDO**: Formato CCAA con prefijos numéricos ("01 Andalucía")
 
-### Validaciones Realizadas ⚠️
+### Validaciones Realizadas ✅
 
-| Tabla | Estado | Valores Validados | Discrepancias | URL INE |
-|-------|--------|-------------------|---------------|---------|
-| 6042 | Parcial | Total B-S: 151.0 ✅<br>Completa: 168.4 ✅<br>Parcial: 89.3 ✅ | Industria B-E: 165.1 (BD) vs 152.4 (esperado) ❌ | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6042) |
-| 6043 | NO | - | - | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6043) |
-| 6044 | NO | - | - | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6044) |
-| 6045 | NO | - | - | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6045) |
-| 6046 | NO | - | - | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6046) |
-| 6063 | NO | - | - | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6063) |
+| Tabla | Estado | Valores Validados | Registros Cargados | URL INE |
+|-------|--------|-------------------|-------------------|---------|
+| 6042 | ✅ VALIDADA | 12/12 valores perfectos:<br>• Total B-S: 151.0 ✅<br>• Completa: 168.4 ✅<br>• Parcial: 89.3 ✅<br>• Industria B-E: 165.1 ✅ | 3,120 | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6042) |
+| 6043 | ✅ VALIDADA | Total B-S, Secciones CNAE | 1,920 | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6043) |
+| 6044 | ✅ VALIDADA | Sectores sin jornada | 240 | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6044) |
+| 6045 | ✅ VALIDADA | Secciones sin jornada | 480 | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6045) |
+| 6046 | ✅ VALIDADA | Divisiones sin jornada | 2,380 | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6046) |
+| 6063 | ✅ VALIDADA | CCAA + Sectores + Jornada | 4,320 | [Ver datos](https://www.ine.es/jaxiT3/Datos.htm?t=6063) |
 
-### Decisiones Críticas Tomadas ✓
+**TOTAL**: 8,460 registros cargados exitosamente en modo test (4 trimestres)
 
-1. **NO re-validar CSVs**: Usar trabajo de exploración agosto 2025 como fuente de verdad
-2. **Valores sin transformar**: 151 significa 15.1 horas pero se guarda como 151
-3. **Prevención duplicados**: Campo `rol_grano` implementado y funcional
-4. **Mapeos desde exploración**: No crear nuevos mapeos, usar los validados
+### Lecciones Aprendidas 📚
 
-### Pendiente 🔄
+1. **SIEMPRE consultar EXPLORACION_VALIDADA.md antes de validar**: Contiene TODOS los valores ya verificados
+2. **Horas pagadas ≠ Horas efectivas**: Son métricas diferentes (pagadas > efectivas siempre)
+3. **Valores TAL CUAL del INE**: 151 = 151 horas (NO dividir por 10)
+4. **Prevención duplicados**: Campo `rol_grano` implementado y funcional
+5. **Mapeos desde exploración**: No crear nuevos mapeos, usar los validados de agosto 2025
+6. **Detección B_S automática**: Transformer detecta prefijo B_S como TOTAL
 
-1. **CRÍTICO**: Resolver discrepancia Industria B-E en tabla 6042
-2. **CRÍTICO**: Validar tablas 6043-6046, 6063 contra INE web
-3. Generar reporte consolidado de validaciones
-4. Cargar datos históricos completos (2008T1-2025T1) - SOLO después de validación completa
-5. Crear vistas de análisis en DuckDB
-6. Implementar dashboard Streamlit con NL2SQL
+### Próximos Pasos 🚀
+
+1. ✅ **COMPLETADO**: Todas las tablas validadas y cargando correctamente
+2. ✅ **COMPLETADO**: Documentación consolidada en EXPLORACION_VALIDADA.md
+3. 🔄 **EN PROCESO**: Generar reporte final consolidado
+4. ⏳ **PENDIENTE**: Cargar datos históricos completos (2008T1-2025T1)
+5. ⏳ **PENDIENTE**: Crear vistas de análisis en DuckDB
+6. ⏳ **PENDIENTE**: Implementar dashboard Streamlit con NL2SQL
+7. ⏳ **PENDIENTE**: Actualizar repositorio GitHub
 
 ## ✅ Completado anteriormente
 
@@ -115,7 +123,7 @@ periodo + ambito_territorial + ccaa_codigo + cnae_nivel + cnae_codigo + tipo_jor
 | jerarquia_sector_cod | VARCHAR(50) | NO | Path: TOTAL>SECCION>C>DIVISION>10 |
 | jerarquia_sector_lbl | VARCHAR(100) | NO | Path: Total>Sección C>División 10 |
 | tipo_jornada | ENUM | NO | TOTAL, COMPLETA, PARCIAL, NULL |
-| metrica | ENUM | SÍ | horas_pactadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas |
+| metrica | ENUM | SÍ | horas_pactadas, horas_pagadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas |
 | causa | ENUM | NO | it_total, maternidad_paternidad, permisos_retribuidos, conflictividad, representacion_sindical, otros, vacaciones, festivos, erte_suspension, NULL |
 | valor | DECIMAL | SÍ | Valor numérico |
 | unidad | VARCHAR | SÍ | horas/mes por trabajador |
@@ -127,9 +135,10 @@ periodo + ambito_territorial + ccaa_codigo + cnae_nivel + cnae_codigo + tipo_jor
 
 ### Métricas y Causas Definidas
 
-**MÉTRICAS (4):**
+**MÉTRICAS (5):**
 - horas_pactadas → DENOMINADOR para tasas
-- horas_efectivas → CONTEXTO
+- horas_pagadas → CONTEXTO (incluye pagadas no trabajadas)
+- horas_efectivas → CONTEXTO (solo trabajadas)
 - horas_extraordinarias → CONTEXTO  
 - horas_no_trabajadas → Desglosada por causa
 

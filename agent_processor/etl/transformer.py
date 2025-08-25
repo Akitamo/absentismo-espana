@@ -315,6 +315,10 @@ class Transformer:
         elif table_id in ['6043', '6045']:
             # Secciones
             sector_mapping = self.dimension_mappings.get('sectores', {}).get('6043', {})
+            # Añadir mapeo para B_S si no existe
+            for val in df[sector_col].unique():
+                if val and val.startswith('B_S') and val not in sector_mapping:
+                    sector_mapping[val] = {'cnae_nivel': 'TOTAL', 'cnae_codigo': None}
         elif table_id == '6046':
             # Divisiones - requiere mapeo especial
             sector_mapping = self._build_division_mapping(df[sector_col].unique())
@@ -650,7 +654,7 @@ class Transformer:
                     'cnae_nivel': 'DIVISION',
                     'cnae_codigo': codigo
                 }
-            elif 'total' in division_str.lower():
+            elif 'total' in division_str.lower() or division_str.startswith('B_S'):
                 mapping[division] = {
                     'cnae_nivel': 'TOTAL',
                     'cnae_codigo': None
