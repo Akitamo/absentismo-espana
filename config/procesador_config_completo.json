@@ -190,10 +190,16 @@
       "permisos_retribuidos",
       "conflictividad",
       "representacion_sindical",
-      "otros",
       "vacaciones",
       "festivos",
-      "erte_suspension"
+      "razones_tecnicas_economicas",
+      "compensacion_extras",
+      "otras_remuneradas",
+      "perdidas_lugar_trabajo",
+      "otras_no_remuneradas",
+      "pagadas_agregado",
+      "no_pagadas_agregado",
+      "vacaciones_y_fiestas"
     ],
     "unidad": [
       "horas/mes por trabajador"

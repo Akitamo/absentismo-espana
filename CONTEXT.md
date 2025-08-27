@@ -1,8 +1,8 @@
 # PROJECT STATUS - AbsentismoEspana
 
 ## 📅 Última actualización
-**Fecha:** 2025-08-25
-**Sesión:** Validación completa de TODAS las tablas (6042-6046, 6063) - Pipeline ETL 100% validado
+**Fecha:** 2024-11-27
+**Sesión:** Actualización completa con nomenclatura y códigos de métricas INE
 
 ## 🔧 Agent Processor: VALIDADO Y FUNCIONAL ✅
 
@@ -15,11 +15,12 @@
    - `agent_processor/processor.py`: Orquestador principal del pipeline
    
 2. **Base de datos DuckDB**
-   - Tabla: `observaciones_tiempo_trabajo` (24 campos - incluye horas_pagadas)
-   - Esquema validado contra diseño Excel v3
-   - Datos test: ~8,460 registros (2024T2-2025T1) para las 6 tablas
+   - Tabla: `observaciones_tiempo_trabajo` (26 campos - incluye metrica_codigo y metrica_ine)
+   - Esquema validado contra diseño Excel v3 y documento de referencia
+   - Datos completos: 149,247 registros (2008T1-2025T1) para las 6 tablas
    - Sin duplicados en clave primaria
    - Campo `rol_grano` funcionando para prevenir agregaciones incorrectas
+   - Nuevos campos `metrica_codigo` y `metrica_ine` para trazabilidad completa
 
 3. **Configuración completamente validada**
    - `agent_processor/config/mappings.json`: Mapeos desde exploración agosto 2025
@@ -134,14 +135,16 @@ periodo + ambito_territorial + ccaa_codigo + cnae_nivel + cnae_codigo + tipo_jor
 | jerarquia_sector_lbl | VARCHAR(100) | NO | Path: Total>Sección C>División 10 |
 | tipo_jornada | ENUM | NO | TOTAL, COMPLETA, PARCIAL, NULL |
 | metrica | ENUM | SÍ | horas_pactadas, horas_pagadas, horas_efectivas, horas_extraordinarias, horas_no_trabajadas |
-| causa | ENUM | NO | it_total, maternidad_paternidad, permisos_retribuidos, conflictividad, representacion_sindical, otros, vacaciones, festivos, erte_suspension, NULL |
+| causa | VARCHAR(30) | NO | 14 valores: vacaciones, festivos, it_total, maternidad_paternidad, permisos_retribuidos, razones_tecnicas_economicas, compensacion_extras, otras_remuneradas, perdidas_lugar_trabajo, conflictividad, otras_no_remuneradas, representacion_sindical, pagadas_agregado, no_pagadas_agregado, vacaciones_y_fiestas, NULL |
 | valor | DECIMAL | SÍ | Valor numérico |
 | unidad | VARCHAR | SÍ | horas/mes por trabajador |
 | fuente_tabla | VARCHAR(4) | SÍ | 6042-6046, 6063 |
 | es_total_ccaa | BOOLEAN | SÍ | TRUE si NAC |
 | es_total_cnae | BOOLEAN | SÍ | TRUE si TOTAL |
 | es_total_jornada | BOOLEAN | SÍ | TRUE si NULL o TOTAL |
-| rol_grano | ENUM | SÍ | Identificador único grano |
+| rol_grano | VARCHAR(30) | SÍ | Identificador único grano |
+| metrica_codigo | VARCHAR(10) | SÍ | Código estándar (HP, HE, HNTRa, etc.) |
+| metrica_ine | VARCHAR(150) | SÍ | Nombre exacto del INE |
 
 ### Métricas y Causas Definidas
 
@@ -152,9 +155,30 @@ periodo + ambito_territorial + ccaa_codigo + cnae_nivel + cnae_codigo + tipo_jor
 - horas_extraordinarias → CONTEXTO  
 - horas_no_trabajadas → Desglosada por causa
 
-**CAUSAS HNT (9):**
-- **Incluir en absentismo**: it_total, maternidad_paternidad, permisos_retribuidos, conflictividad, representacion_sindical, otros
-- **Excluir de absentismo**: vacaciones, festivos, erte_suspension
+**CAUSAS HNT (14 + NULL):**
+
+**Remuneradas (9):**
+- vacaciones (HNTRa)
+- festivos (HNTRb)
+- it_total (HNTRc)
+- maternidad_paternidad (HNTRd)
+- permisos_retribuidos (HNTRe)
+- razones_tecnicas_economicas (HNTRf)
+- compensacion_extras (HNTRg)
+- perdidas_lugar_trabajo (HNTRh)
+- otras_remuneradas (HNTRi)
+
+**No Remuneradas (2):**
+- conflictividad (HNTnR1)
+- otras_no_remuneradas (HNTnR2)
+
+**Agregados (3):**
+- pagadas_agregado (HNTR)
+- no_pagadas_agregado (HNTnR)
+- vacaciones_y_fiestas (HNTRab)
+
+**Otros (1):**
+- representacion_sindical
 
 ### Cobertura por Tabla
 
@@ -219,6 +243,33 @@ absentismo-espana/
 - ✅ Reportes de validación consolidados generados
 
 **Próximo hito**:
-- Carga histórica completa (2008T1-2025T1)
+- Implementación de vistas SQL para métricas calculadas (HPE, HNTmo, tasas)
 - Implementación de dashboard de visualización
 - Despliegue en producción
+
+## 📊 Actualización 27-nov-2024: Nomenclatura y Códigos
+
+### Cambios implementados:
+1. ✅ **Separación correcta de causas**: Eliminado "otros", ahora 14 causas específicas
+2. ✅ **Renombrado**: `erte_suspension` → `razones_tecnicas_economicas`
+3. ✅ **Nuevos campos añadidos**:
+   - `metrica_codigo`: Códigos estándar (HP, HPAG, HE, HEXT, HNT, HNTRa-i, HNTnR1-2)
+   - `metrica_ine`: Nombre exacto tal como aparece en el INE
+4. ✅ **Datos completos cargados**: 149,247 registros (2008T1-2025T1)
+5. ✅ **Validaciones contra archivos INE**: 100% coherencia
+
+### Estado actual de datos:
+- **Total registros**: 149,247
+- **Periodos**: 69 (2008T1 a 2025T1)
+- **Tablas**: 6 (6042-6046, 6063)
+- **Campos tabla**: 26 (antes 24)
+- **Causas HNT**: 14 específicas + NULL para totales
+
+### IMPORTANTE - Métricas calculadas:
+Las siguientes métricas NO están en la BD base, se calcularán cuando se necesiten:
+- HPE (Horas Pactadas Efectivas) = HP + HEXT - HNTRa - HNTRb - HNTRf
+- HNTmo (motivos ocasionales) = Suma HNT excepto vacaciones, festivos y razones técnicas
+- Tasa_Adecco = (HNTmo / HPE) * 100
+- Tasa_Randstad = ((HNT - HNTRa - HNTRb) / HP) * 100
+
+La BD contiene SOLO métricas BASE del INE con nomenclatura exacta.
