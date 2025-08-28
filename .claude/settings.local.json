@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.ine.es)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "mcp__duckdb__query",
+      "Bash(python:*)",
+      "Bash(git add:*)",
+      "Bash(rm:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

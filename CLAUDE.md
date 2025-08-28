@@ -27,11 +27,16 @@ Modular Agent-Based System:
 absentismo-espana/
 ├── agent_extractor/     # Data extraction from INE
 ├── agent_processor/     # Data processing into unified table ✅ COMPLETED
+│   └── scripts/        # Processor utility scripts
+│       ├── load_all_tables.py                   # Load all tables to DuckDB
+│       └── generate_consolidated_validation_report.py  # Generate validation reports
 ├── config/              # Configuration files
 │   ├── tables.json      # 35 INE table definitions
 │   └── procesador_config_completo.json # Agent Processor configuration
 ├── data/
 │   ├── raw/csv/        # 35 Original CSV files from INE (one per table)
+│   ├── INE/            # Excel files downloaded directly from INE for validation
+│   ├── analysis.db     # DuckDB database with 149,247 processed records
 │   ├── metadata/       # Update tracking and version control
 │   ├── backups/        # Automatic backups with timestamps
 │   └── exploration_reports/ # Analysis reports and Excel matrices
@@ -39,14 +44,10 @@ absentismo-espana/
 │       ├── *.json      # Comprehensive analysis data
 │       └── *.xlsx      # Excel reports with column matrices
 ├── exploration/         # Data exploration scripts and tools
-│   ├── csv_explorer.py              # Basic CSV structure analysis
-│   ├── columns_analyzer.py          # Mass analysis and Excel generation
-│   ├── analyze_8_tables.py          # Advanced analysis with unique values extraction
-│   ├── consolidate_patterns.py      # Pattern consolidation across tables
-│   ├── unified_schema_35_tables.py  # Unified schema application
-│   ├── identify_metrics_per_table.py # Clear metric identification by category
-│   ├── final_matrix_consolidated.py # Final consolidated matrix generation
-│   └── report_viewer.py             # HTML report generation [WIP]
+│   ├── 01_initial_analysis/    # Initial CSV structure analysis
+│   ├── 02_pattern_detection/   # Pattern consolidation and schema unification
+│   ├── 03_validation/          # Final validation and metrics extraction
+│   └── archive/                # Historical scripts for reference
 ├── docs/                # Reference documentation
 │   └── metodologia_ETCL_INE_2023.pdf # Official INE methodology document
 ├── scripts/            # Utility scripts
@@ -80,26 +81,18 @@ python main.py --process [table_id]
 python scripts/generate_metadata.py      # Generate retroactive metadata for existing files
 python scripts/validate_no_duplicates.py # Validate and clean duplicate CSV files
 
-# Data exploration scripts
-python exploration/csv_explorer.py              # Analyze CSV structure and identify dimensions/metrics
-python exploration/columns_analyzer.py          # Mass analysis of all 35 tables with Excel output
-python exploration/analyze_8_tables.py          # Advanced analysis of representative tables with unique values
-python exploration/consolidate_patterns.py      # Consolidate patterns identified across tables
-python exploration/unified_schema_35_tables.py  # Apply unified schema to all 35 tables
-python exploration/identify_metrics_per_table.py # Identify and categorize metrics per table
-python exploration/final_matrix_consolidated.py # Generate final consolidated matrix
+# Agent Processor scripts  
+python agent_processor/scripts/load_all_tables.py                    # Load all 6 tables to DuckDB
+python agent_processor/scripts/generate_consolidated_validation_report.py  # Generate validation reports
 
-# Metrics extraction scripts (VALIDATED - 51 metrics extracted)
-python exploration/extract_all_metrics_detailed.py     # Extract all 51 unique metrics with detailed categorization
-python exploration/extract_metrics_enhanced.py         # Enhanced analysis with 112% coverage validation
-python exploration/validate_direct_metrics_only.py     # Validate only direct metrics (excludes calculated ones)
-python exploration/validate_metrics_with_ine.py        # Cross-validate extracted metrics against INE methodology
-
-# Data validation scripts (VALIDATED 16-ago-2025)
-python exploration/check_all_endpoints.py       # Verify which tables have web endpoints (33/35 OK)
-python exploration/validate_all_tables.py       # Run exhaustive validation - 100% success rate
-python exploration/validate_specific_values.py  # Validate specific numeric values
-python exploration/validate_precise_comparison.py # Precise value-by-value comparison
+# Key exploration scripts (in organized folders)
+python exploration/01_initial_analysis/csv_explorer.py               # Initial CSV structure analysis
+python exploration/01_initial_analysis/columns_analyzer.py           # Mass analysis with Excel output
+python exploration/02_pattern_detection/consolidate_patterns.py      # Pattern consolidation across tables
+python exploration/02_pattern_detection/unified_schema_35_tables.py  # Unified schema application
+python exploration/03_validation/extract_all_metrics_detailed.py     # Extract 51 unique metrics (VALIDATED)
+python exploration/03_validation/validate_all_tables.py              # Exhaustive validation - 100% success
+python exploration/03_validation/final_matrix_consolidated.py        # Final consolidated matrix
 ```
 
 ## Data Sources

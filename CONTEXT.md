@@ -1,8 +1,8 @@
 # PROJECT STATUS - AbsentismoEspana
 
 ## 📅 Última actualización
-**Fecha:** 2024-11-27
-**Sesión:** Actualización completa con nomenclatura y códigos de métricas INE
+**Fecha:** 2024-11-28
+**Sesión:** Reorganización de proyecto y actualización de documentación
 
 ## 🔧 Agent Processor: VALIDADO Y FUNCIONAL ✅
 
@@ -45,9 +45,9 @@
 | 6063 | CCAA + Sectores B-S + Jornada | 1,080 | 100% | Ninguno |
 
 **Archivos de validación generados:**
-- `validation_report_consolidated.xlsx`: Reporte Excel con 4 hojas de análisis
-- `validation_summary.json`: Resumen estructurado en JSON
-- 6 scripts de validación individuales (`validate_60XX_detailed.py`)
+- `data/exploration_reports/validation_report_consolidated.xlsx`: Reporte Excel con 4 hojas de análisis
+- `data/exploration_reports/validation_summary.json`: Resumen estructurado en JSON
+- Scripts consolidados en `agent_processor/scripts/`
 - 6 reportes Excel detallados por tabla
 
 ### Lecciones Aprendidas 📚
