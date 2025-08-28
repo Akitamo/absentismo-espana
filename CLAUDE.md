@@ -219,6 +219,7 @@ WHERE unique_count < 100;
 - Preserve original CSV encoding when processing
 - Handle missing values and data anomalies gracefully
 - Use pattern matching ({codigo}_*.csv) to handle INE filename variations
+- **DATABASE PATH:** Always use absolute path: `C:\dev\projects\absentismo-espana\data\analysis.db`
 
 ## Data Quality Status (19-ago-2025)
 ✅ **AGENT EXTRACTOR COMPLETED: 100% validation confirmed**
@@ -235,7 +236,7 @@ WHERE unique_count < 100;
 
 ### Estado: COMPLETADO Y VALIDADO ✅
 - ✅ Pipeline ETL completamente funcional (Extractor, Transformer, Loader)
-- ✅ DuckDB integrado con esquema de 26 campos (incluye metrica_codigo y metrica_ine)
+- ✅ DuckDB integrado con esquema de 25 campos (incluye metrica_codigo y metrica_ine)
 - ✅ Carga completa: 149,247 registros (2008T1-2025T1)
 - ✅ Validación 100%: TODAS las tablas validadas contra archivos INE
 - ✅ Sin duplicados, con prevención de agregaciones incorrectas
@@ -245,16 +246,19 @@ WHERE unique_count < 100;
 Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unified analysis table for absenteeism reporting (Adecco/Randstad format).
 
 ### Input Tables (Tiempo de Trabajo only)
-- **6042**: Nacional + Sectores B-S + Jornada
-- **6043**: Nacional + Secciones CNAE + Jornada  
-- **6044**: Nacional + Sectores B-S (sin jornada)
-- **6045**: Nacional + Secciones CNAE (sin jornada)
-- **6046**: Nacional + Divisiones CNAE (sin jornada)
-- **6063**: CCAA + Sectores B-S + Jornada
+- **6042**: Nacional + Sectores B-S + Jornada → incluye TOTAL nacional
+- **6043**: Nacional + Secciones CNAE + Jornada → incluye TOTAL nacional
+- **6044**: Nacional + Sectores B-S (sin jornada) → incluye TOTAL nacional
+- **6045**: Nacional + Secciones CNAE (sin jornada) → incluye TOTAL nacional
+- **6046**: Nacional + Divisiones CNAE (sin jornada) → incluye TOTAL nacional
+- **6063**: CCAA + Sectores B-S + Jornada → incluye TOTAL nacional y por CCAA
+
+**IMPORTANTE**: Todas las tablas incluyen el TOTAL nacional (cuando cnae_nivel='TOTAL'), calculado para cada métrica y trimestre.
 
 ### Output Table Structure: `observaciones_tiempo_trabajo`
 
 **Primary Key**: `periodo + ambito_territorial + ccaa_codigo + cnae_nivel + cnae_codigo + tipo_jornada + metrica + causa`
+**IMPORTANTE**: Esta clave primaria NO incluye `fuente_tabla`, lo que significa que el mismo TOTAL nacional aparece múltiples veces (una por cada tabla fuente)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -275,19 +279,21 @@ Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unifi
 | es_total_cnae | BOOLEAN | YES | TRUE if TOTAL level |
 | es_total_jornada | BOOLEAN | YES | TRUE if NULL or TOTAL |
 | rol_grano | ENUM | YES | NAC_TOTAL, NAC_TOTAL_JORNADA, NAC_SECTOR_BS, NAC_SECTOR_BS_JORNADA, NAC_SECCION, NAC_SECCION_JORNADA, NAC_DIVISION, CCAA_TOTAL, CCAA_TOTAL_JORNADA, CCAA_SECTOR_BS, CCAA_SECTOR_BS_JORNADA |
+| fuente_tabla | VARCHAR(4) | YES | Código de tabla INE (6042-6046, 6063) - CRÍTICO para filtrar duplicados del TOTAL |
 | version_datos | VARCHAR(10) | NO | INE data version (e.g., "2024T3") |
 | fecha_carga | TIMESTAMP | YES | Load timestamp for audit |
 
-**Total: 26 campos** (actualizado 27-nov-2024)
+**Total: 25 campos** (actualizado 28-nov-2024)
 
 ### Key Design Decisions
 
-1. **Heterogeneous Granularity Solution**: `rol_grano` field uniquely identifies each combination preventing invalid aggregations
+1. **Heterogeneous Granularity Solution**: `rol_grano` field identifies granularity combinations (NOTE: does not prevent duplicate TOTAL across tables)
 2. **Double Counting Prevention**: Boolean flags (`es_total_*`) explicitly mark totals
 3. **Jornada Handling**: NULL when not available (tables 6044-6046), with `es_total_jornada` flag
 4. **Metrics Structure**: Separated into `metrica` (5 types) + `causa` (14 types for HNT)
 5. **CCAA Limitation**: Only available in table 6063 at B-S level
 6. **Ceuta/Melilla**: Integrated with Andalucía (INE decision maintained)
+7. **TOTAL Nacional Duplication**: Each table (6042-6046, 6063) includes the same TOTAL nacional - use `fuente_tabla` filter to avoid duplication
 
 ### Validation Rules
 
@@ -396,3 +402,115 @@ Transform raw CSV data from 6 specific INE tables (6042-6046, 6063) into a unifi
 - **CRÍTICO**: `docs/EXPLORACION_VALIDADA.md` - Consultar SIEMPRE antes de cualquier validación
 - Contiene todos los valores validados, mapeos confirmados y lecciones aprendidas
 - Si un valor está ahí, NO necesita re-validación
+
+## Streamlit Dashboard de Absentismo (Sprint 1 - Completado 28-nov-2024)
+
+### Ubicación y Estructura
+```
+streamlit_app/
+├── app.py              # Aplicación principal Streamlit
+└── test_db_connection.py  # Script de prueba de conexión
+```
+
+### Ejecución
+```bash
+# Desde el directorio raíz del proyecto
+cd streamlit_app
+streamlit run app.py
+
+# URL de acceso
+http://localhost:8502
+```
+
+### Configuración Crítica de Base de Datos
+**IMPORTANTE:** La ruta de la base de datos DEBE ser absoluta en Windows:
+```python
+db_path_str = r"C:\dev\projects\absentismo-espana\data\analysis.db"
+```
+
+### Metodología de Cálculo Adecco (Validada)
+```python
+# 1. Horas Pactadas Efectivas (HPE)
+HPE = HP + HEXT - Vacaciones - Festivos - ERTEs
+# Valor Q4 2024: 137.2 horas
+
+# 2. Horas No Trabajadas Motivos Ocasionales (HNTmo)
+HNTmo = IT + Maternidad + Permisos + Compensación + Otras_rem + Pérdidas + Conflictividad + Otras_no_rem
+# Valor Q4 2024: 10.2 horas
+
+# 3. Tasa de Absentismo General
+Tasa_Absentismo = (HNTmo / HPE) × 100
+# Valor Q4 2024: 7.43% (Adecco reporta 7.4%)
+
+# 4. Tasa de IT
+Tasa_IT = (IT / HPE) × 100  
+# Valor Q4 2024: 5.76% (Adecco reporta 5.8%)
+```
+
+### IMPORTANTE: Manejo del TOTAL Nacional en Queries
+**PROBLEMA IDENTIFICADO (28-nov-2024):** Las 6 tablas INE (6042-6046, 6063) incluyen todas el mismo valor TOTAL nacional por diseño del INE. 
+
+**Definición del TOTAL Nacional en el INE:**
+El TOTAL nacional corresponde a los registros donde:
+- **Tipo Jornada**: "AMBAS JORNADAS" o "TOTAL" (NULL en tablas sin jornada)
+- **Secciones CNAE**: "B_S Industria, construcción y servicios (excepto actividades de los hogares...)"
+- **Sectores CNAE**: "B_S Industria, construcción y servicios (excepto actividades de los hogares...)"
+- **Ámbito**: "Total nacional"
+
+Cada tabla calcula y almacena su propio TOTAL para cada métrica y trimestre. Esto facilita la validación y referencia, pero causa que el mismo valor aparezca 6 veces en nuestra base de datos.
+
+**SOLUCIÓN CORRECTA:** Usar filtros de dimensiones, NO trucos SQL como AVG, MAX o DISTINCT:
+```sql
+-- CORRECTO: Filtrar por una tabla específica para evitar duplicados
+SELECT SUM(CASE WHEN metrica = 'horas_pactadas' THEN valor ELSE 0 END) as hp
+FROM observaciones_tiempo_trabajo
+WHERE periodo = '2024T4'
+    AND ambito_territorial = 'NAC'
+    AND cnae_nivel = 'TOTAL'
+    AND fuente_tabla = '6042'  -- Usar solo tabla 6042 para TOTAL nacional
+    AND tipo_jornada = 'TOTAL'
+```
+
+**NUNCA HACER:**
+- NO usar AVG para "promediar" duplicados
+- NO usar MAX o MIN para tomar un valor arbitrario
+- NO usar DISTINCT ON como parche
+- NO modificar los datos originales
+
+**LECCIÓN APRENDIDA:** Los datos del INE son correctos. El problema surge porque cargamos el mismo TOTAL de múltiples fuentes. La solución es filtrar por la fuente apropiada según el nivel de detalle deseado.
+
+### Características Implementadas (Sprint 1)
+- ✅ Conexión a DuckDB con datos INE-ETCL
+- ✅ Cálculo de KPIs principales (Tasa Absentismo, Tasa IT)
+- ✅ 6 pestañas de análisis (estructura base)
+- ✅ Filtro por periodo trimestral
+- ✅ Metodología Adecco exacta (NO Randstad)
+- ✅ Valores coincidentes con informes publicados
+
+### Valores de Referencia Q4 2024
+| Métrica | Valor INE | Unidad |
+|---------|-----------|--------|
+| HP (Horas Pactadas) | 151.4 | horas/trabajador |
+| HEXT (Horas Extras) | 0.8 | horas/trabajador |
+| Vacaciones + Festivos | 14.9 | horas/trabajador |
+| ERTEs | 0.1 | horas/trabajador |
+| IT | 7.9 | horas/trabajador |
+| HPE (calculado) | 137.2 | horas/trabajador |
+| HNTmo (calculado) | 10.2 | horas/trabajador |
+
+### Troubleshooting Común
+1. **Error "No se encuentra la base de datos"**: 
+   - Verificar ruta absoluta en `app.py` línea 62
+   - Debe ser: `r"C:\dev\projects\absentismo-espana\data\analysis.db"`
+
+2. **Valores incorrectos en tasas**:
+   - Verificar uso de AVG en lugar de SUM
+   - Confirmar nivel de agregación: usar cnae_nivel = 'TOTAL'
+
+3. **Error de caché en Streamlit**:
+   - Ejecutar: `streamlit cache clear`
+   - Reiniciar servidor
+
+4. **Encoding errors en Windows**:
+   - No usar emojis o caracteres Unicode en output
+   - Usar ASCII equivalentes

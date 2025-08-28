@@ -1,8 +1,8 @@
 # PROJECT STATUS - AbsentismoEspana
 
 ## 📅 Última actualización
-**Fecha:** 2024-11-28
-**Sesión:** Reorganización de proyecto y actualización de documentación
+**Fecha:** 2024-11-28 (actualizado)
+**Sesión:** Problema de duplicados del TOTAL resuelto - Documentación actualizada con lecciones aprendidas
 
 ## 🔧 Agent Processor: VALIDADO Y FUNCIONAL ✅
 
@@ -15,7 +15,7 @@
    - `agent_processor/processor.py`: Orquestador principal del pipeline
    
 2. **Base de datos DuckDB**
-   - Tabla: `observaciones_tiempo_trabajo` (26 campos - incluye metrica_codigo y metrica_ine)
+   - Tabla: `observaciones_tiempo_trabajo` (25 campos - incluye metrica_codigo y metrica_ine)
    - Esquema validado contra diseño Excel v3 y documento de referencia
    - Datos completos: 149,247 registros (2008T1-2025T1) para las 6 tablas
    - Sin duplicados en clave primaria
@@ -55,22 +55,50 @@
 1. **SIEMPRE consultar EXPLORACION_VALIDADA.md antes de validar**: Contiene TODOS los valores ya verificados
 2. **Horas pagadas ≠ Horas efectivas**: Son métricas diferentes (pagadas > efectivas siempre)
 3. **Valores TAL CUAL del INE**: 151 = 151 horas (NO dividir por 10)
-4. **Prevención duplicados**: Campo `rol_grano` implementado y funcional
+4. **Campo `rol_grano` NO previene duplicados entre tablas**: Solo identifica granularidad, no evita que el mismo TOTAL aparezca en múltiples tablas
 5. **Mapeos desde exploración**: No crear nuevos mapeos, usar los validados de agosto 2025
 6. **Detección B_S automática**: Transformer detecta prefijo B_S como TOTAL
 7. **Problemas de encoding en mapeos**: Secciones G y O requerían texto exacto con comas (no punto y coma)
 8. **Validación exhaustiva funciona**: 1,918 comparaciones individuales garantizan calidad de datos
 9. **Scripts de validación reutilizables**: Patrón común aplicable a todas las tablas INE
+10. **NUNCA usar AVG/MAX/MIN para duplicados** (28-nov-2024): Los "duplicados" del TOTAL son por diseño del INE. Solución: filtrar por `fuente_tabla`
+11. **Las tablas INE incluyen TOTAL por diseño**: Es para facilitar validación y referencia, no un error
+12. **Soluciones SQL son chapuzas**: Siempre corregir en origen o usar dimensiones correctamente
 
-### Próximos Pasos 🚀
+## 🎉 Sprint 1 Streamlit Dashboard: COMPLETADO (28-nov-2024)
 
-1. ✅ **COMPLETADO**: Todas las tablas validadas y cargando correctamente
-2. ✅ **COMPLETADO**: Documentación consolidada en EXPLORACION_VALIDADA.md
-3. ✅ **COMPLETADO**: Reporte final consolidado generado
-4. ⏳ **PENDIENTE**: Cargar datos históricos completos (2008T1-2025T1)
-5. ⏳ **PENDIENTE**: Crear vistas de análisis en DuckDB
-6. ⏳ **PENDIENTE**: Implementar dashboard Streamlit con NL2SQL
-7. 🔄 **EN PROCESO**: Actualizar repositorio GitHub
+### Logros del Sprint 1:
+1. ✅ **Aplicación Streamlit funcional** en `streamlit_app/app.py`
+2. ✅ **Cálculos correctos de tasas de absentismo**:
+   - Tasa Absentismo General: 7.43% (coincide con Adecco 7.4%)
+   - Tasa IT: 5.76% (coincide con Adecco 5.8%)
+3. ✅ **Metodología Adecco implementada exactamente**
+4. ✅ **Problema de duplicados resuelto CORRECTAMENTE**: Filtro por `fuente_tabla='6042'`
+5. ✅ **Problema de rutas resuelto**: Ruta absoluta a BD
+6. ✅ **6 pestañas de análisis** estructuradas (contenido básico)
+7. ✅ **Filtro por periodo** funcional
+
+### Problemas resueltos durante Sprint 1:
+- **Duplicados del TOTAL nacional** (28-nov-2024): 
+  - CAUSA: Las 6 tablas INE (6042-6046, 6063) incluyen todas el mismo TOTAL nacional por diseño del INE
+  - SOLUCIÓN CORRECTA: Filtrar por `fuente_tabla='6042'` para evitar sumar 6 veces el mismo valor
+  - NUNCA usar AVG, MAX, MIN o DISTINCT como parche - filtrar por dimensiones correctas
+  - Campo `rol_grano` NO previene este tipo de duplicados entre tablas
+- **Escala incorrecta**: Los valores ya están en la escala correcta (no dividir por 10)
+- **Nivel de agregación**: Usar cnae_nivel = 'TOTAL', no SECTOR_BS
+- **Ruta de BD en Windows**: Debe ser absoluta `r"C:\dev\projects\absentismo-espana\data\analysis.db"`
+- **Caché de Streamlit**: Eliminado @st.cache_resource de conexión para evitar problemas
+
+### Próximos Pasos Sprint 2 🚀
+
+1. ⏳ **PENDIENTE**: Completar contenido de las 6 pestañas con gráficos y análisis
+2. ⏳ **PENDIENTE**: Añadir comparación temporal (trimestre vs trimestre anterior)
+3. ⏳ **PENDIENTE**: Implementar análisis por sectores (B-E, F, G-S)
+4. ⏳ **PENDIENTE**: Añadir análisis por CCAA (tabla 6063)
+5. ⏳ **PENDIENTE**: Exportación a Excel/PDF de reportes
+6. ✅ **COMPLETADO**: Cargar datos históricos completos (2008T1-2025T1) - ya están
+7. ⏳ **PENDIENTE**: Crear vistas de análisis en DuckDB
+8. 🔄 **EN PROCESO**: Actualizar repositorio GitHub
 
 ## ✅ Completado anteriormente
 
@@ -262,7 +290,7 @@ absentismo-espana/
 - **Total registros**: 149,247
 - **Periodos**: 69 (2008T1 a 2025T1)
 - **Tablas**: 6 (6042-6046, 6063)
-- **Campos tabla**: 26 (antes 24)
+- **Campos tabla**: 25 (incluye metrica_codigo y metrica_ine)
 - **Causas HNT**: 14 específicas + NULL para totales
 
 ### IMPORTANTE - Métricas calculadas:
