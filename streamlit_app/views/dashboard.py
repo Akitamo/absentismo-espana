@@ -4,6 +4,7 @@ Página principal del Dashboard
 
 import streamlit as st
 import pandas as pd
+import numpy as np
 from datetime import datetime
 import sys
 from pathlib import Path
@@ -15,6 +16,8 @@ from services.data_service import DataService
 from components.kpi_card import render_kpi_card
 from components.filters import render_filters
 from components.charts import render_evolution_chart
+from components.chart_container import render_chart_container
+from visualizations import get_visualization
 
 def show():
     """Muestra la página principal del dashboard"""
@@ -111,12 +114,38 @@ def show():
     
     with col1:
         st.markdown("### 📊 Evolución Temporal")
-        # Aquí irá el gráfico de evolución
-        evolution_data = data_service.get_evolution_data(ccaa, sector)
-        if not evolution_data.empty:
-            render_evolution_chart(evolution_data)
-        else:
-            st.info("No hay datos disponibles para mostrar")
+        
+        # PRUEBA DE ARQUITECTURA MODULAR
+        # Generar datos de ejemplo para la prueba
+        periodos = pd.date_range('2020-01', '2024-01', freq='Q')
+        datos_ejemplo = pd.DataFrame({
+            'periodo': periodos,
+            'tasa_absentismo': np.random.uniform(10, 15, len(periodos)) + np.sin(np.arange(len(periodos)) * 0.5) * 2
+        })
+        datos_ejemplo.set_index('periodo', inplace=True)
+        
+        try:
+            # Crear visualización con el sistema modular
+            viz = get_visualization(
+                'absentismo_temporal',
+                data=datos_ejemplo,
+                config={
+                    'title': 'Evolución de la Tasa de Absentismo',
+                    'height': 350
+                }
+            )
+            
+            # Renderizar en contenedor estándar
+            render_chart_container(viz)
+            
+        except Exception as e:
+            st.error(f"Error en visualización modular: {e}")
+            # Fallback al método anterior
+            evolution_data = data_service.get_evolution_data(ccaa, sector)
+            if not evolution_data.empty:
+                render_evolution_chart(evolution_data)
+            else:
+                st.info("No hay datos disponibles para mostrar")
     
     with col2:
         st.markdown("### 🏆 Ranking por CCAA")

@@ -1,5 +1,7 @@
 # CONTEXT.md
 
+**Última actualización:** 29-11-2024 14:00
+
 ## 📊 Estado del Proyecto
 
 ### Pipeline de Datos
@@ -8,30 +10,32 @@
 - **Validación**: ✅ 100% contra fuentes INE
 
 ### Dashboard Streamlit
-- **Base**: ✅ Funcionando en puerto 8505
-- **Diseño**: 🔄 Migrando a Tesla Dashboard (Figma)
-- **Problema actual**: Sidebar oscuro inventado, debe ser blanco
+- **Puerto**: 8506
+- **Sidebar**: ✅ Rediseñado con logo Ibermutua, tema claro
+- **Visualizaciones**: ✅ Sistema modular implementado
 
-## 🎯 Sesión Actual
+## 🎯 Último Sprint Completado
 
-### Objetivo
-Implementar diseño Tesla Analytics Dashboard desde Figma
+### Sistema Modular de Visualizaciones
+- ✅ Arquitectura base con `BaseVisualization`
+- ✅ Registry central para registro de charts
+- ✅ Container estándar para diseño consistente
+- ✅ 2 visualizaciones Plotly funcionando
+- ✅ Integración con tokens.json
 
-### Bloqueador
-- Sidebar implementado con fondo oscuro (#171A20)
-- Diseño real tiene fondo blanco (#FFFFFF)
+## 🚀 Próximos Pasos
+1. Conectar visualizaciones con datos reales DuckDB
+2. Implementar más tipos: barras, heatmaps, mapas
+3. Agregar Altair y ECharts como librerías
+4. Crear galería de visualizaciones
 
-### Próximos pasos
-1. Corregir tokens.json → sidebar blanco
-2. Implementar KPI cards con mini-gráficos
-3. Adaptar métricas a absentismo
+## 🔧 Para Agregar Nueva Visualización
+1. Crear clase en `visualizations/charts/`
+2. Heredar de `BaseVisualization`
+3. Registrar en `registry.py`
+4. Usar: `get_visualization('nombre', data, config)`
 
-## 🔧 Configuración Activa
-- DB: `C:\dev\projects\absentismo-espana\data\analysis.db`
-- Dashboard: http://localhost:8505
-- Diseño: Ver `docs/DASHBOARD_DESIGN.md`
-
-## 📝 Notas Relevantes
-- Sistema de tokens implementado
-- NO usar CSS inline
-- Verificar siempre contra mockup antes de implementar
+## 📝 Reglas Críticas
+- **NUNCA hardcodear estilos** - usar tokens.json
+- **SIEMPRE heredar de BaseVisualization**
+- **Registrar todas las visualizaciones**

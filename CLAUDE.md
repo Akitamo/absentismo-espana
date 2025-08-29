@@ -26,10 +26,28 @@ Modular Agent-Based System:
 │   └── Validation: 100% accuracy against INE sources
 │
 └── Streamlit Dashboard: Interactive visualization
+    ├── Visualizations Module: NEW modular chart system
+    │   ├── BaseVisualization: Abstract class for all charts
+    │   ├── Registry: Central chart registration
+    │   └── Chart Container: Consistent styling wrapper
     ├── KPI Cards: Key metrics display
-    ├── Charts: Trend analysis
+    ├── Charts: Multiple libraries (Plotly, Altair, etc.)
     └── Filters: Period and dimension selection
 ```
+
+## Visualization System (NEW)
+**Location**: `streamlit_app/visualizations/`
+
+### Creating New Visualizations:
+1. Create class inheriting from `BaseVisualization`
+2. Implement `render()` and `get_library()` methods
+3. Register in `registry.py`
+4. Use with: `viz = get_visualization('name', data, config)`
+
+### Key Files:
+- `visualizations/base.py` - Base class with token integration
+- `visualizations/registry.py` - Central registration
+- `components/chart_container.py` - Standard container
 
 ## Project Structure
 ```

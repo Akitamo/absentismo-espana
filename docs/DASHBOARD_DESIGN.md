@@ -35,6 +35,46 @@
 
 ---
 
+## 🎨 SISTEMA MODULAR DE VISUALIZACIONES (NUEVO)
+
+### Arquitectura
+```
+visualizations/
+├── base.py              # Clase abstracta base
+├── registry.py          # Registro central
+└── charts/
+    ├── line_charts.py   # Gráficos de línea
+    ├── bar_charts.py    # Gráficos de barras
+    └── [más tipos...]
+```
+
+### Crear Nueva Visualización
+```python
+# 1. Heredar de BaseVisualization
+class MiChart(BaseVisualization):
+    def render(self):
+        # Lógica del chart
+        return figura
+    
+    def get_library(self):
+        return 'plotly'  # o 'altair', 'matplotlib'
+
+# 2. Registrar en registry.py
+register_visualization('mi_chart', MiChart)
+
+# 3. Usar en dashboard
+viz = get_visualization('mi_chart', data, config)
+render_chart_container(viz)
+```
+
+### Ventajas del Sistema
+- ✅ Cada visualización es independiente
+- ✅ Tokens aplicados automáticamente
+- ✅ Container con diseño consistente
+- ✅ Fácil agregar nuevas librerías
+
+---
+
 ## 🎨 DISEÑO REAL (del mockup Main.png)
 
 ### Estructura General
