@@ -95,6 +95,16 @@ streamlit run app.py
 - **6 key tables** for time metrics (6042-6046, 6063)
 - **Database**: `data/analysis.db` (DuckDB)
 
+## Critical Documentation - READ FIRST
+
+### Design System (MANDATORY before UI work)
+- **Design Rules**: `docs/DASHBOARD_DESIGN.md` - NUNCA inventar diseño
+- **Design Tokens**: `streamlit_app/design/tokens.json` - Todos los valores
+- **Theme CSS**: `streamlit_app/design/theme.py` - Variables CSS
+
+### Data Processing
+- **Lessons Learned**: `docs/DATA_LESSONS_LEARNED.md` - Problemas resueltos
+
 ## Development Guidelines
 
 ### General Rules

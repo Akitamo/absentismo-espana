@@ -27,6 +27,8 @@ def generate_css_from_tokens(tokens):
         --color-primary-hover: {tokens['colors']['primary_hover']};
         --color-background: {tokens['colors']['background']};
         --color-surface: {tokens['colors']['surface']};
+        --color-sidebar-bg: {tokens['colors']['sidebar_bg']};
+        --color-sidebar-hover: {tokens['colors']['sidebar_hover']};
         --color-border: {tokens['colors']['border']};
         --color-border-light: {tokens['colors']['border_light']};
         
@@ -99,64 +101,63 @@ def generate_css_from_tokens(tokens):
     
     /* Sidebar */
     section[data-testid="stSidebar"] {{
-        background: linear-gradient(180deg, {tokens['colors']['sidebar_bg']} 0%, #0F1114 100%);
+        background: {tokens['colors']['sidebar_bg']} !important;
         width: {tokens['layout']['sidebarWidth']} !important;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+        border-right: 1px solid {tokens['colors']['border']};
     }}
     
     section[data-testid="stSidebar"] .block-container {{
-        padding-top: 2rem;
+        padding-top: 1rem;
     }}
     
     /* Sidebar text color */
     section[data-testid="stSidebar"] .stMarkdown {{
-        color: white !important;
+        color: {tokens['colors']['text']['primary']} !important;
     }}
     
     section[data-testid="stSidebar"] h2 {{
-        color: white !important;
+        color: {tokens['colors']['text']['primary']} !important;
         font-size: 1.5rem !important;
         font-weight: 600 !important;
         letter-spacing: -0.5px;
         margin-bottom: 2rem !important;
     }}
     
-    /* Sidebar radio buttons */
-    section[data-testid="stSidebar"] .stRadio > label {{
-        color: white !important;
-        font-size: 0.875rem !important;
-        font-weight: 500 !important;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }}
-    
-    section[data-testid="stSidebar"] .stRadio > div {{
-        gap: 0.5rem;
-    }}
-    
-    section[data-testid="stSidebar"] .stRadio label {{
-        color: rgba(255, 255, 255, 0.85) !important;
-        padding: 0.75rem 1rem !important;
+    /* Sidebar buttons */
+    section[data-testid="stSidebar"] .stButton > button {{
+        background: transparent !important;
+        color: {tokens['colors']['text']['secondary']} !important;
+        border: none !important;
         border-radius: 8px !important;
-        transition: all 0.3s ease !important;
-        cursor: pointer !important;
-        display: flex !important;
-        align-items: center !important;
+        padding: 0.75rem 1rem !important;
+        text-align: left !important;
+        width: 100% !important;
+        font-size: 0.875rem !important;
+        font-weight: 400 !important;
+        transition: all 0.2s ease !important;
+        margin-bottom: 0.25rem !important;
+        box-shadow: none !important;
     }}
     
-    section[data-testid="stSidebar"] .stRadio label:hover {{
+    section[data-testid="stSidebar"] .stButton > button:hover {{
         background-color: {tokens['colors']['sidebar_hover']} !important;
-        color: white !important;
+        color: {tokens['colors']['primary']} !important;
+        transform: none !important;
     }}
     
-    section[data-testid="stSidebar"] .stRadio label[data-selected="true"] {{
-        background-color: {tokens['colors']['primary']} !important;
-        color: white !important;
+    /* Active button state (simulated with custom styling) */
+    section[data-testid="stSidebar"] .stButton > button:focus {{
+        background-color: {tokens['colors']['sidebar_hover']} !important;
+        color: {tokens['colors']['primary']} !important;
+        font-weight: 600 !important;
+        box-shadow: none !important;
+        outline: none !important;
     }}
     
     /* Sidebar captions */
     section[data-testid="stSidebar"] .stCaption {{
-        color: rgba(255, 255, 255, 0.5) !important;
+        color: {tokens['colors']['text']['secondary']} !important;
         font-size: 0.75rem !important;
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -164,7 +165,7 @@ def generate_css_from_tokens(tokens):
     
     /* Sidebar separator */
     section[data-testid="stSidebar"] hr {{
-        border-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: {tokens['colors']['border']} !important;
         margin: 1.5rem 0 !important;
     }}
     
