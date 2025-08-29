@@ -286,7 +286,6 @@ class Transformer:
         df['cnae_nivel'] = None
         df['cnae_codigo'] = None
         df['cnae_nombre'] = None
-        df['jerarquia_sector_cod'] = None
         df['jerarquia_sector_lbl'] = None
         
         # Obtener nivel CNAE de la tabla
@@ -302,7 +301,6 @@ class Transformer:
             df['cnae_nivel'] = 'TOTAL'
             df['cnae_codigo'] = None
             df['cnae_nombre'] = None
-            df['jerarquia_sector_cod'] = 'TOTAL'
             df['jerarquia_sector_lbl'] = 'Total'
             return df
         
@@ -335,18 +333,14 @@ class Transformer:
                 
                 # Construir jerarquía
                 if mapping['cnae_nivel'] == 'TOTAL':
-                    df.loc[mask, 'jerarquia_sector_cod'] = 'TOTAL'
                     df.loc[mask, 'jerarquia_sector_lbl'] = 'Total'
                 elif mapping['cnae_nivel'] == 'SECTOR_BS':
-                    df.loc[mask, 'jerarquia_sector_cod'] = f"TOTAL>SECTOR>{mapping['cnae_codigo']}"
                     df.loc[mask, 'jerarquia_sector_lbl'] = f"Total>Sector {mapping['cnae_codigo']}"
                 elif mapping['cnae_nivel'] == 'SECCION':
-                    df.loc[mask, 'jerarquia_sector_cod'] = f"TOTAL>SECCION>{mapping['cnae_codigo']}"
                     df.loc[mask, 'jerarquia_sector_lbl'] = f"Total>Sección {mapping['cnae_codigo']}"
                 elif mapping['cnae_nivel'] == 'DIVISION':
                     # Para divisiones necesitamos saber la sección padre
                     seccion = self._get_seccion_from_division(mapping['cnae_codigo'])
-                    df.loc[mask, 'jerarquia_sector_cod'] = f"TOTAL>SECCION>{seccion}>DIVISION>{mapping['cnae_codigo']}"
                     df.loc[mask, 'jerarquia_sector_lbl'] = f"Total>Sección {seccion}>División {mapping['cnae_codigo']}"
         
         # Asegurar que todos los registros tienen cnae_nivel
@@ -357,8 +351,7 @@ class Transformer:
             df.loc[df['cnae_nivel'].isna() | (df['cnae_nivel'] == ''), 'cnae_nivel'] = default_nivel
             
             # Si es TOTAL y no tiene jerarquía, asignarla
-            mask_total = (df['cnae_nivel'] == 'TOTAL') & df['jerarquia_sector_cod'].isna()
-            df.loc[mask_total, 'jerarquia_sector_cod'] = 'TOTAL'
+            mask_total = (df['cnae_nivel'] == 'TOTAL') & df['jerarquia_sector_lbl'].isna()
             df.loc[mask_total, 'jerarquia_sector_lbl'] = 'Total'
         
         return df
@@ -591,7 +584,7 @@ class Transformer:
         
         # Restaurar None donde corresponda
         for col in ['ccaa_codigo', 'ccaa_nombre', 'cnae_codigo', 'cnae_nombre', 
-                   'tipo_jornada', 'causa', 'jerarquia_sector_cod', 'jerarquia_sector_lbl']:
+                   'tipo_jornada', 'causa', 'jerarquia_sector_lbl']:
             if col in df.columns:
                 df[col] = df[col].replace('', None)
         
@@ -611,7 +604,7 @@ class Transformer:
             'periodo', 'periodo_inicio', 'periodo_fin',
             'ambito_territorial', 'ccaa_codigo', 'ccaa_nombre',
             'cnae_nivel', 'cnae_codigo', 'cnae_nombre',
-            'jerarquia_sector_cod', 'jerarquia_sector_lbl',
+            'jerarquia_sector_lbl',
             'tipo_jornada',
             'metrica', 'causa',
             'valor', 'unidad',

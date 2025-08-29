@@ -72,7 +72,6 @@ class Loader:
                 cnae_nivel VARCHAR(10) NOT NULL,
                 cnae_codigo VARCHAR(5),
                 cnae_nombre VARCHAR(200),
-                jerarquia_sector_cod VARCHAR(50),
                 jerarquia_sector_lbl VARCHAR(100),
                 
                 -- Dimensiones laborales
@@ -159,7 +158,7 @@ class Loader:
                 'periodo', 'periodo_inicio', 'periodo_fin',
                 'ambito_territorial', 'ccaa_codigo', 'ccaa_nombre',
                 'cnae_nivel', 'cnae_codigo', 'cnae_nombre',
-                'jerarquia_sector_cod', 'jerarquia_sector_lbl',
+                'jerarquia_sector_lbl',
                 'tipo_jornada',
                 'metrica', 'causa', 'valor', 'unidad',
                 'fuente_tabla',

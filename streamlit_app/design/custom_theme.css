@@ -1,0 +1,300 @@
+/* Custom CSS Theme - Tesla Style Dashboard */
+
+/* Variables de diseño */
+:root {
+    --primary-color: #CC0000;
+    --primary-dark: #990000;
+    --bg-main: #F4F4F4;
+    --bg-surface: #FFFFFF;
+    --text-primary: #171A20;
+    --text-secondary: #5C5E62;
+    --text-muted: #A2A3A5;
+    --success: #00D200;
+    --danger: #CC0000;
+    --info: #0080FF;
+    --border-light: rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
+/* Reset Streamlit defaults */
+.stApp {
+    background: var(--bg-main) !important;
+}
+
+/* Main container */
+.main .block-container {
+    max-width: 1400px !important;
+    padding: 2rem 3rem !important;
+}
+
+/* Sidebar styling */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    width: 280px !important;
+}
+
+section[data-testid="stSidebar"] .block-container {
+    padding: 2rem 1.5rem !important;
+}
+
+/* Sidebar title */
+section[data-testid="stSidebar"] h2 {
+    color: white !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Sidebar navigation */
+section[data-testid="stSidebar"] .stRadio > div {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    padding: 0.5rem;
+}
+
+section[data-testid="stSidebar"] .stRadio label {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+    display: block;
+}
+
+section[data-testid="stSidebar"] .stRadio label:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Headers */
+h1 {
+    font-size: 2rem !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    margin-bottom: 0.5rem !important;
+}
+
+h3 {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Filter section */
+.stSelectbox {
+    margin-bottom: 0 !important;
+}
+
+.stSelectbox > div > div {
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: var(--radius-sm) !important;
+    height: 42px !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.stSelectbox label {
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: var(--text-secondary) !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Button styling */
+.stButton > button {
+    background: linear-gradient(135deg, #1B59F8 0%, #0E3BA5 100%) !important;
+    color: white !important;
+    border: none !important;
+    height: 42px !important;
+    font-weight: 600 !important;
+    border-radius: var(--radius-sm) !important;
+    box-shadow: var(--shadow-md) !important;
+    transition: all 0.3s ease !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(27, 89, 248, 0.3) !important;
+}
+
+/* KPI Cards - Complete redesign */
+div[data-testid="metric-container"] {
+    background: var(--bg-surface) !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 1.5rem !important;
+    box-shadow: var(--shadow-md) !important;
+    transition: all 0.3s ease !important;
+    height: 140px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+div[data-testid="metric-container"]:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* Metric label */
+div[data-testid="metric-container"] label {
+    font-size: 0.875rem !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Metric value */
+div[data-testid="metric-container"] > div[data-testid="metric-container-value"] {
+    font-size: 2.25rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    line-height: 1.2 !important;
+}
+
+/* Metric delta */
+div[data-testid="metric-container"] > div > div[data-testid="metric-delta"] {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
+}
+
+/* Delta positive */
+div[data-testid="metric-delta-positive"] {
+    background: rgba(0, 210, 0, 0.1) !important;
+    color: var(--success) !important;
+}
+
+/* Delta negative */
+div[data-testid="metric-delta-negative"] {
+    background: rgba(204, 0, 0, 0.1) !important;
+    color: var(--danger) !important;
+}
+
+/* Charts container */
+.js-plotly-plot {
+    border-radius: var(--radius-lg) !important;
+    background: var(--bg-surface) !important;
+    padding: 1.5rem !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Dataframe styling */
+.stDataFrame {
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.stDataFrame > div {
+    background: var(--bg-surface) !important;
+}
+
+/* Table headers */
+.stDataFrame thead th {
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    padding: 1rem !important;
+}
+
+/* Table rows */
+.stDataFrame tbody tr {
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+.stDataFrame tbody tr:hover {
+    background: rgba(27, 89, 248, 0.05) !important;
+}
+
+/* Separator lines */
+hr {
+    margin: 2rem 0 !important;
+    border: none !important;
+    border-top: 1px solid var(--border-light) !important;
+}
+
+/* Info boxes */
+.stInfo {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%) !important;
+    border-left: 4px solid var(--info) !important;
+    border-radius: var(--radius-sm) !important;
+}
+
+/* Columns gap */
+.row-widget.stHorizontal {
+    gap: 1.5rem !important;
+}
+
+/* Footer captions */
+.stCaption {
+    color: var(--text-muted) !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Tabs styling */
+.stTabs {
+    background: transparent !important;
+}
+
+.stTabs [data-baseweb="tab-list"] {
+    background: var(--bg-surface) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 0.25rem !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 42px !important;
+    border-radius: var(--radius-sm) !important;
+    font-weight: 600 !important;
+    color: var(--text-secondary) !important;
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #1B59F8 0%, #0E3BA5 100%) !important;
+    color: white !important;
+}
+
+/* Custom card class */
+.custom-card {
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 1.5rem;
+}
+
+.custom-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main .block-container {
+        padding: 1rem !important;
+    }
+    
+    div[data-testid="metric-container"] {
+        height: auto !important;
+        padding: 1rem !important;
+    }
+}

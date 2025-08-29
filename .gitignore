@@ -52,6 +52,10 @@ temp/
 tmp/
 *.tmp
 
+# Archivos reorganizados
+_archive/
+streamlit_app_backup*/
+
 # Archivos grandes
 *.csv
 *.xlsx
