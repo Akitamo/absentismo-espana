@@ -69,3 +69,4 @@ data/processed/**/*.csv
 TEST_*.py.bak
 *_test.py
 *_prueba.py
+node_modules/
