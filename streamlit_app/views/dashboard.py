@@ -16,7 +16,7 @@ from services.data_service import DataService
 from components.kpi_card import render_kpi_card
 from components.filters import render_filters
 from components.charts import render_evolution_chart
-from components.chart_container import render_chart_container
+from components.native_card import card
 from visualizations import get_visualization
 
 def show():
@@ -113,52 +113,65 @@ def show():
     col1, col2 = st.columns([2, 1])
     
     with col1:
-        st.markdown("### 📊 Evolución Temporal")
-        
-        # PRUEBA DE ARQUITECTURA MODULAR
-        # Generar datos de ejemplo para la prueba
-        periodos = pd.date_range('2020-01', '2024-01', freq='Q')
-        datos_ejemplo = pd.DataFrame({
-            'periodo': periodos,
-            'tasa_absentismo': np.random.uniform(10, 15, len(periodos)) + np.sin(np.arange(len(periodos)) * 0.5) * 2
-        })
-        datos_ejemplo.set_index('periodo', inplace=True)
-        
-        try:
-            # Crear visualización con el sistema modular
-            viz = get_visualization(
-                'absentismo_temporal',
-                data=datos_ejemplo,
-                config={
-                    'title': 'Evolución de la Tasa de Absentismo',
-                    'height': 350
-                }
+        # Card nativo de Streamlit con borde
+        with card(title="📊 Evolución Temporal", subtitle="Tasa de absentismo trimestral"):
+            # Generar datos de ejemplo para la prueba
+            periodos = pd.date_range('2020-01', '2024-01', freq='Q')
+            datos_ejemplo = pd.DataFrame({
+                'periodo': periodos,
+                'tasa_absentismo': np.random.uniform(10, 15, len(periodos)) + np.sin(np.arange(len(periodos)) * 0.5) * 2
+            })
+            
+            # Crear gráfico directamente con Plotly
+            import plotly.graph_objects as go
+            
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(
+                x=datos_ejemplo['periodo'],
+                y=datos_ejemplo['tasa_absentismo'],
+                mode='lines',
+                name='Tasa de Absentismo',
+                line=dict(color='#1B59F8', width=2),
+                fill='tozeroy',
+                fillcolor='rgba(27, 89, 248, 0.1)'
+            ))
+            
+            fig.update_layout(
+                showlegend=False,
+                hovermode='x unified',
+                margin=dict(l=0, r=0, t=0, b=0),
+                height=350,
+                plot_bgcolor='white',
+                paper_bgcolor='white',
+                xaxis=dict(
+                    gridcolor='#EFF0F6',
+                    showgrid=True,
+                    zeroline=False
+                ),
+                yaxis=dict(
+                    gridcolor='#EFF0F6',
+                    showgrid=True,
+                    zeroline=False,
+                    title='Tasa de Absentismo (%)'
+                )
             )
             
-            # Renderizar en contenedor estándar sin margen (está dentro de columnas)
-            render_chart_container(viz, container_config={'no_margin': True})
-            
-        except Exception as e:
-            st.error(f"Error en visualización modular: {e}")
-            # Fallback al método anterior
-            evolution_data = data_service.get_evolution_data(ccaa, sector)
-            if not evolution_data.empty:
-                render_evolution_chart(evolution_data)
-            else:
-                st.info("No hay datos disponibles para mostrar")
+            # Renderizar el gráfico DENTRO del card
+            st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
     
     with col2:
-        st.markdown("### 🏆 Ranking por CCAA")
-        # Aquí irá el ranking
-        ranking_data = data_service.get_ranking_ccaa(periodo)
-        if not ranking_data.empty:
-            st.dataframe(
-                ranking_data.head(10),
-                use_container_width=True,
-                hide_index=True
-            )
-        else:
-            st.info("No hay datos de ranking disponibles")
+        # Card nativo para Ranking
+        with card(title="🏆 Ranking por CCAA", subtitle="Top 10 comunidades"):
+            ranking_data = data_service.get_ranking_ccaa(periodo)
+            if not ranking_data.empty:
+                st.dataframe(
+                    ranking_data.head(10),
+                    use_container_width=True,
+                    hide_index=True,
+                    height=350  # Misma altura que el gráfico
+                )
+            else:
+                st.info("No hay datos de ranking disponibles")
     
     # Footer con información
     st.markdown("---")
