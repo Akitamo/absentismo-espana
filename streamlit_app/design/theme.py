@@ -31,6 +31,8 @@ def generate_css_from_tokens(tokens):
         --color-sidebar-hover: {tokens['colors']['sidebar_hover']};
         --color-border: {tokens['colors']['border']};
         --color-border-light: {tokens['colors']['border_light']};
+        --card-shadow: {tokens['colors']['card_shadow']};
+        --card-shadow-hover: {tokens['colors']['card_shadow_hover']};
         
         /* Texto */
         --text-primary: {tokens['colors']['text']['primary']};
@@ -90,7 +92,7 @@ def generate_css_from_tokens(tokens):
     
     /* Fondo principal */
     .stApp {{
-        background-color: var(--color-background);
+        background-color: var(--color-background) !important;
     }}
     
     /* Container principal */
@@ -269,45 +271,16 @@ def generate_css_from_tokens(tokens):
         gap: var(--spacing-lg);
     }}
     
-    /* ===== CONTAINERS NATIVOS CON BORDE (st.container(border=True)) ===== */
+    /* ===== CARD NATIVO: st.container(border=True) ===== */
+    /* Selector mínimo y estable para Streamlit 1.30+ */
     
-    /* Estilo Tesla para containers con borde */
-    .stContainer[data-testid="stContainer"] > div[data-testid="stVerticalBlock"] > div[style*="border"] {{
-        background: #FFFFFF !important;
-        border: 1px solid rgba(0, 0, 0, 0.06) !important;
-        border-radius: 20px !important;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
-        padding: 24px !important;
-        margin-bottom: 24px !important;
-    }}
-    
-    /* Alternativa: selector más específico para containers con border=True */
-    div.stContainer:has(> div[style*="border: 1px solid"]) {{
-        background: #FFFFFF !important;
-        border-radius: 20px !important;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
-        overflow: hidden;
-    }}
-    
-    /* Títulos dentro de cards */
-    div.stContainer:has(> div[style*="border"]) h3 {{
-        font-size: 18px !important;
-        font-weight: 600 !important;
-        color: #000000 !important;
-        margin-bottom: 8px !important;
-    }}
-    
-    /* Captions/subtítulos dentro de cards */
-    div.stContainer:has(> div[style*="border"]) .stCaption {{
-        color: #696974 !important;
-        font-size: 14px !important;
-        margin-bottom: 16px !important;
-    }}
-    
-    /* Hover effect sutil para cards */
-    div.stContainer:has(> div[style*="border"]):hover {{
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08), 0 6px 16px rgba(0, 0, 0, 0.06) !important;
-        transition: box-shadow 0.3s ease !important;
+    .stContainer > div[data-testid="stVerticalBlockBorderWrapper"] {{
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--card-shadow);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
     }}
     """
     

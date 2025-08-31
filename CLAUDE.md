@@ -47,7 +47,7 @@ python main.py --update-all       # Update all tables
 
 # Dashboard
 cd streamlit_app
-streamlit run app.py              # Port 8506
+streamlit run app.py              # Port 8505
 ```
 
 ## Technical Stack
@@ -63,8 +63,8 @@ db_path = r"C:\dev\projects\absentismo-espana\data\analysis.db"
 
 ## Quick Reference
 - **GitHub**: https://github.com/Akitamo/absentismo-espana
-- **Port**: 8506
-- **Galería QA**: http://localhost:8506/galeria
+- **Port**: 8505
+- **Galería QA**: http://localhost:8505/galeria
 
 ## Remember
 - This file = Instructions & rules only

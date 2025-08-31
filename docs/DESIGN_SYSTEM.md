@@ -225,6 +225,62 @@ with container.body():
 
 ---
 
+## 🎯 ARQUITECTURA DE CARDS (SOLUCIÓN FINAL)
+
+### Problema: No-Wrapping en Streamlit
+Streamlit no permite envolver sus componentes nativos (st.plotly_chart, st.dataframe) en HTML custom. Los intentos con divs fallan porque el contenido se renderiza fuera.
+
+### Solución Adoptada: Containers Nativos
+Usar `st.container(border=True)` con CSS mínimo y estable.
+
+#### Componente Card (`components/native_card.py`)
+```python
+from contextlib import contextmanager
+
+@contextmanager
+def card(title: str | None = None, subtitle: str | None = None):
+    c = st.container(border=True)  # nativo
+    with c:
+        if title: st.markdown(f"### {title}")
+        if subtitle: st.caption(subtitle)
+        yield
+```
+
+#### CSS Estable (`design/theme.py`)
+```css
+/* Un solo selector, estable para Streamlit 1.30+ */
+.stContainer > div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--card-shadow);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+```
+
+#### Uso en Dashboard
+```python
+from components.native_card import card
+
+with card("📊 Evolución Temporal", "Tasa trimestral"):
+    st.plotly_chart(fig, use_container_width=True)
+
+with card("🏆 Ranking CCAA", "Top 10"):
+    st.dataframe(df, use_container_width=True)
+```
+
+### Principios Aplicados
+1. **No hacks**: Sin `:has()`, `[style*="border"]`, o marcadores invisibles
+2. **Tokens-first**: Todos los valores desde `tokens.json`
+3. **Mínimo CSS**: Un selector específico y estable
+4. **Nativo**: Usar lo que Streamlit proporciona
+
+### Si Necesitas Fidelidad 100%
+Para replicar exactamente el template Tesla, la única opción es crear un **componente React custom** que renderice los gráficos internamente (pasando `fig.to_json()`).
+
+---
+
 ## 📌 REFERENCIAS RÁPIDAS
 
 - **Mockup principal**: `docs/design/mockups/Main.png`
@@ -244,8 +300,8 @@ cd streamlit_app
 streamlit run app.py
 
 # Puerto por defecto
-http://localhost:8506
+http://localhost:8505
 
 # Página Galería
-http://localhost:8506/galeria
+http://localhost:8505/galeria
 ```
