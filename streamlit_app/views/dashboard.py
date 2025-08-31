@@ -135,8 +135,8 @@ def show():
                 }
             )
             
-            # Renderizar en contenedor estándar
-            render_chart_container(viz)
+            # Renderizar en contenedor estándar sin margen (está dentro de columnas)
+            render_chart_container(viz, container_config={'no_margin': True})
             
         except Exception as e:
             st.error(f"Error en visualización modular: {e}")

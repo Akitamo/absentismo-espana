@@ -29,15 +29,19 @@ class ChartContainer:
         
     def _apply_container_styles(self):
         """Aplica estilos del container usando solo clases CSS y tokens"""
+        # Determinar si aplicar margen inferior
+        no_margin = self.config.get('no_margin', False)
+        margin_style = "0" if no_margin else "var(--spacing-lg)"
+        
         css = """
         <style>
             /* Container principal */
-            .chart-container {
+            .chart-container-""" + self.viz_id + """ {
                 background: var(--color-surface);
                 border-radius: var(--radius-xl);
                 padding: 0;
                 box-shadow: var(--shadow-md);
-                margin-bottom: var(--spacing-lg);
+                margin-bottom: """ + margin_style + """;
                 overflow: hidden;
             }
             
@@ -106,10 +110,10 @@ class ChartContainer:
                 animation: loading 1.5s infinite;
             }
             
-            @keyframes loading {
-                0% { background-position: 200% 0; }
-                100% { background-position: -200% 0; }
-            }
+            @keyframes loading {{
+                0% {{ background-position: 200% 0; }}
+                100% {{ background-position: -200% 0; }}
+            }}
             
             .chart-error {
                 display: flex;
@@ -171,10 +175,8 @@ class ChartContainer:
     @contextmanager
     def body(self):
         """Slot para el contenido principal del chart"""
-        with st.container():
-            st.markdown('<div class="chart-body">', unsafe_allow_html=True)
-            yield
-            st.markdown('</div>', unsafe_allow_html=True)
+        # Sin divs extra para no romper layout de columnas
+        yield
     
     @contextmanager
     def footer(self, text: str = None):
@@ -275,23 +277,18 @@ def render_chart_container(
     library = viz_data.get('library', 'unknown')
     title = viz_data.get('title', '')
     
-    # Renderizar con slots
-    with st.container():
-        st.markdown('<div class="chart-container">', unsafe_allow_html=True)
-        
-        # Header si hay título
-        if title:
-            with container.header(title):
-                pass
-        
-        # Body con la visualización
-        with container.body():
-            try:
-                container.render_visualization(chart, library)
-            except Exception as e:
-                container.error(f"Error: {str(e)}")
-        
-        st.markdown('</div>', unsafe_allow_html=True)
+    # Renderizar con slots - sin div wrapper para respetar columnas
+    # Header si hay título
+    if title:
+        with container.header(title):
+            pass
+    
+    # Body con la visualización
+    with container.body():
+        try:
+            container.render_visualization(chart, library)
+        except Exception as e:
+            container.error(f"Error: {str(e)}")
     
     return container
 
