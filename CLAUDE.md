@@ -1,177 +1,72 @@
 # CLAUDE.md
 
-This file provides stable context for Claude AI when working with this repository.
+This file provides stable context and fundamental rules for Claude AI when working with this repository.
 
 ## Project Overview
-**AbsentismoEspana** - Modular system for extracting and processing Spain's National Statistics Institute (INE) labor absenteeism data from the ETCL (Encuesta Trimestral de Coste Laboral) dataset.
+**AbsentismoEspana** - Modular system for extracting and processing Spain's National Statistics Institute (INE) labor absenteeism data from the ETCL dataset.
 
-## Repository Information
-- **GitHub:** https://github.com/Akitamo/absentismo-espana
-- **Language:** Python 3.8+
-- **License:** MIT
-- **Database:** DuckDB for data analysis
+## 📚 DOCUMENTATION MAP - ALWAYS CONSULT
 
-## Architecture
-```
-Modular Agent-Based System:
-├── Agent Extractor: Downloads and validates CSV data from INE
-│   ├── INEScraper: Checks for updates
-│   ├── Downloader: Robust CSV download with retries
-│   ├── MetadataManager: Version tracking
-│   └── MetricsExtractor: 51 unique metrics identified
-│
-├── Agent Processor: Transforms raw data into unified table
-│   ├── ETL Pipeline: Extract, Transform, Load
-│   ├── DuckDB Integration: 149,247 records processed
-│   └── Validation: 100% accuracy against INE sources
-│
-└── Streamlit Dashboard: Interactive visualization
-    ├── Visualizations Module: NEW modular chart system
-    │   ├── BaseVisualization: Abstract class for all charts
-    │   ├── Registry: Central chart registration
-    │   └── Chart Container: Consistent styling wrapper
-    ├── KPI Cards: Key metrics display
-    ├── Charts: Multiple libraries (Plotly, Altair, etc.)
-    └── Filters: Period and dimension selection
-```
+### Critical Documents (MANDATORY READING)
+- **`docs/DESIGN_SYSTEM.md`** - ALL UI/UX specifications, mockups, tokens, architecture
+- **`docs/DATA_LESSONS_LEARNED.md`** - Data processing lessons, ETL issues resolved  
+- **`CONTEXT.md`** - Current project state, sprint status, pending tasks
 
-## Visualization System (NEW)
-**Location**: `streamlit_app/visualizations/`
+### When to Consult Each:
+- **Before ANY UI work** → Read DESIGN_SYSTEM.md
+- **Before data processing** → Read DATA_LESSONS_LEARNED.md
+- **To check current status** → Read CONTEXT.md
 
-### Creating New Visualizations:
-1. Create class inheriting from `BaseVisualization`
-2. Implement `render()` and `get_library()` methods
-3. Register in `registry.py`
-4. Use with: `viz = get_visualization('name', data, config)`
+## 🚫 FUNDAMENTAL RULES (NEVER BREAK)
 
-### Key Files:
-- `visualizations/base.py` - Base class with token integration
-- `visualizations/registry.py` - Central registration
-- `components/chart_container.py` - Standard container
+1. **ALWAYS read docs/DESIGN_SYSTEM.md before ANY UI work**
+2. **ALWAYS read docs/DATA_LESSONS_LEARNED.md before data processing**
+3. **NEVER proceed without user approval** - Propose, then wait for "ok"
+4. **CRITICALLY EVALUATE proposals** - Don't agree automatically. Analyze pros/cons, suggest alternatives if better solution exists
 
-## Project Structure
+## Repository Structure
 ```
 absentismo-espana/
-├── agent_extractor/        # Data extraction from INE
-├── agent_processor/        # Data processing pipeline
-│   └── scripts/           # Utility scripts
-├── config/                # Configuration files
-│   ├── tables.json        # 35 INE table definitions
-│   └── procesador_config_completo.json
-├── data/
-│   ├── raw/csv/          # Original CSV files from INE
-│   ├── analysis.db       # DuckDB database
-│   ├── metadata/         # Update tracking
-│   └── backups/          # Automatic backups
-├── exploration/           # Data exploration scripts
+├── agent_extractor/       # INE data extraction
+├── agent_processor/       # ETL pipeline to DuckDB
 ├── streamlit_app/         # Dashboard application
-│   ├── app.py            # Main application
-│   ├── design/           # Design system
-│   │   ├── tokens.json   # Design tokens
-│   │   └── theme.py      # CSS generator
-│   └── pages/            # Dashboard pages
-├── docs/                  # Documentation
-│   ├── DATA_LESSONS_LEARNED.md    # Data processing lessons
-│   ├── DASHBOARD_DESIGN.md        # Design specifications
-│   └── metodologia_ETCL_INE_2023.pdf
-├── scripts/              # Utility scripts
-├── main.py              # CLI interface
-├── requirements.txt     # Python dependencies
-├── README.md           # User documentation
-├── CLAUDE.md          # This file
-└── CONTEXT.md         # Dynamic project status
+│   ├── design/           # tokens.json & theme.py
+│   ├── visualizations/   # Modular chart system
+│   ├── components/       # chart_container.py with slots
+│   └── pages/           # Including 03_galeria.py for QA
+├── docs/                 # Critical documentation
+├── data/                 # CSV files & analysis.db
+└── config/              # 35 INE table definitions
 ```
 
 ## Key Commands
-
-### Data Management
 ```bash
-# Download data
-python main.py --download-all       # Download all tables
-python main.py --download [table_id] # Download specific table
+# Data pipeline
+python main.py --check-smart      # Check for updates
+python main.py --update-all       # Update all tables
 
-# Smart updates (recommended)
-python main.py --check-smart        # Fast update check
-python main.py --update-all         # Update all tables
-
-# Process data
-python agent_processor/scripts/load_all_tables.py  # Load to DuckDB
-```
-
-### Dashboard
-```bash
-# Run dashboard
+# Dashboard
 cd streamlit_app
-streamlit run app.py
-
-# Access at: http://localhost:8505
+streamlit run app.py              # Port 8506
 ```
-
-## Data Sources
-- **35 ETCL tables** from INE
-- **Period coverage**: 2008T1 to present (quarterly)
-- **6 key tables** for time metrics (6042-6046, 6063)
-- **Database**: `data/analysis.db` (DuckDB)
-
-## Critical Documentation - READ FIRST
-
-### Design System (MANDATORY before UI work)
-- **Design Rules**: `docs/DASHBOARD_DESIGN.md` - NUNCA inventar diseño
-- **Design Tokens**: `streamlit_app/design/tokens.json` - Todos los valores
-- **Theme CSS**: `streamlit_app/design/theme.py` - Variables CSS
-
-### Data Processing
-- **Lessons Learned**: `docs/DATA_LESSONS_LEARNED.md` - Problemas resueltos
-
-## Development Guidelines
-
-### General Rules
-1. **ALWAYS propose actions before implementing** - Never proceed without explicit "ok"
-2. **Each agent must be independent** and self-contained
-3. **Follow existing patterns** and conventions
-4. **Test with subset** before full runs
-5. **Maintain backward compatibility**
-6. **Document new functionality** in docstrings
-
-### Code Quality
-- **Path handling**: Use `Path(__file__).parent` (no hardcoding)
-- **Error handling**: Comprehensive try-except blocks
-- **Encoding**: Multi-encoding support for INE files
-- **Windows compatibility**: ASCII output, absolute paths
-
-### Documentation
-- **Update README.md** for new features
-- **Comment non-obvious code**
-- **Add `# Reason:` comments** for complex logic
-- **Keep documentation current**
 
 ## Technical Stack
-- **Python 3.8+**: Core language
-- **Pandas**: Data manipulation
-- **DuckDB**: SQL analytics
-- **Streamlit**: Dashboard framework
-- **Requests**: HTTP operations
-- **BeautifulSoup4**: Web scraping
+- **Python 3.8+** with Pandas
+- **DuckDB** for data (149,247 records)
+- **Streamlit** with modular visualizations
+- **Design**: Token-first architecture
 
-## Important Notes
-
-### Database Connection
+## Database Path (Windows)
 ```python
-# Always use absolute path in Windows
 db_path = r"C:\dev\projects\absentismo-espana\data\analysis.db"
 ```
 
-### INE Data Behavior
-- Downloads complete historical files (not incremental)
-- Updates quarterly
-- Multiple encodings possible
-- Filename patterns may change
+## Quick Reference
+- **GitHub**: https://github.com/Akitamo/absentismo-espana
+- **Port**: 8506
+- **Galería QA**: http://localhost:8506/galeria
 
-### Related Documentation
-- **Data Processing**: See `docs/DATA_LESSONS_LEARNED.md`
-- **Dashboard Design**: See `docs/DASHBOARD_DESIGN.md`
-- **Current Status**: See `CONTEXT.md`
-- **INE Methodology**: See `docs/metodologia_ETCL_INE_2023.pdf`
-
-## Contact
-For project-specific questions, refer to the documentation files or GitHub issues.
+## Remember
+- This file = Instructions & rules only
+- CONTEXT.md = Current state only
+- docs/ = All specifications

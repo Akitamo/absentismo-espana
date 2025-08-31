@@ -23,7 +23,7 @@ def register_visualization(name: str, visualization_class: Type[BaseVisualizatio
     VISUALIZATIONS[name] = visualization_class
     print(f"Visualización '{name}' registrada exitosamente")
 
-def get_visualization(name: str, data: Any, config: Optional[Dict] = None) -> BaseVisualization:
+def get_visualization(name: str, data: Any, config: Optional[Dict] = None, viz_id: str = None) -> BaseVisualization:
     """
     Obtiene una instancia de visualización por nombre.
     
@@ -31,6 +31,7 @@ def get_visualization(name: str, data: Any, config: Optional[Dict] = None) -> Ba
         name: Nombre de la visualización registrada
         data: Datos para la visualización
         config: Configuración opcional
+        viz_id: ID único para namespacing del estado
         
     Returns:
         Instancia de la visualización solicitada
@@ -43,7 +44,7 @@ def get_visualization(name: str, data: Any, config: Optional[Dict] = None) -> Ba
         raise KeyError(f"Visualización '{name}' no encontrada. Disponibles: {available}")
     
     visualization_class = VISUALIZATIONS[name]
-    return visualization_class(data=data, config=config)
+    return visualization_class(data=data, config=config, viz_id=viz_id)
 
 def list_visualizations() -> list:
     """
@@ -53,6 +54,15 @@ def list_visualizations() -> list:
         Lista de nombres de visualizaciones disponibles
     """
     return list(VISUALIZATIONS.keys())
+
+def get_registry() -> Dict[str, Type[BaseVisualization]]:
+    """
+    Obtiene el registro completo de visualizaciones.
+    
+    Returns:
+        Diccionario con todas las visualizaciones registradas
+    """
+    return VISUALIZATIONS
 
 # Auto-registro de visualizaciones incluidas
 def auto_register():

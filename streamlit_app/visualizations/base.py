@@ -7,6 +7,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional
 import json
 from pathlib import Path
+import streamlit as st
 
 class BaseVisualization(ABC):
     """
@@ -14,18 +15,21 @@ class BaseVisualization(ABC):
     Toda visualización debe heredar de esta clase.
     """
     
-    def __init__(self, data: Any, config: Optional[Dict] = None):
+    def __init__(self, data: Any, config: Optional[Dict] = None, viz_id: str = None):
         """
         Inicializa la visualización.
         
         Args:
             data: Datos para la visualización (DataFrame, dict, list, etc.)
             config: Configuración opcional específica de la visualización
+            viz_id: ID único para namespacing del estado
         """
         self.data = data
         self.config = config or {}
+        self.viz_id = viz_id or f"viz_{id(self)}"
         self.tokens = self._load_tokens()
         self.theme = self._get_theme()
+        self._init_state()
     
     def _load_tokens(self) -> Dict:
         """Carga los design tokens desde el archivo JSON"""
@@ -45,6 +49,42 @@ class BaseVisualization(ABC):
             'spacing': self.tokens.get('spacing', {}),
             'borders': self.tokens.get('borders', {})
         }
+    
+    def _init_state(self):
+        """Inicializa el namespace de estado para esta visualización"""
+        state_key = f"viz:{self.viz_id}"
+        if state_key not in st.session_state:
+            st.session_state[state_key] = {}
+    
+    def get_state(self, key: str, default: Any = None) -> Any:
+        """
+        Obtiene un valor del estado namespaced de la visualización.
+        
+        Args:
+            key: Clave del valor a obtener
+            default: Valor por defecto si no existe
+            
+        Returns:
+            El valor almacenado o el default
+        """
+        state_key = f"viz:{self.viz_id}"
+        return st.session_state[state_key].get(key, default)
+    
+    def set_state(self, key: str, value: Any) -> None:
+        """
+        Establece un valor en el estado namespaced de la visualización.
+        
+        Args:
+            key: Clave del valor a establecer
+            value: Valor a almacenar
+        """
+        state_key = f"viz:{self.viz_id}"
+        st.session_state[state_key][key] = value
+    
+    def clear_state(self) -> None:
+        """Limpia todo el estado de esta visualización"""
+        state_key = f"viz:{self.viz_id}"
+        st.session_state[state_key] = {}
     
     @abstractmethod
     def render(self) -> Any:
