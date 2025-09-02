@@ -1,4 +1,4 @@
-from dash import html, dcc, dash_table, register_page, Input, Output
+from dash import html, dcc, dash_table, register_page, Input, Output, callback
 import plotly.graph_objects as go
 import pandas as pd
 from pathlib import Path
@@ -58,7 +58,7 @@ def layout():
     ], className="page")
 
 
-@dcc.callback(
+@callback(
     Output("kpis", "children"),
     Output("evolucion", "figure"),
     Output("ranking-table", "data"),
@@ -99,4 +99,3 @@ def update_dashboard(periodo, ccaa, sector):
                if isinstance(df_rank, pd.DataFrame) and len(df_rank.columns) > 0 else [])
 
     return kpi_children, fig, data, columns
-
