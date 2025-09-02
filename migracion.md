@@ -171,3 +171,36 @@ python apps/dash/app.py
 - Generación de `theme.css` desde tokens por script.
 - Caché con `flask_caching` si fuese necesario.
 - Dockerfile y pipeline de despliegue.
+
+---
+
+## Ejecución realizada (estado actual)
+- Backup creado en GitHub:
+  - Rama: `archive/streamlit-final` (push realizado).
+  - Tag: `v0.1-streamlit` (push realizado).
+- Limpieza de `main` ejecutada:
+  - Eliminado `streamlit_app/` y archivos asociados a Streamlit (`streamlit_adecco_report.py`, `streamlit_app_structure.md`, utilidades y diseño específicos).
+- Scaffold Dash añadido en `main`:
+  - `apps/dash/app.py` (app base con `page_container`).
+  - `apps/dash/pages/dashboard.py` (layout, filtros y callbacks; KPIs, gráfico y tabla).
+  - `apps/dash/assets/theme.css` (estilos base).
+- Core de datos extraído y adaptado (agnóstico de frontend):
+  - `src/core/data_service.py` (sin `streamlit`, con `APP_DB_PATH` y fallback).
+- Requisitos y configuración:
+  - `requirements/base.txt`, `requirements/dash.txt` añadidos.
+  - `.env.example` creado y copiado a `.env` con `APP_DB_PATH=data/analysis.db`.
+- Base de datos preparada:
+  - Script `scripts/init_db.py` crea `data/analysis.db`, tabla `observaciones_tiempo_trabajo` y datos de ejemplo (NAC y CCAA) para KPIs/evolución/ranking.
+- Verificaciones ejecutadas:
+  - `scripts/smoke_core.py`: periodos/KPIs/evolución/ranking OK (con los datos de ejemplo).
+  - `scripts/smoke_dash_import.py`: import de la app Dash OK.
+
+Para ejecutar localmente:
+```
+pip install -r requirements/base.txt -r requirements/dash.txt
+python apps/dash/app.py
+```
+
+Siguientes pasos inmediatos (propuestos):
+- Conectar tokens de diseño para generar `assets/theme.css` desde `design/tokens.json`.
+- Añadir deltas/ayudas a KPIs, y navegación multipágina.
