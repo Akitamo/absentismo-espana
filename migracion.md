@@ -238,3 +238,12 @@ Registro en GitHub:
 - Rama de trabajo: `main` actualizada con scaffold Dash, core de datos y scripts.
 - Rama de archivo: `archive/streamlit-final` con el estado previo.
 - Tag: `v0.1-streamlit` para referencia del estado Streamlit.
+
+---
+
+## Próxima sesión (TODOs)
+- Sidebar: navegación lateral y traslado de filtros al sidebar con estilos.
+- KPI Cards: deltas (up/down), colores y tooltips; componente reutilizable.
+- Tema: importar tokens definitivos y ampliar `scripts/tokens_to_css.py` para cubrir paleta, tipografía, sombras y radios.
+- Datos reales: apuntar `APP_DB_PATH` a la DuckDB de producción y validar queries y rendimiento.
+- Documentación: breve guía de estilo y checklist de QA visual (espaciados, tipografías, colores) para homogeneizar páginas.
