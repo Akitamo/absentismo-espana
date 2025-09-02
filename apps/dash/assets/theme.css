@@ -1,0 +1,25 @@
+:root {
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-text: #121212;
+  --color-muted: #6b7280;
+  --color-primary: #1B59F8;
+  --radius: 10px;
+  --gap: 12px;
+}
+
+body { background: var(--color-bg); color: var(--color-text); font-family: Inter, system-ui, sans-serif; }
+
+.filters { display: grid; grid-template-columns: repeat(3, minmax(180px, 1fr)); gap: var(--gap); margin: 8px 0 12px; }
+.filter { background: var(--color-surface); padding: 8px 12px; border-radius: var(--radius); border: 1px solid #e5e7eb; }
+
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); margin: 12px 0; }
+.kpi-card { background: var(--color-surface); border: 1px solid #e5e7eb; border-radius: var(--radius); padding: 12px; }
+.kpi-title { color: var(--color-muted); font-size: 12px; }
+.kpi-value { font-size: 24px; font-weight: 700; margin-top: 4px; }
+.kpi-subtitle { color: var(--color-muted); font-size: 12px; margin-top: 2px; }
+
+.main { display: grid; grid-template-columns: 2fr 1fr; gap: var(--gap); }
+
+header, main { max-width: 1320px; margin: 0 auto; }
+
