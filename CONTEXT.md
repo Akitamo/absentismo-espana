@@ -1,6 +1,19 @@
 # CONTEXT.md
 
-**Última actualización:** 31-12-2024 19:50
+**Última actualización:** 02-01-2025 12:10
+
+## 🚨 ESTADO ACTUAL: FASE EXPERIMENTAL (2025-01-02)
+
+**El proyecto está evaluando una solución experimental para cards/visualizaciones**
+
+- **Problema identificado**: Inconsistencias de renderizado con st.container(border=True)
+- **Solución en prueba**: Componente React custom (`ui_card`)
+- **Páginas de prueba**: 99_Demo_CRM.py (nativo) vs 100_Demo_UI_Card.py (custom)
+- **Decisión pendiente**: Continuar con nativo mejorado o adoptar componente custom
+
+⚠️ **NO INTEGRAR** el componente experimental en páginas principales hasta decisión final.
+
+---
 
 ## 📊 Estado Actual del Proyecto
 
@@ -60,3 +73,29 @@ def card(title: str | None = None, subtitle: str | None = None):
 - **Solución**: Usar containers nativos con `border=True` + CSS mínimo
 - **Tokens-first**: Mantener todos los valores de diseño en `tokens.json`
 - **Estabilidad**: Un selector CSS específico es mejor que múltiples alternativas
+
+## 🧪 EXPERIMENTAL: Prueba UI Card Component (2025-01-02)
+
+### Objetivo
+Prueba de viabilidad para resolver problemas de renderizado consistente en Streamlit mediante componente custom React.
+
+### Archivos creados (REVERSIBLES)
+- `streamlit_app/components/ui_card/` - Componente custom con Vite + TypeScript
+- `streamlit_app/pages/100_Demo_UI_Card.py` - Demo página 100
+- `streamlit_app/components/card*.py` - Intentos previos con nativos
+- `streamlit_app/pages/99_Demo_CRM.py` - Demo página 99
+- `streamlit_app/design/tokens_presets/` - Presets de tokens
+
+### Estado
+- ✅ Componente compilado y funcional
+- ✅ Estilos profesionales tipo Tesla/CRM
+- ⏳ Pendiente evaluación de integración con arquitectura actual
+
+### Para revertir
+```bash
+git rm -r streamlit_app/components/ui_card/
+git rm streamlit_app/pages/100_Demo_UI_Card.py
+git rm streamlit_app/pages/99_Demo_CRM.py
+git rm streamlit_app/components/card*.py
+git rm -r streamlit_app/design/tokens_presets/
+```

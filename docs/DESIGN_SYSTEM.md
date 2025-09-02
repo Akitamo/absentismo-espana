@@ -305,3 +305,40 @@ http://localhost:8505
 # Página Galería
 http://localhost:8505/galeria
 ```
+
+---
+
+## 📦 EXPERIMENTAL: Custom Component UI Card
+
+> ⚠️ **NOTA**: Esta es una prueba experimental (2025-01-02) para evaluar viabilidad de componentes custom.
+> Si se descarta, eliminar esta sección completa.
+
+### Componente UI Card
+- **Ubicación**: `streamlit_app/components/ui_card/`
+- **Tecnología**: React + TypeScript + Vite + streamlit-component-lib
+- **Demo**: `pages/100_Demo_UI_Card.py` (puerto 8512)
+- **Comparación**: `pages/99_Demo_CRM.py` (versión nativa)
+
+### Ventajas observadas
+- Control pixel-perfect del renderizado
+- Sombras y bordes consistentes
+- Integración Plotly dentro del card
+- Hover effects nativos
+- Independiente del DOM de Streamlit
+
+### Problemas resueltos
+- No más dependencia de selectores CSS frágiles
+- Renderizado consistente entre recargas
+- Control total sobre estilos y comportamiento
+
+### Compilación del componente
+```bash
+cd streamlit_app/components/ui_card/frontend
+npm install
+npm run build
+```
+
+### Decisión pendiente
+- [ ] Adoptar para todo el proyecto
+- [ ] Descartar y volver a containers nativos
+- [ ] Híbrido: usar solo para casos críticos

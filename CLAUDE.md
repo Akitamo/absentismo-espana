@@ -5,6 +5,28 @@ This file provides stable context and fundamental rules for Claude AI when worki
 ## Project Overview
 **AbsentismoEspana** - Modular system for extracting and processing Spain's National Statistics Institute (INE) labor absenteeism data from the ETCL dataset.
 
+## ⚠️ EXPERIMENTAL PHASE (2025-01-02)
+
+**IMPORTANTE**: El proyecto tiene actualmente una prueba experimental en curso para resolver problemas de renderizado.
+
+### Archivos experimentales (NO MODIFICAR sin consultar):
+- `streamlit_app/components/ui_card/` - Componente React custom
+- `streamlit_app/pages/100_Demo_UI_Card.py` - Demo nueva (USAR ESTA PARA PRUEBAS)
+- `streamlit_app/pages/99_Demo_CRM.py` - Demo anterior
+- `streamlit_app/components/card*.py` - Intentos previos
+- `streamlit_app/design/tokens_presets/` - Presets experimentales
+
+### Estado actual:
+- **Problema**: Renderizado inconsistente con containers nativos de Streamlit
+- **Solución propuesta**: Componente custom React con control pixel-perfect
+- **Decisión pendiente**: Adoptar o descartar tras evaluación
+
+### Reglas durante fase experimental:
+1. NO modificar archivos en `components/ui_card/` sin permiso explícito
+2. Para nuevas visualizaciones, usar arquitectura actual (NO el componente experimental)
+3. Si el usuario pregunta sobre cards, mencionar que hay una prueba en curso
+4. Demo principal sigue siendo `app.py`, las demos 99 y 100 son solo pruebas
+
 ## 📚 DOCUMENTATION MAP - ALWAYS CONSULT
 
 ### Critical Documents (MANDATORY READING)
