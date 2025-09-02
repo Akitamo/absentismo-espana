@@ -194,6 +194,7 @@ python apps/dash/app.py
 - Verificaciones ejecutadas:
   - `scripts/smoke_core.py`: periodos/KPIs/evolución/ranking OK (con los datos de ejemplo).
   - `scripts/smoke_dash_import.py`: import de la app Dash OK.
+  - `scripts/smoke_dash_callbacks.py`: callbacks del Dashboard OK (4 outputs, gráfico y ranking con datos).
 
 Para ejecutar localmente:
 ```
@@ -204,3 +205,36 @@ python apps/dash/app.py
 Siguientes pasos inmediatos (propuestos):
 - Conectar tokens de diseño para generar `assets/theme.css` desde `design/tokens.json`.
 - Añadir deltas/ayudas a KPIs, y navegación multipágina.
+
+---
+
+## Cierre de jornada (situación actual y próximos pasos)
+
+Estado visible en navegador (confirmado):
+- App Dash arranca en `http://127.0.0.1:8050` y muestra navegación (Dashboard, Análisis, Comparativas, Exportar).
+- Dashboard funcional con filtros (Periodo, CCAA, Sector), 4 KPIs, gráfico de evolución y tabla de ranking (con datos de ejemplo).
+- Estilos actuales: base generada por tokens mínimos; aún no replica el template/diseño objetivo.
+
+Diferencias respecto al template deseado (pendientes de diseño/UX):
+- Estructura: barra superior provisional; falta sidebar con estilo y organización de filtros.
+- Componentes KPI: actualmente HTML simple; falta diseño con deltas, colorimetría y tipografías según guía.
+- Gráficos/Tablas: estilos genéricos; falta alineación de paleta, tipografía y espaciados.
+- Tokens: se usan tokens mínimos; falta importar y mapear los tokens definitivos del proyecto y ampliar el generador de CSS.
+
+Plan propuesto para alinear UI (próxima sesión):
+- Layout y navegación:
+  - Migrar a layout con sidebar (HTML/CSS) y navegación en la izquierda.
+  - Reubicar filtros globales en el sidebar con `dcc.Dropdown` y estilos coherentes.
+- KPIs y componentes:
+  - Implementar componente `kpi_card` en Dash con deltas, colores (up/down) y tooltips.
+  - Factorizar estilos comunes (cards, grids) en clases CSS a partir de tokens.
+- Estilos/tema:
+  - Completar `design/tokens.json` con los tokens reales del diseño (tipos de texto, sombras, radios, etc.).
+  - Ampliar `scripts/tokens_to_css.py` para generar todas las variables necesarias y reglas por componentes.
+- Contenido:
+  - Sustituir datos de ejemplo por la DuckDB real y validar consultas en `DataService`.
+
+Registro en GitHub:
+- Rama de trabajo: `main` actualizada con scaffold Dash, core de datos y scripts.
+- Rama de archivo: `archive/streamlit-final` con el estado previo.
+- Tag: `v0.1-streamlit` para referencia del estado Streamlit.
