@@ -223,7 +223,7 @@
    - Vista comparativa CCAA
 
 4. **Implementar Dashboard**
-   - Streamlit con visualizaciones
+   - Dash con visualizaciones
    - Integración NL2SQL para consultas naturales
 
 ### 7.3 Documentación

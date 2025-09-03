@@ -9,7 +9,7 @@ Este proyecto automatiza la descarga y procesamiento de los datos de la Encuesta
 ### Estado del Proyecto
 - **Agent Extractor**: ✅ COMPLETADO - 51 métricas extraídas y validadas
 - **Agent Processor**: ✅ VALIDADO - Pipeline ETL 100% funcional, 1,918 validaciones exitosas
-- **Dashboard Streamlit**: 📅 PLANIFICADO - Con capacidad NL2SQL
+- **Dashboard (Dash)**: 📅 EN DESARROLLO - Base con filtros, KPIs y graficos
 
 ## 🚀 Características
 
@@ -149,7 +149,7 @@ El sistema procesa 35 tablas del INE organizadas en 7 categorías:
   - Esquema de 23 campos validado
   - Validación contra INE: 1/6 tablas
   - Pendiente: Validación completa y carga histórica
-- 📅 **Fase 3:** Dashboard Streamlit PLANIFICADO
+- 📅 **Fase 3:** Dashboard Dash EN DESARROLLO
   - Visualizaciones interactivas
   - Capacidad NL2SQL para consultas en lenguaje natural
 
@@ -207,3 +207,21 @@ Para preguntas o sugerencias sobre este proyecto, por favor abrir un [issue](htt
 ---
 
 **Nota:** Este proyecto no está afiliado con el Instituto Nacional de Estadística. Es una herramienta independiente para facilitar el acceso y procesamiento de datos públicos.
+## Iniciar Dashboard (Dash)
+
+1) Configura .env (usa .env.example):
+`
+APP_DB_PATH=data/analysis.db
+`
+
+2) Instala dependencias de Dash:
+`
+pip install -r requirements/base.txt -r requirements/dash.txt
+`
+
+3) Arranca la app:
+`
+python apps/dash/app.py
+`
+
+Abre http://127.0.0.1:8050 en el navegador.
