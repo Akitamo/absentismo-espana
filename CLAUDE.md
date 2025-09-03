@@ -6,17 +6,19 @@ Contexto estable y reglas para trabajar con este repositorio.
 AbsentismoEspana: sistema modular para extraer, procesar y visualizar datos de absentismo (INE, ETCL).
 
 ## Frontend: Dash
-- apps/dash/app.py: arranque y navegación (`use_pages=True`).
-- apps/dash/pages/: páginas (`dashboard.py`, `analisis.py`, `comparativas.py`, `exportar.py`).
-- apps/dash/assets/theme.css: estilos generados desde tokens.
-- design/tokens.json: fuente de verdad del diseño.
-- src/core/data_service.py: servicio de datos (DuckDB), agnóstico del frontend.
+- `apps/dash/app.py`: arranque, shell con sidebar fijo y header ancho completo.
+- `apps/dash/pages/`: páginas (`dashboard.py`, `analisis.py`, `comparativas.py`, `exportar.py`).
+- `apps/dash/assets/theme.css`: generado desde tokens (NO editar a mano).
+- `apps/dash/assets/z-overrides.css`: overrides manuales persistentes (SÍ editar aquí).
+- `design/tokens.json`: fuente de verdad del diseño (tokens-first).
+- `src/core/data_service.py`: servicio de datos (DuckDB), agnóstico del frontend.
 
 ## Cómo ejecutar (resumen)
-- pip install -r requirements/base.txt -r requirements/dash.txt
+- `pip install -r requirements/base.txt -r requirements/dash.txt`
 - Configurar `.env` con `APP_DB_PATH=data/analysis.db` (o ruta absoluta)
-- python apps/dash/app.py  → http://127.0.0.1:8050
-- Guía: apps/dash/README.md
+- Inicializar DB demo (opcional): `python scripts/init_db.py`
+- Ejecutar: `python apps/dash/app.py`  → http://127.0.0.1:8050
+- Guía: `apps/dash/README.md`
 
 ## Mapa de Documentación (consulta frecuente)
 - docs/DESIGN_SYSTEM.md: especificaciones de UI/UX y tokens para Dash.
@@ -25,11 +27,15 @@ AbsentismoEspana: sistema modular para extraer, procesar y visualizar datos de a
 - docs/LECCIONES_APRENDIDAS_DUPLICADOS.md: pauta para evitar duplicados del TOTAL (fuente_tabla).
 
 ## Reglas Fundamentales (Dash)
-- Sin CSS inline: usar clases y variables en `apps/dash/assets/theme.css` derivadas de `design/tokens.json`.
-- IDs y estado: IDs estables; estado global/local con `dcc.Store`; nada de `st.session_state`.
-- Callbacks: `@callback` con `Input`, `Output` y `State`; sin efectos laterales inesperados.
-- Datos: usar `src/core/data_service.py`; no dependencias de Streamlit en `main`.
-- Diseño: tokens-first; si no existe un valor en tokens, proponlo antes de codificar.
+- Sin CSS inline. Tokens-first: editar `design/tokens.json` y regenerar `theme.css` con `python scripts/tokens_to_css.py`.
+- No editar `theme.css` a mano; poner estilos manuales en `apps/dash/assets/z-overrides.css`.
+- Sidebar/Header: respetar `--sidebar-w` y clases `.sidebar`, `.header`, `.content`.
+- IDs y estado: IDs estables; estado con `dcc.Store` cuando aplique.
+- Callbacks puros: `@callback` con `Input`/`Output`/`State`; sin efectos laterales.
+- Datos: usar `src/core/data_service.py`; sin dependencias de Streamlit en `main`.
 
 ## Histórico
 - La implementación anterior en Streamlit está archivada en la rama `archive/streamlit-final` (tag `v0.1-streamlit`). No mezclar código o patrones de Streamlit en `main`.
+
+## Herramientas de apoyo (UX)
+- Overlay de diseño: en `Dashboard` hay un overlay con controles (mostrar, opacidad, zoom y offsets) para alinear la vista con el mockup base (`design/Diseño dashboardFIN.jpg`).

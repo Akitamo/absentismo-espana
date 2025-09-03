@@ -227,3 +227,7 @@ python apps/dash/app.py
 Abre http://127.0.0.1:8050 en el navegador.
 
 Más detalles y tips operativos en `apps/dash/README.md`.
+
+Nota diseño:
+- `apps/dash/assets/theme.css` se regenera desde `design/tokens.json` con `python scripts/tokens_to_css.py`.
+- Estilos manuales y del shell (sidebar/header) en `apps/dash/assets/z-overrides.css`.

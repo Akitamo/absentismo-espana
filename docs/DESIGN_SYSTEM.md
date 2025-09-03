@@ -14,9 +14,10 @@ Propósito: especificaciones de diseño y pautas de implementación del dashboar
 ---
 
 ## Inventario de Assets
-- design/tokens.json: fuente de verdad de colores, tipografías, espaciados, radios, sombras.
-- apps/dash/assets/theme.css: hoja activa con variables y clases (generada/ajustada desde tokens).
-- docs/CSS DISEÑO ABSENTISMO.txt: referencia de export de Figma (no usar directamente).
+- `design/tokens.json`: fuente de verdad de colores, tipografías, espaciados, radios, sombras.
+- `apps/dash/assets/theme.css`: generado desde tokens (no editar a mano).
+- `apps/dash/assets/z-overrides.css`: overrides manuales (sí editar aquí).
+- `docs/CSS DISEÑO ABSENTISMO.txt`: referencia de export de Figma (no usar directamente).
 - Mockups (imágenes/PDF en docs/): guía visual de layouts, estados y componentes.
 
 ---
@@ -41,9 +42,22 @@ Ejemplo de mapeo en `theme.css`:
 
 No añadir variables ad-hoc sin actualizarlas en `tokens.json`.
 
+Variables adicionales de layout:
+```
+:root {
+  --sidebar-w: 240px;   /* ancho fijo de la barra lateral */
+  --card-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
+}
+```
+
 ---
 
 ## Convenciones de Layout y Clases
+### Shell
+- `.sidebar`: fijo a la izquierda; navegación en columna; logo en cabecera.
+- `.content`: desplazada (`margin-left: var(--sidebar-w)`).
+- `.header`: barra fija superior (ancho completo a la derecha del sidebar).
+  - `.topbar-inner`: contenedor interno con título, búsqueda, acciones y chip de usuario.
 Estructura de una página tipo (Dashboard):
 - `.page`: contenedor principal vertical.
 - `.filters`: fila con 3 filtros (`Periodo`, `CCAA`, `Sector`).
@@ -51,7 +65,7 @@ Estructura de una página tipo (Dashboard):
 - `.kpi-card`: tarjeta KPI (título, valor, subtítulo opcional).
 - `.main`: área con `dcc.Graph` y `dash_table.DataTable`.
 
-Estilos base (sugerencia en theme.css):
+Estilos base (sugerencia en overrides):
 ```
 .filters { display:flex; gap:12px; margin: 8px 0 16px; }
 .filter  { min-width: 220px; }
@@ -95,6 +109,10 @@ def update_dashboard(periodo, ccaa, sector):
 ---
 
 ## Errores Comunes a Evitar
+- Editar `theme.css` a mano (se regenera desde tokens).
+- Duplicar estilos del shell (sidebar/header) en cada página.
+- IDs poco descriptivos o inconsistentes.
+- CSS inline.
 - IDs duplicados o poco descriptivos en componentes.
 - Calcular datos “grandes” dentro de callbacks sin cachear.
 - Estilos embebidos en componentes (usar clases en `theme.css`).
@@ -105,8 +123,10 @@ def update_dashboard(periodo, ccaa, sector):
 ## Flujo de Trabajo Propuesto
 1) Definir estructura de la página y IDs (wireframe).
 2) Verificar tokens y añadir los que faltan en `design/tokens.json`.
-3) Aplicar/ajustar estilos en `apps/dash/assets/theme.css`.
+3) Regenerar `theme.css` si cambian tokens; aplicar overrides en `apps/dash/assets/z-overrides.css`.
 4) Implementar layout y callbacks mínimos.
 5) Conectar con `DataService` y validar datos.
 6) QA visual y funcional (navegación, filtros, responsiveness).
 
+## Herramientas de apoyo
+- Overlay de diseño en la página Dashboard: controles de mostrar/opacidad/zoom/offset para alinear con el mockup (`design/Diseño dashboardFIN.jpg`).

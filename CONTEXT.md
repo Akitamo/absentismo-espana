@@ -1,6 +1,6 @@
 # CONTEXT.md
 
-Última actualización: 03-09-2025
+Última actualización: 03-09-2025 (tarde)
 
 ## Estado Actual: Frontend en Dash
 - El dashboard se ejecuta con Dash (Plotly) en `apps/dash/`.
@@ -16,10 +16,11 @@
 
 ---
 
-## Dashboard Dash
-- Puerto: 8050
-- URL: http://127.0.0.1:8050
+## Dashboard Dash (estado actual)
+- Puerto: 8050 — URL: http://127.0.0.1:8050
 - Páginas: Dashboard (inicio), Análisis, Comparativas, Exportar
+- Shell UI: sidebar fijo (logo Ibermutua, navegación en columna) + header ancho completo (búsqueda, acciones, usuario)
+- Overlay de diseño: controles de mostrar/opacidad/zoom/offset para alinear con `design/Diseño dashboardFIN.jpg`
 - Arranque: `pip install -r requirements/base.txt -r requirements/dash.txt && python apps/dash/app.py`
 - Guía rápida: `apps/dash/README.md`
 
@@ -43,11 +44,12 @@ def update_dashboard(periodo, ccaa, sector):
 
 ---
 
-## Próximos Pasos
-1. Afinar estilos en `apps/dash/assets/theme.css` desde `design/tokens.json`.
-2. Añadir `dcc.Store` para estado de filtros global (persistencia opcional).
-3. Export CSV/Excel desde tabla/endpoint.
-4. Páginas de detalle (drill-down) por CCAA/sector.
+## Próximos Pasos (UI)
+1. Filtros (Dropdown react-select): borde/hover/selected según template.
+2. KPI cards: jerarquía tipográfica, padding, sombra y radios.
+3. DataTable: contenedor con borde+radio; cabecera y celdas con tipografías correctas.
+4. Trazas Plotly: tema de colores y márgenes acorde a diseño.
+5. Export (CSV/Excel) desde tabla o endpoint.
 
 ---
 
@@ -55,3 +57,7 @@ def update_dashboard(periodo, ccaa, sector):
 - Guía Dash: `apps/dash/README.md`
 - Diseño y tokens: `docs/DESIGN_SYSTEM.md`, `design/tokens.json`
 - Lecciones de datos (duplicados TOTAL): `docs/LECCIONES_APRENDIDAS_DUPLICADOS.md`
+
+## Notas operativas
+- `scripts/tokens_to_css.py` regenera `apps/dash/assets/theme.css` desde tokens. Para estilos manuales, usar `apps/dash/assets/z-overrides.css`.
+- `scripts/init_db.py` crea `data/analysis.db` con datos demo (para smoke tests y desarrollo local).
