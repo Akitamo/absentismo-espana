@@ -5,6 +5,7 @@ from pathlib import Path
 import base64
 
 from src.core.data_service import DataService
+from apps.dash.components.ui import card
 
 register_page(__name__, path="/")
 
@@ -89,8 +90,17 @@ def layout():
         html.Div(id="kpis", className="kpis"),
 
         html.Div([
-            dcc.Graph(id="evolucion"),
-            dash_table.DataTable(id="ranking-table", page_size=10, style_table={"overflowX": "auto"})
+            card(
+                title="Evolución",
+                body=dcc.Graph(id="evolucion"),
+                className="card-evolucion",
+                loading=True,
+            ),
+            card(
+                title="Ranking CCAA",
+                body=dash_table.DataTable(id="ranking-table", page_size=10, style_table={"overflowX": "auto"}),
+                className="card-ranking",
+            ),
         ], className="main")
         ,
         # Imagen superpuesta del diseño (si existe)

@@ -40,6 +40,16 @@ header { max-width: 100% !important; margin: 0 !important; }
 /* KPI cards */
 .kpi-card { border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--card-shadow); }
 
+/* Generic card */
+.card { background: var(--color-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--card-shadow); display:flex; flex-direction: column; overflow: hidden; }
+.card-header { display:flex; align-items:center; justify-content:space-between; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--border-color); }
+.card-title { font-weight: 600; }
+.card-subtitle { color: var(--color-muted); font-size: var(--font-size-sm); }
+.card-body { padding: 12px 14px; }
+.card-footer { padding: 10px 14px; border-top: 1px solid var(--border-color); }
+.card--compact .card-body { padding: 8px 10px; }
+.card--scroll .card-body { overflow: auto; }
+
 /* react-select (dcc.Dropdown) */
 .filter .Select-control,
 .filter [class*="Select__control"] { border:1px solid var(--border-color); border-radius: var(--radius-lg); min-height:38px; box-shadow:none; }
