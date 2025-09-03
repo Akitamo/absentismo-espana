@@ -170,3 +170,9 @@ La implementación base de estos puntos está en `z-overrides.css` y se ampliar�
 - Estructura: `.card` con `.card-header` (título/acciones), `.card-body` y `.card-footer`.
 - Variantes: `.card--compact` (densidad menor), `.card--scroll` (contenidos con overflow).
 - Uso: envolver gráficas, tablas y bloques complejos para asegurar paddings, radios y sombras homogéneos.
+
+### Iconografía (SVG)
+- Preferir SVG inline para nitidez y control visual.
+- Tamaños: 16–20 px (acciones y títulos), 24–28 px (KPIs).
+- Colores: tokens (`--color-primary`, `--color-muted`).
+- Ubicación: `design/icons/`; evaluar helper de inyección si es necesario.

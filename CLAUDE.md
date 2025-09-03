@@ -44,6 +44,67 @@ AbsentismoEspana: sistema modular para extraer, procesar y visualizar datos de a
 ## Herramientas de apoyo (UX)
 - Referencia visual en `design/Diseño dashboardFIN.jpg`. El overlay en app se retiró tras la fase de alineación inicial.
 
+---
+
+## Estado Actual (2025-09-03)
+
+- Shell UI:
+  - Sidebar fijo en desktop (240px) y drawer en móvil (≤768px) con `dcc.Store` + backdrop.
+  - Header full width (a la derecha del sidebar) con búsqueda y acciones.
+- KPI iniciales: 2 KPIs (Tasa de Absentismo e IT) con icono y delta vs periodo anterior.
+- Cards: wrapper genérico `apps/dash/components/ui.py:card(...)` aplicado a Evolución y Ranking.
+- Tablas en móvil: scroll horizontal con sombras laterales y header sticky.
+- Gráficos: tema Plotly centralizado (`apps/dash/plotly_theme.py`) a partir de tokens.
+- Responsive baseline en `apps/dash/assets/z-overrides.css` (no tocar `theme.css`).
+
+### Convenciones clave
+- No editar `apps/dash/assets/theme.css`; se regenera desde `design/tokens.json` con `python scripts/tokens_to_css.py`.
+- Estilos manuales y media queries: `apps/dash/assets/z-overrides.css`.
+- Contenedores homogéneos: `card(title, body, footer, variant)`.
+- Tokens-first: cualquier nuevo color/espaciado debería incorporarse a `design/tokens.json`.
+
+### Iconografía (SVG)
+- Preferir SVG inline sobre emoji para nitidez y control de color/tamaño.
+- Ubicación sugerida: `design/icons/` y helper simple para inyectar SVG si es necesario.
+- Tamaños recomendados: 16–20 px en títulos/acciones; 24–28 px en KPIs.
+- Colores por tokens (`--color-primary`, `--color-muted`).
+
+### Do / Don't (rápido)
+- Do: usar `card(...)`, `plotly_template()` y `z-overrides.css` para estilos.
+- Do: mantener responsive con las media queries existentes.
+- Don't: editar `theme.css` a mano o introducir CSS inline.
+- Don't: acoplar lógica de datos a UI; seguir usando `src/core/data_service.py`.
+
+### Backlog inmediato
+- Sustituir iconos por SVG (sidebar, KPIs, acciones).
+- Afinar tema Plotly por tipo de gráfico.
+- (Opcional) columnas low-priority ocultables en móvil.
+
+---
+
+## Runbook de Desarrollo (rápido)
+
+1) Lanzar dashboard:
+   - `pip install -r requirements/base.txt -r requirements/dash.txt`
+   - (opcional) `python scripts/init_db.py`
+   - `python apps/dash/app.py` → http://127.0.0.1:8050
+
+2) Estructura UI:
+   - Sidebar: controlar con `ui-store.sidebar_open`; botón ☰ en móvil.
+   - Cards: `from apps.dash.components.ui import card`.
+   - Gráficos: `template=plotly_template()`.
+
+3) Dónde tocar:
+   - Tokens: `design/tokens.json` → `python scripts/tokens_to_css.py`.
+   - Overrides/Responsive: `apps/dash/assets/z-overrides.css`.
+   - Datos: `src/core/data_service.py` (agnóstico de frontend).
+
+4) QA manual rápida:
+   - Desktop (≥1280): sidebar fijo; header completo; KPIs 2 columnas; cards correctos.
+   - Tablet (992–1200): sidebar icon-only; tabla legible; KPIs 2 columnas.
+   - Móvil (≤768): drawer sidebar; header compacto; KPIs 1 columna; tabla con scroll y header sticky.
+
+
 ## Responsive (política y pautas)
 - Enfoque: tokens → `theme.css` (autogenerado) + `z-overrides.css` (media queries y layout). No editar `theme.css`.
 - Breakpoints: `lg ≤1200`, `md ≤992`, `sm/xs ≤768` (aprox.).

@@ -63,3 +63,12 @@ card(
 - Sidebar: 240px desktop; 64px icon-only en ≤1200px (labels ocultas, tooltips). Drawer móvil (planificado).
 - Grids: Filtros 3→2→1; KPI 4→3→2→1; Main 2→1.
 - DataTable: scroll horizontal en `sm/xs`.
+
+## Sidebar móvil (drawer)
+- Estado en `dcc.Store(id="ui-store", {"sidebar_open": False})`.
+- Botón ☰ en el header (visible en ≤768px) abre/cierra; backdrop cierra.
+- Clase `.sidebar.open` controla animación CSS.
+
+## Tema Plotly
+- `apps/dash/plotly_theme.py` define `plotly_template()` a partir de tokens.
+- Usar `fig.update_layout(template=plotly_template())` en nuevas figuras.

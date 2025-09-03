@@ -72,3 +72,24 @@ def update_dashboard(periodo, ccaa, sector):
 - `--sidebar-w`: gobierna sidebar/header/content (240px desktop; 64px icon-only ≤1200px).
 - Grids adaptativos: filtros 3→2→1; KPIs 4→3→2→1; main 2→1.
 - DataTable con `overflow-x:auto` en `sm/xs`.
+
+---
+
+## Progreso (2025-09-03)
+- Sidebar móvil: drawer en ≤768px, botón ☰ y backdrop.
+- KPIs: 2 KPIs principales con icono y comparación vs periodo anterior; títulos unificados (16px/700).
+- Cards: `card(...)` aplicado a Evolución y Ranking.
+- Tabla: scroll con sombras laterales y header sticky en móvil.
+- Gráficos: tema Plotly centralizado desde tokens.
+
+## Próximos
+1. Iconos SVG del template (sidebar, KPIs, acciones).
+2. Afinar tema Plotly por tipo de gráfico.
+3. (Opcional) Ocultar columnas de baja prioridad en sm/xs vía CSS.
+
+## Retomar mañana
+- Ejecutar `python apps/dash/app.py` y validar drawer/tabla en móvil.
+- Estilos en `z-overrides.css`; tokens en `design/tokens.json` + `scripts/tokens_to_css.py`.
+- Reutilizar `card(...)` y `plotly_template()` en nuevas vistas.
+
+
