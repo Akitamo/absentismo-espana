@@ -38,7 +38,7 @@ Alternativas
 - Para parar un proceso lanzado con `start_dash.ps1`, usa `Stop-Process -Id <PID>`.
 
 ## Herramientas de diseño
-- Overlay en Dashboard: activar “Overlay diseño” para superponer el mockup y ajustar opacidad/zoom/offset.
+- Usa `design/Diseño dashboardFIN.jpg` como referencia visual. El overlay fue retirado tras la fase inicial de alineación.
 
 ## Responsive
 - Baseline en `apps/dash/assets/z-overrides.css` (no tocar `theme.css`).

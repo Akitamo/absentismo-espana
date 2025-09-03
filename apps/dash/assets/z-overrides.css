@@ -67,8 +67,7 @@ header { max-width: 100% !important; margin: 0 !important; }
 .dash-table-container th { background:#FAFBFF; color:var(--color-text); font-weight:600; }
 .dash-table-container td, .dash-table-container th { font-family: var(--font-family); font-size: var(--font-size-base); }
 
-/* Overlay util */
-.overlay-debug { position: fixed; left: 0; top: 0; width: 100vw; height: auto; pointer-events: none; z-index: 9999; opacity: 0.35; }
+/* (Overlay util retirado) */
 
 /* ===================== */
 /* Responsive baseline   */

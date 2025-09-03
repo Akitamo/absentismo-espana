@@ -38,7 +38,7 @@ AbsentismoEspana: sistema modular para extraer, procesar y visualizar datos de a
 - La implementación anterior en Streamlit está archivada en la rama `archive/streamlit-final` (tag `v0.1-streamlit`). No mezclar código o patrones de Streamlit en `main`.
 
 ## Herramientas de apoyo (UX)
-- Overlay de diseño: en `Dashboard` hay un overlay con controles (mostrar, opacidad, zoom y offsets) para alinear la vista con el mockup base (`design/Diseño dashboardFIN.jpg`).
+- Referencia visual en `design/Diseño dashboardFIN.jpg`. El overlay en app se retiró tras la fase de alineación inicial.
 
 ## Responsive (política y pautas)
 - Enfoque: tokens → `theme.css` (autogenerado) + `z-overrides.css` (media queries y layout). No editar `theme.css`.

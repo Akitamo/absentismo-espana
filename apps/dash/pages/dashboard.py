@@ -2,7 +2,6 @@ from dash import html, dcc, dash_table, register_page, Input, Output, State, cal
 import plotly.graph_objects as go
 import pandas as pd
 from pathlib import Path
-import base64
 
 from src.core.data_service import DataService
 from apps.dash.components.ui import card
@@ -13,13 +12,6 @@ ds = DataService()
 
 # Cargar imagen de referencia de diseño (baseline) como data URI (si existe)
 _root = Path(__file__).resolve().parents[3]
-_overlay_path = _root / "design" / "Diseño dashboardFIN.jpg"
-try:
-    _overlay_bytes = _overlay_path.read_bytes()
-    _overlay_b64 = base64.b64encode(_overlay_bytes).decode("ascii")
-    OVERLAY_SRC = f"data:image/jpeg;base64,{_overlay_b64}"
-except Exception:
-    OVERLAY_SRC = None
 
 def kpi_card(title: str, value: str, subtitle: str | None = None):
     return html.Div([
@@ -59,32 +51,6 @@ def layout():
                 html.Label("Sector"),
                 dcc.Dropdown(id="f-sector", options=sectors, value=sectors[0] if sectors else None, clearable=False),
             ], className="filter"),
-            html.Div([
-                html.Label("Overlay diseño"),
-                dcc.Checklist(
-                    id="overlay-toggle",
-                    options=[{"label": "Mostrar", "value": "on"}],
-                    value=[],
-                    inline=True,
-                ),
-                html.Div([
-                    html.Span("Opacidad", style={"marginRight": 6}),
-                    dcc.Slider(id="overlay-opacity", min=0, max=1, step=0.05, value=0.35,
-                               tooltip={"placement": "bottom", "always_visible": False})
-                ], style={"marginTop": 6}),
-                html.Div([
-                    html.Span("Zoom", style={"marginRight": 6}),
-                    dcc.Slider(id="overlay-zoom", min=0.8, max=1.3, step=0.01, value=1.0)
-                ], style={"marginTop": 6}),
-                html.Div([
-                    html.Span("Offset X", style={"marginRight": 6}),
-                    dcc.Slider(id="overlay-offset-x", min=-300, max=300, step=1, value=0)
-                ], style={"marginTop": 6}),
-                html.Div([
-                    html.Span("Offset Y", style={"marginRight": 6}),
-                    dcc.Slider(id="overlay-offset-y", min=-300, max=300, step=1, value=0)
-                ], style={"marginTop": 6}),
-            ], className="filter"),
         ], className="filters"),
 
         html.Div(id="kpis", className="kpis"),
@@ -102,22 +68,6 @@ def layout():
                 className="card-ranking",
             ),
         ], className="main")
-        ,
-        # Imagen superpuesta del diseño (si existe)
-        (html.Img(id="design-overlay", src=OVERLAY_SRC, style={
-            "display": "none",
-            "position": "fixed",
-            "left": 0,
-            "top": 0,
-            "width": "1440px",
-            "height": "auto",
-            "opacity": 0.35,
-            "transformOrigin": "top left",
-            "transform": "translate(0px, 0px) scale(1)",
-            "pointerEvents": "none",
-            "zIndex": 9999,
-            # "mixBlendMode": "multiply",
-        }) if OVERLAY_SRC else html.Div(id="design-overlay", style={"display": "none"}))
     ], className="page")
 
 
@@ -164,25 +114,4 @@ def update_dashboard(periodo, ccaa, sector):
     return kpi_children, fig, data, columns
 
 
-@callback(
-    Output("design-overlay", "style"),
-    Input("overlay-toggle", "value"),
-    Input("overlay-opacity", "value"),
-    Input("overlay-zoom", "value"),
-    Input("overlay-offset-x", "value"),
-    Input("overlay-offset-y", "value"),
-    State("design-overlay", "style"),
-    prevent_initial_call=False,
-)
-def _toggle_overlay(toggle_vals, opacity, zoom, offx, offy, style):
-    style = dict(style or {})
-    show = toggle_vals and ("on" in toggle_vals)
-    style["display"] = "block" if show else "none"
-    if opacity is not None:
-        style["opacity"] = float(opacity)
-    if zoom is not None or offx is not None or offy is not None:
-        z = float(zoom or 1)
-        x = int(offx or 0)
-        y = int(offy or 0)
-        style["transform"] = f"translate({x}px, {y}px) scale({z})"
-    return style
+# Overlay retirado

@@ -20,7 +20,7 @@
 - Puerto: 8050 — URL: http://127.0.0.1:8050
 - Páginas: Dashboard (inicio), Análisis, Comparativas, Exportar
 - Shell UI: sidebar fijo (logo Ibermutua, navegación en columna) + header ancho completo (búsqueda, acciones, usuario)
-- Overlay de diseño: controles de mostrar/opacidad/zoom/offset para alinear con `design/Diseño dashboardFIN.jpg`
+- Referencia visual: `design/Diseño dashboardFIN.jpg` (el overlay en app se retiró)
 - Arranque: `pip install -r requirements/base.txt -r requirements/dash.txt && python apps/dash/app.py`
 - Guía rápida: `apps/dash/README.md`
 

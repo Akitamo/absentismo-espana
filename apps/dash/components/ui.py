@@ -58,5 +58,8 @@ def card(
 
     footer_div = html.Div(_to_children(footer), className="card-footer") if footer else None
 
-    return html.Div([c for c in [header, content, footer_div] if c], className=" ".join(classes), id=id)
-
+    children = [c for c in [header, content, footer_div] if c]
+    props = {"className": " ".join(classes)}
+    if id is not None:
+        props["id"] = id
+    return html.Div(children, **props)

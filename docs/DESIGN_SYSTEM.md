@@ -129,7 +129,7 @@ def update_dashboard(periodo, ccaa, sector):
 6) QA visual y funcional (navegación, filtros, responsiveness).
 
 ## Herramientas de apoyo
-- Overlay de diseño en la página Dashboard: controles de mostrar/opacidad/zoom/offset para alinear con el mockup (`design/Diseño dashboardFIN.jpg`).
+- Referencia: `design/Diseño dashboardFIN.jpg`. El overlay embebido se usó solo para la alineación inicial y ya no forma parte del producto.
 
 ---
 
