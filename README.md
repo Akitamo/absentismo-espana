@@ -225,3 +225,5 @@ python apps/dash/app.py
 `
 
 Abre http://127.0.0.1:8050 en el navegador.
+
+Más detalles y tips operativos en `apps/dash/README.md`.

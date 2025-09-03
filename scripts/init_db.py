@@ -1,75 +1,91 @@
+"""
+Crea una base DuckDB mínima con datos de ejemplo para el dashboard.
+Uso: python scripts/init_db.py  (usa APP_DB_PATH o data/analysis.db)
+"""
+
+from __future__ import annotations
+
+import os
 from pathlib import Path
+
 import duckdb
 
-DB_PATH = Path("data") / "analysis.db"
-DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-con = duckdb.connect(str(DB_PATH))
+def db_path() -> Path:
+    return Path(os.getenv("APP_DB_PATH", str(Path("data") / "analysis.db")))
 
-con.execute(
-    """
-    CREATE TABLE IF NOT EXISTS observaciones_tiempo_trabajo (
-        periodo VARCHAR,
-        ambito_territorial VARCHAR,
-        ccaa_nombre VARCHAR,
-        cnae_nivel VARCHAR,
-        cnae_nombre VARCHAR,
-        fuente_tabla VARCHAR,
-        metrica VARCHAR,
-        causa VARCHAR,
-        valor DOUBLE
-    );
-    """
-)
 
-# Limpia filas de ejemplo previas
-con.execute("DELETE FROM observaciones_tiempo_trabajo WHERE periodo IN ('2024T4','2024T3');")
+def ensure_parent(p: Path) -> None:
+    p.parent.mkdir(parents=True, exist_ok=True)
 
-rows = [
-    # Total Nacional (para KPIs y evolución)
-    ("2024T4","NAC",None,"TOTAL",None,"6042","horas_pactadas",None,1000.0),
-    ("2024T4","NAC",None,"TOTAL",None,"6042","horas_extraordinarias",None,50.0),
-    ("2024T4","NAC",None,"TOTAL",None,"6042","horas_no_trabajadas","vacaciones",80.0),
-    ("2024T4","NAC",None,"TOTAL",None,"6042","horas_no_trabajadas","festivos",40.0),
-    ("2024T4","NAC",None,"TOTAL",None,"6042","horas_no_trabajadas","razones_tecnicas_economicas",0.0),
-    ("2024T4","NAC",None,"TOTAL",None,"6042","horas_no_trabajadas","it_total",30.0),
-    ("2024T4","NAC",None,"TOTAL",None,"6042","horas_no_trabajadas","otras_bajas",20.0),
 
-    ("2024T3","NAC",None,"TOTAL",None,"6042","horas_pactadas",None,980.0),
-    ("2024T3","NAC",None,"TOTAL",None,"6042","horas_extraordinarias",None,45.0),
-    ("2024T3","NAC",None,"TOTAL",None,"6042","horas_no_trabajadas","vacaciones",70.0),
-    ("2024T3","NAC",None,"TOTAL",None,"6042","horas_no_trabajadas","festivos",38.0),
-    ("2024T3","NAC",None,"TOTAL",None,"6042","horas_no_trabajadas","razones_tecnicas_economicas",0.0),
-    ("2024T3","NAC",None,"TOTAL",None,"6042","horas_no_trabajadas","it_total",28.0),
-    ("2024T3","NAC",None,"TOTAL",None,"6042","horas_no_trabajadas","otras_bajas",18.0),
+def main() -> None:
+    path = db_path()
+    ensure_parent(path)
+    con = duckdb.connect(str(path))
 
-    # CCAA (para ranking en 2024T4)
-    ("2024T4","CCAA","Andalucía","TOTAL",None,"6042","horas_pactadas",None,120.0),
-    ("2024T4","CCAA","Andalucía","TOTAL",None,"6042","horas_extraordinarias",None,5.0),
-    ("2024T4","CCAA","Andalucía","TOTAL",None,"6042","horas_no_trabajadas","vacaciones",10.0),
-    ("2024T4","CCAA","Andalucía","TOTAL",None,"6042","horas_no_trabajadas","festivos",5.0),
-    ("2024T4","CCAA","Andalucía","TOTAL",None,"6042","horas_no_trabajadas","razones_tecnicas_economicas",0.0),
-    ("2024T4","CCAA","Andalucía","TOTAL",None,"6042","horas_no_trabajadas","it_total",3.0),
-    ("2024T4","CCAA","Andalucía","TOTAL",None,"6042","horas_no_trabajadas","otras_bajas",2.0),
+    con.execute(
+        """
+        CREATE TABLE IF NOT EXISTS observaciones_tiempo_trabajo (
+            periodo TEXT,
+            ambito_territorial TEXT,
+            ccaa_nombre TEXT,
+            cnae_nivel TEXT,
+            cnae_nombre TEXT,
+            tipo_jornada TEXT,
+            fuente_tabla TEXT,
+            metrica TEXT,
+            causa TEXT,
+            valor DOUBLE
+        );
+        """
+    )
 
-    ("2024T4","CCAA","Madrid","TOTAL",None,"6042","horas_pactadas",None,110.0),
-    ("2024T4","CCAA","Madrid","TOTAL",None,"6042","horas_extraordinarias",None,6.0),
-    ("2024T4","CCAA","Madrid","TOTAL",None,"6042","horas_no_trabajadas","vacaciones",9.0),
-    ("2024T4","CCAA","Madrid","TOTAL",None,"6042","horas_no_trabajadas","festivos",4.0),
-    ("2024T4","CCAA","Madrid","TOTAL",None,"6042","horas_no_trabajadas","razones_tecnicas_economicas",0.0),
-    ("2024T4","CCAA","Madrid","TOTAL",None,"6042","horas_no_trabajadas","it_total",2.0),
-    ("2024T4","CCAA","Madrid","TOTAL",None,"6042","horas_no_trabajadas","otras_bajas",1.0),
-]
+    # Datos de ejemplo (Total Nacional)
+    rows = []
+    periods = ["2024T2", "2024T3", "2024T4", "2025T1"]
+    for i, periodo in enumerate(periods):
+        hp = 150.0 + i  # horas pactadas
+        hext = 5.0 + i * 0.2  # horas extra
+        vacaciones = 10.0
+        festivos = 3.0
+        ertes = 0.5
+        it_total = 8.0 + i * 0.1
+        rows += [
+            (periodo, "NAC", None, "TOTAL", None, "TOTAL", "6042", "horas_pactadas", None, hp),
+            (periodo, "NAC", None, "TOTAL", None, "TOTAL", "6042", "horas_extraordinarias", None, hext),
+            (periodo, "NAC", None, "TOTAL", None, "TOTAL", "6042", "horas_no_trabajadas", "vacaciones", vacaciones),
+            (periodo, "NAC", None, "TOTAL", None, "TOTAL", "6042", "horas_no_trabajadas", "festivos", festivos),
+            (periodo, "NAC", None, "TOTAL", None, "TOTAL", "6042", "horas_no_trabajadas", "razones_tecnicas_economicas", ertes),
+            (periodo, "NAC", None, "TOTAL", None, "TOTAL", "6042", "horas_no_trabajadas", "it_total", it_total),
+        ]
 
-con.executemany(
-    """
-    INSERT INTO observaciones_tiempo_trabajo
-    (periodo, ambito_territorial, ccaa_nombre, cnae_nivel, cnae_nombre, fuente_tabla, metrica, causa, valor)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    """,
-    rows,
-)
+    # Ranking por CCAA (un par de ejemplos para 2024T4)
+    periodo = "2024T4"
+    for ccaa, hntmo, hp_base in [("Madrid", 11.0, 140.0), ("Cataluña", 9.5, 142.0)]:
+        rows += [
+            (periodo, "CCAA", ccaa, "SECCION", None, "TOTAL", "6063", "horas_pactadas", None, hp_base),
+            (periodo, "CCAA", ccaa, "SECCION", None, "TOTAL", "6063", "horas_extraordinarias", None, 4.0),
+            (periodo, "CCAA", ccaa, "SECCION", None, "TOTAL", "6063", "horas_no_trabajadas", "vacaciones", 8.0),
+            (periodo, "CCAA", ccaa, "SECCION", None, "TOTAL", "6063", "horas_no_trabajadas", "festivos", 2.5),
+            (periodo, "CCAA", ccaa, "SECCION", None, "TOTAL", "6063", "horas_no_trabajadas", "razones_tecnicas_economicas", 0.3),
+            (periodo, "CCAA", ccaa, "SECCION", None, "TOTAL", "6063", "horas_no_trabajadas", "it_total", hntmo),
+        ]
 
-con.close()
-print(f"OK: inicializado {DB_PATH}")
+    con.executemany(
+        """
+        INSERT INTO observaciones_tiempo_trabajo
+        (periodo, ambito_territorial, ccaa_nombre, cnae_nivel, cnae_nombre, tipo_jornada,
+         fuente_tabla, metrica, causa, valor)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        rows,
+    )
+
+    con.close()
+    print(f"Base creada con {len(rows)} registros en {path}")
+
+
+if __name__ == "__main__":
+    main()
 

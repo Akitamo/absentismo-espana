@@ -1,5 +1,7 @@
 # LECCIONES APRENDIDAS: Problema de Duplicados del TOTAL Nacional
 
+> Nota: Documento neutral al frontend. Cualquier mención histórica a rutas de Streamlit corresponde a versiones archivadas. En el frontend actual (Dash), aplicar las mismas reglas de datos vía `src/core/data_service.py` y callbacks.
+
 ## Fecha: 28 de noviembre de 2024
 
 ## Resumen Ejecutivo

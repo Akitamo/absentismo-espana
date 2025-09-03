@@ -1,3 +1,10 @@
+/*
+  Nota: Este archivo es un volcado de estilos de referencia (Figma).
+  No se debe usar directamente en el código. 
+  Para el frontend actual (Dash), definir tokens en design/tokens.json
+  y generar apps/dash/assets/theme.css con scripts/tokens_to_css.py.
+*/
+
 /* Main */
 
 position: relative;
