@@ -50,6 +50,10 @@ card(
 )
 ```
 
+## KPIs
+- Los KPI tiles no llevan cabecera; usan `.kpi-card` con `.kpi-head` (icono + título), valor destacado y tendencia opcional.
+- Títulos de KPI y cards unificados: 16px, 700 (negrita) para consistencia visual.
+
 ## Herramientas de diseño
 - Usa `design/Diseño dashboardFIN.jpg` como referencia visual. El overlay fue retirado tras la fase inicial de alineación.
 

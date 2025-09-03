@@ -74,6 +74,8 @@ Estilos base (sugerencia en overrides):
 .kpi-title{ color: var(--text-secondary); font-size: 12px; margin-bottom: 6px; }
 .kpi-value{ color: var(--text-primary);  font-size: 22px; font-weight: 600; }
 .kpi-subtitle{ color: var(--text-secondary); font-size: 11px; }
+/* Títulos unificados para cards y KPIs */
+.card-title, .kpi-card .kpi-title { font-weight: 700; font-size: 16px; color: var(--text-primary); }
 ```
 
 ---

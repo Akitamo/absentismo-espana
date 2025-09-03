@@ -26,6 +26,7 @@
 
 ### Componentes
 - Card wrapper (`apps/dash/components/ui.py`): contenedor unificado para bloques (gráficas, tablas, KPIs) con header/body/footer y variantes (`compact`, `scroll`). Evolución (Plotly) y Ranking CCAA (DataTable) lo usan.
+ - KPIs: dos KPIs principales (Tasa de Absentismo e IT) con icono y comparación vs periodo anterior; títulos unificados (16px, 700) como en las cards.
 
 Estructura base de la página principal (dashboard):
 - Filtros: Periodo, CCAA, Sector (`dcc.Dropdown`).
