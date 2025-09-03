@@ -38,6 +38,7 @@ header { max-width: 100% !important; margin: 0 !important; }
 .icon-btn { width: 34px; height: 34px; display:inline-flex; align-items:center; justify-content:center; border:none; background: transparent; border-radius: 8px; cursor: pointer; }
 .icon-btn:hover { background: #eef3ff; color: var(--color-primary); }
 .user-chip { padding: 6px 10px; border:1px solid var(--border-color); border-radius: 999px; color: var(--color-muted); font-size: 12px; }
+.hamburger { display: none; }
 
 /* KPI cards */
 .kpi-card { border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--card-shadow); }
@@ -82,8 +83,9 @@ header { max-width: 100% !important; margin: 0 !important; }
 .filter [class*="Select__option--is-selected"] { background: rgba(27,89,248,0.12); color: var(--color-primary); }
 
 /* DataTable */
-.dash-table-container .dash-spreadsheet-container { border:1px solid var(--border-color); border-radius: var(--radius-lg); overflow:hidden; }
-.dash-table-container th { background:#FAFBFF; color:var(--color-text); font-weight:600; }
+.dash-table-container { position: relative; }
+.dash-table-container .dash-spreadsheet-container { border:1px solid var(--border-color); border-radius: var(--radius-lg); overflow:hidden; box-shadow: inset 8px 0 8px -8px rgba(0,0,0,.08), inset -8px 0 8px -8px rgba(0,0,0,.08); }
+.dash-table-container th { background:#FAFBFF; color:var(--color-text); font-weight:600; position: sticky; top: 0; z-index: 1; }
 .dash-table-container td, .dash-table-container th { font-family: var(--font-family); font-size: var(--font-size-base); }
 
 /* (Overlay util retirado) */

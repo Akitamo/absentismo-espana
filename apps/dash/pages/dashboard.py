@@ -64,7 +64,28 @@ def layout():
             ),
             card(
                 title="Ranking CCAA",
-                body=dash_table.DataTable(id="ranking-table", page_size=10, style_table={"overflowX": "auto"}),
+                body=dash_table.DataTable(
+                    id="ranking-table",
+                    page_size=10,
+                    fixed_rows={"headers": True},
+                    style_table={
+                        "overflowX": "auto",
+                        "maxHeight": "420px",
+                        "overflowY": "auto",
+                    },
+                    style_header={
+                        "position": "sticky",
+                        "top": 0,
+                        "zIndex": 1,
+                        "backgroundColor": "#FAFBFF",
+                        "fontWeight": 600,
+                    },
+                    style_cell={
+                        "padding": "12px 10px",
+                        "whiteSpace": "nowrap",
+                        "minWidth": "120px",
+                    },
+                ),
                 className="card-ranking",
             ),
         ], className="main")

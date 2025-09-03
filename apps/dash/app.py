@@ -6,7 +6,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from dash import Dash, html, dcc, page_container
 from dash import page_registry
-from dash import Input, Output, State, callback
+from dash import Input, Output, State, callback, ctx
 
 app = Dash(
     __name__,
@@ -116,8 +116,8 @@ def _update_active_links(pathname: str):
 )
 def _toggle_sidebar(n_menu, n_backdrop, _pathname, ui):
     ui = ui or {"sidebar_open": False}
-    ctx = dash.ctx.triggered_id  # type: ignore[attr-defined]
-    if ctx == "btn-menu":
+    trig_id = ctx.triggered_id
+    if trig_id == "btn-menu":
         ui["sidebar_open"] = not ui.get("sidebar_open", False)
     else:
         # Cerrar en backdrop o navegación
