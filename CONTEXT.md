@@ -1,6 +1,6 @@
 # CONTEXT.md
 
-Última actualización: 03-09-2025 (tarde)
+Última actualización: 03-09-2025 (noche)
 
 ## Estado Actual: Frontend en Dash
 - El dashboard se ejecuta con Dash (Plotly) en `apps/dash/`.
@@ -49,7 +49,8 @@ def update_dashboard(periodo, ccaa, sector):
 2. KPI cards: jerarquía tipográfica, padding, sombra y radios.
 3. DataTable: contenedor con borde+radio; cabecera y celdas con tipografías correctas.
 4. Trazas Plotly: tema de colores y márgenes acorde a diseño.
-5. Export (CSV/Excel) desde tabla o endpoint.
+5. Responsive Fase 2: drawer de sidebar en ≤768px con `dcc.Store` y backdrop.
+6. Export (CSV/Excel) desde tabla o endpoint.
 
 ---
 
@@ -61,3 +62,9 @@ def update_dashboard(periodo, ccaa, sector):
 ## Notas operativas
 - `scripts/tokens_to_css.py` regenera `apps/dash/assets/theme.css` desde tokens. Para estilos manuales, usar `apps/dash/assets/z-overrides.css`.
 - `scripts/init_db.py` crea `data/analysis.db` con datos demo (para smoke tests y desarrollo local).
+
+## Responsive (baseline vigente)
+- Media queries en `apps/dash/assets/z-overrides.css`.
+- `--sidebar-w`: gobierna sidebar/header/content (240px desktop; 64px icon-only ≤1200px).
+- Grids adaptativos: filtros 3→2→1; KPIs 4→3→2→1; main 2→1.
+- DataTable con `overflow-x:auto` en `sm/xs`.

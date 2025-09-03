@@ -39,3 +39,17 @@ AbsentismoEspana: sistema modular para extraer, procesar y visualizar datos de a
 
 ## Herramientas de apoyo (UX)
 - Overlay de diseño: en `Dashboard` hay un overlay con controles (mostrar, opacidad, zoom y offsets) para alinear la vista con el mockup base (`design/Diseño dashboardFIN.jpg`).
+
+## Responsive (política y pautas)
+- Enfoque: tokens → `theme.css` (autogenerado) + `z-overrides.css` (media queries y layout). No editar `theme.css`.
+- Breakpoints: `lg ≤1200`, `md ≤992`, `sm/xs ≤768` (aprox.).
+- Sidebar:
+  - Desktop: ancho `--sidebar-w: 240px`.
+  - ≤1200px: modo icon-only (`--sidebar-w: 64px`), labels ocultas, tooltips por `title`.
+  - ≤768px: futuro drawer superpuesto (toggle en header) — planificado.
+- Header: fijo y a la derecha del sidebar; buscador reduce anchura en `lg/md` y 100% en `sm/xs`.
+- Grids:
+  - Filtros: 3 → 2 cols (`lg`) → 1 col (`sm/xs`).
+  - KPIs: 4 → 3 (`lg`) → 2 (`md`) → 1 (`sm/xs`).
+  - Main: 2 columnas desktop → 1 columna en `md`.
+- DataTable: `overflow-x:auto` en `sm/xs` (opcional: ocultar columnas de baja prioridad más adelante).

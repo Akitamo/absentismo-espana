@@ -130,3 +130,31 @@ def update_dashboard(periodo, ccaa, sector):
 
 ## Herramientas de apoyo
 - Overlay de diseño en la página Dashboard: controles de mostrar/opacidad/zoom/offset para alinear con el mockup (`design/Diseño dashboardFIN.jpg`).
+
+---
+
+## Responsive Guidelines
+
+Enfoque: `design/tokens.json` → `apps/dash/assets/theme.css` (autogenerado) + `apps/dash/assets/z-overrides.css` (media queries y layout). No editar `theme.css` a mano.
+
+Breakpoints de referencia: `lg ≤1200`, `md ≤992`, `sm/xs ≤768` (aprox.).
+
+- Shell
+  - Sidebar: 240px desktop; 64px icon-only en ≤1200px (labels ocultas, tooltip por `title`). Drawer en ≤768px (planificado) con `dcc.Store`.
+  - Header: fijo a la derecha del sidebar; buscador 520→380→100% según breakpoint.
+  - Content: `margin-left: var(--sidebar-w)` coherente.
+
+- Grids
+  - Filtros: 3 cols desktop → 2 cols (`lg`) → 1 col (`sm/xs`).
+  - KPI grid: 4 → 3 (`lg`) → 2 (`md`) → 1 (`sm/xs`).
+  - Main: 2 columnas → 1 (`md`).
+
+- Componentes
+  - Dropdown (react-select): control mínimo 44px en táctil; menú con sombra y hover/selected.
+  - DataTable: `overflow-x:auto` en `sm/xs`; cabecera sticky opcional; columnas de baja prioridad ocultables (futuro).
+  - Gráficos: `width:100%`, altura 280–360px; reducir leyenda y márgenes en `sm/xs`.
+
+- Accesibilidad
+  - Objetivo 44×44 px en controles táctiles; focus visible; contraste texto secundario.
+
+La implementación base de estos puntos está en `z-overrides.css` y se ampliará en la Fase 2 (drawer móvil) y posteriores.

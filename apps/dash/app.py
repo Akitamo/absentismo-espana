@@ -51,7 +51,7 @@ def _build_sidebar_links(current_path: str = "/"):
             dcc.Link([
                 html.Span(_icon_for(path), className="icon"),
                 html.Span(name, className="label"),
-            ], href=path, className=cls)
+            ], href=path, className=cls, title=name)
         )
     return links
 

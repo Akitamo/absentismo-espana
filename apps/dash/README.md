@@ -39,3 +39,10 @@ Alternativas
 
 ## Herramientas de diseño
 - Overlay en Dashboard: activar “Overlay diseño” para superponer el mockup y ajustar opacidad/zoom/offset.
+
+## Responsive
+- Baseline en `apps/dash/assets/z-overrides.css` (no tocar `theme.css`).
+- Breakpoints: `lg ≤1200`, `md ≤992`, `sm/xs ≤768`.
+- Sidebar: 240px desktop; 64px icon-only en ≤1200px (labels ocultas, tooltips). Drawer móvil (planificado).
+- Grids: Filtros 3→2→1; KPI 4→3→2→1; Main 2→1.
+- DataTable: scroll horizontal en `sm/xs`.
