@@ -5,6 +5,7 @@ from pathlib import Path
 
 from src.core.data_service import DataService
 from apps.dash.components.ui import card
+from apps.dash.plotly_theme import plotly_template
 
 register_page(__name__, path="/", name="Dashboard", title="Dashboard · Absentismo")
 
@@ -154,7 +155,7 @@ def update_dashboard(_pathname):
             fillcolor="rgba(27, 89, 248, 0.1)",
             name="Tasa de Absentismo"
         ))
-    fig.update_layout(margin=dict(l=0, r=0, t=10, b=0), height=350, showlegend=False)
+    fig.update_layout(template=plotly_template(), margin=dict(l=0, r=0, t=10, b=0), height=350, showlegend=False)
 
     # Ranking
     df_rank = ds.get_ranking_ccaa(cur_period)
