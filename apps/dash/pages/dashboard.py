@@ -13,12 +13,26 @@ ds = DataService()
 # Cargar imagen de referencia de diseño (baseline) como data URI (si existe)
 _root = Path(__file__).resolve().parents[3]
 
-def kpi_card(title: str, value: str, subtitle: str | None = None):
+def kpi_card(title: str, value: str, *, icon: str = "", trend: str | None = None):
     return html.Div([
-        html.Div(title, className="kpi-title"),
+        html.Div([
+            html.Span(icon, className="kpi-icon") if icon else None,
+            html.Div(title, className="kpi-title"),
+        ], className="kpi-head"),
         html.Div(value, className="kpi-value"),
-        html.Div(subtitle or "", className="kpi-subtitle"),
+        (html.Div(trend, className=f"kpi-trend {'up' if trend and trend.startswith('↑') else 'down' if trend and trend.startswith('↓') else ''}") if trend else None),
     ], className="kpi-card")
+
+
+def _prev_period(periodo: str) -> str:
+    try:
+        y = int(periodo[:4])
+        q = int(periodo[-1])
+        if q == 1:
+            return f"{y-1}T4"
+        return f"{y}T{q-1}"
+    except Exception:
+        return periodo
 
 
 def layout():
@@ -38,21 +52,7 @@ def layout():
         sectors = ["Todos"]
 
     return html.Div([
-        html.Div([
-            html.Div([
-                html.Label("Periodo"),
-                dcc.Dropdown(id="f-periodo", options=periods, value=periods[0] if periods else None, clearable=False),
-            ], className="filter"),
-            html.Div([
-                html.Label("Comunidad Autónoma"),
-                dcc.Dropdown(id="f-ccaa", options=ccaa_list, value=ccaa_list[0] if ccaa_list else None, clearable=False),
-            ], className="filter"),
-            html.Div([
-                html.Label("Sector"),
-                dcc.Dropdown(id="f-sector", options=sectors, value=sectors[0] if sectors else None, clearable=False),
-            ], className="filter"),
-        ], className="filters"),
-
+        # KPIs al inicio
         html.Div(id="kpis", className="kpis"),
 
         html.Div([
@@ -76,18 +76,48 @@ def layout():
     Output("evolucion", "figure"),
     Output("ranking-table", "data"),
     Output("ranking-table", "columns"),
-    Input("f-periodo", "value"),
-    Input("f-ccaa", "value"),
-    Input("f-sector", "value"),
+    Input("url", "pathname"),
 )
-def update_dashboard(periodo, ccaa, sector):
-    # KPIs
-    kpis = ds.get_kpis(periodo or "2024T4", ccaa or "Total Nacional", sector or "Todos")
+def update_dashboard(_pathname):
+    # KPIs (solo dos: Tasa Absentismo y Tasa IT) con comparación vs periodo anterior
+    try:
+        periods = ds.get_available_periods()
+    except Exception:
+        periods = ["2024T4", "2024T3"]
+    cur_period = (periods[0] if periods else "2024T4")
+    ccaa = "Total Nacional"
+    sector = "Todos"
+    k_cur = ds.get_kpis(cur_period, ccaa, sector)
+    prev = _prev_period(cur_period)
+    k_prev = ds.get_kpis(prev, ccaa, sector)
+
+    # Calcular deltas
+    def _trend(val_cur, val_prev, label):
+        try:
+            d = float(val_cur) - float(val_prev)
+            arrow = "↑" if d > 0.0001 else ("↓" if d < -0.0001 else "→")
+            return f"{arrow} {abs(d):.1f}% vs {prev}"
+        except Exception:
+            return None
+
+    t_abs = k_cur.get('tasa_absentismo', 0)
+    t_abs_prev = k_prev.get('tasa_absentismo', 0)
+    t_it = k_cur.get('tasa_it', 0)
+    t_it_prev = k_prev.get('tasa_it', 0)
+
     kpi_children = html.Div([
-        kpi_card("Tasa Absentismo", f"{kpis.get('tasa_absentismo', 0):.1f}%"),
-        kpi_card("Tasa IT", f"{kpis.get('tasa_it', 0):.1f}%"),
-        kpi_card("HPE", f"{kpis.get('hpe', 0):.1f}h"),
-        kpi_card("HNT Ocasionales", f"{kpis.get('hntmo', 0):.1f}h"),
+        kpi_card(
+            "Tasa Absentismo",
+            f"{t_abs:.1f}%",
+            icon="📊",
+            trend=_trend(t_abs, t_abs_prev, 'absentismo'),
+        ),
+        kpi_card(
+            "Tasa IT",
+            f"{t_it:.1f}%",
+            icon="🏥",
+            trend=_trend(t_it, t_it_prev, 'it'),
+        ),
     ], className="kpi-grid")
 
     # Evolución (plotly)
@@ -106,7 +136,7 @@ def update_dashboard(periodo, ccaa, sector):
     fig.update_layout(margin=dict(l=0, r=0, t=10, b=0), height=350, showlegend=False)
 
     # Ranking
-    df_rank = ds.get_ranking_ccaa(periodo or "2024T4")
+    df_rank = ds.get_ranking_ccaa(cur_period)
     data = df_rank.to_dict("records") if isinstance(df_rank, pd.DataFrame) else []
     columns = ([{"name": c, "id": c} for c in df_rank.columns]
                if isinstance(df_rank, pd.DataFrame) and len(df_rank.columns) > 0 else [])

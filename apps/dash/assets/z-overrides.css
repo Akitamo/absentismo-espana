@@ -4,6 +4,8 @@
   --radius-lg: 12px;
   --card-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
   --sidebar-w: 240px;
+  --color-success: #16a34a;
+  --color-danger: #e11d48;
 }
 
 /* Shell con sidebar fija */
@@ -39,6 +41,23 @@ header { max-width: 100% !important; margin: 0 !important; }
 
 /* KPI cards */
 .kpi-card { border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--card-shadow); }
+.kpi-card .kpi-head { display:flex; align-items:center; gap: 8px; margin-bottom: 6px; }
+.kpi-card .kpi-icon { width: 28px; height: 28px; border-radius: 8px; background: #eef3ff; color: var(--color-primary); display:inline-flex; align-items:center; justify-content:center; font-size: 14px; }
+.kpi-card .kpi-title { margin: 0; }
+.kpi-card .kpi-value { font-size: 24px; font-weight: 700; margin-top: 2px; }
+.kpi-card .kpi-trend { font-size: 12px; margin-top: 4px; color: var(--color-muted); }
+.kpi-card .kpi-trend.up { color: var(--color-success); }
+.kpi-card .kpi-trend.down { color: var(--color-danger); }
+
+/* Títulos unificados para cards y KPIs */
+.card-title, .kpi-card .kpi-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+/* Override columnas KPIs por defecto: 2 en desktop */
+.kpi-grid { grid-template-columns: repeat(2, 1fr); }
 
 /* Generic card */
 .card { background: var(--color-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--card-shadow); display:flex; flex-direction: column; overflow: hidden; }
@@ -84,14 +103,14 @@ header { max-width: 100% !important; margin: 0 !important; }
   .sidebar .brand-logo { width: 52px; margin: 8px auto; display: block; }
   .top-search { width: 380px; }
   .filters { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
-  .kpi-grid { grid-template-columns: repeat(3, minmax(160px, 1fr)); }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* md: <= 992px */
 @media (max-width: 992px) {
   .top-search { width: 320px; }
   .main { display: grid; grid-template-columns: 1fr; }
-  .kpi-grid { grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* sm/xs: <= 768px */
@@ -102,4 +121,5 @@ header { max-width: 100% !important; margin: 0 !important; }
   .kpi-grid { grid-template-columns: 1fr; }
   .dash-table-container { overflow-x: auto; }
   .filter [class*="Select__control"] { min-height: 44px; }
+  .kpi-card .kpi-value { font-size: 20px; }
 }
