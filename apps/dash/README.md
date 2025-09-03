@@ -31,11 +31,24 @@ Alternativas
 - `apps/dash/pages/`: páginas (Dashboard, Análisis, Comparativas, Exportar).
 - `apps/dash/assets/theme.css`: estilos generados desde tokens.
 - `apps/dash/assets/z-overrides.css`: overrides manuales.
+- `apps/dash/components/ui.py`: `card(...)` wrapper UI para contenedores homogéneos.
 - `src/core/data_service.py`: servicio de datos (DuckDB), agnóstico de frontend.
 
 ## Notas
 - Si no existe la DB, `DataService` usa valores de ejemplo/fallback.
 - Para parar un proceso lanzado con `start_dash.ps1`, usa `Stop-Process -Id <PID>`.
+
+## Uso de card(...)
+```python
+from apps.dash.components.ui import card
+
+card(
+  title="Mi bloque",
+  body=dcc.Graph(...),
+  footer=html.Small("Fuente: INE"),
+  variant="compact",
+)
+```
 
 ## Herramientas de diseño
 - Usa `design/Diseño dashboardFIN.jpg` como referencia visual. El overlay fue retirado tras la fase inicial de alineación.

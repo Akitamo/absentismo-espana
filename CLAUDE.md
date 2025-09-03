@@ -13,6 +13,10 @@ AbsentismoEspana: sistema modular para extraer, procesar y visualizar datos de a
 - `design/tokens.json`: fuente de verdad del diseño (tokens-first).
 - `src/core/data_service.py`: servicio de datos (DuckDB), agnóstico del frontend.
 
+### Componentes UI reutilizables
+- `apps/dash/components/ui.py` → `card(...)`: wrapper genérico para gráficas/tablas/bloques con header/body/footer y variantes (`card--compact`, `card--scroll`).
+  - Usar siempre para nuevos bloques visuales; evita divergencias de paddings, sombras y radios.
+
 ## Cómo ejecutar (resumen)
 - `pip install -r requirements/base.txt -r requirements/dash.txt`
 - Configurar `.env` con `APP_DB_PATH=data/analysis.db` (o ruta absoluta)
@@ -53,3 +57,8 @@ AbsentismoEspana: sistema modular para extraer, procesar y visualizar datos de a
   - KPIs: 4 → 3 (`lg`) → 2 (`md`) → 1 (`sm/xs`).
   - Main: 2 columnas desktop → 1 columna en `md`.
 - DataTable: `overflow-x:auto` en `sm/xs` (opcional: ocultar columnas de baja prioridad más adelante).
+
+## Estado actual (UI)
+- Sidebar y header implementados según template base.
+- Responsive baseline activo (media queries en `z-overrides.css`).
+- Card wrapper aplicado en Dashboard (Evolución, Ranking); extender a KPIs de forma progresiva.

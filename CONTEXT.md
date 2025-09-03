@@ -24,6 +24,9 @@
 - Arranque: `pip install -r requirements/base.txt -r requirements/dash.txt && python apps/dash/app.py`
 - Guía rápida: `apps/dash/README.md`
 
+### Componentes
+- Card wrapper (`apps/dash/components/ui.py`): contenedor unificado para bloques (gráficas, tablas, KPIs) con header/body/footer y variantes (`compact`, `scroll`). Evolución (Plotly) y Ranking CCAA (DataTable) lo usan.
+
 Estructura base de la página principal (dashboard):
 - Filtros: Periodo, CCAA, Sector (`dcc.Dropdown`).
 - KPIs: tarjetas con valores clave (clase `.kpi-card`).

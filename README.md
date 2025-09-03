@@ -231,3 +231,5 @@ Más detalles y tips operativos en `apps/dash/README.md`.
 Nota diseño:
 - `apps/dash/assets/theme.css` se regenera desde `design/tokens.json` con `python scripts/tokens_to_css.py`.
 - Estilos manuales y del shell (sidebar/header) en `apps/dash/assets/z-overrides.css`.
+
+

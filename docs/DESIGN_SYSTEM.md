@@ -158,3 +158,13 @@ Breakpoints de referencia: `lg ≤1200`, `md ≤992`, `sm/xs ≤768` (aprox.).
   - Objetivo 44×44 px en controles táctiles; focus visible; contraste texto secundario.
 
 La implementación base de estos puntos está en `z-overrides.css` y se ampliará en la Fase 2 (drawer móvil) y posteriores.
+
+---
+
+## Componentes (UI)
+
+### Card Wrapper
+- Ubicación: `apps/dash/components/ui.py` → `card(...)`.
+- Estructura: `.card` con `.card-header` (título/acciones), `.card-body` y `.card-footer`.
+- Variantes: `.card--compact` (densidad menor), `.card--scroll` (contenidos con overflow).
+- Uso: envolver gráficas, tablas y bloques complejos para asegurar paddings, radios y sombras homogéneos.
