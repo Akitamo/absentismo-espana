@@ -7,7 +7,7 @@ import base64
 from src.core.data_service import DataService
 from apps.dash.components.ui import card
 
-register_page(__name__, path="/")
+register_page(__name__, path="/", name="Dashboard", title="Dashboard · Absentismo")
 
 ds = DataService()
 
