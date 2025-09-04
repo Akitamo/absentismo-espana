@@ -93,3 +93,4 @@ def update_dashboard(periodo, ccaa, sector):
 - Reutilizar `card(...)` y `plotly_template()` en nuevas vistas.
 
 
+

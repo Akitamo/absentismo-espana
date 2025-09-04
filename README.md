@@ -235,3 +235,21 @@ Nota diseño:
 - Tema Plotly centralizado: `apps/dash/plotly_theme.py`.
 
 
+## ETL (carga completa recomendada)
+
+```bash
+# Limpia y recarga todas las tablas (6042–6046 y 6063) desde data/raw/csv
+python agent_processor/scripts/load_all_tables.py --yes
+
+# Modo test (últimos 4 trimestres): ejecuta sin --yes y elige la opción 2
+python agent_processor/scripts/load_all_tables.py
+```
+
+Notas de cálculo (Dash):
+- KPI global (Total Nacional) se calcula desde la tabla 6044 (sin jornada):
+  - HPE = HP + HEXT − (Vacaciones + Festivos) − ERTE
+  - HNTmo = IT + maternidad/paternidad + permisos + compensación extras + otras rem. + pérdidas lugar trabajo + conflictividad + otras no rem.
+  - Tasa Absentismo = 100 × (HNTmo / HPE); Tasa IT = 100 × (IT / HPE)
+- Series de evolución y sparklines: basadas en 6044 (con fallback a 6042 TOTAL si 6044 no está cargada).
+
+

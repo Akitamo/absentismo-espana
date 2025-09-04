@@ -6,13 +6,16 @@ from pathlib import Path
 from src.core.data_service import DataService
 from apps.dash.components.ui import card
 from apps.dash.plotly_theme import plotly_template
+from apps.dash.components.kpi import build_absentismo_kpi
 
-register_page(__name__, path="/", name="Dashboard", title="Dashboard · Absentismo")
+
+register_page(__name__, path="/", name="Dashboard", title="Dashboard - Absentismo")
 
 ds = DataService()
 
-# Cargar imagen de referencia de diseño (baseline) como data URI (si existe)
+# Cargar imagen de referencia de diseno (baseline) como data URI (si existe)
 _root = Path(__file__).resolve().parents[3]
+
 
 def kpi_card(title: str, value: str, *, icon: str = "", trend: str | None = None):
     return html.Div([
@@ -21,7 +24,7 @@ def kpi_card(title: str, value: str, *, icon: str = "", trend: str | None = None
             html.Div(title, className="kpi-title"),
         ], className="kpi-head"),
         html.Div(value, className="kpi-value"),
-        (html.Div(trend, className=f"kpi-trend {'up' if trend and trend.startswith('↑') else 'down' if trend and trend.startswith('↓') else ''}") if trend else None),
+        (html.Div(trend, className="kpi-trend") if trend else None),
     ], className="kpi-card")
 
 
@@ -58,7 +61,7 @@ def layout():
 
         html.Div([
             card(
-                title="Evolución",
+                title="Evolucion",
                 body=dcc.Graph(id="evolucion"),
                 className="card-evolucion",
                 loading=True,
@@ -101,7 +104,7 @@ def layout():
     Input("url", "pathname"),
 )
 def update_dashboard(_pathname):
-    # KPIs (solo dos: Tasa Absentismo y Tasa IT) con comparación vs periodo anterior
+    # Dashboard sin filtros: Total Nacional
     try:
         periods = ds.get_available_periods()
     except Exception:
@@ -113,47 +116,41 @@ def update_dashboard(_pathname):
     prev = _prev_period(cur_period)
     k_prev = ds.get_kpis(prev, ccaa, sector)
 
-    # Calcular deltas
-    def _trend(val_cur, val_prev, label):
-        try:
-            d = float(val_cur) - float(val_prev)
-            arrow = "↑" if d > 0.0001 else ("↓" if d < -0.0001 else "→")
-            return f"{arrow} {abs(d):.1f}% vs {prev}"
-        except Exception:
-            return None
-
-    t_abs = k_cur.get('tasa_absentismo', 0)
-    t_abs_prev = k_prev.get('tasa_absentismo', 0)
-    t_it = k_cur.get('tasa_it', 0)
-    t_it_prev = k_prev.get('tasa_it', 0)
-
+    # Serie para sparkline y KPI Indicator
+    df_evo = ds.get_evolution_data(ccaa or "Total Nacional", sector or "Todos")
+    df_it = ds.get_evolution_it_data(ccaa or "Total Nacional", sector or "Todos")
+    t_abs = k_cur.get("tasa_absentismo", 0.0)
+    t_abs_prev = k_prev.get("tasa_absentismo", t_abs)
+    t_it = k_cur.get("tasa_it", 0.0)
+    t_it_prev = k_prev.get("tasa_it", t_it)
+    prev_label = prev or "trimestre anterior"
     kpi_children = html.Div([
-        kpi_card(
-            "Tasa Absentismo",
-            f"{t_abs:.1f}%",
-            icon="📊",
-            trend=_trend(t_abs, t_abs_prev, 'absentismo'),
+        card(
+            title="Tasa de absentismo (Total)",
+            body=build_absentismo_kpi(t_abs, t_abs_prev, df_evo, prev_label=prev_label),
+            variant="kpi",
+            className="card-kpi",
         ),
-        kpi_card(
-            "Tasa IT",
-            f"{t_it:.1f}%",
-            icon="🏥",
-            trend=_trend(t_it, t_it_prev, 'it'),
+        card(
+            title="Tasa IT (Total)",
+            body=build_absentismo_kpi(t_it, t_it_prev, df_it, prev_label=prev_label, value_col="tasa_it"),
+            variant="kpi",
+            className="card-kpi",
         ),
     ], className="kpi-grid")
 
-    # Evolución (plotly)
-    df_evo = ds.get_evolution_data(ccaa or "Total Nacional", sector or "Todos")
+    # Evolucion (plotly): mostrar últimos 36 periodos para legibilidad
     fig = go.Figure()
-    if not df_evo.empty:
+    if isinstance(df_evo, pd.DataFrame) and not df_evo.empty:
+        df_evo_plot = df_evo.tail(36)
         fig.add_trace(go.Scatter(
-            x=df_evo["periodo"],
-            y=df_evo["tasa_absentismo"],
+            x=df_evo_plot["periodo"],
+            y=df_evo_plot["tasa_absentismo"],
             mode="lines",
             line=dict(color="#1B59F8", width=2),
             fill="tozeroy",
             fillcolor="rgba(27, 89, 248, 0.1)",
-            name="Tasa de Absentismo"
+            name="Tasa de Absentismo",
         ))
     fig.update_layout(template=plotly_template(), margin=dict(l=0, r=0, t=10, b=0), height=350, showlegend=False)
 

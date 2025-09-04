@@ -87,42 +87,62 @@ class DataService:
             log.warning("Fallo get_sectors_list: %s", e)
             return []
 
+    def _kpis_query(self, where_clause: str) -> str:
+        return f"""
+        WITH metricas AS (
+            SELECT 
+                SUM(CASE WHEN metrica = 'horas_pactadas' THEN valor ELSE 0 END) as hp,
+                SUM(CASE WHEN metrica = 'horas_extraordinarias' THEN valor ELSE 0 END) as hext,
+                COALESCE(
+                    SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones_y_fiestas' THEN valor END),
+                    SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones' THEN valor END) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'festivos' THEN valor END), 0)
+                ) as vac_fest,
+                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'razones_tecnicas_economicas' THEN valor ELSE 0 END) as ertes,
+                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'it_total' THEN valor ELSE 0 END) as it,
+                (
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'it_total' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'maternidad_paternidad' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'permisos_retribuidos' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'compensacion_extras' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'otras_remuneradas' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'perdidas_lugar_trabajo' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'conflictividad' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'otras_no_remuneradas' THEN valor END), 0)
+                ) as hntmo_total
+            FROM observaciones_tiempo_trabajo
+            WHERE {where_clause}
+        )
+        SELECT 
+            hp, hext, vac_fest, ertes, it, hntmo_total,
+            (hp + hext - vac_fest - ertes) as hpe,
+            CASE WHEN (hp + hext - vac_fest - ertes) > 0
+                 THEN (hntmo_total / (hp + hext - vac_fest - ertes)) * 100 ELSE 0 END as tasa_absentismo,
+            CASE WHEN (hp + hext - vac_fest - ertes) > 0
+                 THEN (it / (hp + hext - vac_fest - ertes)) * 100 ELSE 0 END as tasa_it
+        FROM metricas
+        """
+
     def get_kpis(self, periodo: str, ccaa: str = "Total Nacional", sector: str = "Todos") -> Dict:
         filters = [f"periodo = '{periodo}'"]
         if ccaa == "Total Nacional":
-            filters += ["ambito_territorial = 'NAC'", "cnae_nivel = 'TOTAL'", "fuente_tabla = '6042'"]
+            filters += [
+                "ambito_territorial = 'NAC'",
+                "cnae_nivel = 'TOTAL'",
+                "(tipo_jornada IS NULL)",
+                "fuente_tabla = '6044'",
+            ]
         else:
             filters.append(f"ccaa_nombre = '{ccaa}'")
         if sector != "Todos":
             filters.append(f"cnae_nombre = '{sector}'")
         where_clause = " AND ".join(filters)
-
-        q = f"""
-        WITH metricas AS (
-            SELECT 
-                SUM(CASE WHEN metrica = 'horas_pactadas' THEN valor ELSE 0 END) as hp,
-                SUM(CASE WHEN metrica = 'horas_extraordinarias' THEN valor ELSE 0 END) as hext,
-                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones' THEN valor ELSE 0 END) as vacaciones,
-                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'festivos' THEN valor ELSE 0 END) as festivos,
-                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'razones_tecnicas_economicas' THEN valor ELSE 0 END) as ertes,
-                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'it_total' THEN valor ELSE 0 END) as it,
-                SUM(CASE WHEN metrica = 'horas_no_trabajadas' 
-                         AND causa NOT IN ('vacaciones', 'festivos', 'razones_tecnicas_economicas')
-                         AND causa IS NOT NULL THEN valor ELSE 0 END) as hntmo_total
-            FROM observaciones_tiempo_trabajo
-            WHERE {where_clause}
-        )
-        SELECT 
-            hp, hext, vacaciones, festivos, ertes, it, hntmo_total,
-            (hp + hext - vacaciones - festivos - ertes) as hpe,
-            CASE WHEN (hp + hext - vacaciones - festivos - ertes) > 0
-                 THEN (hntmo_total / (hp + hext - vacaciones - festivos - ertes)) * 100 ELSE 0 END as tasa_absentismo,
-            CASE WHEN (hp + hext - vacaciones - festivos - ertes) > 0
-                 THEN (it / (hp + hext - vacaciones - festivos - ertes)) * 100 ELSE 0 END as tasa_it
-        FROM metricas
-        """
         try:
-            df = self.conn.execute(q).df()
+            df = self.conn.execute(self._kpis_query(where_clause)).df()
+            if df.empty and ccaa == "Total Nacional":
+                where_fb = where_clause.replace("fuente_tabla = '6044'", "fuente_tabla = '6042'")
+                where_fb = where_fb.replace("(tipo_jornada IS NULL)", "(tipo_jornada = 'TOTAL')")
+                df = self.conn.execute(self._kpis_query(where_fb)).df()
             if df.empty:
                 return self._defaults()
             r = df.iloc[0]
@@ -142,7 +162,12 @@ class DataService:
     def get_evolution_data(self, ccaa: str = "Total Nacional", sector: str = "Todos") -> pd.DataFrame:
         filters = []
         if ccaa == "Total Nacional":
-            filters += ["ambito_territorial = 'NAC'", "cnae_nivel = 'TOTAL'", "fuente_tabla = '6042'"]
+            filters += [
+                "ambito_territorial = 'NAC'",
+                "cnae_nivel = 'TOTAL'",
+                "fuente_tabla = '6044'",
+                "(tipo_jornada IS NULL)",
+            ]
         else:
             filters.append(f"ccaa_nombre = '{ccaa}'")
         if sector != "Todos":
@@ -154,27 +179,41 @@ class DataService:
             SELECT periodo,
                 SUM(CASE WHEN metrica = 'horas_pactadas' THEN valor ELSE 0 END) as hp,
                 SUM(CASE WHEN metrica = 'horas_extraordinarias' THEN valor ELSE 0 END) as hext,
-                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones' THEN valor ELSE 0 END) as vacaciones,
-                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'festivos' THEN valor ELSE 0 END) as festivos,
+                COALESCE(
+                    SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones_y_fiestas' THEN valor END),
+                    SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones' THEN valor END) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'festivos' THEN valor END), 0)
+                ) as vac_fest,
                 SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'razones_tecnicas_economicas' THEN valor ELSE 0 END) as ertes,
-                SUM(CASE WHEN metrica = 'horas_no_trabajadas' 
-                         AND causa NOT IN ('vacaciones', 'festivos', 'razones_tecnicas_economicas')
-                         AND causa IS NOT NULL THEN valor ELSE 0 END) as hntmo
+                (
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'it_total' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'maternidad_paternidad' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'permisos_retribuidos' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'compensacion_extras' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'otras_remuneradas' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'perdidas_lugar_trabajo' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'conflictividad' THEN valor END), 0) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'otras_no_remuneradas' THEN valor END), 0)
+                ) as hntmo
             FROM observaciones_tiempo_trabajo
             WHERE {where_clause}
             GROUP BY periodo
         )
         SELECT periodo,
-               (hp + hext - vacaciones - festivos - ertes) as hpe,
+               (hp + hext - vac_fest - ertes) as hpe,
                hntmo,
-               CASE WHEN (hp + hext - vacaciones - festivos - ertes) > 0
-                    THEN (hntmo / (hp + hext - vacaciones - festivos - ertes)) * 100 ELSE 0 END as tasa_absentismo
+               CASE WHEN (hp + hext - vac_fest - ertes) > 0
+                    THEN (hntmo / (hp + hext - vac_fest - ertes)) * 100 ELSE 0 END as tasa_absentismo
         FROM metricas_periodo
-        ORDER BY periodo DESC
-        LIMIT 12
+        ORDER BY periodo ASC
         """
         try:
-            return self.conn.execute(q).df()
+            df = self.conn.execute(q).df()
+            if df.empty and ccaa == "Total Nacional":
+                q_fb = q.replace("fuente_tabla = '6044'", "fuente_tabla = '6042'")
+                q_fb = q_fb.replace("(tipo_jornada IS NULL)", "(tipo_jornada = 'TOTAL')")
+                df = self.conn.execute(q_fb).df()
+            return df
         except Exception as e:
             log.warning("Fallo get_evolution_data: %s", e)
             return pd.DataFrame()
@@ -185,8 +224,11 @@ class DataService:
             SELECT ccaa_nombre,
                 SUM(CASE WHEN metrica = 'horas_pactadas' THEN valor ELSE 0 END) as hp,
                 SUM(CASE WHEN metrica = 'horas_extraordinarias' THEN valor ELSE 0 END) as hext,
-                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones' THEN valor ELSE 0 END) as vacaciones,
-                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'festivos' THEN valor ELSE 0 END) as festivos,
+                COALESCE(
+                    SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones_y_fiestas' THEN valor END),
+                    SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones' THEN valor END) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'festivos' THEN valor END), 0)
+                ) as vac_fest,
                 SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'razones_tecnicas_economicas' THEN valor ELSE 0 END) as ertes,
                 SUM(CASE WHEN metrica = 'horas_no_trabajadas' 
                          AND causa NOT IN ('vacaciones', 'festivos', 'razones_tecnicas_economicas')
@@ -194,12 +236,14 @@ class DataService:
             FROM observaciones_tiempo_trabajo
             WHERE periodo = '{periodo}'
               AND ambito_territorial = 'CCAA'
+              AND (tipo_jornada = 'TOTAL' OR tipo_jornada = 'AMBAS' OR tipo_jornada IS NULL)
+              AND fuente_tabla = '6063'
               AND ccaa_nombre IS NOT NULL
             GROUP BY ccaa_nombre
         )
         SELECT ccaa_nombre as CCAA,
-               ROUND(CASE WHEN (hp + hext - vacaciones - festivos - ertes) > 0
-                          THEN (hntmo / (hp + hext - vacaciones - festivos - ertes)) * 100 ELSE 0 END, 1) as Tasa_Absentismo
+               ROUND(CASE WHEN (hp + hext - vac_fest - ertes) > 0
+                          THEN (hntmo / (hp + hext - vac_fest - ertes)) * 100 ELSE 0 END, 1) as Tasa_Absentismo
         FROM metricas_ccaa
         WHERE ccaa_nombre IS NOT NULL
         ORDER BY Tasa_Absentismo DESC
@@ -210,3 +254,51 @@ class DataService:
             log.warning("Fallo get_ranking_ccaa: %s", e)
             return pd.DataFrame()
 
+    def get_evolution_it_data(self, ccaa: str = "Total Nacional", sector: str = "Todos") -> pd.DataFrame:
+        filters = []
+        if ccaa == "Total Nacional":
+            filters += [
+                "ambito_territorial = 'NAC'",
+                "cnae_nivel = 'TOTAL'",
+                "fuente_tabla = '6044'",
+                "(tipo_jornada IS NULL)",
+            ]
+        else:
+            filters.append(f"ccaa_nombre = '{ccaa}'")
+        if sector != "Todos":
+            filters.append(f"cnae_nombre = '{sector}'")
+        where_clause = " AND ".join(filters) if filters else "1=1"
+
+        q = f"""
+        WITH metricas_periodo AS (
+            SELECT periodo,
+                SUM(CASE WHEN metrica = 'horas_pactadas' THEN valor ELSE 0 END) as hp,
+                SUM(CASE WHEN metrica = 'horas_extraordinarias' THEN valor ELSE 0 END) as hext,
+                COALESCE(
+                    SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones_y_fiestas' THEN valor END),
+                    SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones' THEN valor END) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'festivos' THEN valor END), 0)
+                ) as vac_fest,
+                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'razones_tecnicas_economicas' THEN valor ELSE 0 END) as ertes,
+                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'it_total' THEN valor ELSE 0 END) as it
+            FROM observaciones_tiempo_trabajo
+            WHERE {where_clause}
+            GROUP BY periodo
+        )
+        SELECT periodo,
+               (hp + hext - vac_fest - ertes) as hpe,
+               CASE WHEN (hp + hext - vac_fest - ertes) > 0
+                    THEN (it / (hp + hext - vac_fest - ertes)) * 100 ELSE 0 END as tasa_it
+        FROM metricas_periodo
+        ORDER BY periodo ASC
+        """
+        try:
+            df = self.conn.execute(q).df()
+            if df.empty and ccaa == "Total Nacional":
+                q_fb = q.replace("fuente_tabla = '6044'", "fuente_tabla = '6042'")
+                q_fb = q_fb.replace("(tipo_jornada IS NULL)", "(tipo_jornada = 'TOTAL')")
+                df = self.conn.execute(q_fb).df()
+            return df
+        except Exception as e:
+            log.warning("Fallo get_evolution_it_data: %s", e)
+            return pd.DataFrame()

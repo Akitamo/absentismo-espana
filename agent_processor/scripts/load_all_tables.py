@@ -19,6 +19,8 @@ logger = logging.getLogger(__name__)
 
 # Añadir el directorio al path
 sys.path.append(str(Path(__file__).parent))
+# Añadir también la raíz del repo para importar correctamente el paquete
+sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 from agent_processor.etl.extractor import Extractor
 from agent_processor.etl.transformer import Transformer
@@ -48,13 +50,13 @@ def load_all_tables(test_mode=False):
     }
     
     try:
-        # Configuración
-        base_dir = Path(__file__).parent
-        raw_dir = base_dir / "data" / "raw" / "csv"
-        db_path = base_dir / "data" / "analysis.db"
+        # Configuración: usar rutas desde la raíz del repo (CSV locales existentes)
+        repo_root = Path(__file__).resolve().parents[2]
+        raw_dir = repo_root / "data" / "raw" / "csv"
+        db_path = repo_root / "data" / "analysis.db"
         
         # Cargar configuración
-        config_path = base_dir / "agent_processor" / "config" / "mappings.json"
+        config_path = repo_root / "agent_processor" / "config" / "mappings.json"
         with open(config_path, 'r', encoding='utf-8') as f:
             config = {'mappings': json.load(f)}
         
@@ -70,12 +72,16 @@ def load_all_tables(test_mode=False):
         print("Preparando base de datos...")
         loader.create_schema()
         
-        # Preguntar si limpiar datos existentes
+        # Limpiar datos existentes (soporta --yes para auto-confirmar)
         if not test_mode:
-            respuesta = input("\n¿Desea limpiar los datos existentes antes de cargar? (s/n): ")
-            if respuesta.lower() == 's':
+            if any(arg in ("--yes", "-y") for arg in sys.argv[1:]):
                 loader.conn.execute(f"DELETE FROM {loader.table_name}")
-                print("Tabla limpiada.")
+                print("Tabla limpiada (auto).")
+            else:
+                respuesta = input("\n¿Desea limpiar los datos existentes antes de cargar? (s/n): ")
+                if respuesta.lower() == 's':
+                    loader.conn.execute(f"DELETE FROM {loader.table_name}")
+                    print("Tabla limpiada.")
         
         print("\nIniciando carga de tablas...")
         print("-" * 40)
@@ -276,19 +282,26 @@ def load_all_tables(test_mode=False):
         return False
 
 if __name__ == "__main__":
-    # Preguntar modo de ejecución
-    print("\nOpciones de carga:")
-    print("1. Carga completa (todos los datos)")
-    print("2. Modo test (solo últimos 4 trimestres)")
-    
-    opcion = input("\nSeleccione opción (1 o 2): ")
-    
-    test_mode = (opcion == '2')
-    
-    if test_mode:
-        print("\nModo test activado - se cargarán solo los últimos 4 trimestres")
+    # Modo no interactivo si se pasa --yes/-y
+    if any(arg in ("--yes", "-y") for arg in sys.argv[1:]):
+        test_mode = False
+        print("\nModo completo (auto) - se cargarán todos los datos históricos")
     else:
-        print("\nModo completo - se cargarán todos los datos históricos")
+        # Preguntar modo de ejecución
+        print("\nOpciones de carga:")
+        print("1. Carga completa (todos los datos)")
+        print("2. Modo test (solo últimos 4 trimestres)")
+        
+        opcion = input("\nSeleccione opción (1 o 2): ")
+        
+        test_mode = (opcion == '2')
+        
+        if test_mode:
+            print("\nModo test activado - se cargarán solo los últimos 4 trimestres")
+        else:
+            print("\nModo completo - se cargarán todos los datos históricos")
     
     success = load_all_tables(test_mode=test_mode)
     sys.exit(0 if success else 1)
+
+

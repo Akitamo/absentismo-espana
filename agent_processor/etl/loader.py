@@ -91,6 +91,9 @@ class Loader:
                 rol_grano VARCHAR(30) NOT NULL,
                 version_datos VARCHAR(10),
                 fecha_carga TIMESTAMP,
+                -- Cigos/nombres estndares de mtricas (al final para mantener orden historico)
+                metrica_codigo VARCHAR(10),
+                metrica_ine VARCHAR(150),
                 
                 -- Constraints
                 CHECK (ambito_territorial IN ('NAC', 'CCAA')),
@@ -145,10 +148,14 @@ class Loader:
             if not self.conn:
                 self.connect()
             
-            # Crear schema si no existe
+            # Asegurar schema; si replace, recrear tabla para reflejar cambios de esquema
+            if replace:
+                self.conn.execute(f"DROP TABLE IF EXISTS {self.table_name}")
+                logger.info(f"Tabla {self.table_name} eliminada para recreacin")
+            # Crear schema si no existe (o tras drop)
             self.create_schema()
             
-            # Si replace, limpiar tabla primero
+            # Si replace sin drop anterior (no debera ocurrir), limpiar tabla
             if replace:
                 self.conn.execute(f"DELETE FROM {self.table_name}")
                 logger.info(f"Tabla {self.table_name} limpiada para carga completa")
@@ -163,10 +170,14 @@ class Loader:
                 'metrica', 'causa', 'valor', 'unidad',
                 'fuente_tabla',
                 'es_total_ccaa', 'es_total_cnae', 'es_total_jornada',
-                'rol_grano', 'version_datos', 'fecha_carga'
+                'rol_grano', 'version_datos', 'fecha_carga',
+                'metrica_codigo', 'metrica_ine'
             ]
             
-            # Reordenar columnas del DataFrame
+            # Asegurar columnas requeridas y reordenar
+            for col in column_order:
+                if col not in df.columns:
+                    df[col] = None
             df_ordered = df[column_order]
             
             # Insertar datos
