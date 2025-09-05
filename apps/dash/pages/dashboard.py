@@ -38,6 +38,13 @@ def _prev_period(periodo: str) -> str:
     except Exception:
         return periodo
 
+def _prev_year_period(periodo: str) -> str:
+    try:
+        y = int(periodo[:4]); q = int(periodo[-1])
+        return f"{y-1}T{q}"
+    except Exception:
+        return periodo
+
 
 def layout():
     try:
@@ -133,6 +140,8 @@ def update_dashboard(_pathname):
     k_cur = ds.get_kpis(cur_period, ccaa, sector)
     prev = _prev_period(cur_period)
     k_prev = ds.get_kpis(prev, ccaa, sector)
+    prev_y = _prev_year_period(cur_period)
+    k_prev_y = ds.get_kpis(prev_y, ccaa, sector)
 
     # Serie para sparkline y KPI Indicator
     df_evo = ds.get_evolution_data(ccaa or "Total Nacional", sector or "Todos")
@@ -146,14 +155,14 @@ def update_dashboard(_pathname):
         card(
             title="Tasa de absentismo (Total)",
             icon_src="/assets/icons/absentismo.svg",
-            body=build_absentismo_kpi(t_abs, t_abs_prev, df_evo, prev_label=prev_label),
+            body=build_absentismo_kpi(t_abs, t_abs_prev, df_evo, prev_label=prev_label, previous_yoy=k_prev_y.get("tasa_absentismo", t_abs), yoy_label=_prev_year_period(cur_period)),
             variant="kpi",
             className="card-kpi",
         ),
         card(
             title="Tasa IT (Total)",
             icon_src="/assets/icons/it.svg",
-            body=build_absentismo_kpi(t_it, t_it_prev, df_it, prev_label=prev_label, value_col="tasa_it"),
+            body=build_absentismo_kpi(t_it, t_it_prev, df_it, prev_label=prev_label, value_col="tasa_it", previous_yoy=k_prev_y.get("tasa_it", t_it), yoy_label=_prev_year_period(cur_period)),
             variant="kpi",
             className="card-kpi",
         ),

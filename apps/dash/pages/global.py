@@ -41,9 +41,11 @@ def update_global(_):
     periods = ds.get_available_periods()
     cur_period = (periods[0] if periods else "2024T4")
     prev = _prev_period(cur_period)
-
+    
     k_cur = ds.get_kpis(cur_period, "Total Nacional", "Todos")
     k_prev = ds.get_kpis(prev, "Total Nacional", "Todos")
+    prev_y = _prev_year_period(cur_period)
+    k_prev_y = ds.get_kpis(prev_y, "Total Nacional", "Todos")
 
     df_evo = ds.get_evolution_data("Total Nacional", "Todos")
     df_it = ds.get_evolution_it_data("Total Nacional", "Todos")
@@ -56,9 +58,9 @@ def update_global(_):
     prev_label = prev or "trimestre anterior"
     kpi_children = html.Div([
         card(title="Tasa de absentismo (Total)", icon_src="/assets/icons/absentismo.svg",
-             body=build_absentismo_kpi(t_abs, t_abs_prev, df_evo, prev_label=prev_label), variant="kpi", className="card-kpi"),
+             body=build_absentismo_kpi(t_abs, t_abs_prev, df_evo, prev_label=prev_label, previous_yoy=k_prev_y.get("tasa_absentismo", t_abs), yoy_label=prev_y), variant="kpi", className="card-kpi"),
         card(title="Tasa IT (Total)", icon_src="/assets/icons/it.svg",
-             body=build_absentismo_kpi(t_it, t_it_prev, df_it, prev_label=prev_label, value_col="tasa_it"), variant="kpi", className="card-kpi"),
+             body=build_absentismo_kpi(t_it, t_it_prev, df_it, prev_label=prev_label, value_col="tasa_it", previous_yoy=k_prev_y.get("tasa_it", t_it), yoy_label=prev_y), variant="kpi", className="card-kpi"),
     ], className="kpi-grid")
 
     fig = go.Figure()
@@ -84,3 +86,9 @@ def _prev_period(periodo: str) -> str:
     except Exception:
         return periodo
 
+def _prev_year_period(periodo: str) -> str:
+    try:
+        y = int(periodo[:4]); q = int(periodo[-1])
+        return f"{y-1}T{q}"
+    except Exception:
+        return periodo

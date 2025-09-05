@@ -5,7 +5,7 @@ from typing import Optional
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from dash import dcc
+from dash import dcc, html
 
 from apps.dash.plotly_theme import plotly_template
 
@@ -17,6 +17,8 @@ def build_absentismo_kpi(
     *,
     prev_label: Optional[str] = None,
     value_col: str = "tasa_absentismo",
+    previous_yoy: Optional[float] = None,
+    yoy_label: Optional[str] = None,
 ):
     """
     Crea una figura KPI con Indicator (number+delta) y un sparkline inferior.
@@ -99,16 +101,9 @@ def build_absentismo_kpi(
 
     # Annotation to indicate comparison reference
     if prev_label:
-        fig.add_annotation(
-            xref="paper",
-            yref="paper",
-            x=0.01,
-            y=0.52,
-            text=f"Comparacion vs {prev_label}",
-            showarrow=False,
-            font=dict(size=11, color="#6b7280"),
-            align="left",
-        )
+        fig.add_annotation(xref="paper", yref="paper", x=0.01, y=0.52,
+                           text=f"Comparación vs {prev_label}", showarrow=False,
+                           font=dict(size=11, color="#6b7280"), align="left")
 
     fig.update_layout(
         template=plotly_template(),
@@ -117,4 +112,31 @@ def build_absentismo_kpi(
         showlegend=False,
     )
 
-    return dcc.Graph(figure=fig, config={"displayModeBar": False})
+    # Badges de variación QoQ y YoY
+    def _rel(cur: float, ref: Optional[float]) -> Optional[float]:
+        try:
+            if ref is None or ref == 0:
+                return None
+            return (float(cur) - float(ref)) / abs(float(ref))
+        except Exception:
+            return None
+
+    qoq_rel = _rel(current, previous)
+    yoy_rel = _rel(current, previous_yoy)
+
+    def _badge(label: str, rel: Optional[float]):
+        if rel is None:
+            return html.Span(f"N/A {label}", className="delta-badge")
+        cls = "delta-badge up" if rel > 0 else ("delta-badge down" if rel < 0 else "delta-badge")
+        sign = "+" if rel > 0 else ("" if rel == 0 else "")
+        return html.Span(f"{sign}{rel*100:.2f}% {label}", className=cls)
+
+    badges = html.Div([
+        _badge(f"vs {prev_label}" if prev_label else "vs trim. ant.", qoq_rel),
+        _badge(f"vs {yoy_label}" if yoy_label else "vs año ant.", yoy_rel),
+    ], className="delta-badges")
+
+    return html.Div([
+        dcc.Graph(figure=fig, config={"displayModeBar": False}),
+        badges
+    ])

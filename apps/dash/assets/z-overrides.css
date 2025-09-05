@@ -52,7 +52,14 @@ header { max-width: 100% !important; margin: 0 !important; }
 .kpi-card .kpi-value { font-size: 24px; font-weight: 700; margin-top: 2px; }
 .kpi-card .kpi-trend { font-size: 12px; margin-top: 4px; color: var(--color-muted); }
 .kpi-card .kpi-trend.up { color: var(--color-success); }
-.kpi-card .kpi-trend.down {
+.kpi-card .kpi-trend.down { color: var(--color-danger); }
+
+/* Badges de variación en KPI */
+.delta-badges { display:flex; gap:8px; margin-top: 6px; font-size: 12px; }
+.delta-badge { padding: 2px 6px; border-radius: 999px; background: #f3f4f6; color: var(--color-text); border: 1px solid var(--border-color); }
+.delta-badge.up { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+.delta-badge.down { background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
+
 /* Títulos unificados para cards y KPIs */
 .card-title, .kpi-card .kpi-title {
   font-weight: 700;
@@ -195,3 +202,4 @@ header { max-width: 100% !important; margin: 0 !important; }
 /* Card shell KPIs (borde marcado, fondo transparente) */
 .card-kpi-shell { background: transparent; border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: none; }
 .card-kpi-shell .card-body { padding: 12px; }
+
