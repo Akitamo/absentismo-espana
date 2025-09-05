@@ -25,6 +25,8 @@
 
 .content { margin-left: var(--sidebar-w); }
 .header, .content-main { max-width: var(--content-width); margin: 0 auto; }
+/* Ampliar ancho útil del contenido (reducir márgenes laterales) */
+.content-main { max-width: 100% !important; margin: 0 !important; }
 .header { position: fixed; top: 0; left: var(--sidebar-w); right: 0; z-index: 1000; background: var(--color-surface); border-bottom: 1px solid var(--border-color); padding: 8px 0; }
 /* Anular restricción global header, main { max-width } del theme base */
 header { max-width: 100% !important; margin: 0 !important; }
@@ -178,7 +180,7 @@ header { max-width: 100% !important; margin: 0 !important; }
 
 
 /* Layout fluido por secciones */
-.section { display: grid; grid-template-columns: 1fr clamp(260px, 24vw, 340px); gap: 16px; align-items: start; margin-bottom: 16px; }
+.section { display: grid; grid-template-columns: 1fr clamp(240px, 22vw, 320px); gap: 16px; align-items: start; margin-bottom: 16px; }
 .left-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--card-min, 280px), 1fr)); gap: 16px; align-items: start; }
 .insight-panel { background: var(--color-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--card-shadow); padding: 16px; color: var(--color-text); }
 .insight-panel h4 { margin: 0 0 8px 0; font-size: 16px; font-weight: 700; }
