@@ -53,7 +53,7 @@ def build_absentismo_kpi(
     )
 
     if isinstance(series, pd.DataFrame) and not series.empty:
-        # Asegurar orden cronológico ascendente y limitar a últimos 12 periodos
+        # Asegurar orden cronológico ascendente y limitar a últimos 24 periodos
         s = series.copy()
         if "periodo" in s.columns:
             # Ya viene en ASC desde DataService, pero normalizamos por si acaso
@@ -61,7 +61,7 @@ def build_absentismo_kpi(
                 s = s.sort_values("periodo")
             except Exception:
                 pass
-        s = s.tail(12)
+        s = s.tail(24)
 
         x = s["periodo"].tolist() if "periodo" in s.columns else list(range(len(s)))
         # Elegir columna para el sparkline (absentismo por defecto; IT si se indica)
@@ -85,7 +85,17 @@ def build_absentismo_kpi(
             col=1,
         )
         fig.update_xaxes(visible=False, row=2, col=1)
-        fig.update_yaxes(visible=False, row=2, col=1)
+        # Ajustar rango Y para resaltar variaciones (padding dinámico)
+        try:
+            y_float = [float(v) for v in y if v is not None]
+            if y_float:
+                y_min, y_max = min(y_float), max(y_float)
+                pad = max(0.2, (y_max - y_min) * 0.15)
+                fig.update_yaxes(visible=False, row=2, col=1, range=[y_min - pad, y_max + pad])
+            else:
+                fig.update_yaxes(visible=False, row=2, col=1)
+        except Exception:
+            fig.update_yaxes(visible=False, row=2, col=1)
 
     # Annotation to indicate comparison reference
     if prev_label:

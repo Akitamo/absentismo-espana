@@ -127,12 +127,14 @@ def update_dashboard(_pathname):
     kpi_children = html.Div([
         card(
             title="Tasa de absentismo (Total)",
+            icon="📈",
             body=build_absentismo_kpi(t_abs, t_abs_prev, df_evo, prev_label=prev_label),
             variant="kpi",
             className="card-kpi",
         ),
         card(
             title="Tasa IT (Total)",
+            icon="🩺",
             body=build_absentismo_kpi(t_it, t_it_prev, df_it, prev_label=prev_label, value_col="tasa_it"),
             variant="kpi",
             className="card-kpi",

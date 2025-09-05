@@ -18,6 +18,7 @@ def _to_children(x: Optional[Union[Child, Iterable[Child]]]):
 def card(
     *,
     title: Optional[str] = None,
+    icon: Optional[Union[str, object]] = None,
     subtitle: Optional[str] = None,
     actions: Optional[Iterable[Child]] = None,
     body: Optional[Union[Child, Iterable[Child]]] = None,
@@ -43,9 +44,10 @@ def card(
         classes.append(f"card--{variant}")
 
     header = None
-    if title or subtitle or actions:
+    if title or subtitle or actions or icon:
         header = html.Div([
             html.Div([
+                (html.Span(icon, className="card-icon") if icon else None),
                 html.Div(title or "", className="card-title"),
                 html.Div(subtitle or "", className="card-subtitle") if subtitle else None,
             ], className="card-titlewrap"),
