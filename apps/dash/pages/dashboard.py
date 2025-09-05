@@ -58,7 +58,10 @@ def layout():
     return html.Div([
         # Sección 1: KPIs + Insight
         html.Div([
-            html.Div(id="kpis", className="left-grid kpi-grid--compact"),
+            card(
+                body=html.Div(id="kpis", className="left-grid kpi-grid--compact"),
+                className="card-kpi-shell",
+            ),
             html.Div([
                 html.H4("Análisis"),
                 html.P("Texto generado por IA sobre los KPIs."),

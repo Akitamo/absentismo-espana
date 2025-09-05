@@ -174,8 +174,8 @@ header { max-width: 100% !important; margin: 0 !important; }
 .insight-panel .insight-meta { margin-top: 8px; color: var(--color-muted); font-size: var(--font-size-sm); }
 
 /* KPI compact para dejar espacio a insight */
-.kpi-grid--compact .kpi-card { padding: 12px; }
-.kpi-grid--compact .kpi-value { font-size: 20px; }
+.kpi-grid--compact .kpi-card { padding: 10px; }
+.kpi-grid--compact .kpi-value { font-size: 19px; }
 
 
 
@@ -188,3 +188,4 @@ header { max-width: 100% !important; margin: 0 !important; }
 .insight-panel .insight-meta { margin-top: 8px; color: var(--color-muted); font-size: var(--font-size-sm); }
 .section > .insight-panel { align-self: start; }
 @media (max-width: 992px) { .section { grid-template-columns: 1fr; } }
+

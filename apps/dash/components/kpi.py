@@ -112,7 +112,7 @@ def build_absentismo_kpi(
 
     fig.update_layout(
         template=plotly_template(),
-        height=190,
+        height=160,
         margin=dict(l=8, r=8, t=6, b=6),
         showlegend=False,
     )
