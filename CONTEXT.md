@@ -11,6 +11,7 @@
 
 ## Pipeline de Datos
 - 35 tablas INE descargadas/procesadas (ETL validado).
+- Documentación consolidada de datos: ver `docs/DATOS_ETCL_Y_METODOLOGIA.md` y `docs/VALIDACION_Y_LECCIONES.md`.
 - 51 métricas únicas validadas, persistencia en DuckDB (`data/analysis.db`).
 - Servicio de datos agnóstico: `src/core/data_service.py`.
 
@@ -91,6 +92,7 @@ def update_dashboard(periodo, ccaa, sector):
 - Ejecutar `python apps/dash/app.py` y validar drawer/tabla en móvil.
 - Estilos en `z-overrides.css`; tokens en `design/tokens.json` + `scripts/tokens_to_css.py`.
 - Reutilizar `card(...)` y `plotly_template()` en nuevas vistas.
+
 
 
 
