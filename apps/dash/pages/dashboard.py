@@ -56,43 +56,56 @@ def layout():
         sectors = ["Todos"]
 
     return html.Div([
-        # KPIs al inicio
-        html.Div(id="kpis", className="kpis"),
-
+        # Sección 1: KPIs + Insight
         html.Div([
-            card(
-                title="Evolucion",
-                body=dcc.Graph(id="evolucion"),
-                className="card-evolucion",
-                loading=True,
-            ),
-            card(
-                title="Ranking CCAA",
-                body=dash_table.DataTable(
-                    id="ranking-table",
-                    page_size=10,
-                    fixed_rows={"headers": True},
-                    style_table={
-                        "overflowX": "auto",
-                        "maxHeight": "420px",
-                        "overflowY": "auto",
-                    },
-                    style_header={
-                        "position": "sticky",
-                        "top": 0,
-                        "zIndex": 1,
-                        "backgroundColor": "#FAFBFF",
-                        "fontWeight": 600,
-                    },
-                    style_cell={
-                        "padding": "12px 10px",
-                        "whiteSpace": "nowrap",
-                        "minWidth": "120px",
-                    },
+            html.Div(id="kpis", className="kpi-grid kpi-grid--compact"),
+            html.Div([
+                html.H4("Análisis"),
+                html.P("Texto generado por IA sobre los KPIs."),
+            ], id="insight-kpis", className="insight-panel"),
+        ], className="section-grid"),
+
+        # Sección 2: Evolución + Ranking + Insight
+        html.Div([
+            html.Div([
+                card(
+                    title="Evolucion",
+                    body=dcc.Graph(id="evolucion"),
+                    className="card-evolucion",
+                    loading=True,
                 ),
-                className="card-ranking",
-            ),
-        ], className="main")
+                card(
+                    title="Ranking CCAA",
+                    body=dash_table.DataTable(
+                        id="ranking-table",
+                        page_size=10,
+                        fixed_rows={"headers": True},
+                        style_table={
+                            "overflowX": "auto",
+                            "maxHeight": "420px",
+                            "overflowY": "auto",
+                        },
+                        style_header={
+                            "position": "sticky",
+                            "top": 0,
+                            "zIndex": 1,
+                            "backgroundColor": "#FAFBFF",
+                            "fontWeight": 600,
+                        },
+                        style_cell={
+                            "padding": "12px 10px",
+                            "whiteSpace": "nowrap",
+                            "minWidth": "120px",
+                        },
+                    ),
+                    className="card-ranking",
+                ),
+            ], className="main"),
+            html.Div([
+                html.H4("Análisis"),
+                html.P("Texto generado por IA para evolución y ranking."),
+            ], id="insight-main", className="insight-panel"),
+        ], className="section-grid"),
     ], className="page")
 
 
@@ -101,6 +114,8 @@ def layout():
     Output("evolucion", "figure"),
     Output("ranking-table", "data"),
     Output("ranking-table", "columns"),
+    Output("insight-kpis", "children"),
+    Output("insight-main", "children"),
     Input("url", "pathname"),
 )
 def update_dashboard(_pathname):
@@ -162,7 +177,23 @@ def update_dashboard(_pathname):
     columns = ([{"name": c, "id": c} for c in df_rank.columns]
                if isinstance(df_rank, pd.DataFrame) and len(df_rank.columns) > 0 else [])
 
-    return kpi_children, fig, data, columns
+    # Insights (dummy)
+    insight_kpis = html.Div([
+        html.H4("Análisis"),
+        html.P(f"La tasa de absentismo es {t_abs:.2f}% (vs {prev_label})."),
+        html.P(f"La tasa de IT es {t_it:.2f}%."),
+    ])
+
+    top3 = ", ".join((df_rank.head(3)['CCAA'].tolist() if isinstance(df_rank, pd.DataFrame) and 'CCAA' in df_rank.columns else []))
+    bottom3 = ", ".join((df_rank.tail(3)['CCAA'].tolist() if isinstance(df_rank, pd.DataFrame) and 'CCAA' in df_rank.columns else []))
+    insight_main = html.Div([
+        html.H4("Análisis"),
+        html.P("La tendencia reciente muestra variaciones moderadas en el último año."),
+        html.P(f"Top CCAA por tasa: {top3}" if top3 else ""),
+        html.P(f"Bottom CCAA por tasa: {bottom3}" if bottom3 else ""),
+    ])
+
+    return kpi_children, fig, data, columns, insight_kpis, insight_main
 
 
 # Overlay retirado
