@@ -35,6 +35,10 @@ def _icon_for(path: str) -> str:
 def _label_for(path: str, default: str) -> str:
     return {
         "/": "Dashboard",
+        "/global/analisis": "Análisis",
+        "/global/comparativas": "Comparativas",
+        "/it/analisis": "Análisis",
+        "/it/comparativas": "Comparativas",
         "/analisis": "Análisis",
         "/comparativas": "Comparativas",
         "/exportar": "Exportar",
@@ -43,15 +47,30 @@ def _label_for(path: str, default: str) -> str:
 
 def _build_sidebar_links(current_path: str = "/"):
     links = []
-    for p in _sorted_pages():
-        path = p.get("path", "/")
-        name = _label_for(path, p.get("name", p["module"]).replace("apps.dash.pages.", ""))
-        cls = "active" if path == (current_path or "/") else ""
+    # Dashboard
+    links.append(
+        dcc.Link([
+            html.Span(_icon_for("/"), className="icon"),
+            html.Span("Dashboard", className="label"),
+        ], href="/", className=("active" if (current_path or "/") == "/" else ""), title="Dashboard")
+    )
+    # Grupo: Absentismo Global
+    links.append(html.Div("Absentismo Global", className="group-title"))
+    for sub in ["/global/analisis", "/global/comparativas"]:
         links.append(
             dcc.Link([
-                html.Span(_icon_for(path), className="icon"),
-                html.Span(name, className="label"),
-            ], href=path, className=cls, title=name)
+                html.Span(_icon_for(sub), className="icon"),
+                html.Span(_label_for(sub, sub.split("/")[-1].title()), className="label"),
+            ], href=sub, className=("active" if (current_path or "").startswith(sub) else ""), title=sub)
+        )
+    # Grupo: Absentismo IT
+    links.append(html.Div("Absentismo IT", className="group-title"))
+    for sub in ["/it/analisis", "/it/comparativas"]:
+        links.append(
+            dcc.Link([
+                html.Span(_icon_for(sub), className="icon"),
+                html.Span(_label_for(sub, sub.split("/")[-1].title()), className="label"),
+            ], href=sub, className=("active" if (current_path or "").startswith(sub) else ""), title=sub)
         )
     return links
 
@@ -139,3 +158,4 @@ def _apply_sidebar_state(ui):
 
 if __name__ == "__main__":
     app.run(debug=True, host="127.0.0.1", port=8050)
+
