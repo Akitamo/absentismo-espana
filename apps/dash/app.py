@@ -17,7 +17,7 @@ app = Dash(
 
 def _sorted_pages():
     # Orden deseado del sidebar
-    order = ["/", "/analisis", "/comparativas", "/exportar"]
+    order = ["/", "/global", "/it", "/analisis", "/comparativas", "/exportar"]
     pages = list(page_registry.values())
     pages.sort(key=lambda p: order.index(p.get("path", "/")) if p.get("path", "/") in order else 999)
     return pages

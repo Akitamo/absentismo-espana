@@ -254,6 +254,40 @@ class DataService:
             log.warning("Fallo get_ranking_ccaa: %s", e)
             return pd.DataFrame()
 
+    def get_ranking_ccaa_it(self, periodo: str) -> pd.DataFrame:
+        q = f"""
+        WITH metricas_ccaa AS (
+            SELECT ccaa_nombre,
+                SUM(CASE WHEN metrica = 'horas_pactadas' THEN valor ELSE 0 END) as hp,
+                SUM(CASE WHEN metrica = 'horas_extraordinarias' THEN valor ELSE 0 END) as hext,
+                COALESCE(
+                    SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones_y_fiestas' THEN valor END),
+                    SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'vacaciones' THEN valor END) +
+                    COALESCE(SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'festivos' THEN valor END), 0)
+                ) as vac_fest,
+                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'razones_tecnicas_economicas' THEN valor ELSE 0 END) as ertes,
+                SUM(CASE WHEN metrica = 'horas_no_trabajadas' AND causa = 'it_total' THEN valor ELSE 0 END) as it
+            FROM observaciones_tiempo_trabajo
+            WHERE periodo = '{periodo}'
+              AND ambito_territorial = 'CCAA'
+              AND (tipo_jornada = 'TOTAL' OR tipo_jornada = 'AMBAS' OR tipo_jornada IS NULL)
+              AND fuente_tabla = '6063'
+              AND ccaa_nombre IS NOT NULL
+            GROUP BY ccaa_nombre
+        )
+        SELECT ccaa_nombre as CCAA,
+               ROUND(CASE WHEN (hp + hext - vac_fest - ertes) > 0
+                          THEN (it / (hp + hext - vac_fest - ertes)) * 100 ELSE 0 END, 1) as Tasa_IT
+        FROM metricas_ccaa
+        WHERE ccaa_nombre IS NOT NULL
+        ORDER BY Tasa_IT DESC
+        """
+        try:
+            return self.conn.execute(q).df()
+        except Exception as e:
+            log.warning("Fallo get_ranking_ccaa_it: %s", e)
+            return pd.DataFrame()
+
     def get_evolution_it_data(self, ccaa: str = "Total Nacional", sector: str = "Todos") -> pd.DataFrame:
         filters = []
         if ccaa == "Total Nacional":
