@@ -58,12 +58,12 @@ def layout():
     return html.Div([
         # Sección 1: KPIs + Insight
         html.Div([
-            html.Div(id="kpis", className="kpi-grid kpi-grid--compact"),
+            html.Div(id="kpis", className="left-grid kpi-grid--compact"),
             html.Div([
                 html.H4("Análisis"),
                 html.P("Texto generado por IA sobre los KPIs."),
             ], id="insight-kpis", className="insight-panel"),
-        ], className="section-grid"),
+        ], className="section"),
 
         # Sección 2: Evolución + Ranking + Insight
         html.Div([
@@ -100,12 +100,12 @@ def layout():
                     ),
                     className="card-ranking",
                 ),
-            ], className="main"),
+            ], className="left-grid"),
             html.Div([
                 html.H4("Análisis"),
                 html.P("Texto generado por IA para evolución y ranking."),
             ], id="insight-main", className="insight-panel"),
-        ], className="section-grid"),
+        ], className="section"),
     ], className="page")
 
 
