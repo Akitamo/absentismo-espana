@@ -189,3 +189,7 @@ header { max-width: 100% !important; margin: 0 !important; }
 .section > .insight-panel { align-self: start; }
 @media (max-width: 992px) { .section { grid-template-columns: 1fr; } }
 
+
+/* Card shell KPIs (borde marcado, fondo transparente) */
+.card-kpi-shell { background: transparent; border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: none; }
+.card-kpi-shell .card-body { padding: 12px; }
