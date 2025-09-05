@@ -21,7 +21,8 @@
 .sidebar .nav a.active, .sidebar .nav a:hover { color: var(--color-primary); background: #eef3ff; }
 .sidebar .nav a .icon { width:18px; display:inline-flex; align-items:center; justify-content:center; opacity:.75; }
 .sidebar .nav a.active .icon { opacity:1; }
-.sidebar .group-title { padding: 8px 10px; margin-top: 10px; color: var(--color-muted); font-size: 12px; text-transform: uppercase; letter-spacing: .02em; }
+.sidebar .group-title { padding: 8px 10px; margin-top: 10px; color: var(--color-muted); font-size: 12px; text-transform: uppercase; letter-spacing: .02em; display:flex; align-items:center; gap:8px; }
+.sidebar .group-title .icon { width:18px; display:inline-flex; align-items:center; justify-content:center; opacity:.85; }
 .sidebar .sidebar-user { position: sticky; bottom: 0; margin-top: 16px; padding-top: 8px; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--color-muted); }
 
 .content { margin-left: var(--sidebar-w); }

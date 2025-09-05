@@ -55,7 +55,10 @@ def _build_sidebar_links(current_path: str = "/"):
         ], href="/", className=("active" if (current_path or "/") == "/" else ""), title="Dashboard")
     )
     # Grupo: Absentismo Global
-    links.append(html.Div("Absentismo Global", className="group-title"))
+    links.append(html.Div([
+        html.Span("📊", className="icon"),
+        html.Span("Absentismo Global", className="label"),
+    ], className="group-title"))
     for sub in ["/global/analisis", "/global/comparativas"]:
         links.append(
             dcc.Link([
@@ -64,7 +67,10 @@ def _build_sidebar_links(current_path: str = "/"):
             ], href=sub, className=("active" if (current_path or "").startswith(sub) else ""), title=sub)
         )
     # Grupo: Absentismo IT
-    links.append(html.Div("Absentismo IT", className="group-title"))
+    links.append(html.Div([
+        html.Span("🩺", className="icon"),
+        html.Span("Absentismo IT", className="label"),
+    ], className="group-title"))
     for sub in ["/it/analisis", "/it/comparativas"]:
         links.append(
             dcc.Link([
