@@ -93,6 +93,8 @@ header { max-width: 100% !important; margin: 0 !important; }
 /* Generic card */
 .card { background: var(--color-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--card-shadow); display:flex; flex-direction: column; overflow: hidden; }
 .card-header { display:flex; align-items:center; justify-content:space-between; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--border-color); }
+.card-header .card-titlewrap { display:flex !important; align-items:center; gap: 10px; }
+.card-header .card-icon { width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; background:#eef3ff; box-shadow: 0 2px 8px rgba(27,89,248,0.25); padding:6px; color: var(--color-primary); }
 .card-title { font-weight: 600; }
 .card-subtitle { color: var(--color-muted); font-size: var(--font-size-sm); }
 .card-body { padding: 12px 14px; }
