@@ -19,6 +19,7 @@ def card(
     *,
     title: Optional[str] = None,
     icon: Optional[Union[str, object]] = None,
+    icon_src: Optional[str] = None,
     subtitle: Optional[str] = None,
     actions: Optional[Iterable[Child]] = None,
     body: Optional[Union[Child, Iterable[Child]]] = None,
@@ -44,10 +45,10 @@ def card(
         classes.append(f"card--{variant}")
 
     header = None
-    if title or subtitle or actions or icon:
+    if title or subtitle or actions or icon or icon_src:
         header = html.Div([
             html.Div([
-                (html.Span(icon, className="card-icon") if icon else None),
+                (html.Img(src=icon_src, className="card-icon", alt="icon") if icon_src else (html.Span(icon, className="card-icon") if icon else None)),
                 html.Div(title or "", className="card-title"),
                 html.Div(subtitle or "", className="card-subtitle") if subtitle else None,
             ], className="card-titlewrap"),

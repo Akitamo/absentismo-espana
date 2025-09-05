@@ -50,6 +50,15 @@ header { max-width: 100% !important; margin: 0 !important; }
 .kpi-card .kpi-trend.up { color: var(--color-success); }
 .kpi-card .kpi-trend.down { color: var(--color-danger); }
 
+/* Icono genérico para headers de card (SVG/emoji) */
+.card-header .card-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  display: inline-block;
+  color: var(--color-primary);
+}
+
 /* Títulos unificados para cards y KPIs */
 .card-title, .kpi-card .kpi-title {
   font-weight: 700;

@@ -53,7 +53,7 @@ def build_absentismo_kpi(
     )
 
     if isinstance(series, pd.DataFrame) and not series.empty:
-        # Asegurar orden cronológico ascendente y limitar a últimos 24 periodos
+        # Asegurar orden cronológico ascendente y limitar a últimos 12 periodos
         s = series.copy()
         if "periodo" in s.columns:
             # Ya viene en ASC desde DataService, pero normalizamos por si acaso
@@ -61,7 +61,7 @@ def build_absentismo_kpi(
                 s = s.sort_values("periodo")
             except Exception:
                 pass
-        s = s.tail(24)
+        s = s.tail(12)
 
         x = s["periodo"].tolist() if "periodo" in s.columns else list(range(len(s)))
         # Elegir columna para el sparkline (absentismo por defecto; IT si se indica)
