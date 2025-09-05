@@ -48,7 +48,28 @@ header { max-width: 100% !important; margin: 0 !important; }
 .kpi-card .kpi-value { font-size: 24px; font-weight: 700; margin-top: 2px; }
 .kpi-card .kpi-trend { font-size: 12px; margin-top: 4px; color: var(--color-muted); }
 .kpi-card .kpi-trend.up { color: var(--color-success); }
-.kpi-card .kpi-trend.down { color: var(--color-danger); }
+.kpi-card .kpi-trend.down {
+/* Títulos unificados para cards y KPIs */
+.card-title, .kpi-card .kpi-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+/* Card header icon aligned to the left of title */
+.card-header .card-titlewrap { display:flex; align-items:center; gap: 10px; }
+.card-header .card-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #eef3ff; /* subtle chip behind svg */
+  box-shadow: 0 2px 8px rgba(27,89,248,0.25);
+  padding: 6px; /* breathing room around svg */
+  color: var(--color-primary);
+} color: var(--color-danger); }
 
 /* Icono genérico para headers de card (SVG/emoji) */
 .card-header .card-icon {
@@ -139,3 +160,4 @@ header { max-width: 100% !important; margin: 0 !important; }
   .filter [class*="Select__control"] { min-height: 44px; }
   .kpi-card .kpi-value { font-size: 20px; }
 }
+
